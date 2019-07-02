@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+#Date-Picker{
+width: 200px;
+}
+#form{
+         display: flex;
+  justify-content: center;
+  margin-top: 10px; 
+}
+
+#all{
+      display: flex;
+  justify-content: center;
+}
+#Title{
+margin-top: 20px;
+    margin-bottom: 84px;
+    font-family: 'Noto Sans JP', sans-serif;
+
+}
+#boton{
+    background-color: #4ec9a5;
+    border-color: transparent;
+    font-family: 'Questrial', sans-serif;
+}
+#group{
+
+margin-bottom: 3px;
+}
+#boton:hover{
+    background-color: #307c66;
+    border-color: transparent;
+}
+#subtitulos{
+    font-size: 28px;
+color: #4ec9a5!important;
+    
+}p{
+
+    color: #333333;
+    font-family: 'Questrial', sans-serif;
+    font-size: 21px;
+    margin-bottom: 0;
+}p:hover{
+    text-decoration: none;
+    color: green;
+    font-family: 'Questrial', sans-serif;
+    font-size: 21px;
+    margin-bottom: 0;
+}
+a{
+    
+    text-decoration: none;
+}
+label{
+    font-family: 'Questrial', sans-serif;
+font-size: 21px;
+margin-bottom: 0;
+color: rgb(44, 62, 80)!important;
+}
+label:hover{
+color: #2E7B66;
+
+}
+input{
+    font-family: 'Questrial', sans-serif;
+    
+}
+h1{
+	width: 100%
+	color: gray;
+	margin: -31px 0 30px 0;
+	font-size: 39px;
+	text-align: center;
+	color: #43425D;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+
+h1{
+    width: 100%
+    color: gray;
+    margin: 3px 0 105px 0;
+    font-size: 39px;
+    text-align: center;
+    color: #43425D;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+p{
+    margin: 0 0 0 173px;
+    font-size: 24px;
+    /*text-align: center;*/
+    color: #4D4F5C;
+    width: 407px;
+    font-family: 'Questrial', sans-serif;
+}
+#im img{
+    width: 27.65px;
+    height: 27.65px;
+    margin: -28px 0 0 592px;
+    float: left;
+}
+#imm img{
+    width: 141.43px ;
+    height: 30.63px;
+    margin: -29px 0 0 629px;;
+    float: left;
+}
+#immg {
+    width: 185px;
+    height: 50px;
+    margin: -21px 58px 39px 0;
+    float: right;
+    background: #307C66;
+    border-radius:3px;
+
+}th{
+
+    font-family: 'Quicksand', sans-serif;
+}
+.far{
+    padding: 2px;
+    font-size: larger;
+}
+/*
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Questrial', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+
+    */
+
+
+ul {list-style-type: none;}
+
+
+/*
+    font-family: 'Noto Sans JP', sans-serif;
+
+    */

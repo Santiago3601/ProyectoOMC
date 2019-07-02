@@ -1,0 +1,86 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#Date-Picker{
+width: 200px;
+}
+
+#all{
+      display: flex;
+  justify-content: center;
+}
+#Title{
+margin-top: 20px;
+    margin-bottom: 84px;
+    font-family: 'Noto Sans JP', sans-serif;
+
+}
+#boton{
+    background-color: #4ec9a5;
+    border-color: transparent;
+    font-family: 'Questrial', sans-serif;
+}
+#group{
+margin-top: 24px;
+}
+#boton:hover{
+    background-color: #307c66;
+    border-color: transparent;
+}
+#subtitulos{
+    font-size: 28px;
+color: #4ec9a5!important;
+    
+}#p{
+
+    color: #333333;
+    font-family: 'Questrial', sans-serif;
+    font-size: 21px;
+    margin: 0 0 0 0;
+
+}
+a{
+    
+    text-decoration: none;
+}
+label{
+    font-family: 'Questrial', sans-serif;
+font-size: 21px;
+margin-bottom: 0;
+color: rgb(44, 62, 80)!important;
+}
+
+input{
+    font-family: 'Questrial', sans-serif;
+    
+}
+option{
+    font-family: 'Questrial', sans-serif;
+
+    font-size: 16px;
+}
+h1{
+    width: 100%
+    color: gray;
+    margin: -31px 0 30px 0;
+    font-size: 39px;
+    text-align: center;
+    color: #43425D;
+    font-family: 'Noto Sans JP', sans-serif;
+}#select{
+    font-size: 16px;
+    font-family: 'Questrial', sans-serif;
+
+}#boton{
+    margin-top: 30px;
+}
+
+/*
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+
+    */

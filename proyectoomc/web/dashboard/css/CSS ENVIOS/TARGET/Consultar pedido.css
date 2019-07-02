@@ -1,0 +1,50 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+div{
+	width: 100%;
+	height: 600px;
+	padding: 15%;
+	background: white;
+
+}
+table{
+	width: 10%;
+	height: 20%;
+	border: 1px solid #000000;
+	border-collapse: separate;
+	margin: auto;
+	text-align: center;
+	border: 2px;
+
+}
+table tr img{
+	width: 20px;
+	height: 20px;
+
+}
+table td{
+	border: 1px solid #000000;
+	padding: 3px;
+}
+table tr  {
+	border: 1px solid black;
+	background: #F5F6FA;
+}	
+td{
+	background: #AAECF8;
+	border-bottom: 2px solid black;
+}
+
+#immg {
+    width: 185px;
+    height: 50px;
+    margin: -21px 58px 39px 0;
+    float: right;
+    background: #307C66;
+    border-radius:3px;
+
+}

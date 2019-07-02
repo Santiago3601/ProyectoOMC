@@ -1,0 +1,53 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+#Date-Picker{
+width: 200px;
+}
+
+#all{
+      display: flex;
+  justify-content: center;
+}
+#Title{
+margin-top: 20px;
+    margin-bottom: 170px;
+    font-family: 'Noto Sans JP', sans-serif;
+
+}
+#boton{
+    background-color: #4ec9a5;
+    border-color: transparent;
+    font-family: 'Questrial', sans-serif;
+}
+#boton:hover{
+    background-color: #307c66;
+    border-color: transparent;
+}
+label{
+    font-family: 'Questrial', sans-serif;
+
+}
+input{
+    font-family: 'Questrial', sans-serif;
+    
+}
+h1{
+	width: 100%
+	color: gray;
+	margin: -31px 0 30px 0;
+	font-size: 39px;
+	text-align: center;
+	color: #43425D;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+/*
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+
+    */

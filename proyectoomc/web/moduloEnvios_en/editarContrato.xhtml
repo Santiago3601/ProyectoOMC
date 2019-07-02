@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+           <div id="form"> 
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Modificar cpntrato"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdContrato:" for="idContrato" />
+                    <h:inputText id="idContrato" value="#{contratoContolador.contrato.idContrato}" title="IdContrato" required="true" requiredMessage="The IdContrato field is required."/>
+                    <h:outputLabel value="TipoContrato:" for="tipoContrato" />
+                    <h:inputText id="tipoContrato" value="#{contratoContolador.contrato.tipoContrato}" title="TipoContrato" required="true" requiredMessage="The TipoContrato field is required."/>
+                    <h:outputLabel value="IdRadicado:" for="idRadicado" />
+                    <h:inputText id="idRadicado" value="#{contratoContolador.contrato.idRadicado}" title="IdRadicado" required="true" requiredMessage="The IdRadicado field is required."/>
+                    <h:outputLabel value="AlquilerIdAlquiler:" for="alquilerIdAlquiler" />
+                    <h:selectOneMenu id="alquilerIdAlquiler" value="#{contratoContolador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="alq" itemValue="#{alq.idAlquiler}" itemLabel="#{alq.idAlquiler}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="Registrar" action="#{contratoContolador.actualizarContrato()}"> </h:commandButton>  
+            </h:form>
+        </f:view>
+           </div>
+    </h:body>
+</html>
+

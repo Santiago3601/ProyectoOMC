@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+        
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Lista de agenda"/></h1>
+                <p:dataTable id="tablaAgenda" value="#{agendaControlador.consultarTodos()}" var="item">
+                    <p:column filterBy="#{item.idAgenda}"> 
+                        <f:facet name="header">
+                            <h:outputText value="No. Agenda"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idAgenda}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.fechaProgramada}">
+                        <f:facet name="header">
+                            <h:outputText value="Fecha Programada"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fechaProgramada}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column filterBy="#{item.novedades}">
+                        <f:facet name="header">
+                            <h:outputText value="Novedades"/>
+                        </f:facet>
+                        <h:outputText value="#{item.novedades}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.empleadoIdEmpleado}">
+                        <f:facet name="header">
+                            <h:outputText value="No. Empleado"/>
+                        </f:facet>
+                        <h:outputText value="#{item.empleadoIdEmpleado.idEmpleado}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Opción"/>
+                        </f:facet>
+
+                        <h:commandLink  action="#{agendaControlador.preActualizarAgenda(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                        <h:commandLink  action="#{agendaControlador.eliminarAgenda(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                        
+                    </p:column>
+                </p:dataTable>
+                                        <h:commandLink id="excel">
+                            <i class="far fa-file-excel"></i>
+                            <p:dataExporter type="xls" target="tablaAgenda" fileName="tablaAgenda" />
+                            <style>
+                                .far{
+                                    padding: 2px;
+                                    font-size: x-large;
+                                }
+                            </style>
+                        </h:commandLink>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

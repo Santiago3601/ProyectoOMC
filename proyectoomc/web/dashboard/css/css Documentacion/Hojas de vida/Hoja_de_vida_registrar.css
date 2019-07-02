@@ -1,0 +1,55 @@
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+
+}
+form{
+	width: 100%;
+	border: 1px solid #080707;
+	margin: auto;
+	padding: 40px;
+	height: 850px;
+	font-family: 'Questrial', sans-serif;
+}
+label{
+	font size: 10px;
+	display: block;
+	width: 100%;
+}
+input{
+	margin-bottom: 10px;
+	width: 100%;
+	padding: 10px;
+	border: 3px solid #2EE1F1 
+	height: 10%;
+}
+input:focus{
+border: 1px solid #A23F3F
+}
+div{
+	width: 100%;
+}
+div ul{
+	list-style: none;
+	padding: 15px;
+}
+div ul li{
+	display: inline-block;
+	width: 15%;
+	float: left;
+	height: 40px;
+}
+div ul li a{
+	display: block;
+	width: auto;
+	text-decoration: none;
+	font-size: 20px;
+	text-align: center;
+	background: #999F9F;
+	border: 1px solid #050404
+}
+div ul li a:hover{
+	
+	color: #0B0303;
+}

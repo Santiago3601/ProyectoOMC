@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+               <div id="form"> 
+        
+                <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Editar agenda"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="No. Agenda:" for="idAgenda" />
+                    <h:inputText id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" required="true" requiredMessage="The IdAgenda field is required."/>
+                    <h:outputLabel value="Fecha Programada:" for="fechaProgramada" />
+                    <h:inputText id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" required="true" requiredMessage="The FechaProgramada field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Novedades:" for="novedades" />
+                    <h:inputText id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" />
+                    <h:outputLabel value="Id Empleado:" for="empleadoIdEmpleado" />
+                    <h:selectOneMenu id="empleadoIdEmpleado" value="#{agendaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.nombre}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="Registrar" action="#{agendaControlador.actualizarAgenda()}"> </h:commandButton>
+            </h:form>
+        </f:view>
+
+
+               </div>
+    </h:body>
+</html>
+

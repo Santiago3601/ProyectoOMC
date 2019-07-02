@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Work Permit List"/></h1>
+                <h:dataTable value="#{permisoLaboralControlador.consultarTodos()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="work permit"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idPermisoLaboral}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Permit Time"/>
+                        </f:facet>
+                        <h:outputText value="#{item.horaPermiso}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Date Permission"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fechaPermiso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Observations"/>
+                        </f:facet>
+                        <h:outputText value="#{item.obvservaciones}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Employee"/>
+                        </f:facet>
+                        <h:outputText value="#{item.empleadoIdEmpleado}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Type of permission"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tipodepermisoidtIpodepermiso}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" class="thead">
+                            <h:outputText value="Options"/>
+                        </f:facet>
+                        <h:commandLink action="#{permisoLaboralControlador.preActualizar(item)}" value="Edit" ><i class="fasfa-edit"></i></h:commandLink>
+                        <h:commandLink action="#{permisoLaboralControlador.eliminar(item)}" value="remove" ><i class="fas fa-trash-alt"></i></h:commandLink>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

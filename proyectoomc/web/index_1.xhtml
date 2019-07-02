@@ -1,0 +1,450 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+        <meta name="description" content=""></meta>
+        <meta name="author" content=""></meta>
+
+        <title>OMC</title>
+        <!-- My own css -  contact us -->
+        <link href="css/estilos-contactenos.css" rel="stylesheet"></link>
+        <!--FONTAWESOME -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/solid.css" integrity="sha384-ypqxM+6jj5ropInEPawU1UEhbuOuBkkz59KyIbbsTu4Sw62PfV3KUnQadMbIoAzq" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/fontawesome.css" integrity="sha384-NnhYAEceBbm5rQuNvCv6o4iIoPZlkaWfvuXVh4XkRNvHWKgu/Mk2nEjFZpPQdwiz" crossorigin="anonymous"></link>
+        <!-- Logo  -->
+        <link rel="shortcut icon" href="img/img-isotipo_omc.jpg"></link>
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+
+        <!-- Plugin CSS 
+        <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css"></link>-->
+        <!-- Custom styles for this template -->
+        <link href="css/freelancer.min.css" rel="stylesheet"></link>
+    </h:head>
+    <h:body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="img/OMC.png" alt=""></img></a>
+                <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Gallery</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Visit us</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal" data-target="#Login-in">Login in</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal" data-target="#Sing-up">Sing up</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.xhtml">ES</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!--Start Modal loggin & Sing up -->
+
+        <!-- Modal loggin -->
+
+
+
+        <div class="modal fade" id="Login-in" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Login-inLabel">Log in</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <h:form class="needs-validation" ps:novalidate="true">
+
+
+                            <f:view>
+
+                                <div class="form-group">
+                                    <label for="validationDefault01">Email address</label>
+                                    <h:inputText class="form-control" ps:placeholder="E-mail" ps:type="email" id="txtCorreo" value="#{usuarioControlador.usuario.correo}">
+
+                                    </h:inputText>
+                                </div>
+
+                                <label for="exampleInputPassword1">Password</label>
+
+                                <h:inputSecret  class="form-control" id="validationCustom01"  ps:placeholder="Password"  required="true" value="#{usuarioControlador.usuario.contrasenia}">
+
+                                </h:inputSecret>
+
+                            </f:view>
+                            <div class="modal-footer">
+
+                                <h:commandButton  action="#{usuarioControlador.validarLogin()}" value="Login"></h:commandButton>
+                            </div>
+                        </h:form>
+
+                    </div>
+
+                    <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                    <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+            }, false);
+            });
+            }, false);
+            })();
+        </script>
+        
+        <!-- Modal Sing up -->
+        <div class="modal fade" id="Sing-up" tabindex="-1" role="dialog" aria-labelledby="Sing-up-inLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="Sing-up-inLabel">Sing-up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <f:view>
+
+
+                            <h:form class="needs-validation" ps:novalidate="true" ps:name="registroUsuario" >
+                                <label for="validationDefault01">Full name</label>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <h:inputText class="form-control" id="nombre" value="#{usuarioControlador.usuario.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                                        </div>
+                                        <div class="col">
+                                            <h:inputText class="form-control" id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" required="true" requiredMessage="The Apellido field is required."/> 
+                                        </div>  
+                                    </div>
+                                </div>
+
+                                <div class="form-group"> 
+                                    <h:outputLabel value="Id:" for="id" />
+                                    <div class="form-row">
+                                        <div class="col-6">
+                                            <h:inputText id="tpId" class="form-control" value="#{usuarioControlador.usuario.tpId}" title="TpId" required="true" requiredMessage="The TpId field is required."/>
+
+                                        </div>
+                                        <div class="col-6"> 
+                                            <h:inputText id="id" class="form-control" value="#{usuarioControlador.usuario.id}" title="Id" required="true" requiredMessage="The Id field is required."/>
+
+                                        </div>
+                                    </div>            
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <h:outputLabel value="Direccion:" for="direccion" />
+                                        <h:inputText class="form-control" id="direccion" value="#{usuarioControlador.usuario.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <h:outputLabel value="Correo:" for="correo" />
+                                        <h:inputText class="form-control" id="correo" value="#{usuarioControlador.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <h:outputLabel value="Contrasenia:" for="contrasenia" />
+                                        <h:inputText class="form-control" id="contrasenia" value="#{usuarioControlador.usuario.contrasenia}" title="Contrasenia" required="true" requiredMessage="The Contrasenia field is required."/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <h:outputLabel value="Telefono:" for="telefono" />
+                                        <h:inputText class="form-control" id="telefono" value="#{usuarioControlador.usuario.telefono}" title="Telefono" required="true" requiredMessage="The Telefono field is required."/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <h:outputLabel value="Eps:" for="eps" />
+                                        <h:inputText class="form-control" id="eps" value="#{usuarioControlador.usuario.eps}" title="Eps" required="true" requiredMessage="The Eps field is required."/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <h:outputLabel value="FechaDeNacimiento:" for="fechaDeNacimiento" />
+                                        <h:inputText class="form-control" id="fechaDeNacimiento" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:inputText>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <h:outputLabel value="Edad:" for="edad" />
+                                        <h:inputText class="form-control" id="edad" value="#{usuarioControlador.usuario.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <h:outputLabel value="RolidRol:" for="rolidRol" />
+                                        <h:selectOneMenu id="rolidRol" value="#{usuarioControlador.rol.idRol}" title="RolidRol" required="true" requiredMessage="The RolidRol field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{rolControlador.consultarTodos()}" var="rol" itemValue="#{rol.idRol}" itemLabel="#{rol.rol}"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <h:commandButton value="Registrarse" onclick="enter()" action="#{usuarioControlador.registrarUsuario()}"> </h:commandButton>  
+                            </h:form>
+                        </f:view>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+            }, false);
+            });
+            }, false);
+            })();
+        </script>
+        <!--End Modal loggin & Sing up -->
+        <!-- Header -->
+        <header class="masthead bg-primary text-white text-center" id="page-top">
+            <div class="container">
+                <h1 class="text-uppercase mb-0">¡Welcome!</h1>
+                <hr class="star-light"></hr>
+                <h2 class="font-weight-light mb-0">Organization and Maintenance Cryogas - OMC</h2>
+            </div>
+        </header>
+        <!-- Portfolio Grid Section -->
+        <section class="portfolio" id="portfolio">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mb-0">Gallery</h2>
+                <hr class="star-dark mb-5"></hr>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
+                            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="img/portfolio/IMG_CILINDRO_ (1).jpg" alt=""></img>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+                            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="img/portfolio/IMG_CILINDRO_ (2).jpg" alt=""></img>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
+                            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="img/portfolio/IMG_CILINDRO_ (3).jpg" alt=""></img>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-4">
+                            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="img/portfolio/IMG_CILINDRO_ (4).jpg" alt=""></img>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-5">
+                            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="img/portfolio/IMG_CILINDRO_ (5).jpg" alt=""></img>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-6">
+                            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="img/portfolio/IMG_CILINDRO_ (6).jpg" alt=""></img>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Section -->
+        <section class="bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-white">About</h2>
+                <hr class="star-light mb-5"></hr>
+                <div class="row">
+                    <div class="col-lg-4 ml-auto">
+                        <p class="lead">  Cryogas is a company of the group Air Products, one of the main companies of industrial gases globally, with more than 75 years of history and approximately 16.000 workers on 50 countries. </p>
+                    </div>
+                    <div class="col-lg-4 mr-auto">
+                        <p class="lead">The company have a deep knowledge of every market which the company is present and contribute actively to the development with the companies that we work, thanks to the delivery of industrial solutions with gases and welds tailored to customers, which complements with a complete mix of products and services associated at the use of the them</p>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mb-0">Visit us</h2>
+                <hr class="star-dark mb-5"></hr>
+                <div class="row">
+                    <div class="VISITENOS">
+                        <link rel="stylesheet" href="DISEÑO WEB ANTERIOR/css/Pagina Principal/estilos - contactenos.css"></link>
+                        <div id="izqui">
+                            <div id="donde">
+                                <h1>Where you can find us:</h1>
+                                <p>Cl. 13 #69-30, Bogotá </p>
+                            </div>
+                            <div id="ofc">
+                                <p>Main office:</p>
+                                <p>Cra. 43 A No. 3 Sur - 130 </p>
+                                <p>Distrito de Negocios Milla de Oro </p>
+                                <p>First Tower 18 floor</p>
+                            </div>
+                            <div id="nume">
+                                <h1>You can call us at the number:</h1>
+                                <p>(1) 4128599</p>
+                                <h1>You can write us at the mail:</h1>
+                                <p>encontacto@cryogas.com.co</p>
+                            </div>
+                        </div>
+                        <div class="mapa">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.7264061289384!2d-74.12339099999998!3d4.642816000000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bf607904627%3A0x8307288a443a55a2!2sCryogas!5e0!3m2!1ses-419!2sco!4v1543113619409" width="906" height="602" frameborder="0" style="border:0" allowfullscreen="true"></iframe>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Contact us</h4>
+                        <p class="lead mb-0">shirleybernal70@gmail.com</p>
+                        <p class="lead mb-0">stephannybustos0@gmail.com</p>
+                        <p class="lead mb-0">santyago3601@gmail.com</p>
+                    </div>
+                    <div class="col-md-4 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Social Neteworks</h4>
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                    <i class="fab fa-google-plus-g"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="text-uppercase mb-4">Location</h4>
+                        <p class="lead mb-0">Cl. 13 #69-30, Bogotá
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="copyright py-4 text-center text-white">
+            <div class="container">
+                <small>Copyright Santiago Ruiz Rincón, Shirley Bernal Requena, Stephanie Bustos Mongui &copy; 2019</small>
+            </div>
+        </div>
+        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+        <div class="scroll-to-top d-lg-none position-fixed ">
+            <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+        <!-- Portfolio Modals -->
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <!-- Custom scripts for this template -->
+        <script src="js/freelancer.min.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/alertas.js"></script>
+        
+    </h:body>
+</html>
+

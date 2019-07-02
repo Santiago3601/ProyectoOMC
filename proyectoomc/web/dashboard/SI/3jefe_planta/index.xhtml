@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+        <meta name="description" content=""></meta>
+        <meta name="author" content=""></meta>
+        <title>OMC</title>
+
+        <!-- MY STYLE -->
+
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" type="text/css" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>
+        <!-- PopOver -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>
+        <link rel="stylesheet" href="dashboard/css/estilos.css"></link>
+    </h:head>
+    <h:body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container">
+                <div class="col">
+                    <a class="navbar-brand js-scaccessibility-buttonsl-trigger" href="#page-top"><img src="dashboard/img/OMC.png" alt=""></img></a>
+                </div>
+                <div class="col">
+                    <div id="rol">
+                        <label>
+                            Jefe de planta
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-contaccessibility-buttonss="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <div id="row-down">
+                            <i class="far fa-angle-double-down"></i>
+                        </div>
+
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <div id="accessibility-buttons">
+                                    <a href="">
+                                        <i class="far fa-cog"></i>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <div id="accessibility-buttons">
+
+                                    <a href="#" title="Notificación" data-toggle="popover" data-placement="bottom" data-content="No hay notificaciones pendientes"> <i class="fal fa-bell"></i></a>
+
+
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('[data-toggle="popover"]').popover();
+                                        });
+                                    </script>
+
+
+
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <div id="accessibility-buttons">
+                                    <a href="index_1.xhtml">
+                                        <i class="far fa-sign-out"></i>
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </nav>
+        <div id="contenedor" >
+            <!-- Navegador -->
+            <nav id="options" class="barra-navega">
+                <ul>
+                    <li><a href="dashboard/HTML/Modulo de envios/MODULO-ENVIOS.html" target="area-de-trabajo">Envios</a>
+                        <ul>
+                            <li><a href="">Crear</a>
+                                <ul>
+                              
+                                    <li><a href="moduloEnvios/crearContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
+                             
+                                    <li><a href="moduloEnvios/crearVehiculo.xhtml" target="area-de-trabajo">Vehiculo</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">Consultar</a>
+                                <ul>
+                                    <li><a href="moduloEnvios/listaAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
+                                    <li><a href="moduloEnvios/listaClientes.xhtml" target="area-de-trabajo">Cliente</a></li>
+                                    <li><a href="moduloEnvios/listaContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
+                                   
+                                    <li><a href="moduloEnvios/listaRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
+                                    <li><a href="newTemplate.xhtml" target="area-de-trabajo">Usuarios</a></li>
+
+                                </ul>
+
+                            </li>
+                            <li><a href="">Programar</a>
+                                <ul>
+                                    <li><a href="moduloEnvios/crearAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
+
+                                    <li><a href="moduloEnvios/crearRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="dashboard/HTML/Modulo mantenimiento/MODULO-MANTENIMIENTO.html" target="area-de-trabajo">Mantenimiento</a>
+                        <ul>
+                            <li><a href="">Programar</a>
+                                <ul>
+                                    <li><a href="moduloMantenimiento/registrarMantenimiento.xhtml"  target="area-de-trabajo">Mantenimiento</a></li>
+                                    <li><a href="moduloMantenimiento/registrarMantenimientoCilindro.xhtml"  target="area-de-trabajo">MantenimientoCilindro</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">Registrar</a>
+                                <ul>
+                                    <li><a href="moduloMantenimiento/registrarAgenda.xhtml"  target="area-de-trabajo">Agenda</a></li>
+                                    <li><a href="moduloMantenimiento/registrarCilindro.xhtml"  target="area-de-trabajo">Cilindro</a></li>
+                                    <li><a href="moduloMantenimiento/registrarLote.xhtml"  target="area-de-trabajo">Lote</a></li>
+                                </ul>
+
+                            </li>
+                            <li><a href="">Consultar</a>
+                                <ul>
+                                    <li><a href="moduloMantenimiento/listaAgenda.xhtml"  target="area-de-trabajo">Agenda</a></li>
+                                    <li><a href="moduloMantenimiento/listaCilindro.xhtml"  target="area-de-trabajo">Cilindro</a></li>
+                                    <li><a href="moduloMantenimiento/listaLote.xhtml"  target="area-de-trabajo">Lote</a></li>
+                                    <li><a href="moduloMantenimiento/listaMantenimiento.xhtml"  target="area-de-trabajo">Mantenimiento</a></li>
+                                    <li><a href="moduloMantenimiento/listaMantenimientoCilindro.xhtml"  target="area-de-trabajo">MantenimientoCilindro</a></li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+
+
+                    </li>
+                    <li><a href="dashboard/HTML/Modulo personal/MODULO-PERSONAL.html" target="area-de-trabajo">Personal</a>
+
+                        <ul>
+                            <li><a href="">Registrar</a>
+                                <ul>
+               
+                                    <li><a href="moduloPersonal/RegistrarPermisoLaboral.xhtml"  target="area-de-trabajo">Permiso</a></li>
+                                  
+                                </ul>
+                            </li>
+                            <li><a href="">Consultar</a>
+                                <ul>
+
+                                    <li><a href="moduloPersonal/ListarArchivo.xhtml"  target="area-de-trabajo">Archivo</a></li>
+                                    <li><a href="moduloPersonal/ListaPunto.xhtml"  target="area-de-trabajo">Punto</a></li>
+                                    <li><a href="moduloPersonal/listaEmpleado.xhtml"  target="area-de-trabajo">Empleado</a></li>
+                                    
+                                    <li><a href="moduloPersonal/ListarPermisoLaboral.xhtml"  target="area-de-trabajo">Permiso Laboral</a></li>
+                                    
+                                    <li><a href="moduloPersonal/ListaTurno.xhtml"  target="area-de-trabajo">Turno</a></li>
+
+                                </ul>
+
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li><a href="">Reportes</a></li>
+                </ul>
+            </nav>
+            <section>
+                <iframe name="area-de-trabajo" src=""></iframe>
+            </section>
+
+
+            <div class="modal fade" id="Login-in" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="Login-inLabel">Log in</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h:form class="needs-validation" >
+                                <div class="form-group">
+                                    <label for="validationDefault01">Email address</label>
+                                    <input type="email" class="form-control" id="validationCustom01" aria-describedby="emailHelp" placeholder="Enter email" required="true"></input>
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="Password" class="form-control" id="validationCustom01"  placeholder="Password" required="true"></input>
+                                </div>
+                                <div class="borde form-check">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1"></input>
+                                        <label class="custom-control-label" for="customCheck1">Check me out</label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <a href="DISEÑO WEB ANTERIOR/SI/1.admin/index.html"><button class="btn btn-primary" type="submit" href="DISEÑO WEB ANTERIOR/SI/1.admin/index.html" >Submit </button>
+                                    </a>
+                                    <a href="DISEÑO WEB ANTERIOR/SI/1.admin/index.html">.</a>
+                                </div>
+                            </h:form>
+                        </div>
+
+                        <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                        <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </h:body>
+</html>
+

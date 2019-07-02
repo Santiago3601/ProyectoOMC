@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:pt="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+         <div id="form"> 
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Registrar permiso"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Codigo Permiso Laboral:" for="idPermisoLaboral" />
+                    <h:inputText id="idPermisoLaboral" value="#{permisoLaboralControlador.permisoLaboral.idPermisoLaboral}" title="IdPermisoLaboral" required="true" requiredMessage="The IdPermisoLaboral field is required."/>
+                    <h:outputLabel value="Hora Permiso:" for="horaPermiso" />
+                    <h:inputText id="horaPermiso" value="#{permisoLaboralControlador.permisoLaboral.horaPermiso}" title="HoraPermiso" required="true" requiredMessage="The HoraPermiso field is required.">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="Fecha Permiso:" for="fechaPermiso" />
+                    <h:inputText id="fechaPermiso" value="#{permisoLaboralControlador.permisoLaboral.fechaPermiso}" title="FechaPermiso" required="true" requiredMessage="The FechaPermiso field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Obvservaciones:" for="obvservaciones" />
+                    <h:inputText id="obvservaciones" value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" />
+                    <h:outputLabel value="Codigo Empleado:" for="empleadoIdEmpleado" />
+                    <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="idem" itemValue="#{idem.idEmpleado}" itemLabel="#{idem.idEmpleado}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Tipo permiso:" for="tipodepermisoidtIpodepermiso" />
+                    <h:selectOneMenu id="tipodepermisoidtIpodepermiso" value="#{permisoLaboralControlador.tipoDePermiso.idtIpodepermiso}" title="TipodepermisoidtIpodepermiso" required="true" requiredMessage="The TipodepermisoidtIpodepermiso field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{tipoDePermisoControlador.consultarTodos()}" var="tp" itemValue="#{tp.idtIpodepermiso}" itemLabel="#{tp.tipoDePermiso}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="Registrar" action="#{permisoLaboralControlador.registrarp()}"> </h:commandButton>
+            </h:form>
+        </f:view>
+         </div>
+    </h:body>
+</html>
+

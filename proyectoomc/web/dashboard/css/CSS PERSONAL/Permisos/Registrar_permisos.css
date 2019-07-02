@@ -1,0 +1,28 @@
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+
+}
+form{
+	width: 30%;
+	border: 1px solid #080707;
+	margin: auto;
+	padding: 40px;
+	height: 500px;
+}
+label{
+	font size: 12px;
+	display: block;
+	width: 100%;
+}
+input{
+	margin-bottom: 10px;
+	width: 100%;
+	padding: 10px;
+	border: 3px solid #2EE1F1 
+	height: 15%;
+}
+input:focus{
+border: 1px solid #A23F3F
+}

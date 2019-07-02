@@ -1,0 +1,132 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+h1{
+	width: 100%
+	color: gray;
+	margin: 3px 0 105px 0;
+	font-size: 39px;
+	text-align: center;
+	color: #43425D;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+p{
+	margin: 0 0 0 173px;
+	font-size: 24px;
+	/*text-align: center;*/
+	color: #4D4F5C;
+	width: 407px;
+	font-family: 'Questrial', sans-serif;
+}
+#im img{
+    width: 27.65px;
+    height: 27.65px;
+    margin: -28px 0 0 592px;
+    float: left;
+}
+#imm img{
+	width: 141.43px ;
+	height: 30.63px;
+	margin: -29px 0 0 629px;;
+	float: left;
+}
+#immg {
+    width: 185px;
+    height: 50px;
+    margin: -21px 58px 39px 0;
+    float: right;
+    background: #307C66;
+    border-radius:3px;
+
+}
+/*
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Questrial', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+
+    */
+
+#calendario{
+width: 43%;
+margin:  11px 0 0 596px;
+
+}
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+/* Month header */
+.month {
+    padding: 21px 49px;
+    width: 62.3%;
+    height: 97px;
+    background: #1abc9c;
+    text-align: center;
+}
+.month ul {
+	width: 30%
+	margin: 0;
+	padding: 0;
+}
+.month ul li {
+	color: white;
+	font-size: 20px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+/* Previous button inside month header */
+.month .prev {
+	float: left;
+	padding-top: 10px;
+}
+/* Next button */
+.month .next {
+	float: right;
+	padding-top: 10px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+    width: 62.3%;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 12.6%;
+    color: #666;
+    text-align: center;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+    width: 62.3%;
+
+}
+
+.days li {
+list-style-type: none;
+    display: inline-block;
+    width: 12.6%;
+    height: 39px;
+    text-align: center;
+    margin-bottom: 5px;
+    color: #777;
+    font-size: 19px;
+
+}
+
+/* Highlight the "current" day */
+.days li .active {
+	padding: 5px;
+	background: #1abc9c;
+	color: white !important
+}

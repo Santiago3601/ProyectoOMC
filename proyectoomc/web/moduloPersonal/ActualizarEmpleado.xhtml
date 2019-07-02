@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+        <div id="form"> 
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Actualizar Empleado"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Codigo Empleado:" for="idEmpleado" />
+                    <h:inputText id="idEmpleado" value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required."/>
+                    <h:outputLabel value="Usuario:" for="usuarioId" />
+                    <h:selectOneMenu id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="u" itemValue="#{u.id}" itemLabel="#{u.nombre}#{u.apellido}#{u.rolidRol.rol}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton action ="#{empleadoControlador.actualizarEmpleado()}" value="Actualizar"/>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+     </div>
+    </h:body>
+</html>

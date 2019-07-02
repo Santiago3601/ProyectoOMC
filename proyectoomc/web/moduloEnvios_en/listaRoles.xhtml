@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../../../css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+        
+                        <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable id="roles" value="#{rolControlador.consultarTodos()}" var="rol" >
+                            <p:column filterBy="#{rol.idRol}">
+                                <f:facet name="header">
+                                    <h:outputText value="Id"/>
+                                </f:facet>
+                                <h:outputText value="#{rol.idRol}"/>
+                            </p:column>
+                            <p:column filterBy="#{rol.rol}">
+                                <f:facet name="header">
+                                    <h:outputText value="TpId"/>
+                                </f:facet>
+                                <h:outputText value="#{rol.rol}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                        <h:commandLink id="excel">
+                            descargar
+                            <p:dataExporter type="xls" target="roles" fileName="tabla" />
+                        </h:commandLink>
+                    </h:form>
+                </f:view>
+        
+        
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{rolControlador.consultarTodos()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdRol"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idRol}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Rol"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rol}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Option"/>
+                        </f:facet>
+                        <h:commandLink action="#{rolControlador.eliminarRol(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                        <h:commandLink action="#{rolControlador.preActualizarRol(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

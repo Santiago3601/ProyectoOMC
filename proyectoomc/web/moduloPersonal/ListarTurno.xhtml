@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Listar Turno"/></h1>
+                <p:dataTable id="ListaTurno" value="#{turnoControlador.consultarTodos()}" var="item">
+                    <p:column filterBy="#{item.idTurno}">
+                        <f:facet name="header">
+                            <h:outputText value="IdTurno"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idTurno}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.programacion}">
+                        <f:facet name="header">
+                            <h:outputText value="Programacion"/>
+                        </f:facet>
+                        <h:outputText value="#{item.programacion}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.fecha}">
+                        <f:facet name="header">
+                            <h:outputText value="Fecha"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column filterBy="#{item.empleadoIdEmpleado.idEmpleado}">
+                        <f:facet name="header">
+                            <h:outputText value="Codigo Empleado"/>
+                        </f:facet>
+                        <h:outputText value="#{item.empleadoIdEmpleado.idEmpleado}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.puntoIdPuntos.horasLaboradas}">
+                        <f:facet name="header">
+                            <h:outputText value="Codigo Punto"/>
+                        </f:facet>
+                        <h:outputText value="#{item.puntoIdPuntos.horasLaboradas}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.tipoTurnoIdTipoTurno.idTipoTurno}">
+                        <f:facet name="header">
+                            <h:outputText value="Codigo Tipo Turno"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tipoTurnoIdTipoTurno.idTipoTurno}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header" class="thead">
+                            <h:outputText value="Opciones"/>
+                        </f:facet>
+                        <h:commandLink action="#{turnoControlador.preActualizar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                        <h:commandLink action="#{turnoControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                    </p:column>
+                </p:dataTable>
+                <h:commandLink id="excel">
+                            descargar
+                            <p:dataExporter type="xls" target="ListaTurno" fileName="tabla" />
+                        </h:commandLink>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

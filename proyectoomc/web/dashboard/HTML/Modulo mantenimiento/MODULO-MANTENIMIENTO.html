@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Datepicker - Default functionality</title>
+    <link rel="stylesheet" type="text/css" href="../../css/CSS ENVIOS/MODULO-ENVIOS.css">
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+</head>
+
+<body>
+    <div class="bootstrap-iso">
+        <div class="container-fluid">
+            <div class="row" id="all">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                    <!-- Form code begins -->
+                    <form method="post">
+                        <h1 id="Title">Modulo de Mantenimiento</h1>
+                        <div class="form-group" id="group">
+
+                            <h2 id="subtitulos">Programar</h2>
+                        </div>
+
+                        <div class="form-group" id="group">
+                            <a href="Programar/Programar-mantenimiento.html" id="c-u">
+                                <p>Progr.mantenimiento</p>
+                            </a>
+                        </div>
+                        <div class="form-group" id="group">
+
+                            <h2 id="subtitulos">Registrar</h2>
+                        </div>
+
+                        <div class="form-group" id="group">
+                            <a href="Registrar/Consultar pedido.html" id="c-u">
+                                <p>Registrar calidad</p>
+                            </a>
+                        </div>
+                        <div class="form-group" id="group">
+                            <a href="Pedidos/Solicitar pedido.html" id="c-u">
+                                <p>Registra envío</p>
+                            </a>
+                        </div>
+
+                        <div class="form-group" id="group">
+
+                            <h2 id="subtitulos">Consultar</h2>
+                        </div>
+
+                        <div class="form-group" id="group">
+                            <a href="Pedidos/Consultar pedido.html" id="c-u">
+                                <p>Consultar reparacion</p>
+                            </a>
+                        </div>
+                        <div class="form-group" id="group">
+                            <a href="Pedidos/Solicitar pedido.html" id="c-u">
+                                <p>Consultar mantenimiento</p>
+                            </a>
+                        </div>
+                        <div class="form-group" id="group">
+                            <a href="Pedidos/Solicitar pedido.html" id="c-u">
+                                <p>Consultar calidad</p>
+                            </a>
+                        </div>
+                    </form>
+                    <!-- Form code ends -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            var date_input = $('input[name="date"]'); //our date input has the name "date"
+            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+            var options = {
+                format: 'dd/mm/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+        })
+    </script>
+</body>
+
+</html>

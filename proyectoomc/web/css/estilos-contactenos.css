@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+#izqui{
+    float: left;
+    text-align: LEFT;
+    width: 400px;
+    margin: 25px 0 0 30px;
+    height: 379px;
+}
+#donde{
+	width: 400px;
+	margin: 0 0 0 0 ;
+}
+#ofc{
+	width: 400px;
+	margin: 0 0 0 0 ;
+}
+#nume{
+	width: 400px;
+	margin: 0 0 0 0 ;
+}
+#donde h1{
+    font-size: 24px;
+    color: #707070;
+    font-family: 'Quicksand', sans-serif;
+    margin: 30px 0 0 30px;
+}
+#donde p{
+    font-size: 18px;
+    color: #707070;
+    font-family: 'Quicksand', sans-serif;
+    margin: 5px 0 0 30px;
+}
+
+#ofc h1{
+    font-size: 24px;
+    color: #707070;
+    font-family: 'Quicksand', sans-serif;
+    margin: 30px 0 0 30px;
+}
+#ofc p{
+    font-size: 18px;
+    color: #707070;
+    font-family: 'Quicksand', sans-serif;
+    margin: 5px 0 0 30px;
+}
+
+#nume h1{
+    font-size: 24px;
+    color: #707070;
+    font-family: 'Quicksand', sans-serif;
+    margin: 30px 0 0 30px;
+}
+#nume p{
+    font-size: 18px;
+    color: #707070;
+    font-family: 'Quicksand', sans-serif;
+    margin: 5px 0 0 30px;
+}
+.mapa{
+    width: 88%;
+    float: left;
+    margin: 30px 0 0 60px;
+}
+
+.mapa iframe{
+margin: 25px 20px 0 0;
+    width: 100%;
+    height: 461px;
+    text-align: left;
+}
+.fab {
+    font-family: "Font Awesome 5 Brands";
+    padding-top: 4px;
+    font-size: larger;
+}

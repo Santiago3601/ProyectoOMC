@@ -1,0 +1,138 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+h1{
+	width: 100%
+	color: gray;
+	margin: 3px 0 130px 0;
+	font-size: 39px;
+	text-align: center;
+	color: #43425D;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+p{
+	    margin: -43px 0px 42px 156px;
+	font-size: 24px;
+	/*text-align: center;*/
+	color: #4D4F5C;
+	width: 407px;
+	font-family: 'Questrial', sans-serif;
+}
+#im img{
+    width: 27.65px;
+    height: 27.65px;
+    margin: -89px 0 0 592px;
+    float: left;
+}
+#imm img{
+	width: 141.43px ;
+	height: 30.63px;
+	margin: -90px 0 0 629px;
+	float: left;
+}
+#immg {
+    width: 185px;
+    height: 50px;
+    margin: -51px 30px 0 0;
+    float: right;
+    padding: 12px;
+    background: #307C66;
+    border-radius: 3px;
+
+    
+}
+
+form{
+margin:-31px 0 0 103px
+
+}
+/*
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Questrial', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+
+    */
+
+#calendario{
+    width: 34%;
+    margin: -50px 0 0 596px;
+
+}
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+/* Month header */
+.month {
+    padding: 8px 49px;
+    width: 63.3%;
+    height: 69px;
+    background: #1abc9c;
+    text-align: center;
+}
+.month ul {
+	width: 30%
+	margin: 0;
+	padding: 0;
+}
+.month ul li {
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+/* Previous button inside month header */
+.month .prev {
+	float: left;
+	padding-top: 10px;
+}
+/* Next button */
+.month .next {
+	float: right;
+	padding-top: 10px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+    margin: 0;
+    padding: 5px 0;
+    background-color: #ddd;
+    width: 63.3%;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 11.6%;
+    color: #666;
+    text-align: center;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+    height: 175px;
+    width: 63.3%;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 11.6%;
+    height: 32px;
+    text-align: center;
+   
+    color: #777;
+    font-size: 18px;
+}
+
+/* Highlight the "current" day */
+.days li .active {
+	padding: 5px;
+	background: #1abc9c;
+	color: white !important
+}

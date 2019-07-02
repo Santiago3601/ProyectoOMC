@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="register agenda"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdScheduled" for="idAgenda" />
+                    <h:inputText id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" required="true" requiredMessage="The IdAgenda field is required."/>
+                    <h:outputLabel value="Scheduled date" for="fechaProgramada" />
+                    <h:inputText id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="Scheduled date" required="true" requiredMessage="The FechaProgramada field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="news" for="novedades" />
+                    <h:inputText id="novedades" value="#{agendaControlador.agenda.novedades}" title="news" />
+                    <h:outputLabel value="Idemployee" for="empleadoIdEmpleado" />
+                    <h:selectOneMenu id="empleadoIdEmpleado" value="#{agendaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.nombre}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="to register" action="#{agendaControlador.registrarAgenda()}"> </h:commandButton>
+            </h:form>
+        </f:view>
+
+
+    </h:body>
+</html>
+

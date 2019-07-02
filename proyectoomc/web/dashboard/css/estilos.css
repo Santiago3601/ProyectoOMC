@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;*/
+/* Cuerpo */
+body{
+
+}
+
+/* Contenedor */
+#contenedor{
+    width: 100%;
+    height: 535px;
+    -max-width: 1600px;
+    margin: auto;
+    margin-top:     74px;
+
+    background: #F0F0F7;
+    /*border: 1px solid gray;*/
+}
+
+/* Navegador */
+#options{
+    width: 100%;
+    height: 50px;
+    /*position: fixed;*/
+    -max-width: 1600px;
+}
+#options.barra-navega{    
+    height: 42px;
+    background: #4ec9a5;
+}
+#options.far{
+    margin-left: : 10px;
+}
+#options ul{
+    list-style: none;
+    text-align: center;
+}
+#options>ul>li{
+    display: inline-block;
+}
+#options ul li{
+    width: 170px;
+    text-align: center;
+
+}
+#options ul li:hover>ul{
+    display:block;
+}
+#options ul li a{
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    height: 41px;
+    font-family: 'Questrial', sans-serif;
+
+}
+#options ul li a:hover{
+    background: white;
+    color: #838987;
+}
+#options ul li ul{
+    position: absolute;
+    display: none;
+    background: #444;
+}
+#options ul li ul li{
+    position: relative;
+}
+#options ul li ul li ul{
+    left: 170px;
+    top: 2px;
+}
+
+
+
+    /* Encabezado */
+    header{
+        width: 100%;
+        height: 638px;
+     background: #f0f0f7;
+        text-align: center; 
+}
+section{
+    width: 100%;
+    height: 484px;
+    background: white;
+    margin: auto;
+    margin-top: 30px;
+
+}
+section iframe{
+width: 100%;
+height: 100%;
+border: 0px;
+margin: auto;
+}
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Cuerpo */
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Questrial', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+#navbarResponsive{
+    -width: min-content;
+}
+
+#row-down {
+    font-size: 24px;
+    color: #4d4f5c;
+}
+
+#mainNav {
+    background-color: #fff!important;
+}
+#secondNav {
+       margin-top: 74px;
+    background-color: #4ec9a5!important;
+}
+#accessibility-buttons {
+    float: right;
+}
+
+#rol {
+    text-align: center;
+    padding-top: 10px;
+}
+
+#rol label {
+    font-size: larger;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #4d4f5c;
+    margin-right: 20px;
+}
+
+#accessibility-buttons a i {
+    padding: 10px;
+    font-size: 28px;
+    color: #4d4f5c;
+}
+iframe{
+    margin-left: -2px;
+    margin-top: 74px;
+    width: 100%;
+    height: 700px;  
+}
+

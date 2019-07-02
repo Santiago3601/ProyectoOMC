@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../../../css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+
+
+        <div>
+
+            <div id="content" class="center_content">
+
+
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Lista de clientes"/></h1>
+                        <p:dataTable id="tablaCli" value="#{clienteControlador.consultarTodos()}" var="cli" >
+                            <p:column filterBy="#{cli.idCliente}">
+                                <f:facet name="header">
+                                    <h:outputText value="No."/>
+                                </f:facet>
+                                <h:outputText value="#{cli.idCliente}"/>
+                            </p:column>
+
+                            <p:column filterBy="#{cli.usuarioId.nombre} #{cli.usuarioId.apellido}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre del cliente"/>
+                                </f:facet>
+                                <h:outputText value="#{cli.usuarioId.nombre} #{cli.usuarioId.apellido}"/>
+                            </p:column>
+
+                            <p:column filterBy="#{cli.formula}">
+                                <f:facet name="header">
+                                    <h:outputText value="Formula"/>
+                                </f:facet>
+                                <h:outputText value="#{cli.formula}"/>
+                            </p:column>
+                            <p:column filterBy="#{cli.tamanioCilindro}">
+                                <f:facet name="header">
+                                    <h:outputText value="Tamaño del cilindro"/>
+                                </f:facet>
+                                <h:outputText value="#{cli.tamanioCilindro}"/>
+                            </p:column>
+
+
+                            <p:column exportable="false">
+                                <f:facet name="header">
+                                    <h:outputText value="Accion"/>
+                                </f:facet>
+                                <h:commandLink  action="#{clienteControlador.eliminarCliente(cli)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                                <h:commandLink  action="#{clienteControlador.preActualizarCliente(cli)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                            </p:column>
+                        </p:dataTable>
+                        <h:commandLink id="excel">
+                            <i class="far fa-file-excel"></i>
+                            <p:dataExporter type="xls" target="tablaCli" fileName="tablaDeClientes" />
+                            <style>
+                                .far{
+                                    padding: 2px;
+                                    font-size: x-large;
+                                }
+                            </style>
+                        </h:commandLink>
+                    </h:form>
+                </f:view>
+
+            </div>
+        </div>
+
+
+
+
+
+    </h:body>
+</html>
+
