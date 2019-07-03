@@ -37,12 +37,25 @@
                                 </f:facet>
                                 <h:outputText value="#{con.tipoContrato}"/>
                             </p:column>
-                            <p:column filterBy="#{con.idRadicado}">
+                            <p:column filterBy="#{con.fechaInicioContrato}">
                                 <f:facet name="header">
-                                    <h:outputText value="No. radicado"/>
+                                    <h:outputText value="fechaInicioContrato"/>
                                 </f:facet>
-                                <h:outputText value="#{con.idRadicado}"/>
+                                <h:outputText value="#{con.fechaInicioContrato}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
                             </p:column>
+          
+                            <p:column filterBy="#{con.fechaFinalContrato}">
+                                <f:facet name="header">
+                                    <h:outputText value="fecha Final Contrato"/>
+                                </f:facet>
+                                <h:outputText value="#{con.fechaFinalContrato}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+          
+                            
                             <p:column filterBy="#{con.alquilerIdAlquiler.idAlquiler}">
                                 <f:facet name="header">
                                     <h:outputText value="Cod Alquiler"/>

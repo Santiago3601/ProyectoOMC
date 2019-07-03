@@ -63,11 +63,11 @@ public class contratoControlador implements Serializable {
         contrato = contratoFacade.find(contrato.getIdContrato());
     }
 
-    public void registrarContrato() {
+    public String registrarContrato() {
         contrato.setAlquilerIdAlquiler(alquilerFacade.find(alquiler.getIdAlquiler()));
         contratoFacade.create(contrato);
         contrato = new Contrato();
-        
+        return "listaContrato";        
 
     }
 

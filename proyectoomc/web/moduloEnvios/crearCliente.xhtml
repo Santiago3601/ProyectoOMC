@@ -26,12 +26,12 @@
                                <f:selectItems value="#{estadoClienteControlador.consultarTodos()}" var="es" itemValue="#{es.idEstado}" itemLabel="#{es.estado}"/>
                            </h:selectOneMenu>
                            <h:outputLabel value="UsuarioId:" for="usuarioId" />
-                           <h:selectOneMenu id="usuarioId" value="#{clienteControlador.usuario.apellido}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
+                           <h:selectOneMenu id="usuarioId" value="#{clienteControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
                                <!-- TODO: update below reference to list of available items-->
                                <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="us" itemValue="#{us.id}" itemLabel="#{us.apellido}"/>
                            </h:selectOneMenu>
                        </h:panelGrid>
-                       <h:commandLink value="Registrar" action="#{clienteControlador.registrarCliente()}"></h:commandLink>
+                       <h:commandButton value="Registrar" action="#{clienteControlador.registrarCliente()}"></h:commandButton>
                    </h:form>
                </f:view>
 

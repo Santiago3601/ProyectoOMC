@@ -34,8 +34,6 @@ public class clienteControlador implements Serializable {
     private EstadoClienteFacade estadoClienteFacade;
     EstadoCliente estadoCliente;
 
-
-
     @PostConstruct
     public void init() {
         cliente = new Cliente();
@@ -67,7 +65,6 @@ public class clienteControlador implements Serializable {
         this.estadoCliente = estadoCliente;
     }
 
-    
     //Metodos
     public List<Cliente> consultarTodos() {
         return clienteFacade.findAll();
@@ -77,12 +74,13 @@ public class clienteControlador implements Serializable {
         cliente = clienteFacade.find(cliente.getIdCliente());
     }
 
-    public void registrarCliente() {
+    public String registrarCliente() {
         //cliente.setUsuarioId(usuarioFacade.find(usuario.getId()));
         cliente.setUsuarioId(usuarioFacade.find(usuario.getId()));
         cliente.setEstadoIdEstado(estadoClienteFacade.find(estadoCliente.getIdEstado()));
         clienteFacade.create(cliente);
         cliente = new Cliente();
+        return "listaClientes";
     }
 
     public void eliminarCliente(Cliente c) {

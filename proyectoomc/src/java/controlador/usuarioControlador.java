@@ -27,17 +27,18 @@ public class usuarioControlador implements Serializable {
 
     @EJB
     private RolFacade rolFacade;
-    Rol rol ;
+    Rol rol;
 
     @EJB
     private UsuarioFacade usuarioFacade;
-    Usuario usuario ;
+    Usuario usuario;
 
     @PostConstruct
-    public void init(){
-       usuario = new Usuario() ;
-       rol = new Rol();
+    public void init() {
+        usuario = new Usuario();
+        rol = new Rol();
     }
+
     public Rol getRol() {
         return rol;
     }
@@ -45,8 +46,6 @@ public class usuarioControlador implements Serializable {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-    
-    
 
     public Usuario getUsuario() {
         return usuario;
@@ -59,6 +58,7 @@ public class usuarioControlador implements Serializable {
     public usuarioControlador() {
     }
 //METODOS
+
     public List<Usuario> consultarTodos() {
         return usuarioFacade.findAll();
     }
@@ -67,31 +67,29 @@ public class usuarioControlador implements Serializable {
         usuario = usuarioFacade.find(usuario.getId());
     }
 
-    public void registrarUsuario(){
-       usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
-       usuarioFacade.create(usuario);
-       usuario = new Usuario();
-       
+    public String registrarUsuario() {
+        usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
+        usuarioFacade.create(usuario);
+        usuario = new Usuario();
+        return "listaUsuario";
+
     }
-    
-    
-    public void eliminarUsuario(Usuario u){
+
+    public void eliminarUsuario(Usuario u) {
         this.usuarioFacade.remove(u);
     }
 
-    
     public String preActualizarUsuario(Usuario usuarioAct) {
-       usuario = usuarioAct;
-       return "editarUsuario";
-   }
+        usuario = usuarioAct;
+        return "editarUsuario";
+    }
 
-   public String actualizarUsuario() {
-       usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
-       usuarioFacade.edit(usuario);
-       usuario = new Usuario();
-       return "listaUsuario";
-   }
-
+    public String actualizarUsuario() {
+        usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
+        usuarioFacade.edit(usuario);
+        usuario = new Usuario();
+        return "listaUsuario";
+    }
 
     public String validarLogin() {
 
@@ -105,24 +103,24 @@ public class usuarioControlador implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("sesionLogin", usuarioLogueado);
                 switch (usuarioLogueado.getRolidRol().getIdRol()) {
                     case 1:
-                        redirecionar ="dashboard/SI/1admin/index";
+                        redirecionar = "dashboard/SI/1admin/index";
                         break;
                     case 2:
-                        redirecionar ="dashboard/SI/2cliente/index";
+                        redirecionar = "dashboard/SI/2cliente/index";
                         break;
                     case 3:
-                        redirecionar ="dashboard/SI/3jefe_planta/index";
+                        redirecionar = "dashboard/SI/3jefe_planta/index";
                         break;
                     case 4:
-                        redirecionar ="dashboard/SI/4tecnico/index";
+                        redirecionar = "dashboard/SI/4tecnico/index";
                         break;
-                   
+
                     default:
                         throw new AssertionError();
                 }
-            }else{
-                redirecionar ="index_1";
-                
+            } else {
+                redirecionar = "index_1";
+
             }
 
         } catch (Exception e) {

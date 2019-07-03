@@ -11,29 +11,38 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-           <div id="form"> 
-        <f:view>
+
+        <div id="form"> 
+            <f:view>
 
 
-            <h:form>
-                <h1><h:outputText value="Modificar contrato"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="IdContrato:" for="idContrato" />
-                    <h:inputText id="idContrato" value="#{contratoContolador.contrato.idContrato}" title="IdContrato" required="true" requiredMessage="The IdContrato field is required."/>
-                    <h:outputLabel value="Tipo de Contrato:" for="tipoContrato" />
-                    <h:inputText id="tipoContrato" value="#{contratoContolador.contrato.tipoContrato}" title="TipoContrato" required="true" requiredMessage="The TipoContrato field is required."/>
-                    <h:outputLabel value="IdRadicado:" for="idRadicado" />
-                    <h:inputText id="idRadicado" value="#{contratoContolador.contrato.idRadicado}" title="IdRadicado" required="true" requiredMessage="The IdRadicado field is required."/>
-                    <h:outputLabel value="Id del Alquiler:" for="alquilerIdAlquiler" />
-                    <h:selectOneMenu id="alquilerIdAlquiler" value="#{contratoContolador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="alq" itemValue="#{alq.idAlquiler}" itemLabel="#{alq.idAlquiler}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <h:commandButton value="Registrar" action="#{contratoContolador.actualizarContrato()}"> </h:commandButton>  
-            </h:form>
-        </f:view>
-           </div>
+                <h:form>
+                    <h1><h:outputText value="ActualizarF contrato"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Id Contrato:" for="idContrato" />
+                        <h:inputText id="idContrato" value="#{contratoContolador.contrato.idContrato}" title="IdContrato" required="true" requiredMessage="The IdContrato field is required."/>
+                        <h:outputLabel value="Tipo de Contrato:" for="tipoContrato" />
+
+                        <h:inputText id="tipoContrato" value="#{contratoContolador.contrato.tipoContrato}" title="TipoContrato" required="true" requiredMessage="The TipoContrato field is required."/>
+                        <h:outputLabel value="Id Alquiler:" for="alquilerIdAlquiler" />
+                        <h:selectOneMenu id="alquilerIdAlquiler" value="#{contratoContolador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="alq" itemValue="#{alq.idAlquiler}" itemLabel="#{alq.idAlquiler}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="FechaInicioContrato:" for="fechaInicioContrato" />
+                        <h:inputText id="fechaInicioContrato" value="#{contratoContolador.contrato.fechaInicioContrato}" title="FechaInicioContrato" required="true" requiredMessage="The FechaInicioContrato field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputLabel value="FechaFinalContrato:" for="fechaFinalContrato" />
+                        <h:inputText id="fechaFinalContrato" value="#{contratoContolador.contrato.fechaFinalContrato}" title="FechaFinalContrato" required="true" requiredMessage="The FechaFinalContrato field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                    </h:panelGrid>
+                    <h:commandButton value="Actualizar" action="#{contratoContolador.actualizarContrato()}"> </h:commandButton>  
+                </h:form>
+            </f:view>
+
+        </div>
     </h:body>
 </html>
 
