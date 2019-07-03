@@ -27,12 +27,12 @@
                     <h:outputLabel value="Empleado:" for="empleadoIdEmpleado" />
                     <h:selectOneMenu id="empleadoIdEmpleado" value="#{rutaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="empleado" itemValue="#{empleado.idEmpleado}" itemLabel="#{empleado.idEmpleado}"/>
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="empleado" itemValue="#{empleado.idEmpleado}" itemLabel="#{empleado.usuarioId.nombre} #{empleado.usuarioId.apellido}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="Vehículo:" for="vehiculoIdVehiculo" />
                     <h:selectOneMenu id="vehiculoIdVehiculo" value="#{rutaControlador.vehiculo.idVehiculo}" title="VehiculoIdVehiculo" required="true" requiredMessage="The VehiculoIdVehiculo field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" itemValue="#{vehiculo.idVehiculo}" itemLabel="#{rol.rol}"/>
+                        <f:selectItems value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" itemValue="#{vehiculo.idVehiculo}" itemLabel="#{vehiculo.matricula}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandButton value="Registrar" action="#{rutaControlador.registrarRuta()}"> </h:commandButton>  

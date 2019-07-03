@@ -12,27 +12,29 @@
     </h:head>
     <h:body>
            <div id="form"> 
-        <f:view>
+               <f:view>
 
 
-            <h:form>
-                <h1><h:outputText value="Registrar Cliente"/></h1>
-                <h:panelGrid columns="2">
-                   
-                    <h:outputLabel value="Formula:" for="formula" />
-                    <h:inputText id="formula" value="#{clienteControlador.cliente.formula}" title="Formula" required="true" requiredMessage="The Formula field is required."/>
-                    <h:outputLabel value="Tamaño del Cilindro:" for="tamanioCilindro" />
-                    <h:inputText id="tamanioCilindro" value="#{clienteControlador.cliente.tamanioCilindro}" title="TamanioCilindro" required="true" requiredMessage="The TamanioCilindro field is required."/>
-                    <h:outputLabel value="Usuario:" for="usuarioId" />
-                    <h:selectOneMenu id="usuarioId" value="#{clienteControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="usuario" itemValue="#{usuario.id}" itemLabel="#{usuario.nombre}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <h:commandButton value="Registrar" action="#{clienteControlador.registrarCliente()}"> </h:commandButton> 
+                   <h:form>
+                       <h1><h:outputText value="Create/Edit"/></h1>
+                       <h:panelGrid columns="2">
+                           <h:outputLabel value="IdCliente:" for="idCliente" />
+                           <h:inputText id="idCliente" value="#{clienteControlador.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The IdCliente field is required."/>
+                           <h:outputLabel value="EstadoIdEstado:" for="estadoIdEstado" />
+                           <h:selectOneMenu id="estadoIdEstado" value="#{clienteControlador.estadoCliente.idEstado}" title="EstadoIdEstado" required="true" requiredMessage="The EstadoIdEstado field is required.">
+                               <!-- TODO: update below reference to list of available items-->
+                               <f:selectItems value="#{estadoClienteControlador.consultarTodos()}" var="es" itemValue="#{es.idEstado}" itemLabel="#{es.estado}"/>
+                           </h:selectOneMenu>
+                           <h:outputLabel value="UsuarioId:" for="usuarioId" />
+                           <h:selectOneMenu id="usuarioId" value="#{clienteControlador.usuario.apellido}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
+                               <!-- TODO: update below reference to list of available items-->
+                               <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="us" itemValue="#{us.id}" itemLabel="#{us.apellido}"/>
+                           </h:selectOneMenu>
+                       </h:panelGrid>
+                       <h:commandLink value="Registrar" action="#{clienteControlador.registrarCliente()}"></h:commandLink>
+                   </h:form>
+               </f:view>
 
-            </h:form>
-        </f:view>
            </div>
     </h:body>
 </html>

@@ -26,10 +26,10 @@
                     </p:column>
                     <p:column filterBy="#{empleado.idEmpleado}">
                         <f:facet name="header">
-                            <h:outputText value="UsuarioId"/>
+                            <h:outputText value="Nombre y apellido"/>
                         </f:facet>
-                        <h:outputText value="#{empleado.usuarioId.id}"/>
-                    </p:column>
+                        <h:outputText value="#{empleado.usuarioId.nombre} #{empleado.usuarioId.apellido}"/>
+                     </p:column>
                     <p:column>
                         <f:facet name="header" class="thead">
                             <h:outputText value="Opciones"/>

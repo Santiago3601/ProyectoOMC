@@ -26,85 +26,84 @@ import javax.ejb.EJB;
 @SessionScoped
 public class rutaControlador implements Serializable {
 
+    @EJB
+    private RutaFacade rutaFacade;
+    Ruta ruta;
 
-        @EJB
-        private RutaFacade rutaFacade;
-        Ruta ruta;
+    @EJB
+    private VehiculoFacade vehiculoFacade;
+    Vehiculo vehiculo;
 
-        @EJB
-        private VehiculoFacade vehiculoFacade;
-        Vehiculo vehiculo;
+    @EJB
+    private EmpleadoFacade empleadoFacade;
+    Empleado empleado;
 
-        @EJB
-        private EmpleadoFacade empleadoFacade;
-        Empleado empleado;
-
-        @PostConstruct
-        public void init() {
-            empleado = new Empleado();
-            vehiculo = new Vehiculo();
-            ruta = new Ruta();
-        }
-
-        public Ruta getRuta() {
-            return ruta;
-        }
-
-        public void setRuta(Ruta ruta) {
-            this.ruta = ruta;
-        }
-
-        public Vehiculo getVehiculo() {
-            return vehiculo;
-        }
-
-        public void setVehiculo(Vehiculo vehiculo) {
-            this.vehiculo = vehiculo;
-        }
-
-        public Empleado getEmpleado() {
-            return empleado;
-        }
-
-        public void setEmpleado(Empleado empleado) {
-            this.empleado = empleado;
-        }
-
-        public rutaControlador() {
-        }
-
-        //METODOS
-        public List<Ruta> consultarTodos() {
-            return rutaFacade.findAll();
-        }
-
-        public void consultarID() {
-            ruta = rutaFacade.find(ruta.getIdRuta());
-        }
-
-        public void registrarRuta() {
-            ruta.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
-            ruta.setVehiculoIdVehiculo(vehiculoFacade.find(vehiculo.getIdVehiculo()));
-            rutaFacade.create(ruta);
-            ruta = new Ruta();
-
-        }
-
-        public void eliminarRuta(Ruta item) {
-            this.rutaFacade.remove(item);
-        }
-
-        public String preActualizarRuta(Ruta rutaAct) {
-            ruta = rutaAct;
-            return "editarRuta";
-        }
-
-        public String actualizarRuta() {
-            ruta.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
-            ruta.setVehiculoIdVehiculo(vehiculoFacade.find(vehiculo.getIdVehiculo()));
-            rutaFacade.edit(ruta);
-            ruta = new Ruta();
-            return "editarRuta";
-        }
+    @PostConstruct
+    public void init() {
+        empleado = new Empleado();
+        vehiculo = new Vehiculo();
+        ruta = new Ruta();
     }
 
+    public Ruta getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(Ruta ruta) {
+        this.ruta = ruta;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public rutaControlador() {
+    }
+
+    //METODOS
+    public List<Ruta> consultarTodos() {
+        return rutaFacade.findAll();
+    }
+
+    public void consultarID() {
+        ruta = rutaFacade.find(ruta.getIdRuta());
+    }
+
+    public String registrarRuta() {
+        ruta.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
+        ruta.setVehiculoIdVehiculo(vehiculoFacade.find(vehiculo.getIdVehiculo()));
+        rutaFacade.create(ruta);
+        ruta = new Ruta();
+        return "listaRuta";
+
+    }
+
+    public void eliminarRuta(Ruta item) {
+        this.rutaFacade.remove(item);
+    }
+
+    public String preActualizarRuta(Ruta rutaAct) {
+        ruta = rutaAct;
+        return "editarRuta";
+    }
+
+    public String actualizarRuta() {
+        ruta.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
+        ruta.setVehiculoIdVehiculo(vehiculoFacade.find(vehiculo.getIdVehiculo()));
+        rutaFacade.edit(ruta);
+        ruta = new Ruta();
+        return "listaRuta";
+    }
+}

@@ -101,14 +101,14 @@ public class alquilerControlador implements Serializable {
         alquiler = alquilerFacade.find(alquiler.getIdAlquiler());
     }
 
-    public String registrarAlquiler() {
+    public void registrarAlquiler() {
         alquiler.setRutaIdRuta(rutaFacade.find(ruta.getIdRuta()));
         alquiler.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
         alquiler.setEstadoAlquilerIdEstado(estadoAlquilerFacade.find(estadoAlquiler.getIdEstado()));
         alquiler.setSolicitudIdSolicitud(solicitudFacade.find(solicitud.getIdSolicitud()));
         alquilerFacade.create(alquiler);
         alquiler = new Alquiler();
-        return "listaAlquiler";
+        //return "listaAlquiler";
 
     }
 

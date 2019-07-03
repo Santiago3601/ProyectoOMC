@@ -33,25 +33,15 @@
                             </p:column>
 
 
-                            <p:column filterBy="#{alq.fechaInicioContrato}">
+                            <p:column filterBy="#{alq.fechaDeEntrega}">
                                 <f:facet name="header">
-                                    <h:outputText value="Fecha de inicio"/>
+                                    <h:outputText value="Fecha de entrega"/>
                                 </f:facet>
-                                <h:outputText value="#{alq.fechaInicioContrato}">
+                                <h:outputText value="#{alq.fechaDeEntrega}">
                                     <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
                             </p:column>
-                            <p:column filterBy="#{alq.fechaFinalContrato}">
-                                <f:facet name="header">
-                                    <h:outputText value="Fecha de fin"/>
-                                </f:facet>
-                                <h:outputText value="#{alq.fechaFinalContrato}">
-                                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                                </h:outputText>
-                            </p:column>
-
-
-
+                     
                             <p:column filterBy="#{alq.cilindroIdCilindro.idCilindro}">
                                 <f:facet name="header">
                                     <h:outputText value="No. cilindro"/>
@@ -60,18 +50,32 @@
                             </p:column>
 
 
-                            <p:column filterBy="#{alq.clienteIdCliente.usuarioId.nombre} #{alq.clienteIdCliente.usuarioId.apellido}">
+                            <p:column filterBy="#{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.nombre} #{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.apellido}">
                                 <f:facet name="header">
                                     <h:outputText value="Cliente"/>
                                 </f:facet>
-                                <h:outputText value="#{alq.clienteIdCliente.usuarioId.nombre} #{alq.clienteIdCliente.usuarioId.apellido}"/>
+                                <h:outputText value="#{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.nombre} #{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.apellido}"/>
                             </p:column>
 
+
+                            <p:column filterBy="#{alq.estadoAlquilerIdEstado.estado}">
+                                <f:facet name="header">
+                                    <h:outputText value="Estado Alquiler"/>
+                                </f:facet>
+                                <h:outputText value="#{alq.estadoAlquilerIdEstado.estado}"/>
+                            </p:column>
+                            
                             <p:column filterBy="#{alq.rutaIdRuta.idRuta}">
                                 <f:facet name="header">
                                     <h:outputText value="No. ruta"/>
                                 </f:facet>
                                 <h:outputText value="#{alq.rutaIdRuta.idRuta}"/>
+                            </p:column>
+                            <p:column filterBy="#{alq.novedades}">
+                                <f:facet name="header">
+                                    <h:outputText value="Novedades"/>
+                                </f:facet>
+                                <h:outputText value="#{alq.novedades}"/>
                             </p:column>
 
 
