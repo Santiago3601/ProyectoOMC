@@ -16,21 +16,21 @@
 
 
             <h:form>
-                <h1><h:outputText value="Registrar contrato"/></h1>
+                <h1><h:outputText value="Register contrato"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="IdContrato:" for="idContrato" />
+                    <h:outputLabel value="Id Contract:" for="idContrato" />
                     <h:inputText id="idContrato" value="#{contratoContolador.contrato.idContrato}" title="IdContrato" required="true" requiredMessage="The IdContrato field is required."/>
-                    <h:outputLabel value="TipoContrato:" for="tipoContrato" />
+                    <h:outputLabel value="Contract type:" for="tipoContrato" />
                     <h:inputText id="tipoContrato" value="#{contratoContolador.contrato.tipoContrato}" title="TipoContrato" required="true" requiredMessage="The TipoContrato field is required."/>
-                    <h:outputLabel value="IdRadicado:" for="idRadicado" />
+                    <h:outputLabel value="Settled id:" for="idRadicado" />
                     <h:inputText id="idRadicado" value="#{contratoContolador.contrato.idRadicado}" title="IdRadicado" required="true" requiredMessage="The IdRadicado field is required."/>
-                    <h:outputLabel value="AlquilerIdAlquiler:" for="alquilerIdAlquiler" />
+                    <h:outputLabel value="Rental Id" for="alquilerIdAlquiler" />
                     <h:selectOneMenu id="alquilerIdAlquiler" value="#{contratoContolador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="alq" itemValue="#{alq.idAlquiler}" itemLabel="#{alq.idAlquiler}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                      <h:commandButton value="Registrar" action="#{contratoContolador.registrarContrato()}"> </h:commandButton>  
+                      <h:commandButton value="Register" action="#{contratoContolador.registrarContrato()}"> </h:commandButton>  
             </h:form>
         </f:view>
 

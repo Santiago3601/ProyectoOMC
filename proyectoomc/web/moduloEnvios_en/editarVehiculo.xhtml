@@ -14,14 +14,14 @@
        <div id="form"> 
         <f:view>
             <h:form>
-                <h1><h:outputText value="Modificar vehiculo"/></h1>
+                <h1><h:outputText value="Register vehicle"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="IdVehiculo:" for="idVehiculo" />
+                    <h:outputLabel value="Idvehicle:" for="idVehiculo" />
                     <h:inputText id="idVehiculo" value="#{vehiculoControlador.vehiculo.idVehiculo}" title="IdVehiculo" required="true" requiredMessage="The IdVehiculo field is required."/>
-                    <h:outputLabel value="Matricula:" for="matricula" />
+                    <h:outputLabel value="license Plate:" for="matricula" />
                     <h:inputText id="matricula" value="#{vehiculoControlador.vehiculo.matricula}" title="Matricula" required="true" requiredMessage="The Matricula field is required."/>
                 </h:panelGrid>
-                <h:commandButton value="Actualizar" action="#{vehiculoControlador.actualizarVehiculo()}"> </h:commandButton>
+                <h:commandButton value="Register" action="#{vehiculoControlador.registrarVehiculo()}"> </h:commandButton>
             </h:form>
         </f:view>
     </div>

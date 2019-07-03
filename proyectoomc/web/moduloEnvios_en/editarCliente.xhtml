@@ -12,24 +12,24 @@
     </h:head>
     <h:body>
            <div id="form"> 
-              <f:view>
+        <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="Modificar cliente"/></h1>
+                <h1><h:outputText value="Register Custumer"/></h1>
                 <h:panelGrid columns="2">
                    
                     <h:outputLabel value="Formula:" for="formula" />
                     <h:inputText id="formula" value="#{clienteControlador.cliente.formula}" title="Formula" required="true" requiredMessage="The Formula field is required."/>
-                    <h:outputLabel value="TamanioCilindro:" for="tamanioCilindro" />
+                    <h:outputLabel value="Cylinder size" for="tamanioCilindro" />
                     <h:inputText id="tamanioCilindro" value="#{clienteControlador.cliente.tamanioCilindro}" title="TamanioCilindro" required="true" requiredMessage="The TamanioCilindro field is required."/>
-                    <h:outputLabel value="UsuarioId:" for="usuarioId" />
+                    <h:outputLabel value="ID User" for="usuarioId" />
                     <h:selectOneMenu id="usuarioId" value="#{clienteControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="usuario" itemValue="#{usuario.id}" itemLabel="#{usuario.nombre}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandButton value="Actualizar" action="#{clienteControlador.actualizarCliente()}"> </h:commandButton> 
+                <h:commandButton value="Update" action="#{clienteControlador.registrarCliente()}"> </h:commandButton> 
 
             </h:form>
         </f:view>

@@ -15,11 +15,11 @@
 
 
             <h:form>
-                <h1><h:outputText value="Lista Clientes"/></h1>
+                <h1><h:outputText value="Custumer list"/></h1>
                 <h:dataTable value="#{clienteControlador.consultarTodos()}" var="item">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="IdCliente"/>
+                            <h:outputText value="Custumer id"/>
                         </f:facet>
                         <h:outputText value="#{item.idCliente}"/>
                     </h:column>
@@ -31,13 +31,13 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="TamanioCilindro"/>
+                            <h:outputText value="cilinder size"/>
                         </f:facet>
                         <h:outputText value="#{item.tamanioCilindro}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Usuario"/>
+                            <h:outputText value="User"/>
                         </f:facet>
                         <h:outputText value="#{item.usuarioId.nombre} #{item.usuarioId.apellido}"/>
                     </h:column>

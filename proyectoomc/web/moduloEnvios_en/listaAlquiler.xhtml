@@ -15,17 +15,17 @@
 
 
             <h:form>
-                <h1><h:outputText value="List"/></h1>
+                <h1><h:outputText value="List rental"/></h1>
                 <h:dataTable value="#{alquilerControlador.consultarTodos()}" var="item">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="IdAlquiler"/>
+                            <h:outputText value="Id Rental"/>
                         </f:facet>
                         <h:outputText value="#{item.idAlquiler}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="FechaInicioContrato"/>
+                            <h:outputText value="Start date"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaInicioContrato}">
                             <f:convertDateTime pattern="dd/MM/yyyy" />
@@ -33,7 +33,7 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="FechaFinalContrato"/>
+                            <h:outputText value="Finishsate"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaFinalContrato}">
                             <f:convertDateTime pattern="dd/MM/yyyy" />
@@ -41,19 +41,19 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Cilindro"/>
+                            <h:outputText value="Cylinder"/>
                         </f:facet>
                         <h:outputText value="#{item.cilindroIdCilindro.idCilindro}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Cliente"/>
+                            <h:outputText value="Custumer"/>
                         </f:facet>
                         <h:outputText value="#{item.clienteIdCliente.usuarioId.nombre} #{item.clienteIdCliente.usuarioId.apellido}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Ruta"/>
+                            <h:outputText value="Route"/>
                         </f:facet>
                         <h:outputText value="#{item.rutaIdRuta.idRuta}"/>
                     </h:column>

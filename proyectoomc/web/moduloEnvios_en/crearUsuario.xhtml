@@ -16,39 +16,39 @@
 
 
             <h:form>
-                <h1><h:outputText value="Registrar usuario"/></h1>
+                <h1><h:outputText value="Create user"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Id:" for="id" />
                     <h:inputText id="id" value="#{usuarioControlador.usuario.id}" title="Id" required="true" requiredMessage="The Id field is required."/>
-                    <h:outputLabel value="TpId:" for="tpId" />
+                    <h:outputLabel value="Tp Id:" for="tpId" />
                     <h:inputText id="tpId" value="#{usuarioControlador.usuario.tpId}" title="TpId" required="true" requiredMessage="The TpId field is required."/>
-                    <h:outputLabel value="Nombre:" for="nombre" />
+                    <h:outputLabel value="Name:" for="nombre" />
                     <h:inputText id="nombre" value="#{usuarioControlador.usuario.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
-                    <h:outputLabel value="Apellido:" for="apellido" />
+                    <h:outputLabel value="Last name" for="apellido" />
                     <h:inputText id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" required="true" requiredMessage="The Apellido field is required."/>
-                    <h:outputLabel value="Direccion:" for="direccion" />
+                    <h:outputLabel value="Adress:" for="direccion" />
                     <h:inputText id="direccion" value="#{usuarioControlador.usuario.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
-                    <h:outputLabel value="Correo:" for="correo" />
+                    <h:outputLabel value="Mail:" for="correo" />
                     <h:inputText id="correo" value="#{usuarioControlador.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-                    <h:outputLabel value="Contrasenia:" for="contrasenia" />
+                    <h:outputLabel value="Password" for="contrasenia" />
                     <h:inputText id="contrasenia" value="#{usuarioControlador.usuario.contrasenia}" title="Contrasenia" required="true" requiredMessage="The Contrasenia field is required."/>
-                    <h:outputLabel value="Telefono:" for="telefono" />
+                    <h:outputLabel value="Cell-phone:" for="telefono" />
                     <h:inputText id="telefono" value="#{usuarioControlador.usuario.telefono}" title="Telefono" required="true" requiredMessage="The Telefono field is required."/>
                     <h:outputLabel value="Eps:" for="eps" />
                     <h:inputText id="eps" value="#{usuarioControlador.usuario.eps}" title="Eps" required="true" requiredMessage="The Eps field is required."/>
-                    <h:outputLabel value="FechaDeNacimiento:" for="fechaDeNacimiento" />
+                    <h:outputLabel value="Date of birth" for="fechaDeNacimiento" />
                     <h:inputText id="fechaDeNacimiento" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="Edad:" for="edad" />
+                    <h:outputLabel value="Age:" for="edad" />
                     <h:inputText id="edad" value="#{usuarioControlador.usuario.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
-                    <h:outputLabel value="RolidRol:" for="rolidRol" />
+                    <h:outputLabel value="Role" for="rolidRol" />
                     <h:selectOneMenu id="rolidRol" value="#{usuarioControlador.rol.idRol}" title="RolidRol" required="true" requiredMessage="The RolidRol field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{rolControlador.consultarTodos()}" var="rol" itemValue="#{rol.idRol}" itemLabel="#{rol.rol}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandButton value="Registrarse" action="#{usuarioControlador.registrarUsuario()}"> </h:commandButton>  
+                <h:commandButton value="Register" action="#{usuarioControlador.registrarUsuario()}"> </h:commandButton>  
             </h:form>
         </f:view>
    </div>

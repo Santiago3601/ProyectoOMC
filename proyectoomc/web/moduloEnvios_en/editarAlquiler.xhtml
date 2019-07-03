@@ -12,39 +12,39 @@
     </h:head>
     <h:body>
            <div id="form"> 
-                <f:view>
+           <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="Modificar Alquiler"/></h1>
+                <h1><h:outputText value="Register new rental"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="IdAlquiler:" for="idAlquiler" />
+                    <h:outputLabel value="Id Rental:" for="idAlquiler" />
                     <h:inputText id="idAlquiler" value="#{alquilerControlador.alquier.idAlquiler}" title="IdAlquiler" required="true" requiredMessage="The IdAlquiler field is required."/>
-                    <h:outputLabel value="FechaInicioContrato:" for="fechaInicioContrato" />
+                    <h:outputLabel value="Start date:" for="fechaInicioContrato" />
                     <h:inputText id="fechaInicioContrato" value="#{alquilerControlador.alquier.fechaInicioContrato}" title="FechaInicioContrato" required="true" requiredMessage="The FechaInicioContrato field is required.">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="FechaFinalContrato:" for="fechaFinalContrato" />
+                    <h:outputLabel value="Finish date:" for="fechaFinalContrato" />
                     <h:inputText id="fechaFinalContrato" value="#{alquilerControlador.alquier.fechaFinalContrato}" title="FechaFinalContrato" required="true" requiredMessage="The FechaFinalContrato field is required.">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="Cilindro:" for="cilindroIdCilindro" />
+                    <h:outputLabel value="Cylinder:" for="cilindroIdCilindro" />
                     <h:selectOneMenu id="cilindroIdCilindro" value="#{alquilerControlador.cilindro.idCilindro}" title="CilindroIdCilindro" required="true" requiredMessage="The CilindroIdCilindro field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{cilindroControlador.consultarTodos()}" var="cilindro" itemValue="#{cilindro.idCilindro}" itemLabel="#{cilindro.idCilindro}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="Cliente :" for="clienteIdCliente" />
+                    <h:outputLabel value="Custumer :" for="clienteIdCliente" />
                     <h:selectOneMenu id="clienteIdCliente" value="#{alquilerControlador.cliente.idCliente}" title="ClienteIdCliente" required="true" requiredMessage="The ClienteIdCliente field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{clienteControlador.consultarTodos()}" var="cliente" itemValue="#{cliente.idCliente}" itemLabel="#{cliente.usuarioId.nombre} #{cliente.usuarioId.apellido}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="Ruta:" for="rutaIdRuta" />
+                    <h:outputLabel value="Route: " for="rutaIdRuta" />
                     <h:selectOneMenu id="rutaIdRuta" value="#{alquilerControlador.ruta.idRuta}" title="RutaIdRuta" required="true" requiredMessage="The RutaIdRuta field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{rutaControlador.consultarTodos()}" var="ruta" itemValue="#{ruta.idRuta}" itemLabel="#{ruta.direccion}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandButton value="Actualizar" action="#{alquilerControlador.actualizarAlquiler()}"> </h:commandButton>
+                <h:commandButton value="Update" action="#{alquilerControlador.registrarAlquiler()}"> </h:commandButton>
             </h:form>
         </f:view>
            </div>
