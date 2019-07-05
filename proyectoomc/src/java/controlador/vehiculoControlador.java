@@ -64,11 +64,11 @@ public class vehiculoControlador implements Serializable {
        return "listaVehiculos";
    }
     
-    public void registrarVehiculo(){
+    public String registrarVehiculo(){
      
        vehiculoFacade.create(vehiculo);
        vehiculo = new Vehiculo();
-       
+              return "listaVehiculos";
     }
     
     

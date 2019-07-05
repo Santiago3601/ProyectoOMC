@@ -16,30 +16,30 @@
 
 
                 <h:form>
-                    <h1><h:outputText value="Create/Edit"/></h1>
+                    <h1><h:outputText value="Editar datos alquiler"/></h1>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="IdAlquiler:" for="idAlquiler" />
+                        <h:outputLabel value="No. de Alquiler:" for="idAlquiler" />
                         <h:inputText id="idAlquiler" value="#{alquilerControlador.alquiler.idAlquiler}" title="IdAlquiler" required="true" requiredMessage="The IdAlquiler field is required."/>
-                        <h:outputLabel value="FechaDeEntrega:" for="fechaDeEntrega" />
+                        <h:outputLabel value="Fecha De Entrega:" for="fechaDeEntrega" />
                         <h:inputText id="fechaDeEntrega" value="#{alquilerControlador.alquiler.fechaDeEntrega}" title="FechaDeEntrega" required="true" requiredMessage="The FechaDeEntrega field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
                         <h:outputLabel value="Novedades:" for="novedades" />
                         <h:inputText id="novedades" value="#{alquilerControlador.alquiler.novedades}" title="Novedades" required="true" requiredMessage="The Novedades field is required."/>
-                        <h:outputLabel value="CilindroIdCilindro:" for="cilindroIdCilindro" />
+                        <h:outputLabel value="Cilindro:" for="cilindroIdCilindro" />
                         <h:selectOneMenu id="cilindroIdCilindro" value="#{alquilerControlador.cilindro.idCilindro}" title="CilindroIdCilindro" required="true" requiredMessage="The CilindroIdCilindro field is required.">
                             <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{cilindroControlador.consultarTodos()}" var="cil" itemValue="#{cil.idCilindro}" itemLabel="#{cil.idCilindro}"/>
+                            <f:selectItems value="#{cilindroControlador.consultarTodos()}" var="cil" itemValue="#{cil.idCilindro}" itemLabel="#{cil.idCilindro} #{cil.tamanio}cm³ #{cil.estado}"/>
                         </h:selectOneMenu>
-                        <h:outputLabel value="RutaIdRuta:" for="rutaIdRuta" />
+                        <h:outputLabel value="Ruta:" for="rutaIdRuta" />
                         <h:selectOneMenu id="rutaIdRuta" value="#{alquilerControlador.ruta.idRuta}" title="RutaIdRuta" required="true" requiredMessage="The RutaIdRuta field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{rutaControlador.consultarTodos()}"  var="ruta" itemValue="#{ruta.idRuta}" itemLabel="#{ruta.idRuta}"/>
                         </h:selectOneMenu>
-                        <h:outputLabel value="SolicitudIdSolicitud:" for="solicitudIdSolicitud" />
+                        <h:outputLabel value="Solicitud:" for="solicitudIdSolicitud" />
                         <h:selectOneMenu id="solicitudIdSolicitud" value="#{alquilerControlador.solicitud.idSolicitud}" title="SolicitudIdSolicitud" required="true" requiredMessage="The SolicitudIdSolicitud field is required.">
                             <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{solicitudControlador.consultarTodos()}" var="sol" itemValue="#{sol.idSolicitud}" itemLabel="#{sol.idSolicitud}"/>
+                            <f:selectItems value="#{solicitudControlador.consultarTodos()}" var="sol" itemValue="#{sol.idSolicitud}" itemLabel="#{sol.clienteIdCliente.usuarioId.nombre} #{sol.clienteIdCliente.usuarioId.apellido} #{sol.tamanioCilindro}cm³"/>
                         </h:selectOneMenu>
                         <h:outputLabel value="EstadoAlquilerIdEstado:" for="estadoAlquilerIdEstado" />
                         <h:selectOneMenu id="estadoAlquilerIdEstado" value="#{alquilerControlador.estadoAlquiler.idEstado}" title="EstadoAlquilerIdEstado" required="true" requiredMessage="The EstadoAlquilerIdEstado field is required.">
