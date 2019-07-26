@@ -5,7 +5,9 @@
 	padding: 0;
 }
 
-
+#mainNav{
+        box-shadow: 0 0 12px;
+}
 #izqui{
     float: left;
     text-align: LEFT;
