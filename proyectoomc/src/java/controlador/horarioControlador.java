@@ -64,13 +64,13 @@ public class horarioControlador implements Serializable {
         horario = horarioFacade.find(horario.getIdHorario());
     }
 
-    public void registrarHorario() {
+    public String registrarHorario() {
         horario.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
         horarioFacade.create(horario);
         horario = new Horario();
-
+        return "registrarHorario";
     }
-
+    
     public void eliminarHorario(Horario item) {
         this.horarioFacade.remove(item);
     }
