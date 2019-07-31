@@ -62,6 +62,9 @@ public class Mantenimiento implements Serializable {
     @Column(name = "fecha_final_mantenimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaFinalMantenimiento;
+    @JoinColumn(name = "estado_mantenimiento", referencedColumnName = "id_estado")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private EstadoMantenimiento estadoMantenimiento;
     @JoinColumn(name = "agenda_id_agenda", referencedColumnName = "id_agenda")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Agenda agendaIdAgenda;
@@ -103,6 +106,14 @@ public class Mantenimiento implements Serializable {
 
     public void setFechaFinalMantenimiento(Date fechaFinalMantenimiento) {
         this.fechaFinalMantenimiento = fechaFinalMantenimiento;
+    }
+
+    public EstadoMantenimiento getEstadoMantenimiento() {
+        return estadoMantenimiento;
+    }
+
+    public void setEstadoMantenimiento(EstadoMantenimiento estadoMantenimiento) {
+        this.estadoMantenimiento = estadoMantenimiento;
     }
 
     public Agenda getAgendaIdAgenda() {

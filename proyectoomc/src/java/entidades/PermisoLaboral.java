@@ -37,8 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PermisoLaboral.findByIdPermisoLaboral", query = "SELECT p FROM PermisoLaboral p WHERE p.idPermisoLaboral = :idPermisoLaboral")
     , @NamedQuery(name = "PermisoLaboral.findByHoraPermiso", query = "SELECT p FROM PermisoLaboral p WHERE p.horaPermiso = :horaPermiso")
     , @NamedQuery(name = "PermisoLaboral.findByFechaPermiso", query = "SELECT p FROM PermisoLaboral p WHERE p.fechaPermiso = :fechaPermiso")
-    , @NamedQuery(name = "PermisoLaboral.findByObvservaciones", query = "SELECT p FROM PermisoLaboral p WHERE p.obvservaciones = :obvservaciones")
-    , @NamedQuery(name = "PermisoLaboral.findByTipodepermisoidtIpodepermiso", query = "SELECT p FROM PermisoLaboral p WHERE p.tipodepermisoidtIpodepermiso = :tipodepermisoidtIpodepermiso")})
+    , @NamedQuery(name = "PermisoLaboral.findByObvservaciones", query = "SELECT p FROM PermisoLaboral p WHERE p.obvservaciones = :obvservaciones")})
 public class PermisoLaboral implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,10 +59,6 @@ public class PermisoLaboral implements Serializable {
     @Size(max = 200)
     @Column(name = "obvservaciones")
     private String obvservaciones;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "tipo_de_permiso_id_tIpo_de_permiso")
-    private int tipodepermisoidtIpodepermiso;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Empleado empleadoIdEmpleado;
@@ -75,11 +70,10 @@ public class PermisoLaboral implements Serializable {
         this.idPermisoLaboral = idPermisoLaboral;
     }
 
-    public PermisoLaboral(Integer idPermisoLaboral, Date horaPermiso, Date fechaPermiso, int tipodepermisoidtIpodepermiso) {
+    public PermisoLaboral(Integer idPermisoLaboral, Date horaPermiso, Date fechaPermiso) {
         this.idPermisoLaboral = idPermisoLaboral;
         this.horaPermiso = horaPermiso;
         this.fechaPermiso = fechaPermiso;
-        this.tipodepermisoidtIpodepermiso = tipodepermisoidtIpodepermiso;
     }
 
     public Integer getIdPermisoLaboral() {
@@ -112,14 +106,6 @@ public class PermisoLaboral implements Serializable {
 
     public void setObvservaciones(String obvservaciones) {
         this.obvservaciones = obvservaciones;
-    }
-
-    public int getTipodepermisoidtIpodepermiso() {
-        return tipodepermisoidtIpodepermiso;
-    }
-
-    public void setTipodepermisoidtIpodepermiso(int tipodepermisoidtIpodepermiso) {
-        this.tipodepermisoidtIpodepermiso = tipodepermisoidtIpodepermiso;
     }
 
     public Empleado getEmpleadoIdEmpleado() {

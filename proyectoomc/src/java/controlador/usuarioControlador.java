@@ -5,7 +5,9 @@
  */
 package controlador;
 
+import entidades.Permiso;
 import entidades.Rol;
+//import entidades.RolTienePermiso;
 import entidades.Usuario;
 import facade.RolFacade;
 import facade.UsuarioFacade;
@@ -98,7 +100,14 @@ public class usuarioControlador implements Serializable {
         try {
             Usuario usuarioLogueado = usuarioFacade.login(usuario);
             if (usuarioLogueado != null) {
+                rol = usuarioLogueado.getRolidRol();
+                
+                for (Permiso permiso : usuarioLogueado.getRolidRol().getPermisoList()) {
 
+                        System.out.println("Permisos " + permiso.getNombre());
+  
+                }
+                
                 System.out.println("usuarioLogeado " + usuarioLogueado.getNombre());
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("sesionLogin", usuarioLogueado);
                 switch (usuarioLogueado.getRolidRol().getIdRol()) {

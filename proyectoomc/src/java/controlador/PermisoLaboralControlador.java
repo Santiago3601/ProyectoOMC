@@ -76,7 +76,7 @@ public class PermisoLaboralControlador implements Serializable {
     }
 
     public void consultarID() {
-        permisoLaboral = permisoLaboralFacade.find(permisoLaboral.getTipodepermisoidtIpodepermiso());
+        permisoLaboral = permisoLaboralFacade.find(permisoLaboral.getIdPermisoLaboral());
     }
 
     public String eliminar(PermisoLaboral p) {
