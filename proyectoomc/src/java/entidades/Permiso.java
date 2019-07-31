@@ -8,13 +8,14 @@ package entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -36,8 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Permiso.findAll", query = "SELECT p FROM Permiso p")
     , @NamedQuery(name = "Permiso.findByIdPermiso", query = "SELECT p FROM Permiso p WHERE p.idPermiso = :idPermiso")
     , @NamedQuery(name = "Permiso.findByNombre", query = "SELECT p FROM Permiso p WHERE p.nombre = :nombre")
-    , @NamedQuery(name = "Permiso.findByIcon", query = "SELECT p FROM Permiso p WHERE p.icon = :icon")
-    , @NamedQuery(name = "Permiso.findByPermisoPadre", query = "SELECT p FROM Permiso p WHERE p.permisoPadre = :permisoPadre")})
+    , @NamedQuery(name = "Permiso.findByIcon", query = "SELECT p FROM Permiso p WHERE p.icon = :icon")})
 public class Permiso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,10 +51,8 @@ public class Permiso implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
     @Lob
-    @Size(min = 1, max = 16383)
+    @Size(max = 16383)
     @Column(name = "url")
     private String url;
     @Basic(optional = false)
@@ -62,16 +60,16 @@ public class Permiso implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "icon")
     private String icon;
-    @Size(max = 45)
-    @Column(name = "permiso_padre")
-    private String permisoPadre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoIdPermiso", fetch = FetchType.LAZY)
-    private List<RolTienePermiso> rolTienePermisoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoIdPermiso", fetch = FetchType.LAZY)
+    @JoinTable(name = "rol_tiene_permiso", joinColumns = {
+        @JoinColumn(name = "permiso_id_permiso", referencedColumnName = "id_permiso")}, inverseJoinColumns = {
+        @JoinColumn(name = "rol_idRol", referencedColumnName = "idRol")})
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Rol> rolList;
+    @OneToMany(mappedBy = "permisoPadre", fetch = FetchType.LAZY)
     private List<Permiso> permisoList;
-    @JoinColumn(name = "permiso_id_permiso", referencedColumnName = "id_permiso")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Permiso permisoIdPermiso;
+    @JoinColumn(name = "permiso_padre", referencedColumnName = "id_permiso")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Permiso permisoPadre;
 
     public Permiso() {
     }
@@ -80,10 +78,9 @@ public class Permiso implements Serializable {
         this.idPermiso = idPermiso;
     }
 
-    public Permiso(Integer idPermiso, String nombre, String url, String icon) {
+    public Permiso(Integer idPermiso, String nombre, String icon) {
         this.idPermiso = idPermiso;
         this.nombre = nombre;
-        this.url = url;
         this.icon = icon;
     }
 
@@ -119,21 +116,13 @@ public class Permiso implements Serializable {
         this.icon = icon;
     }
 
-    public String getPermisoPadre() {
-        return permisoPadre;
-    }
-
-    public void setPermisoPadre(String permisoPadre) {
-        this.permisoPadre = permisoPadre;
-    }
-
     @XmlTransient
-    public List<RolTienePermiso> getRolTienePermisoList() {
-        return rolTienePermisoList;
+    public List<Rol> getRolList() {
+        return rolList;
     }
 
-    public void setRolTienePermisoList(List<RolTienePermiso> rolTienePermisoList) {
-        this.rolTienePermisoList = rolTienePermisoList;
+    public void setRolList(List<Rol> rolList) {
+        this.rolList = rolList;
     }
 
     @XmlTransient
@@ -145,12 +134,12 @@ public class Permiso implements Serializable {
         this.permisoList = permisoList;
     }
 
-    public Permiso getPermisoIdPermiso() {
-        return permisoIdPermiso;
+    public Permiso getPermisoPadre() {
+        return permisoPadre;
     }
 
-    public void setPermisoIdPermiso(Permiso permisoIdPermiso) {
-        this.permisoIdPermiso = permisoIdPermiso;
+    public void setPermisoPadre(Permiso permisoPadre) {
+        this.permisoPadre = permisoPadre;
     }
 
     @Override

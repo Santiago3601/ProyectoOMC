@@ -7,10 +7,8 @@ package controlador;
 
 import entidades.Permiso;
 import entidades.Rol;
-import entidades.RolTienePermiso;
 import facade.PermisoFacade;
 import facade.RolFacade;
-import facade.RolTienePermisoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -21,6 +19,10 @@ import javax.ejb.EJB;
  *
  * @author Aprendiz
  */
+
+
+
+/*
 @Named(value = "rolTienePermisoControlador")
 @SessionScoped
 public class rolTienePermisoControlador implements Serializable {
@@ -95,7 +97,8 @@ public class rolTienePermisoControlador implements Serializable {
     }
 
     public rolTienePermisoControlador() {
-    }
-
 }
+}
+*/
+
 

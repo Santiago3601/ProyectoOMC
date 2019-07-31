@@ -39,18 +39,17 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Solicitud.findByTamanioCilindro", query = "SELECT s FROM Solicitud s WHERE s.tamanioCilindro = :tamanioCilindro")})
 public class Solicitud implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "formula")
-    private byte[] formula;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_solicitud")
     private Integer idSolicitud;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "formula")
+    private byte[] formula;
     @Basic(optional = false)
     @NotNull
     @Column(name = "tamanio_cilindro")
@@ -82,6 +81,13 @@ public class Solicitud implements Serializable {
         this.idSolicitud = idSolicitud;
     }
 
+    public byte[] getFormula() {
+        return formula;
+    }
+
+    public void setFormula(byte[] formula) {
+        this.formula = formula;
+    }
 
     public int getTamanioCilindro() {
         return tamanioCilindro;
@@ -131,14 +137,6 @@ public class Solicitud implements Serializable {
     @Override
     public String toString() {
         return "entidades.Solicitud[ idSolicitud=" + idSolicitud + " ]";
-    }
-
-    public byte[] getFormula() {
-        return formula;
-    }
-
-    public void setFormula(byte[] formula) {
-        this.formula = formula;
     }
     
 }

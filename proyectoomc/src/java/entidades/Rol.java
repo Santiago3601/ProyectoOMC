@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -46,8 +47,8 @@ public class Rol implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "rol")
     private String rol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolidRol", fetch = FetchType.LAZY)
-    private List<RolTienePermiso> rolTienePermisoList;
+    @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
+    private List<Permiso> permisoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolidRol", fetch = FetchType.LAZY)
     private List<Usuario> usuarioList;
 
@@ -80,12 +81,12 @@ public class Rol implements Serializable {
     }
 
     @XmlTransient
-    public List<RolTienePermiso> getRolTienePermisoList() {
-        return rolTienePermisoList;
+    public List<Permiso> getPermisoList() {
+        return permisoList;
     }
 
-    public void setRolTienePermisoList(List<RolTienePermiso> rolTienePermisoList) {
-        this.rolTienePermisoList = rolTienePermisoList;
+    public void setPermisoList(List<Permiso> permisoList) {
+        this.permisoList = permisoList;
     }
 
     @XmlTransient

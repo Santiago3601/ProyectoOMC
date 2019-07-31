@@ -21,7 +21,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -44,13 +43,9 @@ public class Horario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_horario")
     private Integer idHorario;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "hora_ingreso")
     @Temporal(TemporalType.TIME)
     private Date horaIngreso;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "hora_salida")
     @Temporal(TemporalType.TIME)
     private Date horaSalida;
@@ -63,12 +58,6 @@ public class Horario implements Serializable {
 
     public Horario(Integer idHorario) {
         this.idHorario = idHorario;
-    }
-
-    public Horario(Integer idHorario, Date horaIngreso, Date horaSalida) {
-        this.idHorario = idHorario;
-        this.horaIngreso = horaIngreso;
-        this.horaSalida = horaSalida;
     }
 
     public Integer getIdHorario() {
