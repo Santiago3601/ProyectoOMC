@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "cilindro")
@@ -65,9 +65,9 @@ public class Cilindro implements Serializable {
     @Column(name = "fecha_de_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaDeCreacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.EAGER)
     private List<Alquiler> alquilerList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.EAGER)
     private List<MantenimientoCilindro> mantenimientoCilindroList;
 
     public Cilindro() {

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "permiso_laboral")
@@ -60,7 +60,7 @@ public class PermisoLaboral implements Serializable {
     @Column(name = "obvservaciones")
     private String obvservaciones;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Empleado empleadoIdEmpleado;
 
     public PermisoLaboral() {

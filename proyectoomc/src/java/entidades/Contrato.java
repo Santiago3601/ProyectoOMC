@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "contrato")
@@ -62,7 +62,7 @@ public class Contrato implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaFinalContrato;
     @JoinColumn(name = "alquiler_id_alquiler", referencedColumnName = "id_alquiler")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Alquiler alquilerIdAlquiler;
 
     public Contrato() {

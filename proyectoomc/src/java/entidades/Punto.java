@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "punto")
@@ -51,7 +51,7 @@ public class Punto implements Serializable {
     @Size(min = 1, max = 70)
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "puntoIdPuntos", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "puntoIdPuntos", fetch = FetchType.EAGER)
     private List<Turno> turnoList;
 
     public Punto() {

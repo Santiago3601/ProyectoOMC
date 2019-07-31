@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "horario")
@@ -34,7 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Horario.findAll", query = "SELECT h FROM Horario h")
     , @NamedQuery(name = "Horario.findByIdHorario", query = "SELECT h FROM Horario h WHERE h.idHorario = :idHorario")
     , @NamedQuery(name = "Horario.findByHoraIngreso", query = "SELECT h FROM Horario h WHERE h.horaIngreso = :horaIngreso")
-    , @NamedQuery(name = "Horario.findByHoraSalida", query = "SELECT h FROM Horario h WHERE h.horaSalida = :horaSalida")})
+    , @NamedQuery(name = "Horario.findByHoraSalida", query = "SELECT h FROM Horario h WHERE h.horaSalida = :horaSalida")
+    , @NamedQuery(name = "Horario.findByFechaDeIngreso", query = "SELECT h FROM Horario h WHERE h.fechaDeIngreso = :fechaDeIngreso")
+    , @NamedQuery(name = "Horario.findByFechaDeSalida", query = "SELECT h FROM Horario h WHERE h.fechaDeSalida = :fechaDeSalida")})
 public class Horario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,8 +51,14 @@ public class Horario implements Serializable {
     @Column(name = "hora_salida")
     @Temporal(TemporalType.TIME)
     private Date horaSalida;
+    @Column(name = "fecha_de_ingreso")
+    @Temporal(TemporalType.DATE)
+    private Date fechaDeIngreso;
+    @Column(name = "fecha_de_salida")
+    @Temporal(TemporalType.DATE)
+    private Date fechaDeSalida;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Empleado empleadoIdEmpleado;
 
     public Horario() {
@@ -82,6 +90,22 @@ public class Horario implements Serializable {
 
     public void setHoraSalida(Date horaSalida) {
         this.horaSalida = horaSalida;
+    }
+
+    public Date getFechaDeIngreso() {
+        return fechaDeIngreso;
+    }
+
+    public void setFechaDeIngreso(Date fechaDeIngreso) {
+        this.fechaDeIngreso = fechaDeIngreso;
+    }
+
+    public Date getFechaDeSalida() {
+        return fechaDeSalida;
+    }
+
+    public void setFechaDeSalida(Date fechaDeSalida) {
+        this.fechaDeSalida = fechaDeSalida;
     }
 
     public Empleado getEmpleadoIdEmpleado() {

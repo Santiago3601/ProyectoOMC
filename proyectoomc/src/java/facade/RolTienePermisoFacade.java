@@ -5,7 +5,7 @@
  */
 package facade;
 
-import entidades.MantenimientoCilindro;
+import entidades.RolTienePermiso;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Stephi
  */
 @Stateless
-public class MantenimientoCilindroFacade extends AbstractFacade<MantenimientoCilindro> {
+public class RolTienePermisoFacade extends AbstractFacade<RolTienePermiso> {
 
     @PersistenceContext(unitName = "proyectoOMCPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class MantenimientoCilindroFacade extends AbstractFacade<MantenimientoCil
         return em;
     }
 
-    public MantenimientoCilindroFacade() {
-        super(MantenimientoCilindro.class);
+    public RolTienePermisoFacade() {
+        super(RolTienePermiso.class);
     }
     
 }

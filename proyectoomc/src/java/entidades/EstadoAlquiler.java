@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "estado_alquiler")
@@ -48,7 +48,7 @@ public class EstadoAlquiler implements Serializable {
     @Size(min = 1, max = 70)
     @Column(name = "estado")
     private String estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoAlquilerIdEstado", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoAlquilerIdEstado", fetch = FetchType.EAGER)
     private List<Alquiler> alquilerList;
 
     public EstadoAlquiler() {

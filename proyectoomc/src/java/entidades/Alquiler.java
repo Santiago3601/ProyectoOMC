@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "alquiler")
@@ -59,19 +59,19 @@ public class Alquiler implements Serializable {
     @Size(min = 1, max = 300)
     @Column(name = "novedades")
     private String novedades;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alquilerIdAlquiler", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alquilerIdAlquiler", fetch = FetchType.EAGER)
     private List<Contrato> contratoList;
     @JoinColumn(name = "cilindro_id_cilindro", referencedColumnName = "id_cilindro")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Cilindro cilindroIdCilindro;
     @JoinColumn(name = "ruta_id_ruta", referencedColumnName = "id_ruta")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Ruta rutaIdRuta;
     @JoinColumn(name = "solicitud_id_solicitud", referencedColumnName = "id_solicitud")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Solicitud solicitudIdSolicitud;
     @JoinColumn(name = "estado_alquiler_id_estado", referencedColumnName = "id_estado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private EstadoAlquiler estadoAlquilerIdEstado;
 
     public Alquiler() {

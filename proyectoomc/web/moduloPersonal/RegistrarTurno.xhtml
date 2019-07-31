@@ -1,17 +1,18 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
-        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
 
-        <title>OMC</title>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
     </h:head>
+
     <h:body>
-        <div id="form"> 
         <f:view>
 
 
@@ -19,33 +20,44 @@
                 <h1><h:outputText value="Registrar Turno"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="IdTurno:" for="idTurno" />
-                    <h:inputText id="idTurno" value="#{turnoControlador.turno.idTurno}" title="IdTurno" required="true" requiredMessage="The IdTurno field is required."/>
+                    <h:inputText id="idTurno" value="#{empleadoControlador.turno.idTurno}" title="IdTurno" required="true" requiredMessage="The IdTurno field is required."/>
                     <h:outputLabel value="Programacion:" for="programacion" />
-                    <h:inputText id="programacion" value="#{turnoControlador.turno.programacion}" title="Programacion" required="true" requiredMessage="The Programacion field is required."/>
-                    <h:outputLabel value="Fecha:" for="fecha" />
-                    <h:inputText id="fecha" value="#{turnoControlador.turno.fecha}" title="Fecha" required="true" requiredMessage="The Fecha field is required.">
+                    <h:inputText id="programacion" value="#{empleadoControlador.turno.programacion}" title="Programacion" required="true" requiredMessage="The Programacion field is required."/>
+                    <h:outputLabel value="Hora Ingreso:" for="horaIngreso" />
+                    <h:inputText id="horaIngreso" value="#{empleadoControlador.turno.horaIngreso}" title="HoraIngreso" required="true" requiredMessage="The HoraIngreso field is required.">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="Horas Salida:" for="horasSalida" />
+                    <h:inputText id="horasSalida" value="#{empleadoControlador.turno.horasSalida}" title="HorasSalida" required="true" requiredMessage="The HorasSalida field is required.">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="Fecha Inicial:" for="fechaInicial" />
+                    <h:inputText id="fechaInicial" value="#{empleadoControlador.turno.fechaInicial}" title="FechaInicial" required="true" requiredMessage="The FechaInicial field is required.">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="Codigo Empleado:" for="empleadoIdEmpleado" />
-                        <h:selectOneMenu id="empleadoIdEmpleado" value="#{turnoControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                    <h:outputLabel value="Fecha Final:" for="fechaFinal" />
+                    <h:inputText id="fechaFinal" value="#{empleadoControlador.turno.fechaFinal}" title="FechaFinal" required="true" requiredMessage="The FechaFinal field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Observaciones:" for="observaciones" />
+                    <h:inputText id="observaciones" value="#{empleadoControlador.turno.observaciones}" title="Observaciones" required="true" requiredMessage="The Observaciones field is required."/>
+                    <h:outputLabel value="Puntos:" for="puntoIdPuntos" />
+                    <h:selectOneMenu id="puntoIdPuntos" value="#{empleadoControlador.turno.puntoIdPuntos}" title="PuntoIdPuntos" required="true" requiredMessage="The PuntoIdPuntos field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="e" itemValue="#{e.idEmpleado}" itemLabel="#{e.idEmpleado}"/>
+                        <f:selectItems value="#{puntoControlador.consultarTodos()}" var="pu" itemValue="#{pu.cantidad}" itemLabel="#{pu.cantidad}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="Codigo punto:" for="puntoIdPuntos" />
-                    <h:selectOneMenu id="puntoIdPuntos" value="#{turnoControlador.punto.idPunto}" title="PuntoIdPuntos" required="true" requiredMessage="The PuntoIdPuntos field is required.">
+                    <h:outputLabel value="Empleado:" for="idEmpleado" />
+                    <h:selectOneMenu id="idEmpleado" value="#{empleadoControlador.turno.idEmpleado}" title="IdEmpleado" >
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{puntoControlador.consultarTodos()}" var="t" itemValue="#{t.idPunto}" itemLabel="#{t.idPunto}"/>
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.apellido}" />
                     </h:selectOneMenu>
-                    <h:outputLabel value="Codigo Tipo Turno:" for="tipoTurnoIdTipoTurno" />
-                    <h:selectOneMenu id="tipoTurnoIdTipoTurno" value="#{turnoControlador.tipoTurno.idTipoTurno}" title="TipoTurnoIdTipoTurno" required="true" requiredMessage="The TipoTurnoIdTipoTurno field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{tipoTurnoControlador.consultarTodos()}" var="tpTurno" itemValue="#{tpTurno.idTipoTurno}" itemLabel="#{tpTurno.horaIngreso}"/>
-                    </h:selectOneMenu>
-                <h:commandButton action ="#{turnoControlador.registrar()}" value="registrar"/>
+                    <h:commandButton action ="#{turnoControlador.registrar()}" value="registrar"/>
                 </h:panelGrid>
             </h:form>
         </f:view>
-  </div>
-    </h:body>
-</html>
 
+
+
+    </h:body>
+
+</html>

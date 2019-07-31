@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "turno")
@@ -84,9 +84,12 @@ public class Turno implements Serializable {
     @Column(name = "observaciones")
     private String observaciones;
     @JoinColumn(name = "punto_id_puntos", referencedColumnName = "id_punto")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Punto puntoIdPuntos;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "turnoIdTurno", fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Empleado idEmpleado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "turnoIdTurno", fetch = FetchType.EAGER)
     private List<Empleado> empleadoList;
 
     public Turno() {
@@ -168,6 +171,14 @@ public class Turno implements Serializable {
 
     public void setPuntoIdPuntos(Punto puntoIdPuntos) {
         this.puntoIdPuntos = puntoIdPuntos;
+    }
+
+    public Empleado getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(Empleado idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
     @XmlTransient

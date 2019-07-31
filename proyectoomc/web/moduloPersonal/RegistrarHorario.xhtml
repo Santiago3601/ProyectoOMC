@@ -9,39 +9,45 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>RegistrarHorario</title>
+        <title>Facelets Template</title>
     </h:head>
 
     <h:body>
-        <div id="form"> 
+
         <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="Registrar Horario"/></h1>
+                <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
-                    
+                    <h:outputLabel value="IdHorario:" for="idHorario" />
+                    <h:inputText id="idHorario" value="#{horarioControlador.horario.idHorario}" title="IdHorario" required="true" requiredMessage="The IdHorario field is required."/>
                     <h:outputLabel value="HoraIngreso:" for="horaIngreso" />
-                    <h:inputText id="horaIngreso" value="#{horarioControlador.horario.horaIngreso}" title="HoraIngreso" required="true" requiredMessage="The HoraIngreso field is required.">
+                    <h:inputText id="horaIngreso" value="#{horarioControlador.horario.horaIngreso}" title="HoraIngreso" >
                         <f:convertDateTime pattern="HH:mm:ss" />
                     </h:inputText>
                     <h:outputLabel value="HoraSalida:" for="horaSalida" />
-                    <h:inputText id="horaSalida" value="#{horarioControlador.horario.horaSalida}" title="HoraSalida" required="true" requiredMessage="The HoraSalida field is required.">
+                    <h:inputText id="horaSalida" value="#{horarioControlador.horario.horaSalida}" title="HoraSalida" >
                         <f:convertDateTime pattern="HH:mm:ss" />
                     </h:inputText>
-                    <h:outputLabel value="Empleado:" for="empleadoIdEmpleado" />
+                    <h:outputLabel value="FechaDeIngreso:" for="fechaDeIngreso" />
+                    <h:inputText id="fechaDeIngreso" value="#{horarioControlador.horario.fechaDeIngreso}" title="FechaDeIngreso" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="FechaDeSalida:" for="fechaDeSalida" />
+                    <h:inputText id="fechaDeSalida" value="#{horarioControlador.horario.fechaDeSalida}" title="FechaDeSalida" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="EmpleadoIdEmpleado:" for="empleadoIdEmpleado" />
                     <h:selectOneMenu id="empleadoIdEmpleado" value="#{horarioControlador.horario.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.id}" />
-                        
+                        <f:selectItems value="#{fixme}"/>
                     </h:selectOneMenu>
-                    <h:commandButton action="#{horarioControlador.registrarHorario()}" value="registrar"/>
-                    <h:commandLink action="#{horarioControlador.registrarHorario()}" onclick="return confirm('Se ha ingresado el registro')"><i class="far fa-trash-alt"></i></h:commandLink>
                 </h:panelGrid>
             </h:form>
         </f:view>
 
-        </div>
+
     </h:body>
 
 </html>

@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "agenda")
@@ -57,10 +57,10 @@ public class Agenda implements Serializable {
     @Size(max = 300)
     @Column(name = "novedades")
     private String novedades;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agendaIdAgenda", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agendaIdAgenda", fetch = FetchType.EAGER)
     private List<Mantenimiento> mantenimientoList;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Empleado empleadoIdEmpleado;
 
     public Agenda() {
