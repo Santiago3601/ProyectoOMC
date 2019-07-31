@@ -101,6 +101,42 @@
         <div id="contenedor" >
             <!-- Navegador -->
             <nav id="options" class="barra-navega">
+                <li><a href="dashboard/HTML/Modulo de envios/MODULO-ENVIOS.html" target="area-de-trabajo">Envios</a>
+                                     <ul>
+                                         <li><a href="">Crear</a>
+                                             <ul>
+                                                 <li><a href="moduloEnvios/crearCliente.xhtml" target="area-de-trabajo">Cliente</a></li>
+                                                 <li><a href="moduloEnvios/crearContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
+                                                 <li><a href="moduloEnvios/crearUsuario.xhtml" target="area-de-trabajo">Usuario</a></li>
+                                                 <li><a href="moduloEnvios/crearVehiculo.xhtml" target="area-de-trabajo">Vehiculo</a></li>
+                                                 <li><a href="moduloEnvios/crearSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
+                                             </ul>
+                                         </li>
+                                         <li><a href="">Consultar</a>
+                                             <ul>
+                                                 <li><a href="moduloEnvios/listaAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
+                                                 <li><a href="moduloEnvios/listaClientes.xhtml" target="area-de-trabajo">Cliente</a></li>
+                                                 <li><a href="moduloEnvios/listaContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
+                                                 <li><a href="moduloEnvios/listaRoles.xhtml" target="area-de-trabajo">Roles</a></li>
+                                                 <li><a href="moduloEnvios/listaRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
+                                                 <li><a href="moduloEnvios/listaVehiculos.xhtml" target="area-de-trabajo">Vehiculos</a></li>
+                                                 <li><a href="newTemplate.xhtml" target="area-de-trabajo">Usuarios</a></li>
+                                                 <li><a href="moduloEnvios/listaSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
+             
+                                             </ul>
+             
+                                         </li>
+                                         <li><a href="">Programar</a>
+                                             <ul>
+                                                 <li><a href="moduloEnvios/crearAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
+             
+                                                 <li><a href="moduloEnvios/crearRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
+             
+                                             </ul>
+             
+                                         </li>
+                                     </ul>
+                                 </li>
                 <ul>
                     <c:forEach items="#{usuarioControlador.rol.permisoList}" var="admin">
                         <li>
@@ -119,8 +155,8 @@
                                         <c:forEach items="#{usuarioControlador.rol.permisoList}" var="op">
                                             <c:if test="#{sp.idPermiso eq op.idPermiso}">
                                                 <li>
-                                                    <a href="#{sp.url}">
-                                                        o   
+                                                    <a href="#{sp.url}" target="area-de-trabajo">
+                                                        #{sp.nombre} 
                                                     </a>
                                                 </li>
                                             </c:if>                                           
@@ -128,14 +164,6 @@
                                     </c:forEach>
                                 </ul>
                             </c:if>
-                
-                            
-                            
-                            
-                            
-             
-                            
-                            
                             
                             
                         </li> 
