@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
 
         <meta charset="utf-8"></meta>
@@ -36,7 +38,7 @@
                 <div class="col">
                     <div id="rol">
                         <label>
-                            Administrador
+                            x-x-x-x-x-x-x
                         </label>
                     </div>
                 </div>
@@ -100,106 +102,159 @@
             <!-- Navegador -->
             <nav id="options" class="barra-navega">
                 <ul>
-                    <li><a href="dashboard/HTML/Modulo de envios/MODULO-ENVIOS.html" target="area-de-trabajo">Envios</a>
-                        <ul>
-                            <li><a href="">Crear</a>
+                    <c:forEach items="#{usuarioControlador.rol.permisoList}" var="admin">
+                        <li>
+                    
+                            
+                            
+                            
+                            
+                            <c:if test="#{empty admin.permisoPadre}">
+                                <a href="#{admin.url}">
+                                    X
+                                </a>
                                 <ul>
-                                    <li><a href="moduloEnvios/crearCliente.xhtml" target="area-de-trabajo">Cliente</a></li>
-                                    <li><a href="moduloEnvios/crearContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
-                                    <li><a href="moduloEnvios/crearUsuario.xhtml" target="area-de-trabajo">Usuario</a></li>
-                                    <li><a href="moduloEnvios/crearVehiculo.xhtml" target="area-de-trabajo">Vehiculo</a></li>
-                                    <li><a href="moduloEnvios/crearSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
+                                    <c:forEach items="#{admin.subPermisos}" var="sp">
+
+                                        <c:forEach items="#{usuarioControlador.rol.permisoList}" var="op">
+                                            <c:if test="#{sp.idPermiso eq op.idPermiso}">
+                                                <li>
+                                                    <a href="#{sp.url}">
+                                                        o   
+                                                    </a>
+                                                </li>
+                                            </c:if>                                           
+                                        </c:forEach>  
+                                    </c:forEach>
                                 </ul>
-                            </li>
-                            <li><a href="">Consultar</a>
-                                <ul>
-                                    <li><a href="moduloEnvios/listaAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
-                                    <li><a href="moduloEnvios/listaClientes.xhtml" target="area-de-trabajo">Cliente</a></li>
-                                    <li><a href="moduloEnvios/listaContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
-                                    <li><a href="moduloEnvios/listaRoles.xhtml" target="area-de-trabajo">Roles</a></li>
-                                    <li><a href="moduloEnvios/listaRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
-                                    <li><a href="moduloEnvios/listaVehiculos.xhtml" target="area-de-trabajo">Vehiculos</a></li>
-                                    <li><a href="newTemplate.xhtml" target="area-de-trabajo">Usuarios</a></li>
-                                    <li><a href="moduloEnvios/listaSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
+                            </c:if>
+                
+                            
+                            
+                            
+                            
+             
+                            
+                            
+                            
+                            
+                        </li> 
+                    </c:forEach>
 
-                                </ul>
-
-                            </li>
-                            <li><a href="">Programar</a>
-                                <ul>
-                                    <li><a href="moduloEnvios/crearAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
-
-                                    <li><a href="moduloEnvios/crearRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="dashboard/HTML/Modulo mantenimiento/MODULO-MANTENIMIENTO.html" target="area-de-trabajo">Mantenimiento</a>
-                        <ul>
-                            <li><a href="">Programar</a>
-                                <ul>
-                                    <li><a href="moduloMantenimiento/registrarMantenimiento.xhtml"  target="area-de-trabajo">Mantenimiento</a></li>
-                                    <li><a href="moduloMantenimiento/registrarMantenimientoCilindro.xhtml"  target="area-de-trabajo">MantenimientoCilindro</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">Registrar</a>
-                                <ul>
-                                    <li><a href="moduloMantenimiento/registrarAgenda.xhtml"  target="area-de-trabajo">Agenda</a></li>
-                                    <li><a href="moduloMantenimiento/registrarCilindro.xhtml"  target="area-de-trabajo">Cilindro</a></li>
-                                </ul>
-
-                            </li>
-                            <li><a href="">Consultar</a>
-                                <ul>
-                                    <li><a href="moduloMantenimiento/listaAgenda.xhtml"  target="area-de-trabajo">Agenda</a></li>
-                                    <li><a href="moduloMantenimiento/listaCilindro.xhtml"  target="area-de-trabajo">Cilindro</a></li>
-                                    <li><a href="moduloMantenimiento/listaMantenimiento.xhtml"  target="area-de-trabajo">Mantenimiento</a></li>
-                                    <li><a href="moduloMantenimiento/listaMantenimientoCilindro.xhtml"  target="area-de-trabajo">MantenimientoCilindro</a></li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
-
-
-                    </li>
-                    <li><a href="dashboard/HTML/Modulo personal/MODULO-PERSONAL.html" target="area-de-trabajo">Personal</a>
-
-                        <ul>
-                            <li><a href="">Registrar</a>
-                                <ul>
-                                    <li><a href="moduloPersonal/RegistrarArchivo.xhtml"  target="area-de-trabajo">Archivo</a></li>
-                                    <li><a href="moduloPersonal/RegistrarEmpleado.xhtml"  target="area-de-trabajo">Empleado</a></li>
-                                    <li><a href="moduloPersonal/RegistrarPermisoLaboral.xhtml"  target="area-de-trabajo">Permiso</a></li>
-                                    <li><a href="moduloPersonal/RegistrarPunto.xhtml"  target="area-de-trabajo">Punto</a></li>
-                                    <li><a href="moduloPersonal/RegistrarTipoDePermiso.xhtml"  target="area-de-trabajo">Tp permiso</a></li>
-                                    <li><a href="moduloPersonal/RegistrarTipoTurno.xhtml"  target="area-de-trabajo">Tp Turno</a></li>
-                                    <li><a href="moduloPersonal/RegistrarTurno.xhtml"  target="area-de-trabajo">Turno</a></li>
-
-                                </ul>
-                            </li>
-                            <li><a href="">Consultar</a>
-                                <ul>
-
-                                    <li><a href="moduloPersonal/ListarArchivo.xhtml"  target="area-de-trabajo">Archivo</a></li>
-                                    <li><a href="moduloPersonal/ListaPunto.xhtml"  target="area-de-trabajo">Punto</a></li>
-                                    <li><a href="moduloPersonal/listaEmpleado.xhtml"  target="area-de-trabajo">Empleado</a></li>
-                                    <li><a href="moduloPersonal/ListaTipoTurno.xhtml"  target="area-de-trabajo">Tp turno</a></li>
-                                    <li><a href="moduloPersonal/ListarPermisoLaboral.xhtml"  target="area-de-trabajo">Permiso Laboral</a></li>
-                                    <li><a href="moduloPersonal/ListarTipoDePermiso.xhtml"  target="area-de-trabajo">Tp permiso</a></li>
-                                    <li><a href="moduloPersonal/ListarTurno.xhtml"  target="area-de-trabajo">Turno</a></li>
-
-                                </ul>
-
-                            </li>
-
-                        </ul>
-                    </li>
 
 
                 </ul>
+
+
+
+
+
+
+
+
+
+
+
+                <h:outputText value="#{usuarioControlador.obtenerMenu()}" escape="false"></h:outputText>
+                <!--                 <li><a href="dashboard/HTML/Modulo de envios/MODULO-ENVIOS.html" target="area-de-trabajo">Envios</a>
+                                     <ul>
+                                         <li><a href="">Crear</a>
+                                             <ul>
+                                                 <li><a href="moduloEnvios/crearCliente.xhtml" target="area-de-trabajo">Cliente</a></li>
+                                                 <li><a href="moduloEnvios/crearContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
+                                                 <li><a href="moduloEnvios/crearUsuario.xhtml" target="area-de-trabajo">Usuario</a></li>
+                                                 <li><a href="moduloEnvios/crearVehiculo.xhtml" target="area-de-trabajo">Vehiculo</a></li>
+                                                 <li><a href="moduloEnvios/crearSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
+                                             </ul>
+                                         </li>
+                                         <li><a href="">Consultar</a>
+                                             <ul>
+                                                 <li><a href="moduloEnvios/listaAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
+                                                 <li><a href="moduloEnvios/listaClientes.xhtml" target="area-de-trabajo">Cliente</a></li>
+                                                 <li><a href="moduloEnvios/listaContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
+                                                 <li><a href="moduloEnvios/listaRoles.xhtml" target="area-de-trabajo">Roles</a></li>
+                                                 <li><a href="moduloEnvios/listaRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
+                                                 <li><a href="moduloEnvios/listaVehiculos.xhtml" target="area-de-trabajo">Vehiculos</a></li>
+                                                 <li><a href="newTemplate.xhtml" target="area-de-trabajo">Usuarios</a></li>
+                                                 <li><a href="moduloEnvios/listaSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
+             
+                                             </ul>
+             
+                                         </li>
+                                         <li><a href="">Programar</a>
+                                             <ul>
+                                                 <li><a href="moduloEnvios/crearAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
+             
+                                                 <li><a href="moduloEnvios/crearRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
+             
+                                             </ul>
+             
+                                         </li>
+                                     </ul>
+                                 </li>
+                                 <li><a href="dashboard/HTML/Modulo mantenimiento/MODULO-MANTENIMIENTO.html" target="area-de-trabajo">Mantenimiento</a>
+                                     <ul>
+                                         <li><a href="">Programar</a>
+                                             <ul>
+                                                 <li><a href="moduloMantenimiento/registrarMantenimiento.xhtml"  target="area-de-trabajo">Mantenimiento</a></li>
+                                                 <li><a href="moduloMantenimiento/registrarMantenimientoCilindro.xhtml"  target="area-de-trabajo">MantenimientoCilindro</a></li>
+                                             </ul>
+                                         </li>
+                                         <li><a href="">Registrar</a>
+                                             <ul>
+                                                 <li><a href="moduloMantenimiento/registrarAgenda.xhtml"  target="area-de-trabajo">Agenda</a></li>
+                                                 <li><a href="moduloMantenimiento/registrarCilindro.xhtml"  target="area-de-trabajo">Cilindro</a></li>
+                                             </ul>
+             
+                                         </li>
+                                         <li><a href="">Consultar</a>
+                                             <ul>
+                                                 <li><a href="moduloMantenimiento/listaAgenda.xhtml"  target="area-de-trabajo">Agenda</a></li>
+                                                 <li><a href="moduloMantenimiento/listaCilindro.xhtml"  target="area-de-trabajo">Cilindro</a></li>
+                                                 <li><a href="moduloMantenimiento/listaMantenimiento.xhtml"  target="area-de-trabajo">Mantenimiento</a></li>
+                                                 <li><a href="moduloMantenimiento/listaMantenimientoCilindro.xhtml"  target="area-de-trabajo">MantenimientoCilindro</a></li>
+             
+                                             </ul>
+             
+                                         </li>
+                                     </ul>
+             
+             
+                                 </li>
+                                 <li><a href="dashboard/HTML/Modulo personal/MODULO-PERSONAL.html" target="area-de-trabajo">Personal</a>
+             
+                                     <ul>
+                                         <li><a href="">Registrar</a>
+                                             <ul>
+                                                 <li><a href="moduloPersonal/RegistrarArchivo.xhtml"  target="area-de-trabajo">Archivo</a></li>
+                                                 <li><a href="moduloPersonal/RegistrarEmpleado.xhtml"  target="area-de-trabajo">Empleado</a></li>
+                                                 <li><a href="moduloPersonal/RegistrarPermisoLaboral.xhtml"  target="area-de-trabajo">Permiso</a></li>
+                                                 <li><a href="moduloPersonal/RegistrarPunto.xhtml"  target="area-de-trabajo">Punto</a></li>
+                                                 <li><a href="moduloPersonal/RegistrarTipoDePermiso.xhtml"  target="area-de-trabajo">Tp permiso</a></li>
+                                                 <li><a href="moduloPersonal/RegistrarTipoTurno.xhtml"  target="area-de-trabajo">Tp Turno</a></li>
+                                                 <li><a href="moduloPersonal/RegistrarTurno.xhtml"  target="area-de-trabajo">Turno</a></li>
+             
+                                             </ul>
+                                         </li>
+                                         <li><a href="">Consultar</a>
+                                             <ul>
+             
+                                                 <li><a href="moduloPersonal/ListarArchivo.xhtml"  target="area-de-trabajo">Archivo</a></li>
+                                                 <li><a href="moduloPersonal/ListaPunto.xhtml"  target="area-de-trabajo">Punto</a></li>
+                                                 <li><a href="moduloPersonal/listaEmpleado.xhtml"  target="area-de-trabajo">Empleado</a></li>
+                                                 <li><a href="moduloPersonal/ListaTipoTurno.xhtml"  target="area-de-trabajo">Tp turno</a></li>
+                                                 <li><a href="moduloPersonal/ListarPermisoLaboral.xhtml"  target="area-de-trabajo">Permiso Laboral</a></li>
+                                                 <li><a href="moduloPersonal/ListarTipoDePermiso.xhtml"  target="area-de-trabajo">Tp permiso</a></li>
+                                                 <li><a href="moduloPersonal/ListarTurno.xhtml"  target="area-de-trabajo">Turno</a></li>
+             
+                                             </ul>
+             
+                                         </li>
+             
+                                     </ul>
+                                 </li>
+                -->
+
             </nav>
             <section>
                 <iframe name="area-de-trabajo" src=""></iframe>

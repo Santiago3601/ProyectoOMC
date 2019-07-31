@@ -42,10 +42,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Mantenimiento.findByFechaFinalMantenimiento", query = "SELECT m FROM Mantenimiento m WHERE m.fechaFinalMantenimiento = :fechaFinalMantenimiento")})
 public class Mantenimiento implements Serializable {
 
-    @JoinColumn(name = "estado_mantenimiento", referencedColumnName = "id_estado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private EstadoMantenimiento estadoMantenimiento;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -156,14 +152,6 @@ public class Mantenimiento implements Serializable {
     @Override
     public String toString() {
         return "entidades.Mantenimiento[ idMantenimiento=" + idMantenimiento + " ]";
-    }
-
-    public EstadoMantenimiento getEstadoMantenimiento() {
-        return estadoMantenimiento;
-    }
-
-    public void setEstadoMantenimiento(EstadoMantenimiento estadoMantenimiento) {
-        this.estadoMantenimiento = estadoMantenimiento;
     }
     
 }

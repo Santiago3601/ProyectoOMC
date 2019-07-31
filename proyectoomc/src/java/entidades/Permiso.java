@@ -71,6 +71,9 @@ public class Permiso implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Permiso permisoPadre;
 
+    @OneToMany(mappedBy = "permisoPadre", fetch = FetchType.LAZY)
+    private List<Permiso> subPermisos;
+
     public Permiso() {
     }
 
@@ -126,6 +129,16 @@ public class Permiso implements Serializable {
     }
 
     @XmlTransient
+
+    public List<Permiso> getSubPermisos() {
+        return subPermisos;
+
+    }
+
+    public void setSubPermisos(List<Permiso> subPermisos) {
+        this.subPermisos = subPermisos;
+    }
+
     public List<Permiso> getPermisoList() {
         return permisoList;
     }
@@ -166,5 +179,5 @@ public class Permiso implements Serializable {
     public String toString() {
         return "entidades.Permiso[ idPermiso=" + idPermiso + " ]";
     }
-    
+
 }

@@ -8,7 +8,7 @@ package controlador;
 import entidades.Permiso;
 import entidades.Rol;
 //import entidades.RolTienePermiso;
-import entidades.Usuario;
+import entidades.*;
 import facade.RolFacade;
 import facade.UsuarioFacade;
 import javax.inject.Named;
@@ -101,13 +101,13 @@ public class usuarioControlador implements Serializable {
             Usuario usuarioLogueado = usuarioFacade.login(usuario);
             if (usuarioLogueado != null) {
                 rol = usuarioLogueado.getRolidRol();
-                
+
                 for (Permiso permiso : usuarioLogueado.getRolidRol().getPermisoList()) {
 
-                        System.out.println("Permisos " + permiso.getNombre());
-  
+                    System.out.println("Permisos " + permiso.getNombre());
+
                 }
-                
+
                 System.out.println("usuarioLogeado " + usuarioLogueado.getNombre());
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("sesionLogin", usuarioLogueado);
                 switch (usuarioLogueado.getRolidRol().getIdRol()) {
@@ -139,4 +139,14 @@ public class usuarioControlador implements Serializable {
         return redirecionar;
     }
 
+    public String obtenerMenu() {
+        String strHTML = "";
+        for (Permiso p : rol.getPermisoList()) {
+            strHTML += "<li>";
+            strHTML += "<a>" + p.getNombre() + "</a>";
+            strHTML += "</li>";
+
+        }
+        return strHTML;
+    }
 }
