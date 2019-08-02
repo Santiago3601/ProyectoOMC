@@ -1,24 +1,24 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-       xmlns:pt="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
-        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
 
-        <title>OMC</title>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
     </h:head>
+
     <h:body>
-         <div id="form"> 
+
         <f:view>
 
 
-
             <h:form>
-                <h1><h:outputText value="Registrar Permiso laboral"/></h1>
+                <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="IdPermisoLaboral:" for="idPermisoLaboral" />
                     <h:inputText id="idPermisoLaboral" value="#{permisoLaboralControlador.permisoLaboral.idPermisoLaboral}" title="IdPermisoLaboral" required="true" requiredMessage="The IdPermisoLaboral field is required."/>
@@ -32,21 +32,17 @@
                     </h:inputText>
                     <h:outputLabel value="Obvservaciones:" for="obvservaciones" />
                     <h:inputText id="obvservaciones" value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" />
-                    
-                    <h:outputLabel value="IdEmpleado:" for="empleadoIdEmpleado" />
+                    <h:outputLabel value="EmpleadoIdEmpleado:" for="empleadoIdEmpleado" />
                     <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.permisoLaboral.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="empl" itemValue="#{empl.idEmpleado}" itemLabel="#{empl.idEmpleado}" />
-                        
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.idEmpleado}" />
                     </h:selectOneMenu>
-                    
+                    <h:commandButton action ="#{permisoLaboralControlador.registrarp()}" value="registrar"/>
                 </h:panelGrid>
-                <h:commandButton action="#{permisoLaboralControlador.registrarp()}" value="registrar"/>
             </h:form>
-
-         
         </f:view>
-         </div>
-    </h:body>
-</html>
 
+
+    </h:body>
+
+</html>

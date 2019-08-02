@@ -16,47 +16,71 @@
 
 
             <h:form>
-                <h1><h:outputText value="Listar Turno"/></h1>
-                <p:dataTable id="ListaTurno" value="#{turnoControlador.consultarTodos()}" var="item">
-                    <p:column filterBy="#{item.idTurno}">
+                <h1><h:outputText value="Lista Turno"/></h1>
+                <p:dataTable value="#{turnoControlador.consultarTodos()}" var="item">
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="IdTurno"/>
                         </f:facet>
                         <h:outputText value="#{item.idTurno}"/>
                     </p:column>
-                    <p:column filterBy="#{item.programacion}">
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Programacion"/>
                         </f:facet>
                         <h:outputText value="#{item.programacion}"/>
                     </p:column>
-                    <p:column filterBy="#{item.fecha}">
+                    <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Fecha"/>
+                            <h:outputText value="Hora Ingreso"/>
                         </f:facet>
-                        <h:outputText value="#{item.fecha}">
+                        <h:outputText value="#{item.horaIngreso}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Horas Salida"/>
+                        </f:facet>
+                        <h:outputText value="#{item.horasSalida}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Fecha Inicial"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fechaInicial}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
                     </p:column>
-                    <p:column filterBy="#{item.empleadoIdEmpleado.idEmpleado}">
+                    <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Codigo Empleado"/>
+                            <h:outputText value="Fecha Final"/>
                         </f:facet>
-                        <h:outputText value="#{item.empleadoIdEmpleado.idEmpleado}"/>
-                    </p:column>
-                    <p:column filterBy="#{item.puntoIdPuntos.horasLaboradas}">
-                        <f:facet name="header">
-                            <h:outputText value="Codigo Punto"/>
-                        </f:facet>
-                        <h:outputText value="#{item.puntoIdPuntos.horasLaboradas}"/>
-                    </p:column>
-                    <p:column filterBy="#{item.tipoTurnoIdTipoTurno.idTipoTurno}">
-                        <f:facet name="header">
-                            <h:outputText value="Codigo Tipo Turno"/>
-                        </f:facet>
-                        <h:outputText value="#{item.tipoTurnoIdTipoTurno.idTipoTurno}"/>
+                        <h:outputText value="#{item.fechaFinal}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
                     </p:column>
                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Observaciones"/>
+                        </f:facet>
+                        <h:outputText value="#{item.observaciones}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Puntos"/>
+                        </f:facet>
+                        <h:outputText value="#{item.puntoIdPuntos.cantidad}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdEmpleado"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idEmpleado}"/>
+                    </p:column>
+                     <p:column>
                         <f:facet name="header" class="thead">
                             <h:outputText value="Opciones"/>
                         </f:facet>
@@ -71,6 +95,7 @@
             </h:form>
         </f:view>
 
+   
     </h:body>
 </html>
 

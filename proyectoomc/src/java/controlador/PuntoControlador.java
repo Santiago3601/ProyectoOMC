@@ -44,9 +44,10 @@ public class PuntoControlador implements Serializable {
     }
 
     //METODOS
-    public void registrar() {
+    public String registrar() {
         puntoFacade.create(punto);
         punto = new Punto();
+        return "RegistrarPunto";
     }
 
     public List<Punto> consultarTodos() {

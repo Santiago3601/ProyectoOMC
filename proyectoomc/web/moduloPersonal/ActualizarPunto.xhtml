@@ -11,8 +11,9 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-          <div id="form"> 
+        <div id="form"> 
         <f:view>
+
 
 
             <h:form>
@@ -20,12 +21,18 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="IdPunto:" for="idPunto" />
                     <h:inputText id="idPunto" value="#{puntoControlador.punto.idPunto}" title="IdPunto" required="true" requiredMessage="The IdPunto field is required."/>
-                    <h:outputLabel value="HorasLaboradas:" for="horasLaboradas" />
-                    <h:inputText id="horasLaboradas" value="#{puntoControlador.punto.horasLaboradas}" title="HorasLaboradas" required="true" requiredMessage="The HorasLaboradas field is required."/>
-                    <h:commandButton action ="#{puntoControlador.actualizar()}" value="Actualizar"/>
+                    <h:outputLabel value="Cantidad:" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{puntoControlador.punto.cantidad}" title="Cantidad" required="true" requiredMessage="The Cantidad field is required."/>
+                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{puntoControlador.punto.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
                 </h:panelGrid>
+                <h:commandButton action="#{puntoControlador.actualizar()}" value="Actualizar"/>
             </h:form>
+
+            
         </f:view>
- </div>
+            </div>
+
     </h:body>
 </html>
+
