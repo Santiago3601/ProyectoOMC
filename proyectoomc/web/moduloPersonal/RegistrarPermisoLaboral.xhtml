@@ -3,40 +3,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      >
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>Facelets Template</title>
+        <title>Registrar Permiso Laboral</title>
     </h:head>
 
     <h:body>
 
-        <f:view>
+        <f:view locale="#{sessionController.languageSelected}">
 
-
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    #{msjApp.idioma} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <c:forEach items="#{sessionController.supportLanguages}" var="l" >
+                        <li>
+                            <h:commandLink  value="#{msjApp[l.displayLanguage]}" action="#{sessionController.cambiarIdioma(l)}">
+                                <img src="#{request.contextPath}/resources/img/languages/#{l.language}.png" width="25px" alt="#{msjApp[l.displayLanguage]}"/>
+                            </h:commandLink>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
             <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
+                <h1><h:outputText value="Registrar Permiso Laboral"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="IdPermisoLaboral:" for="idPermisoLaboral" />
-                    <h:inputText id="idPermisoLaboral" value="#{permisoLaboralControlador.permisoLaboral.idPermisoLaboral}" title="IdPermisoLaboral" required="true" requiredMessage="The IdPermisoLaboral field is required."/>
-                    <h:outputLabel value="HoraPermiso:" for="horaPermiso" />
-                    <h:inputText id="horaPermiso" value="#{permisoLaboralControlador.permisoLaboral.horaPermiso}" title="HoraPermiso" required="true" requiredMessage="The HoraPermiso field is required.">
+                    <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtHoraPermiso}" for="horaPermiso" />
+                    <h:inputText id="horaPermiso" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtHoraPermiso}" value="#{permisoLaboralControlador.permisoLaboral.horaPermiso}" title="HoraPermiso" required="true" requiredMessage="The HoraPermiso field is required.">
                         <f:convertDateTime pattern="HH:mm:ss" />
                     </h:inputText>
                     <h:outputLabel value="FechaPermiso:" for="fechaPermiso" />
                     <h:inputText id="fechaPermiso" value="#{permisoLaboralControlador.permisoLaboral.fechaPermiso}" title="FechaPermiso" required="true" requiredMessage="The FechaPermiso field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
                     </h:inputText>
                     <h:outputLabel value="Obvservaciones:" for="obvservaciones" />
                     <h:inputText id="obvservaciones" value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" />
                     <h:outputLabel value="EmpleadoIdEmpleado:" for="empleadoIdEmpleado" />
-                    <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.permisoLaboral.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+
+                    <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.idEmpleado}" />
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.id}" />
                     </h:selectOneMenu>
+
                     <h:commandButton action ="#{permisoLaboralControlador.registrarp()}" value="registrar"/>
                 </h:panelGrid>
             </h:form>
