@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
@@ -11,30 +12,38 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-           <div id="form"> 
-        <f:view>
+        <div id="form"> 
 
 
-            <h:form>
-                <h1><h:outputText value="Crear Solicitud"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="No. Solicitud:" for="idSolicitud" />
-                    <h:inputText id="idSolicitud" value="#{solicitudControlador.solicitud.idSolicitud}" title="IdSolicitud" required="true" requiredMessage="The IdSolicitud field is required."/>
-                    <h:outputLabel value="Tamaño del cilindro:" for="tamanioCilindro" />
-                    <h:inputText id="tamanioCilindro" value="#{solicitudControlador.solicitud.tamanioCilindro}" title="TamanioCilindro" required="true" requiredMessage="The TamanioCilindro field is required."/>
-                    <h:outputLabel value="Nombre del cliente:" for="clienteIdCliente" />
-                    <h:selectOneMenu id="clienteIdCliente" value="#{solicitudControlador.cliente.idCliente}" title="ClienteIdCliente" required="true" requiredMessage="The ClienteIdCliente field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{clienteControlador.consultarTodos()}" var="cli" itemValue="#{cli.idCliente}" itemLabel="#{cli.usuarioId.nombre} #{cli.usuarioId.apellido}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="Formula:" for="formula" />
-                    <h:inputTextarea rows="4" cols="30" id="formula" value="#{solicitudControlador.solicitud.formula}" title="Formula" required="true" requiredMessage="The Formula field is required."/>
-                </h:panelGrid>
-                <h:commandButton action="#{solicitudControlador.registrarSolicitud()}" value="Registrar Solicitud" />
-            </h:form>
-        </f:view>
 
-           </div>
+            <f:view>
+
+
+                <h:form enctype="multipart/form-data">
+                    <h1><h:outputText value="Crear Solicitud"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="No. Solicitud:" for="idSolicitud" />
+                        <h:inputText id="idSolicitud" value="#{solicitudControlador.solicitud.idSolicitud}" title="IdSolicitud" required="true" requiredMessage="The IdSolicitud field is required."/>
+                        <h:outputLabel value="Tamaño del cilindro:" for="tamanioCilindro" />
+                        <h:inputText id="tamanioCilindro" value="#{solicitudControlador.solicitud.tamanioCilindro}" title="TamanioCilindro" required="true" requiredMessage="The TamanioCilindro field is required."/>
+                        <h:outputLabel value="Nombre del cliente:" for="clienteIdCliente" />
+                        <h:selectOneMenu id="clienteIdCliente" value="#{solicitudControlador.cliente.idCliente}" title="ClienteIdCliente" required="true" requiredMessage="The ClienteIdCliente field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{clienteControlador.consultarTodos()}" var="cli" itemValue="#{cli.idCliente}" itemLabel="#{cli.usuarioId.nombre} #{cli.usuarioId.apellido}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="Formula:" for="formula" />
+                        <p:growl id="messages" showDetail="true" />
+
+                        <p:fileUpload value="#{solicitudControlador.solicitud.formula}" mode="simple" skinSimple="true" allowTypes="pdf"/>
+
+                        <br /> <br />
+
+                    </h:panelGrid>
+                    <h:commandButton  action="#{solicitudControlador.registrarSolicitud()}" value="Registrar Solicitud" />
+                </h:form>
+            </f:view>
+
+        </div>
     </h:body>
 </html>
 

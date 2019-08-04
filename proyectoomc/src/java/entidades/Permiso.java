@@ -69,14 +69,15 @@ public class Permiso implements Serializable {
         @JoinColumn(name = "rol_idRol", referencedColumnName = "idRol")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Rol> rolList;
+    
     @OneToMany(mappedBy = "permisoPadre", fetch = FetchType.LAZY)
-    private List<Permiso> permisoList;
+    private List<Permiso> subPermisos;
+    
     @JoinColumn(name = "permiso_padre", referencedColumnName = "id_permiso")
     @ManyToOne(fetch = FetchType.LAZY)
     private Permiso permisoPadre;
 
-    @OneToMany(mappedBy = "permisoPadre", fetch = FetchType.LAZY)
-    private List<Permiso> subPermisos;
+
 
     public Permiso() {
     }
@@ -133,22 +134,12 @@ public class Permiso implements Serializable {
     }
 
     @XmlTransient
-
     public List<Permiso> getSubPermisos() {
         return subPermisos;
-
     }
 
     public void setSubPermisos(List<Permiso> subPermisos) {
         this.subPermisos = subPermisos;
-    }
-
-    public List<Permiso> getPermisoList() {
-        return permisoList;
-    }
-
-    public void setPermisoList(List<Permiso> permisoList) {
-        this.permisoList = permisoList;
     }
 
     public Permiso getPermisoPadre() {

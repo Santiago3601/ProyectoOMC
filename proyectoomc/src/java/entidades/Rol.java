@@ -84,12 +84,12 @@ public class Rol implements Serializable {
     }
 
     @XmlTransient
-    public List<Permiso> getPermisoList() {
-        return permisoList;
-    }
-
     public void setPermisoList(List<Permiso> permisoList) {
         this.permisoList = permisoList;
+    }
+
+    public List<Permiso> getPermisoList() {
+        return permisoList;
     }
 
     @XmlTransient
@@ -134,5 +134,5 @@ public class Rol implements Serializable {
     public void setRolTienePermisoList(List<RolTienePermiso> rolTienePermisoList) {
         this.rolTienePermisoList = rolTienePermisoList;
     }
-    
+
 }
