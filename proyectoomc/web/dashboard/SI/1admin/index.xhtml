@@ -67,7 +67,7 @@
 
                                     <script>
                                         $(document).ready(function () {
-                                        $('[data-toggle="popover"]').popover();
+                                            $('[data-toggle="popover"]').popover();
                                         });
                                     </script>
 
@@ -103,44 +103,41 @@
             <nav id="options" class="barra-navega">
                 <ul>
                     <c:forEach items="#{usuarioControlador.rol.permisoList}" var="p">
-                        <li>
-                            <c:if test="#{empty p.permisoPadre}">
-                                <a >
-                                    #{p.nombre}
-                                </a>
+                        <c:if test="#{empty p.permisoPadre}">
+                            <li>
+                                <c:if test="#{empty p.permisoPadre}">
+                                    <a >
+                                        #{p.nombre}
+                                    </a>
+                                </c:if>
                                 <ul>
-
-                                    <c:forEach items="#{usuarioControlador.rol.permisoList}" var="p">
+                                    <c:forEach items="#{p.subPermisos}" var="sp">
                                         <li>
-                                            <c:if test="#{empty p.permisoPadre}">
-                                                <a >
-                                                    #{p.nombre}
-                                                </a>
-
-
-                                                <c:forEach items="#{p.subPermisos}" var="sp">
-                                                    <c:forEach items="#{sessionController.rolSeleccionado.permisos}" var="op">
-                                                        <c:if test="#{sp.id eq op.id}">
-                                                            <li>
-                                                                <a href="#{sp.url}" >
-                                                                    #{sp.nombre} 
-                                                                </a>
-                                                            </li>
-                                                        </c:if>
-                                                    </c:forEach>
+                                            <a >
+                                                #{sp.nombre}
+                                            </a>
+                                            <ul>
+                                                <c:forEach items="#{sp.subPermisos}" var="ssp">
+                                                    <li>
+                                                        <a href="#{ssp.url}" target="area-de-trabajo">
+                                                            #{ssp.nombre}
+                                                        </a>
+                                                    </li>
                                                 </c:forEach>
-                                            </c:if>
+                                            </ul>
                                         </li>
                                     </c:forEach>
                                 </ul>
-                            </c:if>
-                        </li>
+                            </li>
+                        </c:if>
+
                     </c:forEach>
-
-
-
-
                 </ul>
+
+
+
+
+
             </nav>
             <section>
                 <iframe name="area-de-trabajo" src=""></iframe>
