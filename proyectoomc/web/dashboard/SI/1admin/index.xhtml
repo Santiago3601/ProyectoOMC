@@ -101,52 +101,45 @@
         <div id="contenedor" >
             <!-- Navegador -->
             <nav id="options" class="barra-navega">
-
-
-                m
                 <ul>
-                    <li><a >Envios</a>
-                        <ul>
-                            <li><a href="">Programar</a>
-                                <ul>
-                                    <li><a href="moduloEnvios/crearAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
-                                    <li><a href="moduloEnvios/crearRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-                    
-                    
-                    
-                    
-                    
                     <c:forEach items="#{usuarioControlador.rol.permisoList}" var="p">
-                    <li>
-                        <c:if test="#{empty p.permisoPadre}">
-                            <a >
-                                #{p.nombre}
-                            </a>
-                            <ul>
-                                <c:forEach items="#{p.subPermisos}" var="sp">
-                                    <c:forEach items="#{sessionController.rolSeleccionado.permisos}" var="op">
-                                        <c:if test="#{sp.id eq op.id}">
-                                            <li>
-                                                <a href="#{sp.url}" >
-                                                    <i class="fa fa-desktop "></i>#{sp.nombre} <span class="badge">2</span>
+                        <li>
+                            <c:if test="#{empty p.permisoPadre}">
+                                <a >
+                                    #{p.nombre}
+                                </a>
+                                <ul>
+
+                                    <c:forEach items="#{usuarioControlador.rol.permisoList}" var="p">
+                                        <li>
+                                            <c:if test="#{empty p.permisoPadre}">
+                                                <a >
+                                                    #{p.nombre}
                                                 </a>
-                                            </li>
-                                        </c:if>
+
+
+                                                <c:forEach items="#{p.subPermisos}" var="sp">
+                                                    <c:forEach items="#{sessionController.rolSeleccionado.permisos}" var="op">
+                                                        <c:if test="#{sp.id eq op.id}">
+                                                            <li>
+                                                                <a href="#{sp.url}" >
+                                                                    #{sp.nombre} 
+                                                                </a>
+                                                            </li>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:forEach>
+                                            </c:if>
+                                        </li>
                                     </c:forEach>
-                                </c:forEach>
-                            </ul>
-                        </c:if>
-                    </li>
-                </c:forEach>
-                    
-                    
-                    
-                    
+                                </ul>
+                            </c:if>
+                        </li>
+                    </c:forEach>
+
+
+
+
                 </ul>
             </nav>
             <section>
