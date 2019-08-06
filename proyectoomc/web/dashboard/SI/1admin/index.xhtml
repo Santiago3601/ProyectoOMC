@@ -101,187 +101,42 @@
         <div id="contenedor" >
             <!-- Navegador -->
             <nav id="options" class="barra-navega">
-                <li><a href="dashboard/HTML/Modulo de envios/MODULO-ENVIOS.html" target="area-de-trabajo">Envios</a>
-                                     <ul>
-                                         <li><a href="">Crear</a>
-                                             <ul>
-                                                 <li><a href="moduloEnvios/crearCliente.xhtml" target="area-de-trabajo">Cliente</a></li>
-                                                 <li><a href="moduloEnvios/crearContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
-                                                 <li><a href="moduloEnvios/crearUsuario.xhtml" target="area-de-trabajo">Usuario</a></li>
-                                                 <li><a href="moduloEnvios/crearVehiculo.xhtml" target="area-de-trabajo">Vehiculo</a></li>
-                                                 <li><a href="moduloEnvios/crearSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
-                                             </ul>
-                                         </li>
-                                         <li><a href="">Consultar</a>
-                                             <ul>
-                                                 <li><a href="moduloEnvios/listaAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
-                                                 <li><a href="moduloEnvios/listaClientes.xhtml" target="area-de-trabajo">Cliente</a></li>
-                                                 <li><a href="moduloEnvios/listaContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
-                                                 <li><a href="moduloEnvios/listaRoles.xhtml" target="area-de-trabajo">Roles</a></li>
-                                                 <li><a href="moduloEnvios/listaRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
-                                                 <li><a href="moduloEnvios/listaVehiculos.xhtml" target="area-de-trabajo">Vehiculos</a></li>
-                                                 <li><a href="newTemplate.xhtml" target="area-de-trabajo">Usuarios</a></li>
-                                                 <li><a href="moduloEnvios/listaSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
-             
-                                             </ul>
-             
-                                         </li>
-                                         <li><a href="">Programar</a>
-                                             <ul>
-                                                 <li><a href="moduloEnvios/crearAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
-             
-                                                 <li><a href="moduloEnvios/crearRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
-             
-                                             </ul>
-             
-                                         </li>
-                                     </ul>
-                                 </li>
                 <ul>
-                    <c:forEach items="#{usuarioControlador.rol.permisoList}" var="admin">
-                        <li>
-                    
-                            
-                            
-                            
-                            
-                            <c:if test="#{empty admin.permisoPadre}">
-                                <a href="#{admin.url}">
-                                    X
-                                </a>
+                    <c:forEach items="#{usuarioControlador.rol.permisoList}" var="p">
+                        <c:if test="#{empty p.permisoPadre}">
+                            <li>
+                                <c:if test="#{empty p.permisoPadre}">
+                                    <a >
+                                        #{p.nombre}
+                                    </a>
+                                </c:if>
                                 <ul>
-                                    <c:forEach items="#{admin.subPermisos}" var="sp">
-
-                                        <c:forEach items="#{usuarioControlador.rol.permisoList}" var="op">
-                                            <c:if test="#{sp.idPermiso eq op.idPermiso}">
-                                                <li>
-                                                    <a href="#{sp.url}" target="area-de-trabajo">
-                                                        #{sp.nombre} 
-                                                    </a>
-                                                </li>
-                                            </c:if>                                           
-                                        </c:forEach>  
+                                    <c:forEach items="#{p.subPermisos}" var="sp">
+                                        <li>
+                                            <a >
+                                                #{sp.nombre}
+                                            </a>
+                                            <ul>
+                                                <c:forEach items="#{sp.subPermisos}" var="ssp">
+                                                    <li>
+                                                        <a href="#{ssp.url}" target="area-de-trabajo">
+                                                            #{ssp.nombre}
+                                                        </a>
+                                                    </li>
+                                                </c:forEach>
+                                            </ul>
+                                        </li>
                                     </c:forEach>
                                 </ul>
-                            </c:if>
-                            
-                            
-                        </li> 
+                            </li>
+                        </c:if>
+
                     </c:forEach>
-
-
-
                 </ul>
 
 
 
 
-
-
-
-
-
-
-
-                <h:outputText value="#{usuarioControlador.obtenerMenu()}" escape="false"></h:outputText>
-                <!--                 <li><a href="dashboard/HTML/Modulo de envios/MODULO-ENVIOS.html" target="area-de-trabajo">Envios</a>
-                                     <ul>
-                                         <li><a href="">Crear</a>
-                                             <ul>
-                                                 <li><a href="moduloEnvios/crearCliente.xhtml" target="area-de-trabajo">Cliente</a></li>
-                                                 <li><a href="moduloEnvios/crearContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
-                                                 <li><a href="moduloEnvios/crearUsuario.xhtml" target="area-de-trabajo">Usuario</a></li>
-                                                 <li><a href="moduloEnvios/crearVehiculo.xhtml" target="area-de-trabajo">Vehiculo</a></li>
-                                                 <li><a href="moduloEnvios/crearSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
-                                             </ul>
-                                         </li>
-                                         <li><a href="">Consultar</a>
-                                             <ul>
-                                                 <li><a href="moduloEnvios/listaAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
-                                                 <li><a href="moduloEnvios/listaClientes.xhtml" target="area-de-trabajo">Cliente</a></li>
-                                                 <li><a href="moduloEnvios/listaContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
-                                                 <li><a href="moduloEnvios/listaRoles.xhtml" target="area-de-trabajo">Roles</a></li>
-                                                 <li><a href="moduloEnvios/listaRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
-                                                 <li><a href="moduloEnvios/listaVehiculos.xhtml" target="area-de-trabajo">Vehiculos</a></li>
-                                                 <li><a href="newTemplate.xhtml" target="area-de-trabajo">Usuarios</a></li>
-                                                 <li><a href="moduloEnvios/listaSolicitud.xhtml" target="area-de-trabajo">Solicitud</a></li>
-             
-                                             </ul>
-             
-                                         </li>
-                                         <li><a href="">Programar</a>
-                                             <ul>
-                                                 <li><a href="moduloEnvios/crearAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
-             
-                                                 <li><a href="moduloEnvios/crearRuta.xhtml" target="area-de-trabajo">Ruta</a></li>
-             
-                                             </ul>
-             
-                                         </li>
-                                     </ul>
-                                 </li>
-                                 <li><a href="dashboard/HTML/Modulo mantenimiento/MODULO-MANTENIMIENTO.html" target="area-de-trabajo">Mantenimiento</a>
-                                     <ul>
-                                         <li><a href="">Programar</a>
-                                             <ul>
-                                                 <li><a href="moduloMantenimiento/registrarMantenimiento.xhtml"  target="area-de-trabajo">Mantenimiento</a></li>
-                                                 <li><a href="moduloMantenimiento/registrarMantenimientoCilindro.xhtml"  target="area-de-trabajo">MantenimientoCilindro</a></li>
-                                             </ul>
-                                         </li>
-                                         <li><a href="">Registrar</a>
-                                             <ul>
-                                                 <li><a href="moduloMantenimiento/registrarAgenda.xhtml"  target="area-de-trabajo">Agenda</a></li>
-                                                 <li><a href="moduloMantenimiento/registrarCilindro.xhtml"  target="area-de-trabajo">Cilindro</a></li>
-                                             </ul>
-             
-                                         </li>
-                                         <li><a href="">Consultar</a>
-                                             <ul>
-                                                 <li><a href="moduloMantenimiento/listaAgenda.xhtml"  target="area-de-trabajo">Agenda</a></li>
-                                                 <li><a href="moduloMantenimiento/listaCilindro.xhtml"  target="area-de-trabajo">Cilindro</a></li>
-                                                 <li><a href="moduloMantenimiento/listaMantenimiento.xhtml"  target="area-de-trabajo">Mantenimiento</a></li>
-                                                 <li><a href="moduloMantenimiento/listaMantenimientoCilindro.xhtml"  target="area-de-trabajo">MantenimientoCilindro</a></li>
-             
-                                             </ul>
-             
-                                         </li>
-                                     </ul>
-             
-             
-                                 </li>
-                                 <li><a href="dashboard/HTML/Modulo personal/MODULO-PERSONAL.html" target="area-de-trabajo">Personal</a>
-             
-                                     <ul>
-                                         <li><a href="">Registrar</a>
-                                             <ul>
-                                                 <li><a href="moduloPersonal/RegistrarArchivo.xhtml"  target="area-de-trabajo">Archivo</a></li>
-                                                 <li><a href="moduloPersonal/RegistrarEmpleado.xhtml"  target="area-de-trabajo">Empleado</a></li>
-                                                 <li><a href="moduloPersonal/RegistrarPermisoLaboral.xhtml"  target="area-de-trabajo">Permiso</a></li>
-                                                 <li><a href="moduloPersonal/RegistrarPunto.xhtml"  target="area-de-trabajo">Punto</a></li>
-                                                 <li><a href="moduloPersonal/RegistrarTipoDePermiso.xhtml"  target="area-de-trabajo">Tp permiso</a></li>
-                                                 <li><a href="moduloPersonal/RegistrarTipoTurno.xhtml"  target="area-de-trabajo">Tp Turno</a></li>
-                                                 <li><a href="moduloPersonal/RegistrarTurno.xhtml"  target="area-de-trabajo">Turno</a></li>
-             
-                                             </ul>
-                                         </li>
-                                         <li><a href="">Consultar</a>
-                                             <ul>
-             
-                                                 <li><a href="moduloPersonal/ListarArchivo.xhtml"  target="area-de-trabajo">Archivo</a></li>
-                                                 <li><a href="moduloPersonal/ListaPunto.xhtml"  target="area-de-trabajo">Punto</a></li>
-                                                 <li><a href="moduloPersonal/listaEmpleado.xhtml"  target="area-de-trabajo">Empleado</a></li>
-                                                 <li><a href="moduloPersonal/ListaTipoTurno.xhtml"  target="area-de-trabajo">Tp turno</a></li>
-                                                 <li><a href="moduloPersonal/ListarPermisoLaboral.xhtml"  target="area-de-trabajo">Permiso Laboral</a></li>
-                                                 <li><a href="moduloPersonal/ListarTipoDePermiso.xhtml"  target="area-de-trabajo">Tp permiso</a></li>
-                                                 <li><a href="moduloPersonal/ListarTurno.xhtml"  target="area-de-trabajo">Turno</a></li>
-             
-                                             </ul>
-             
-                                         </li>
-             
-                                     </ul>
-                                 </li>
-                -->
 
             </nav>
             <section>

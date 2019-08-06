@@ -5,14 +5,17 @@
  */
 package controlador;
 
+import com.mysql.jdbc.PreparedStatement;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import facade.*;
 import entidades.*;
+import java.sql.DriverManager;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 
 /**
  *
@@ -70,12 +73,13 @@ public class solicitudControlador implements Serializable {
     }
 
     public String registrarSolicitud() {
+        
         solicitud.setClienteIdCliente(clienteFacade.find(cliente.getIdCliente()));
         solicitudFacade.create(solicitud);
         solicitud = new Solicitud();
         return "listaSolicitud";
 
-    }
+  }
 
     public void eliminarSolicitud(Solicitud s) {
         this.solicitudFacade.remove(s);
