@@ -73,12 +73,13 @@ public class EmpleadoControlador implements Serializable {
 
     //metodos
     public String registrar() {
-        empleado.setUsuarioId(usuarioFacade.find(usuario.getId()));
-        empleado.setTurnoIdTurno(turnoFacade.find(turno.getIdTurno()));
-        empleadoFacade.create(empleado);
-        empleado = new Empleado();
-        return "listaEmpleado";
+       empleado.setUsuarioId(usuarioFacade.find(usuario.getId()));
+       empleado.setTurnoIdTurno(turnoFacade.find(turno.getIdTurno()));
+       empleadoFacade.create(empleado);
+       empleado = new Empleado();
+       return "listaEmpleado";
     }
+    
 
     public List<Empleado> consultarTodos() {
         return empleadoFacade.findAll();

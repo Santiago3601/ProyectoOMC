@@ -16,13 +16,39 @@
         </resource-bundle>
         
         <resource-bundle>
+            <base-name>language.ActualizarPermisoLaboral-es</base-name>
+            <var>msjActualizarPermisoLaboral</var>
+        </resource-bundle>
+        
+        <resource-bundle>
             <base-name>language.App</base-name>
             <var>msjApp</var>
         </resource-bundle>
         
         <resource-bundle>
-            <base-name>language.ActualizarEmpleado-es</base-name>
-            <var>msjActualizarEmpleado</var>
+            <base-name>language.RegistrarTurno-es</base-name>
+            <var>msjRegistrarTurno</var>
         </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>language.ActualizarTurno-es</base-name>
+            <var>msjActualizarTurno</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>language.RegistrarPunto-es</base-name>
+            <var>msjRegistrarPunto</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>language.ActualizarPunto-es</base-name>
+            <var>msjActualizarPunto</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>language.RegistrarHorario-es</base-name>
+            <var>msjRegistrarHorario</var>
+        </resource-bundle>
+        
     </application>
 </faces-config>

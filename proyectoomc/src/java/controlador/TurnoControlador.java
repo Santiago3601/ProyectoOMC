@@ -85,6 +85,7 @@ public class TurnoControlador implements Serializable {
 
     public String registrar() {
         turno.setPuntoIdPuntos(puntoFacade.find(punto.getIdPunto()));
+        turno.setIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
         turnoFacade.create(turno);
         turno = new Turno();
         return "RegistrarTurno";

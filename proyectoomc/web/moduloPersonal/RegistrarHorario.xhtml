@@ -3,46 +3,69 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      >
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>Facelets Template</title>
+        <title>RegistrarHorario</title>
     </h:head>
 
     <h:body>
 
         <f:view>
 
-
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    #{msjApp.idioma} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <c:forEach items="#{sessionController.supportLanguages}" var="l" >
+                        <li>
+                            <h:commandLink  value="#{msjApp[l.displayLanguage]}" action="#{sessionController.cambiarIdioma(l)}">
+                                <img src="#{request.contextPath}/resources/img/languages/#{l.language}.png" width="25px" alt="#{msjApp[l.displayLanguage]}"/>
+                            </h:commandLink>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>    
+            
             <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
+                <h1><h:outputText value="RegistrarHorario"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="IdHorario:" for="idHorario" />
-                    <h:inputText id="idHorario" value="#{horarioControlador.horario.idHorario}" title="IdHorario" required="true" requiredMessage="The IdHorario field is required."/>
-                    <h:outputLabel value="HoraIngreso:" for="horaIngreso" />
-                    <h:inputText id="horaIngreso" value="#{horarioControlador.horario.horaIngreso}" title="HoraIngreso" >
+                    <h:outputLabel value="#{msjRegistrarHorario.labelTxtIdHorario}" for="idHorario" />
+                    <h:inputText id="idHorario" pt:placeholder="#{msjRegistrarHorario.placeholderTxtIdHorario}" value="#{horarioControlador.horario.idHorario}" title="IdHorario" required="true" requiredMessage="The IdHorario field is required."/>
+                    
+                    <h:outputLabel value="#{msjRegistrarHorario.labelTxtHoraIngreso}" for="horaIngreso" />
+                    <h:inputText id="horaIngreso" pt:placeholder="#{msjRegistrarHorario.placeholderTxtHoraIngreso}" value="#{horarioControlador.horario.horaIngreso}" title="HoraIngreso" >
                         <f:convertDateTime pattern="HH:mm:ss" />
+                        
                     </h:inputText>
-                    <h:outputLabel value="HoraSalida:" for="horaSalida" />
-                    <h:inputText id="horaSalida" value="#{horarioControlador.horario.horaSalida}" title="HoraSalida" >
+                    <h:outputLabel value="#{msjRegistrarHorario.labelTxtHoraSalida}" for="horaSalida" />
+                    <h:inputText id="horaSalida" pt:placeholder="#{msjRegistrarHorario.placeholderTxtHoraSalida}" value="#{horarioControlador.horario.horaSalida}" title="HoraSalida" >
                         <f:convertDateTime pattern="HH:mm:ss" />
+                        
                     </h:inputText>
-                    <h:outputLabel value="FechaDeIngreso:" for="fechaDeIngreso" />
-                    <h:inputText id="fechaDeIngreso" value="#{horarioControlador.horario.fechaDeIngreso}" title="FechaDeIngreso" >
+                    <h:outputLabel value="#{msjRegistrarHorario.labelTxtFechaDeIngreso}" for="fechaDeIngreso" />
+                    <h:inputText id="fechaDeIngreso" pt:placeholder="#{msjRegistrarHorario.placeholderTxtFechaDeIngreso}" value="#{horarioControlador.horario.fechaDeIngreso}" title="FechaDeIngreso" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
+                        
                     </h:inputText>
-                    <h:outputLabel value="FechaDeSalida:" for="fechaDeSalida" />
-                    <h:inputText id="fechaDeSalida" value="#{horarioControlador.horario.fechaDeSalida}" title="FechaDeSalida" >
+                    <h:outputLabel value="#{msjRegistrarHorario.labelTxtfechaDeSalida}" for="fechaDeSalida" />
+                    <h:inputText id="fechaDeSalida" pt:placeholder="#{msjRegistrarHorario.placeholderTxtfechaDeSalida}" value="#{horarioControlador.horario.fechaDeSalida}" title="FechaDeSalida" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
+                        
                     </h:inputText>
                     <h:outputLabel value="EmpleadoIdEmpleado:" for="empleadoIdEmpleado" />
                     <h:selectOneMenu id="empleadoIdEmpleado" value="#{horarioControlador.horario.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{fixme}"/>
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.apellido}" />
                     </h:selectOneMenu>
+                    <h:commandButton action ="#{horarioControlador.registrarHorario()}" value="registrar"/>
                 </h:panelGrid>
             </h:form>
         </f:view>
