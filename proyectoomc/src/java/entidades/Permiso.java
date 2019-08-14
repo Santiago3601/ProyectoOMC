@@ -42,7 +42,6 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Permiso implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoIdPermiso", fetch = FetchType.LAZY)
-    private List<RolTienePermiso> rolTienePermisoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -175,13 +174,5 @@ public class Permiso implements Serializable {
         return "entidades.Permiso[ idPermiso=" + idPermiso + " ]";
     }
 
-    @XmlTransient
-    public List<RolTienePermiso> getRolTienePermisoList() {
-        return rolTienePermisoList;
-    }
-
-    public void setRolTienePermisoList(List<RolTienePermiso> rolTienePermisoList) {
-        this.rolTienePermisoList = rolTienePermisoList;
-    }
 
 }

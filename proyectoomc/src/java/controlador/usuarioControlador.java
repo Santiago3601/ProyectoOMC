@@ -135,7 +135,8 @@ public class usuarioControlador implements Serializable {
                         redirecionar = "dashboard/SI/2cliente/index";
                         break;
                     case 3:
-                        redirecionar = "dashboard/SI/3jefe_planta/index";
+                 //       redirecionar = "dashboard/SI/3jefe_planta/index";
+                        redirecionar = "dashboard/SI/1admin/index";
                         break;
                     case 4:
                         redirecionar = "dashboard/SI/4tecnico/index";
@@ -144,6 +145,7 @@ public class usuarioControlador implements Serializable {
                     default:
                         throw new AssertionError();
                 }
+               
             } else {
                 redirecionar = "index_1";
 

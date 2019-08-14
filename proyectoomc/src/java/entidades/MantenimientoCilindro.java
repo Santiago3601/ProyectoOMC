@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "mantenimiento_cilindro")
@@ -45,10 +45,10 @@ public class MantenimientoCilindro implements Serializable {
     @Column(name = "tipo_mantenimiento")
     private String tipoMantenimiento;
     @JoinColumn(name = "cilindro_id_cilindro", referencedColumnName = "id_cilindro")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cilindro cilindroIdCilindro;
     @JoinColumn(name = "mantenimiento_id_mantenimiento", referencedColumnName = "id_mantenimiento")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Mantenimiento mantenimientoIdMantenimiento;
 
     public MantenimientoCilindro() {

@@ -74,10 +74,9 @@ public class EmpleadoControlador implements Serializable {
     //metodos
     public String registrar() {
        empleado.setUsuarioId(usuarioFacade.find(usuario.getId()));
-       empleado.setTurnoIdTurno(turnoFacade.find(turno.getIdTurno()));
        empleadoFacade.create(empleado);
        empleado = new Empleado();
-       return "listaEmpleado";
+       return "listarEmpleado";
     }
     
 
@@ -91,7 +90,7 @@ public class EmpleadoControlador implements Serializable {
 
     public String eliminarEmpleado(Empleado u) {
         this.empleadoFacade.remove(u);
-        return "listaEmpleado";
+        return "listarEmpleado";
     }
 
     public String preActualizarEmpleado(Empleado empleadoAct) {
@@ -101,7 +100,6 @@ public class EmpleadoControlador implements Serializable {
 
     public String actualizarEmpleado() {
         empleado.setUsuarioId(usuarioFacade.find(usuario.getId()));
-        empleado.setTurnoIdTurno(turnoFacade.find(turno.getIdTurno()));
         empleadoFacade.edit(empleado);
         empleado = new Empleado();
         return "listaEmpleado";

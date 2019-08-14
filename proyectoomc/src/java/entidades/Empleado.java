@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "empleado")
@@ -41,22 +41,19 @@ public class Empleado implements Serializable {
     @NotNull
     @Column(name = "id_empleado")
     private Integer idEmpleado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
     private List<Horario> horarioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
     private List<Ruta> rutaList;
-    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
     private List<Turno> turnoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
     private List<Agenda> agendaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
     private List<PermisoLaboral> permisoLaboralList;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioId;
-    @JoinColumn(name = "turno_id_turno", referencedColumnName = "id_turno")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private Turno turnoIdTurno;
 
     public Empleado() {
     }
@@ -124,14 +121,6 @@ public class Empleado implements Serializable {
 
     public void setUsuarioId(Usuario usuarioId) {
         this.usuarioId = usuarioId;
-    }
-
-    public Turno getTurnoIdTurno() {
-        return turnoIdTurno;
-    }
-
-    public void setTurnoIdTurno(Turno turnoIdTurno) {
-        this.turnoIdTurno = turnoIdTurno;
     }
 
     @Override

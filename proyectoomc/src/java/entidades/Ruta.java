@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "ruta")
@@ -57,12 +57,12 @@ public class Ruta implements Serializable {
     @Column(name = "planilla")
     private String planilla;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Empleado empleadoIdEmpleado;
     @JoinColumn(name = "vehiculo_id_vehiculo", referencedColumnName = "id_vehiculo")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Vehiculo vehiculoIdVehiculo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutaIdRuta", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutaIdRuta", fetch = FetchType.LAZY)
     private List<Alquiler> alquilerList;
 
     public Ruta() {

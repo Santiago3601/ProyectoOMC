@@ -47,4 +47,8 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         return usuarioLogin;
 
     }
+   /* public String subirDatos(){
+        Query query = em.createNativeQuery();
+        return"";
+    }*/
 }
