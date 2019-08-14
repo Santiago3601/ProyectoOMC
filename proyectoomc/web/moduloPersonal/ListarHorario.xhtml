@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -19,36 +20,41 @@
 
             <h:form>
                 <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{horarioControlador.consultarTodos()}" var="item">
-                    <h:column>
+                <p:dataTable value="#{horarioControlador.consultarTodos()}" var="item">
+                    <p:column>
                         <f:facet name="header">
+                            
+                           
                             <h:outputText value="IdHorario"/>
+                            
                         </f:facet>
                         <h:outputText value="#{item.idHorario}"/>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
+                            
                             <h:outputText value="HoraIngreso"/>
+                            
                         </f:facet>
                         <h:outputText value="#{item.horaIngreso}">
                             <f:convertDateTime pattern="HH:mm:ss" />
                         </h:outputText>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="HoraSalida"/>
                         </f:facet>
                         <h:outputText value="#{item.horaSalida}">
                             <f:convertDateTime pattern="HH:mm:ss" />
                         </h:outputText>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="EmpleadoIdEmpleado"/>
                         </f:facet>
-                        <h:outputText value="#{item.empleadoIdEmpleado}"/>
-                    </h:column>
-                </h:dataTable>
+                        <h:outputText value="#{item.empleadoIdEmpleado.usuarioId}"/>
+                    </p:column>
+                </p:dataTable>
             </h:form>
         </f:view>
 

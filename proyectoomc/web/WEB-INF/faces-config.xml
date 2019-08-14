@@ -50,5 +50,10 @@
             <var>msjRegistrarHorario</var>
         </resource-bundle>
         
+         <resource-bundle>
+            <base-name>language.ListarPunto-es</base-name>
+            <var>msjListarPunto</var>
+        </resource-bundle>
+        
     </application>
 </faces-config>

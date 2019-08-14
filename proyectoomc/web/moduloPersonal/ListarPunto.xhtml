@@ -24,25 +24,25 @@
                 <p:dataTable value="#{puntoControlador.consultarTodos()}" var="item">
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdPunto"/>
+                            <h:outputText value="#{msjListarPunto.labelTxtIdPunto}"/>
                         </f:facet>
                         <h:outputText value="#{item.idPunto}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Cantidad"/>
+                            <h:outputText value="#{msjListarPunto.labelTxtCantidad}"/>
                         </f:facet>
                         <h:outputText value="#{item.cantidad}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Descripcion"/>
+                            <h:outputText value="#{msjListarPunto.labelTxtDescripcion}"/>
                         </f:facet>
                         <h:outputText value="#{item.descripcion}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header" class="thead">
-                            <h:outputText value="Opciones"/>
+                            <h:outputText value="#{msjListarPunto.labelTxtOpciones}"/>
                         </f:facet>
                         <h:commandLink action="#{puntoControlador.preActualizar(puntoAct)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
                         <h:commandLink action="#{puntoControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>

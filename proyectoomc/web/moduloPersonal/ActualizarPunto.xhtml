@@ -2,7 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      >
 <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
@@ -12,21 +15,36 @@
     </h:head>
     <h:body>
         <div id="form"> 
-        <f:view>
-
-
+        <f:view locale="#{sessionController.languageSelected}">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    #{msjApp.idioma} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <c:forEach items="#{sessionController.supportLanguages}" var="l" >
+                        <li>
+                            <h:commandLink  value="#{msjApp[l.displayLanguage]}" action="#{sessionController.cambiarIdioma(l)}">
+                                <img src="#{request.contextPath}/resources/img/languages/#{l.language}.png" width="25px" alt="#{msjApp[l.displayLanguage]}"/>
+                            </h:commandLink>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+            
 
             <h:form>
-                <h1><h:outputText value="Actualizar Punto"/></h1>
+                <h1><h:outputText value="Registrar Punto"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="IdPunto:" for="idPunto" />
-                    <h:inputText id="idPunto" value="#{puntoControlador.punto.idPunto}" title="IdPunto" required="true" requiredMessage="The IdPunto field is required."/>
-                    <h:outputLabel value="Cantidad:" for="cantidad" />
-                    <h:inputText id="cantidad" value="#{puntoControlador.punto.cantidad}" title="Cantidad" required="true" requiredMessage="The Cantidad field is required."/>
-                    <h:outputLabel value="Descripcion:" for="descripcion" />
-                    <h:inputText id="descripcion" value="#{puntoControlador.punto.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                    <h:outputLabel value="#{msjRegistrarPunto.labelTxtIdPunto}" for="idPunto" />
+                    <h:inputText id="idPunto" pt:placeholder="#{msjRegistrarPunto.placeholderTxtIdPunto}"  value="#{puntoControlador.punto.idPunto}" title="IdPunto" required="true" requiredMessage="The IdPunto field is required."/>
+                    
+                    <h:outputLabel value="#{msjRegistrarPunto.labelTxtCantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" pt:placeholder="#{msjRegistrarPunto.placeholderTxtCantidad}"  value="#{puntoControlador.punto.cantidad}" title="Cantidad" required="true" requiredMessage="The Cantidad field is required."/>
+                    
+                    <h:outputLabel value="#{msjRegistrarPunto.labelTxtDescripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" pt:placeholder="#{msjRegistrarPunto.placeholderTxtDescripcion}" value="#{puntoControlador.punto.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
                 </h:panelGrid>
-                <h:commandButton action="#{puntoControlador.actualizar()}" value="Actualizar"/>
+                <h:commandButton action="#{puntoControlador.actualizar()}" value="actualizar"/>
             </h:form>
 
             
