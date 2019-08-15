@@ -55,5 +55,45 @@
             <var>msjListarPunto</var>
         </resource-bundle>
         
+        <resource-bundle>
+            <base-name>languague.RegistrarAgenda_es</base-name>
+            <var>msjRegistrarAgenda</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>languague.RegistrarCilindro_es</base-name>
+            <var>msjRegistrarCilindro</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>languague.RegistrarMantenimiento_es</base-name>
+            <var>msjRegistrarMantenimiento</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>languague.RegistrarMantenimientoCilindro_es</base-name>
+            <var>msjRegstrarMantenimientoCilindro</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+           <base-name>languague.ActualizArgenda_es</base-name>
+           <var>mjsListaAgenda</var>             
+        </resource-bundle>
+
+        <resource-bundle>
+            <base-name>languague.ActualizarCilindro_es</base-name>
+            <var>mjsListaCilindro</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>languague.ActualizarMantenimiento</base-name>
+            <var>msjListaMantenimiento</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>languague.ActualizarMantenimientoCilindro</base-name>
+            <var>msjListaMantenimientoCilindro</var>
+        </resource-bundle>
+        
     </application>
 </faces-config>
