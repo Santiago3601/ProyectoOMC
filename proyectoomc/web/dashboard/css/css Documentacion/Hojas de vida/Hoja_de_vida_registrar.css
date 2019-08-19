@@ -13,7 +13,7 @@ form{
 	font-family: 'Questrial', sans-serif;
 }
 label{
-	font size: 10px;
+	font-size: 10px;
 	display: block;
 	width: 100%;
 }
@@ -21,7 +21,7 @@ input{
 	margin-bottom: 10px;
 	width: 100%;
 	padding: 10px;
-	border: 3px solid #2EE1F1 
+	border: 3px solid #2EE1F1 ;
 	height: 10%;
 }
 input:focus{

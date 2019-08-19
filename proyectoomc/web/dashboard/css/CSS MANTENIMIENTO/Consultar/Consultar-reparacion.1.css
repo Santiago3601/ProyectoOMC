@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial');
+
 *{
 	box-sizing: border-box;
 	padding:20px;
@@ -27,6 +27,6 @@ form label, form input{
 	width: 115px;
 	height: 60px;
 	background: #61FCCE;
-	border -bottom: 1px solid gray;
+	border-bottom: 1px solid gray;
 	text-align: center;
 }

@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Questrial');
+
 *{
 	box-sizing: border-box;
 	margin: 15px;
@@ -33,3 +33,4 @@ table tr:hover {
 table td :hover{
 	background: #61FCCE;
 	border-bottom: 2px solid black;
+}

@@ -12,7 +12,7 @@ form{
 	height: 500px;
 }
 label{
-	font size: 12px;
+	font-size: 12px;
 	display: block;
 	width: 100%;
 }
@@ -20,7 +20,7 @@ input{
 	margin-bottom: 10px;
 	width: 100%;
 	padding: 10px;
-	border: 3px solid #2EE1F1 
+	border: 3px solid #2EE1F1 ;
 	height: 15%;
 }
 input:focus{

@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
+
 
 *{
 	box-sizing: border-box;
@@ -6,7 +6,7 @@
 	padding: 0;
 }
 h1{
-	width: 100%
+	width: 100%;
 	margin: 3px 0 105px 0;
 	font-size: 39px;
 	text-align: center;
