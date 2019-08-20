@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
     , @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id")
-    , @NamedQuery(name = "Usuario.findByTpId", query = "SELECT u FROM Usuario u WHERE u.tpId = :tpId")
     , @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre")
     , @NamedQuery(name = "Usuario.findByApellido", query = "SELECT u FROM Usuario u WHERE u.apellido = :apellido")
     , @NamedQuery(name = "Usuario.findByDireccion", query = "SELECT u FROM Usuario u WHERE u.direccion = :direccion")
@@ -55,11 +54,6 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "id")
     private Long id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "tp_id")
-    private String tpId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -107,6 +101,9 @@ public class Usuario implements Serializable {
     private List<Cliente> clienteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId", fetch = FetchType.LAZY)
     private List<Empleado> empleadoList;
+    @JoinColumn(name = "tp_id", referencedColumnName = "idTipoID")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Tipoid tpId;
     @JoinColumn(name = "rol_idRol", referencedColumnName = "idRol")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Rol rolidRol;
@@ -118,9 +115,8 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public Usuario(Long id, String tpId, String nombre, String apellido, String direccion, String correo, String contrasenia, long telefono, String eps, Date fechaDeNacimiento, int edad) {
+    public Usuario(Long id, String nombre, String apellido, String direccion, String correo, String contrasenia, long telefono, String eps, Date fechaDeNacimiento, int edad) {
         this.id = id;
-        this.tpId = tpId;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
@@ -138,14 +134,6 @@ public class Usuario implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTpId() {
-        return tpId;
-    }
-
-    public void setTpId(String tpId) {
-        this.tpId = tpId;
     }
 
     public String getNombre() {
@@ -236,6 +224,14 @@ public class Usuario implements Serializable {
 
     public void setEmpleadoList(List<Empleado> empleadoList) {
         this.empleadoList = empleadoList;
+    }
+
+    public Tipoid getTpId() {
+        return tpId;
+    }
+
+    public void setTpId(Tipoid tpId) {
+        this.tpId = tpId;
     }
 
     public Rol getRolidRol() {

@@ -12,125 +12,117 @@
         <h:outputStylesheet name="./css/cssLayout.css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
-
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>   
         <title>Facelets Template</title>
     </h:head>
 
     <h:body>
+        <div id="form"> 
+            <f:view>
 
 
-        <div>
-
-            <div id="content" class="center_content">
-
-
-                <f:view>
-
-
-                    <h:form>
-                        <h1><h:outputText value="Lista de usuarios"/></h1>
-                        <p:dataTable id="tabla" value="#{usuarioControlador.consultarTodos()}" var="usuario" >
-                            <p:column filterBy="#{usuario.id}">
-                                <f:facet name="header">
-                                    <h:outputText value="Id"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.id}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.tpId}">
-                                <f:facet name="header">
-                                    <h:outputText value="TpId"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.tpId}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.nombre}">
-                                <f:facet name="header">
-                                    <h:outputText value="Nombre"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.nombre}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.apellido}">
-                                <f:facet name="header">
-                                    <h:outputText value="Apellido"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.apellido}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.direccion}">
-                                <f:facet name="header">
-                                    <h:outputText value="Direccion"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.direccion}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.correo}">
-                                <f:facet name="header">
-                                    <h:outputText value="Correo"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.correo}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.contrasenia}">
-                                <f:facet name="header">
-                                    <h:outputText value="Contrasenia"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.contrasenia}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.telefono}">
-                                <f:facet name="header">
-                                    <h:outputText value="Telefono"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.telefono}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.eps}">
-                                <f:facet name="header">
-                                    <h:outputText value="Eps"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.eps}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.fechaDeNacimiento}">
-                                <f:facet name="header">
-                                    <h:outputText value="FechaDeNacimiento"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.fechaDeNacimiento}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column filterBy="#{usuario.edad}">
-                                <f:facet name="header">
-                                    <h:outputText value="Edad"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.edad}"/>
-                            </p:column>
-                            <p:column filterBy="#{usuario.rolidRol.rol}">
-                                <f:facet name="header">
-                                    <h:outputText value="Rol"/>
-                                </f:facet>
-                                <h:outputText value="#{usuario.rolidRol.rol}"/>
-                            </p:column>
-                            <p:column exportable="false">
-                                <f:facet name="header">
-                                    <h:outputText value="Accion"/>
-                                </f:facet>
-                                <h:commandLink  action="#{usuarioControlador.eliminarUsuario(usuario)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
-                                <h:commandLink  action="#{usuarioControlador.preActualizarUsuario(usuario)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
-                            </p:column>
-                        </p:dataTable>
-                        <h:commandLink id="excel">
-                            <i class="far fa-file-excel"></i>
-                            <p:dataExporter type="xls" target="tabla" fileName="tabla" />
-                            <style>
-                                .far{
-                                    padding: 2px;
-                                    font-size: x-large;
-                                }
-                            </style>
-                        </h:commandLink>
-                    </h:form>
-                </f:view>
+                <h:form>
+                    <h1><h:outputText value="Lista de usuarios"/></h1>
+                    <p:dataTable id="tabla" value="#{usuarioControlador.consultarTodos()}" var="usuario" >
+                        <p:column filterBy="#{usuario.id}">
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.id}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.tpId}">
+                            <f:facet name="header">
+                                <h:outputText value="Tipo id"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.tpId.tipoID}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.nombre}">
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.nombre}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.apellido}">
+                            <f:facet name="header">
+                                <h:outputText value="Apellido"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.apellido}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.direccion}">
+                            <f:facet name="header">
+                                <h:outputText value="Direccion"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.direccion}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.correo}">
+                            <f:facet name="header">
+                                <h:outputText value="Correo"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.correo}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.contrasenia}">
+                            <f:facet name="header">
+                                <h:outputText value="Contraseña"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.contrasenia}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.telefono}">
+                            <f:facet name="header">
+                                <h:outputText value="Telefono"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.telefono}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.eps}">
+                            <f:facet name="header">
+                                <h:outputText value="Eps"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.eps}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.fechaDeNacimiento}">
+                            <f:facet name="header">
+                                <h:outputText value="FechaDeNacimiento"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.fechaDeNacimiento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{usuario.edad}">
+                            <f:facet name="header">
+                                <h:outputText value="Edad"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.edad}"/>
+                        </p:column>
+                        <p:column filterBy="#{usuario.rolidRol.rol}">
+                            <f:facet name="header">
+                                <h:outputText value="Rol"/>
+                            </f:facet>
+                            <h:outputText value="#{usuario.rolidRol.rol}"/>
+                        </p:column>
+                        <p:column exportable="false">
+                            <f:facet name="header">
+                                <h:outputText value="Accion"/>
+                            </f:facet>
+                            <h:commandLink  action="#{usuarioControlador.eliminarUsuario(usuario)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                            <h:commandLink  action="#{usuarioControlador.preActualizarUsuario(usuario)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                        </p:column>
+                    </p:dataTable>
+                    <h:commandLink id="excel">
+                        <i class="far fa-file-excel"></i>
+                        <p:dataExporter type="xls" target="tabla" fileName="tabla" />
+                        <style>
+                            .far{
+                                padding: 2px;
+                                font-size: x-large;
+                            }
+                        </style>
+                    </h:commandLink>
+                </h:form>
+            </f:view>
 
 
 
-            </div>
+
         </div>
-
-
     </h:body>
 
 </html>

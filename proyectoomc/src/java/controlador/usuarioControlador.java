@@ -9,7 +9,7 @@ import entidades.Permiso;
 import entidades.Rol;
 //import entidades.RolTienePermiso;
 import entidades.*;
-import facade.RolFacade;
+import facade.*;
 import facade.UsuarioFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -39,10 +39,15 @@ public class usuarioControlador implements Serializable {
     private UsuarioFacade usuarioFacade;
     Usuario usuario;
 
+    @EJB
+    private TipoidFacade tipoIdFacade;
+    Tipoid tipoId;
+
     @PostConstruct
     public void init() {
         usuario = new Usuario();
         rol = new Rol();
+        tipoId = new Tipoid();
 
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
@@ -56,6 +61,14 @@ public class usuarioControlador implements Serializable {
         }
         languageSelected = (support) ? idiomaUsuario : new Locale("es");
 
+    }
+
+    public Tipoid getTipoId() {
+        return tipoId;
+    }
+
+    public void setTipoId(Tipoid tipoId) {
+        this.tipoId = tipoId;
     }
 
     public Rol getRol() {
@@ -88,6 +101,7 @@ public class usuarioControlador implements Serializable {
 
     public String registrarUsuario() {
         usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
+        usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
         usuarioFacade.create(usuario);
         usuario = new Usuario();
         return "listaUsuario";
@@ -105,6 +119,7 @@ public class usuarioControlador implements Serializable {
 
     public String actualizarUsuario() {
         usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
+        usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
         usuarioFacade.edit(usuario);
         usuario = new Usuario();
         return "listaUsuario";
@@ -135,7 +150,7 @@ public class usuarioControlador implements Serializable {
                         redirecionar = "dashboard/SI/2cliente/index";
                         break;
                     case 3:
-                 //       redirecionar = "dashboard/SI/3jefe_planta/index";
+                        //       redirecionar = "dashboard/SI/3jefe_planta/index";
                         redirecionar = "dashboard/SI/1admin/index";
                         break;
                     case 4:
@@ -145,7 +160,7 @@ public class usuarioControlador implements Serializable {
                     default:
                         throw new AssertionError();
                 }
-               
+
             } else {
                 redirecionar = "index_1";
 

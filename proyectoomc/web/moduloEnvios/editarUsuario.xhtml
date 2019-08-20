@@ -22,8 +22,14 @@
                     <h:panelGrid columns="2">
                         <h:outputLabel value="#{msjEditarUsu.labelTxtID}" for="id" />
                         <h:inputText id="id" value="#{usuarioControlador.usuario.id}" title="Id" required="true" requiredMessage="The Id field is required."/>
-                        <h:outputLabel value="#{msjEditarUsu.labelTxtIDType}" for="tpId" />
-                        <h:inputText id="tpId" value="#{usuarioControlador.usuario.tpId}" title="TpId" required="true" requiredMessage="The TpId field is required."/>
+                        <h:outputLabel value="tipo #{msjEditarUsu.labelTxtID}" for="id" />
+
+                        <h:selectOneMenu id="tpId" value="#{usuarioControlador.tipoId.idTipoID}" title="TpId" required="true" requiredMessage="The TpId field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{tipoIdControlador.consultarTodos()}" var="tp" itemValue="#{tp.idTipoID}" itemLabel="#{tp.tipoID}"/>
+                        </h:selectOneMenu>
+
+
                         <h:outputLabel value="#{msjEditarUsu.labelTxtName}" for="nombre" />
                         <h:inputText id="nombre" value="#{usuarioControlador.usuario.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
                         <h:outputLabel value="#{msjEditarUsu.labelTxtLastName}" for="apellido" />
@@ -44,9 +50,9 @@
                         </h:inputText>
                         <!--   <h:outputLabel value="Edad:" for="edad" />
                            <h:inputText id="edad" value="#{usuarioControlador.usuario.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
-                         -->
+                    
                          <h:outputLabel value="#{msjEditarUsu.labelTxtRol}" for="rolidRol" />
-                        
+                        -->
                         <h:selectOneMenu id="rolidRol" value="#{usuarioControlador.rol.idRol}" title="RolidRol" required="true" requiredMessage="The RolidRol field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{rolControlador.consultarTodos()}" var="rol" itemValue="#{rol.idRol}" itemLabel="#{rol.rol}"/>
@@ -55,7 +61,9 @@
                     <h:commandButton value="#{msjEditarUsu.btnRegister}" action="#{usuarioControlador.actualizarUsuario()}"> </h:commandButton>  
                 </h:form>
             </f:view>
+
         </div>
     </h:body>
 </html>
+
 
