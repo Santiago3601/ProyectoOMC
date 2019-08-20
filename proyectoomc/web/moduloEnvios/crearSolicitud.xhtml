@@ -32,14 +32,10 @@
                             <f:selectItems value="#{clienteControlador.consultarTodos()}" var="cli" itemValue="#{cli.idCliente}" itemLabel="#{cli.usuarioId.nombre} #{cli.usuarioId.apellido}"/>
                         </h:selectOneMenu>
                         <h:outputLabel value="#{msjCrearSoli.labelTxtFormula}" for="formula" />
-                        <p:growl id="messages" showDetail="true" />
-
-                        <p:fileUpload value="#{solicitudControlador.solicitud.formula}" mode="simple" skinSimple="true" allowTypes="pdf"/>
-
-                        <br /> <br />
+                        Archivo: <br/><h:inputFile value="#{solicitudControlador.file}"/>
+                        <br/><h:commandButton value="Subir Archivo" action="#{solicitudControlador.upload()}"/>
 
                     </h:panelGrid>
-                    <h:commandButton  action="#{solicitudControlador.registrarSolicitud()}" value="#{msjCrearSoli.btnRegisterRequest}" />
                 </h:form>
             </f:view>
 
