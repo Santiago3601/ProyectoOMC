@@ -23,6 +23,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -48,8 +49,9 @@ public class Solicitud implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Lob
+    @Size(min = 1, max = 16383)
     @Column(name = "formula")
-    private byte[] formula;
+    private String formula;
     @Basic(optional = false)
     @NotNull
     @Column(name = "tamanio_cilindro")
@@ -67,7 +69,7 @@ public class Solicitud implements Serializable {
         this.idSolicitud = idSolicitud;
     }
 
-    public Solicitud(Integer idSolicitud, byte[] formula, int tamanioCilindro) {
+    public Solicitud(Integer idSolicitud, String formula, int tamanioCilindro) {
         this.idSolicitud = idSolicitud;
         this.formula = formula;
         this.tamanioCilindro = tamanioCilindro;
@@ -81,11 +83,11 @@ public class Solicitud implements Serializable {
         this.idSolicitud = idSolicitud;
     }
 
-    public byte[] getFormula() {
+    public String getFormula() {
         return formula;
     }
 
-    public void setFormula(byte[] formula) {
+    public void setFormula(String formula) {
         this.formula = formula;
     }
 
