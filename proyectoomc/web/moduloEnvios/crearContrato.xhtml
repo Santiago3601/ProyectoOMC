@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
@@ -17,28 +18,28 @@
 
 
                 <h:form>
-                    <h1><h:outputText value="Registrar contrato"/></h1>
+                    <h1><h:outputText value="#{msjCrearCon.h1TxtTitle}"/></h1>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="No. Contrato:" for="idContrato" />
+                        <h:outputLabel value="#{msjCrearCon.labelTxtID}" for="idContrato" />
                         <h:inputText id="idContrato" value="#{contratoContolador.contrato.idContrato}" title="IdContrato" required="true" requiredMessage="The IdContrato field is required."/>
-                        <h:outputLabel value="Tipo de Contrato:" for="tipoContrato" />
+                        <h:outputLabel value="#{msjCrearCon.labelTxtContractType}" for="tipoContrato" />
 
                         <h:inputText id="tipoContrato" value="#{contratoContolador.contrato.tipoContrato}" title="TipoContrato" required="true" requiredMessage="The TipoContrato field is required."/>
-                        <h:outputLabel value="No. Alquiler:" for="alquilerIdAlquiler" />
+                        <h:outputLabel value="#{msjCrearCon.labelTxtRentID}" for="alquilerIdAlquiler" />
                         <h:selectOneMenu id="alquilerIdAlquiler" value="#{contratoContolador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="alq" itemValue="#{alq.idAlquiler}" itemLabel="#{alq.idAlquiler}"/>
                         </h:selectOneMenu>
-                        <h:outputLabel value="Fecha inicio del contrato:" for="fechaInicioContrato" />
-                        <h:inputText id="fechaInicioContrato" value="#{contratoContolador.contrato.fechaInicioContrato}" title="FechaInicioContrato" required="true" requiredMessage="The FechaInicioContrato field is required.">
+                        <h:outputLabel value="#{msjCrearCon.labelTxtStartDate}" for="fechaInicioContrato" />
+                        <h:inputText id="fechaInicioContrato" ps:placeholder="#{msjCrearCon.inputTxtPlaceHolderDate}" value="#{contratoContolador.contrato.fechaInicioContrato}" title="FechaInicioContrato" required="true" requiredMessage="The FechaInicioContrato field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
-                        <h:outputLabel value="Fecha final del contrato:" for="fechaFinalContrato" />
-                        <h:inputText id="fechaFinalContrato" value="#{contratoContolador.contrato.fechaFinalContrato}" title="FechaFinalContrato" required="true" requiredMessage="The FechaFinalContrato field is required.">
+                        <h:outputLabel value="#{msjCrearCon.labelTxtFinishDate}" for="fechaFinalContrato" />
+                        <h:inputText id="fechaFinalContrato" ps:placeholder="#{msjCrearCon.inputTxtPlaceHolderDate}" value="#{contratoContolador.contrato.fechaFinalContrato}" title="FechaFinalContrato" required="true" requiredMessage="The FechaFinalContrato field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
                     </h:panelGrid>
-                    <h:commandButton value="Registrar" action="#{contratoContolador.registrarContrato()}"> </h:commandButton>  
+                    <h:commandButton value="#{msjCrearCon.btnRegister}" action="#{contratoControlador.registrarContrato()}"> </h:commandButton>  
                 </h:form>
             </f:view>
 

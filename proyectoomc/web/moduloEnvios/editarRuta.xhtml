@@ -11,38 +11,34 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-
-   <div id="form"> 
+           <div id="form"> 
         <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="Modificar Ruta"/></h1>
+                <h1><h:outputText value="#{msjEditarRut.h1TxtTitle}"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Id Ruta:" for="idRuta" />
+                    <h:outputLabel value="#{msjEditarRut.labelTxtID}" for="idRuta" />
                     <h:inputText id="idRuta" value="#{rutaControlador.ruta.idRuta}" title="IdRuta" required="true" requiredMessage="The IdRuta field is required."/>
-                    <h:outputLabel value="Dirección:" for="direccion" />
+                    <h:outputLabel value="#{msjEditarRut.labelTxtRouteAddress}" for="direccion" />
                     <h:inputText id="direccion" value="#{rutaControlador.ruta.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
-                    <h:outputLabel value="Planilla:" for="planilla" />
+                    <h:outputLabel value="#{msjEditarRut.labelTxtDeliveryAddresses}" for="planilla" />
                     <h:inputText id="planilla" value="#{rutaControlador.ruta.planilla}" title="Planilla" required="true" requiredMessage="The Planilla field is required."/>
-                    <h:outputLabel value="Empleado:" for="empleadoIdEmpleado" />
+                    <h:outputLabel value="#{msjEditarRut.labelTxtEmployee}" for="empleadoIdEmpleado" />
                     <h:selectOneMenu id="empleadoIdEmpleado" value="#{rutaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="empleado" itemValue="#{empleado.idEmpleado}" itemLabel="#{empleado.usuarioId.nombre} #{empleado.usuarioId.apellido}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="Vehículo:" for="vehiculoIdVehiculo" />
+                    <h:outputLabel value="#{msjEditarRut.labelTxtVehicle}" for="vehiculoIdVehiculo" />
                     <h:selectOneMenu id="vehiculoIdVehiculo" value="#{rutaControlador.vehiculo.idVehiculo}" title="VehiculoIdVehiculo" required="true" requiredMessage="The VehiculoIdVehiculo field is required.">
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" itemValue="#{vehiculo.idVehiculo}" itemLabel="#{vehiculo.matricula}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandButton value="Actualizar" action="#{rutaControlador.actualizarRuta()}"> </h:commandButton>  
+                <h:commandButton value="#{msjEditarRut.btnRegister}" action="#{rutaControlador.actualizarRuta()}"> </h:commandButton>  
             </h:form>
         </f:view>
-
-   </div>
-
-
+           </div>
     </h:body>
 </html>
 

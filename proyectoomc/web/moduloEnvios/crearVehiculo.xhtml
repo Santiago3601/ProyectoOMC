@@ -14,14 +14,14 @@
            <div id="form"> 
         <f:view>
             <h:form>
-                <h1><h:outputText value="Registar vehiculo"/></h1>
+                <h1><h:outputText value="#{msjCrearVeh.h1TxtTitle}"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Vehículo:" for="idVehiculo" />
+                    <h:outputLabel value="#{msjCrearVeh.labelTxtID}" for="idVehiculo" />
                     <h:inputText id="idVehiculo" value="#{vehiculoControlador.vehiculo.idVehiculo}" title="IdVehiculo" required="true" requiredMessage="The IdVehiculo field is required."/>
-                    <h:outputLabel value="Matrícula:" for="matricula" />
+                    <h:outputLabel value="#{msjCrearVeh.labelTxtPlate}" for="matricula" />
                     <h:inputText id="matricula" value="#{vehiculoControlador.vehiculo.matricula}" title="Matricula" required="true" requiredMessage="The Matricula field is required."/>
                 </h:panelGrid>
-                <h:commandButton value="Registrarse" action="#{vehiculoControlador.registrarVehiculo()}"> </h:commandButton>
+                <h:commandButton value="#{msjCrearVeh.btnRegister}" action="#{vehiculoControlador.registrarVehiculo()}"> </h:commandButton>
             </h:form>
         </f:view>
            </div>

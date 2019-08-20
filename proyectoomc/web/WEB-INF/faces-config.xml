@@ -50,7 +50,7 @@
             <var>msjRegistrarHorario</var>
         </resource-bundle>
         
-         <resource-bundle>
+        <resource-bundle>
             <base-name>language.ListarPunto-es</base-name>
             <var>msjListarPunto</var>
         </resource-bundle>
@@ -76,8 +76,8 @@
         </resource-bundle>
         
         <resource-bundle>
-           <base-name>languague.ActualizArgenda_es</base-name>
-           <var>mjsListaAgenda</var>             
+            <base-name>languague.ActualizArgenda_es</base-name>
+            <var>mjsListaAgenda</var>             
         </resource-bundle>
 
         <resource-bundle>
@@ -95,5 +95,63 @@
             <var>msjListaMantenimientoCilindro</var>
         </resource-bundle>
         
+        
+        <resource-bundle>
+            <base-name>language.CrearAlquiler_es</base-name>
+            <var>msjCrearAlq</var>
+        </resource-bundle>        
+        <resource-bundle>
+            <base-name>language.CrearCliente_es</base-name>
+            <var>msjCrearCli</var>
+        </resource-bundle>  
+        <resource-bundle>
+            <base-name>language.CrearContrato_es</base-name>
+            <var>msjCrearCon</var>
+        </resource-bundle>   
+        <resource-bundle>
+            <base-name>language.CrearRuta_es</base-name>
+            <var>msjCrearRut</var>
+        </resource-bundle> 
+        <resource-bundle>
+            <base-name>language.CrearSolicitud</base-name>
+            <var>msjCrearSoli</var>
+        </resource-bundle>  
+        <resource-bundle>
+            <base-name>language.CrearUsuario</base-name>
+            <var>msjCrearUsu</var>
+        </resource-bundle>    
+        <resource-bundle>
+            <base-name>language.CrearVehiculo</base-name>
+            <var>msjCrearVeh</var>
+        </resource-bundle>         
+        
+        <resource-bundle>
+            <base-name>language.EditarAlquiler_es</base-name>
+            <var>msjEditarAlq</var>
+        </resource-bundle>        
+        <resource-bundle>
+            <base-name>language.EditarCliente_es</base-name>
+            <var>msjEditarCli</var>
+        </resource-bundle>  
+        <resource-bundle>
+            <base-name>language.EditarContrato_es</base-name>
+            <var>msjEditarCon</var>
+        </resource-bundle>   
+        <resource-bundle>
+            <base-name>language.EditarRuta_es</base-name>
+            <var>msjEditarRut</var>
+        </resource-bundle> 
+        <resource-bundle>
+            <base-name>language.EditarSolicitud</base-name>
+            <var>msjEditarSoli</var>
+        </resource-bundle>  
+        <resource-bundle>
+            <base-name>language.EditarUsuario</base-name>
+            <var>msjEditarUsu</var>
+        </resource-bundle>    
+        <resource-bundle>
+            <base-name>language.EditarVehiculo</base-name>
+            <var>msjCrearVeh</var>
+        </resource-bundle>           
     </application>
 </faces-config>

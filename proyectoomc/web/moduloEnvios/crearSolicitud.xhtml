@@ -20,18 +20,18 @@
 
 
                 <h:form enctype="multipart/form-data">
-                    <h1><h:outputText value="Crear Solicitud"/></h1>
+                    <h1><h:outputText value="#{msjCrearSoli.h1TxtTitle}"/></h1>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="No. Solicitud:" for="idSolicitud" />
+                        <h:outputLabel value="#{msjCrearSoli.labelTxtID}" for="idSolicitud" />
                         <h:inputText id="idSolicitud" value="#{solicitudControlador.solicitud.idSolicitud}" title="IdSolicitud" required="true" requiredMessage="The IdSolicitud field is required."/>
-                        <h:outputLabel value="Tamaño del cilindro:" for="tamanioCilindro" />
+                        <h:outputLabel value="#{msjCrearSoli.labelTxtCilynderSize}" for="tamanioCilindro" />
                         <h:inputText id="tamanioCilindro" value="#{solicitudControlador.solicitud.tamanioCilindro}" title="TamanioCilindro" required="true" requiredMessage="The TamanioCilindro field is required."/>
-                        <h:outputLabel value="Nombre del cliente:" for="clienteIdCliente" />
+                        <h:outputLabel value="#{msjCrearSoli.labelTxtCustomerName}" for="clienteIdCliente" />
                         <h:selectOneMenu id="clienteIdCliente" value="#{solicitudControlador.cliente.idCliente}" title="ClienteIdCliente" required="true" requiredMessage="The ClienteIdCliente field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{clienteControlador.consultarTodos()}" var="cli" itemValue="#{cli.idCliente}" itemLabel="#{cli.usuarioId.nombre} #{cli.usuarioId.apellido}"/>
                         </h:selectOneMenu>
-                        <h:outputLabel value="Formula:" for="formula" />
+                        <h:outputLabel value="#{msjCrearSoli.labelTxtFormula}" for="formula" />
                         <p:growl id="messages" showDetail="true" />
 
                         <p:fileUpload value="#{solicitudControlador.solicitud.formula}" mode="simple" skinSimple="true" allowTypes="pdf"/>
@@ -39,7 +39,7 @@
                         <br /> <br />
 
                     </h:panelGrid>
-                    <h:commandButton  action="#{solicitudControlador.registrarSolicitud()}" value="Registrar Solicitud" />
+                    <h:commandButton  action="#{solicitudControlador.registrarSolicitud()}" value="#{msjCrearSoli.btnRegisterRequest}" />
                 </h:form>
             </f:view>
 

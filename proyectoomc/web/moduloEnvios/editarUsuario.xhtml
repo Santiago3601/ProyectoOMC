@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      >
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
@@ -11,50 +13,49 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-       <div id="form"> 
-        <f:view>
+        <div id="form"> 
+            <f:view>
 
 
-            <h:form>
-                <h1><h:outputText value="Modificar usuario"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Id:" for="id" />
-                    <h:inputText id="idx" value="#{usuarioControlador.usuario.id}" title="Id" required="true" requiredMessage="The Id field is required."/>
-                    <h:outputLabel value="Tipo de Id:" for="tpId" />
-                    <h:inputText id="tpId" value="#{usuarioControlador.usuario.tpId}" title="TpId" required="true" requiredMessage="The TpId field is required."/>
-                    <h:outputLabel value="Nombre:" for="nombre" />
-                    <h:inputText id="nombre" value="#{usuarioControlador.usuario.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
-                    <h:outputLabel value="Apellido:" for="apellido" />
-                    <h:inputText id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" required="true" requiredMessage="The Apellido field is required."/>
-                    <h:outputLabel value="Dirección:" for="direccion" />
-                    <h:inputText id="direccion" value="#{usuarioControlador.usuario.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
-                    <h:outputLabel value="Correo:" for="correo" />
-                    <h:inputText id="correo" value="#{usuarioControlador.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-                    <h:outputLabel value="Contraseña:" for="contrasenia" />
-                    <h:inputText id="contrasenia" value="#{usuarioControlador.usuario.contrasenia}" title="Contrasenia" required="true" requiredMessage="The Contrasenia field is required."/>
-                    <h:outputLabel value="Telefono:" for="telefono" />
-                    <h:inputText id="telefono" value="#{usuarioControlador.usuario.telefono}" title="Telefono" required="true" requiredMessage="The Telefono field is required."/>
-                    <h:outputLabel value="Eps:" for="eps" />
-                    <h:inputText id="eps" value="#{usuarioControlador.usuario.eps}" title="Eps" required="true" requiredMessage="The Eps field is required."/>
-                    <h:outputLabel value="Fecha De Nacimiento:" for="fechaDeNacimiento" />
-                    <h:inputText id="fechaDeNacimiento" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="Edad:" for="edad" />
-                    <h:inputText id="edad" value="#{usuarioControlador.usuario.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
-                    <h:outputLabel value="Rol:" for="rolidRol" />
-                    <h:selectOneMenu id="rolidRol" value="#{usuarioControlador.rol.idRol}" title="RolidRol" required="true" requiredMessage="The RolidRol field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{rolControlador.consultarTodos()}" var="rol" itemValue="#{rol.idRol}" itemLabel="#{rol.rol}"/>
-                    </h:selectOneMenu>
-
-
-
-                </h:panelGrid>
-                <h:commandButton value="Actualizar" action="#{usuarioControlador.actualizarUsuario()}"> </h:commandButton> 
-            </h:form>
-        </f:view>
-</div>
+                <h:form>
+                    <h1><h:outputText value="#{msjEditarUsu.h1TxtTitle}"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtID}" for="id" />
+                        <h:inputText id="id" value="#{usuarioControlador.usuario.id}" title="Id" required="true" requiredMessage="The Id field is required."/>
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtIDType}" for="tpId" />
+                        <h:inputText id="tpId" value="#{usuarioControlador.usuario.tpId}" title="TpId" required="true" requiredMessage="The TpId field is required."/>
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtName}" for="nombre" />
+                        <h:inputText id="nombre" value="#{usuarioControlador.usuario.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtLastName}" for="apellido" />
+                        <h:inputText id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" required="true" requiredMessage="The Apellido field is required."/>
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtAddress}" for="direccion" />
+                        <h:inputText id="direccion" value="#{usuarioControlador.usuario.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtMail}" for="correo" />
+                        <h:inputText id="correo" value="#{usuarioControlador.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtPassword}" for="contrasenia" />
+                        <h:inputSecret id="contrasenia" value="#{usuarioControlador.usuario.contrasenia}" title="Contrasenia" required="true" requiredMessage="The Contrasenia field is required."/>
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtCellPhone}" for="telefono" />
+                        <h:inputText id="telefono" value="#{usuarioControlador.usuario.telefono}" title="Telefono" required="true" requiredMessage="The Telefono field is required."/>
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtEPS}" for="eps" />
+                        <h:inputText id="eps" value="#{usuarioControlador.usuario.eps}" title="Eps" required="true" requiredMessage="The Eps field is required."/>
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtBirthDate}" for="fechaDeNacimiento" />
+                        <h:inputText id="fechaDeNacimiento" ps:placeholder="#{msjEditarUsu.inputDate}" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <!--   <h:outputLabel value="Edad:" for="edad" />
+                           <h:inputText id="edad" value="#{usuarioControlador.usuario.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
+                         -->
+                         <h:outputLabel value="#{msjEditarUsu.labelTxtRol}" for="rolidRol" />
+                        
+                        <h:selectOneMenu id="rolidRol" value="#{usuarioControlador.rol.idRol}" title="RolidRol" required="true" requiredMessage="The RolidRol field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{rolControlador.consultarTodos()}" var="rol" itemValue="#{rol.idRol}" itemLabel="#{rol.rol}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:commandButton value="#{msjEditarUsu.btnRegister}" action="#{usuarioControlador.actualizarUsuario()}"> </h:commandButton>  
+                </h:form>
+            </f:view>
+        </div>
     </h:body>
 </html>
 

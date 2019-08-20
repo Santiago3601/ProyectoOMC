@@ -19,7 +19,7 @@ import javax.ejb.EJB;
  *
  * @author ACER
  */
-@Named(value = "contratoContolador")
+@Named(value = "contratoControlador")
 @SessionScoped
 public class contratoControlador implements Serializable {
 
