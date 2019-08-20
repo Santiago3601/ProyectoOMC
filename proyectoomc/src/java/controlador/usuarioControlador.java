@@ -14,6 +14,7 @@ import facade.UsuarioFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -214,4 +215,16 @@ public class usuarioControlador implements Serializable {
         return "";
     }
 
+    public String recuperarContrasena() throws UnsupportedEncodingException{
+        Usuario usa;
+        usa=usuarioFacade.find(getUsuario().getId());
+        if(usa!=null){
+            usa.setContrasenia(GeneradorContraseñas.getPassword(GeneradorContraseñas.MINUSCULAS+GeneradorContraseñas.MAYUSCULAS+GeneradorContraseñas.ESPECIALES,10));
+            usuarioFacade.edit(usa);
+            Mailer.send(usa);
+                    
+        }
+        
+        return null;
+    }
 }

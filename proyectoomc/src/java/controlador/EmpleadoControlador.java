@@ -102,6 +102,6 @@ public class EmpleadoControlador implements Serializable {
         empleado.setUsuarioId(usuarioFacade.find(usuario.getId()));
         empleadoFacade.edit(empleado);
         empleado = new Empleado();
-        return "listaEmpleado";
+        return "listarEmpleado";
     }
 }
