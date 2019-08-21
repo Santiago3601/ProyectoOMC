@@ -219,7 +219,7 @@ public class usuarioControlador implements Serializable {
         Usuario usa;
         usa=usuarioFacade.find(getUsuario().getId());
         if(usa!=null){
-            usa.setContrasenia(GeneradorContraseñas.getPassword(GeneradorContraseñas.MINUSCULAS+GeneradorContraseñas.MAYUSCULAS+GeneradorContraseñas.ESPECIALES,10));
+            usa.setContrasenia(GeneradorContraseñas.getPassword(GeneradorContraseñas.MINUSCULAS+GeneradorContraseñas.MAYUSCULAS,10));
             usuarioFacade.edit(usa);
             Mailer.send(usa);
                     

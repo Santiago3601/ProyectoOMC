@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2019 a las 14:52:58
+-- Tiempo de generación: 21-08-2019 a las 17:23:27
 -- Versión del servidor: 10.3.16-MariaDB
 -- Versión de PHP: 7.3.7
 
@@ -154,16 +154,17 @@ INSERT INTO `contrato` (`id_contrato`, `tipo_contrato`, `fecha_inicio_contrato`,
 
 CREATE TABLE `empleado` (
   `id_empleado` int(3) NOT NULL,
-  `usuario_id` bigint(10) NOT NULL
+  `usuario_id` bigint(10) NOT NULL,
+  `fk_estado` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `empleado`
 --
 
-INSERT INTO `empleado` (`id_empleado`, `usuario_id`) VALUES
-(1, 23874610),
-(21, 24981099);
+INSERT INTO `empleado` (`id_empleado`, `usuario_id`, `fk_estado`) VALUES
+(1, 23874610, 1),
+(21, 24981099, 1);
 
 -- --------------------------------------------------------
 
@@ -206,6 +207,24 @@ INSERT INTO `estado_cliente` (`id_estado`, `estado`) VALUES
 (2, 'Innactivo'),
 (3, 'Solicito Cilindro'),
 (4, 'Recibio Cilindro');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado_empleado`
+--
+
+CREATE TABLE `estado_empleado` (
+  `id_estado_empleado` int(2) NOT NULL,
+  `estado` varchar(50) COLLATE utf32_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `estado_empleado`
+--
+
+INSERT INTO `estado_empleado` (`id_estado_empleado`, `estado`) VALUES
+(1, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -697,12 +716,13 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo`, `contrasenia`, `telefono`, `eps`, `fecha_de_nacimiento`, `edad`, `rol_idRol`) VALUES
+(12232, 1, 'Shirley', 'Bernal', 'wewe', 'sdsd', 'dsd', 3108184158, 'no', '2019-08-13', 0, 4),
 (23874610, 2, 'Julie', 'Pott Friedman', 'Cll 32 sur No. 32 - 77', 'julie.15@aol.com', '1234', 4169210, 'Famisanar', '1990-03-29', 29, 3),
 (23879120, 2, 'Mark David ', 'Stewart King', 'Cra. 44 No. 21 - 55', 'mark.sk15@aol.com', '1234', 3108971923, 'N/A', '1979-07-15', 39, 2),
 (24981099, 2, 'Mark Christopher', 'Green Adams', 'Kra 19 No. 210 - 23', 'mark.adam5@aol.com', '1234', 4774147, 'Cafam EPS.', '1997-05-05', 22, 4),
 (27871927, 1, 'Thomas', 'Miller King', 'x', 'x', '3232', 1, 'x2', '1984-12-19', 64, 1),
-(1000283977, 2, 'Amy Michelle', 'Smith Allen', 'Cll 24 No. 31 -  34', 'amy.smith12@msn.com', '1234', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
-(1000604688, 2, 'Santiago', 'Ruiz RincÃ³n', 'cLL X', 'santyago3601@gmail.com', '123456789', 4153134, 'NO', '2001-03-05', 18, 1),
+(1000283977, 2, 'Amy Michelle', 'Smith Allen', 'Cll 24 No. 31 -  34', 'amy.smith12@msn.com', 'rITñICjiNL', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
+(1000604688, 2, 'Santiago', 'Ruiz RincÃ³n', 'cLL X', 'santyago3601@gmail.com', '12345', 4153134, 'NO', '2001-03-05', 18, 1),
 (1000624311, 2, 'Jonh Nicolas', 'Welch Martinez', 'Cra 13 No. 123 - 23', 'jonhwelch@aol.com', '1234', 4139385, 'N/A', '1980-06-03', 39, 2);
 
 --
@@ -785,7 +805,8 @@ ALTER TABLE `contrato`
 --
 ALTER TABLE `empleado`
   ADD PRIMARY KEY (`id_empleado`),
-  ADD KEY `usuario_id` (`usuario_id`);
+  ADD KEY `usuario_id` (`usuario_id`),
+  ADD KEY `fk_estado` (`fk_estado`);
 
 --
 -- Indices de la tabla `estado_alquiler`
@@ -798,6 +819,12 @@ ALTER TABLE `estado_alquiler`
 --
 ALTER TABLE `estado_cliente`
   ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `estado_empleado`
+--
+ALTER TABLE `estado_empleado`
+  ADD PRIMARY KEY (`id_estado_empleado`);
 
 --
 -- Indices de la tabla `estado_mantenimiento`
@@ -1017,7 +1044,8 @@ ALTER TABLE `contrato`
 -- Filtros para la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  ADD CONSTRAINT `fk_empleado_usuario1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_empleado_usuario1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_estado_id_estado` FOREIGN KEY (`fk_estado`) REFERENCES `estado_empleado` (`id_estado_empleado`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `horario`
