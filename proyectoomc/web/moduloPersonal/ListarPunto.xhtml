@@ -7,10 +7,12 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>  
-        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
         <title>Facelets Template</title>
     </h:head>
 
@@ -48,10 +50,16 @@
                         <h:commandLink action="#{puntoControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                     </p:column>
                 </p:dataTable>
-                <h:commandLink id="excel">
-                            descargar
-                            <p:dataExporter type="xls" target="ListaTurno" fileName="tabla" />
-                        </h:commandLink>
+               <h:commandLink id="excel">
+                        <i class="far fa-file-excel"></i>
+                        <p:dataExporter type="xls" target="tablaCli" fileName="tablaDeClientes" />
+                        <style>
+                            .far{
+                                padding: 2px;
+                                font-size: x-large;
+                            }
+                        </style>
+                    </h:commandLink>
             </h:form>
         </f:view>
 

@@ -55,9 +55,19 @@
                         <f:facet name="header">
                             <h:outputText value="EmpleadoIdEmpleado"/>
                         </f:facet>
-                        <h:outputText value="#{item.empleadoIdEmpleado.usuarioId}"/>
+                        <h:outputText value="#{item.empleadoIdEmpleado.idEmpleado}"/>
                     </p:column>
                 </p:dataTable>
+                <h:commandLink id="excel">
+                        <i class="far fa-file-excel"></i>
+                        <p:dataExporter type="xls" target="tablaCli" fileName="tablaDeClientes" />
+                        <style>
+                            .far{
+                                padding: 2px;
+                                font-size: x-large;
+                            }
+                        </style>
+                    </h:commandLink>
             </h:form>
         </f:view>
 
