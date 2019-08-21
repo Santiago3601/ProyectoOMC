@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
 
         <meta charset="utf-8"></meta>
@@ -81,6 +83,13 @@
                                     </a>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <div id="accessibility-buttons">
+                                    <a href="dashboard/SI/1admin/index_en.xhtml">
+                                        <i class="fas fa-globe-americas"></i>
+                                    </a>
+                                </div>
+                            </li>
 
                         </ul>
                     </div>
@@ -93,32 +102,42 @@
             <!-- Navegador -->
             <nav id="options" class="barra-navega">
                 <ul>
-                    <li><a href="dashboard/HTML/Modulo de envios/MODULO-ENVIOS.html" target="area-de-trabajo">Envios</a>
-                        <ul>
-
-                            <li><a href="">Consultar</a>
+                    <c:forEach items="#{usuarioControlador.rol.permisoList}" var="p">
+                        <c:if test="#{empty p.permisoPadre}">
+                            <li>
+                                <c:if test="#{empty p.permisoPadre}">
+                                    <a >
+                                        #{p.nombre}
+                                    </a>
+                                </c:if>
                                 <ul>
-                                    <li><a href="moduloEnvios/listaAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
-                                    <li><a href="moduloEnvios/listaClientes.xhtml" target="area-de-trabajo">Cliente</a></li>
-                                    <li><a href="moduloEnvios/listaContrato.xhtml" target="area-de-trabajo">Contrato</a></li>
-                     
-                                    <li><a href="newTemplate.xhtml" target="area-de-trabajo">Usuarios</a></li>
-
+                                    <c:forEach items="#{p.subPermisos}" var="sp">
+                                        <li>
+                                            <a >
+                                                #{sp.nombre}
+                                            </a>
+                                            <ul>
+                                                <c:forEach items="#{sp.subPermisos}" var="ssp">
+                                                    <li>
+                                                        <a href="#{ssp.url}" target="area-de-trabajo">
+                                                            #{ssp.nombre}
+                                                        </a>
+                                                    </li>
+                                                </c:forEach>
+                                            </ul>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
-
                             </li>
-                            <li><a href="">Programar</a>
-                                <ul>
-                                    <li><a href="moduloEnvios/crearAlquiler.xhtml" target="area-de-trabajo">Alquiler</a></li>
+                        </c:if>
 
-
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-
+                    </c:forEach>
                 </ul>
+
+
+
+
+
             </nav>
             <section>
                 <iframe name="area-de-trabajo" src=""></iframe>

@@ -151,7 +151,7 @@ public class usuarioControlador implements Serializable {
                         break;
                     case 3:
                         //       redirecionar = "dashboard/SI/3jefe_planta/index";
-                        redirecionar = "dashboard/SI/1admin/index";
+                        redirecionar = "dashboard/SI/3jefe_planta/index";
                         break;
                     case 4:
                         redirecionar = "dashboard/SI/4tecnico/index";

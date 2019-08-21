@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-08-2019 a las 16:50:30
+-- Tiempo de generación: 21-08-2019 a las 14:52:58
 -- Versión del servidor: 10.3.16-MariaDB
 -- Versión de PHP: 7.3.7
 
@@ -162,7 +162,8 @@ CREATE TABLE `empleado` (
 --
 
 INSERT INTO `empleado` (`id_empleado`, `usuario_id`) VALUES
-(1, 23874610);
+(1, 23874610),
+(21, 24981099);
 
 -- --------------------------------------------------------
 
@@ -326,19 +327,80 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `url`, `icon`, `permiso_padre`) V
 (40, 'Permiso Laboral', 'moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 36),
 (41, 'Punto', 'moduloPersonal/RegistrarPunto.xhtml', 'x', 36),
 (42, 'Turno', 'moduloPersonal/RegistrarTurno.xhtml', 'x', 36),
-(43, 'Empleado', 'moduloPersonal/listarEmpleado.xhtml', 'x', 37),
-(44, 'Horario', 'moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 37),
+(43, 'Empleado', 'moduloPersonal/ListarEmpleado.xhtml', 'x', 37),
+(44, 'Horario', 'moduloPersonal/ListarHorario.xhtml', 'x', 37),
 (45, 'Permiso Laboral', 'moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 37),
 (46, 'Punto', 'moduloPersonal/ListarPunto.xhtml', 'x', 37),
-(47, 'Turno', 'moduloPersonal/ListarHorario.xhtml', 'x', 37),
-(48, '---- Jefe de planta -----', NULL, 'x', NULL),
-(49, 'Envios-----', NULL, 'x', 48),
-(50, 'Mantenimiento ------', NULL, 'x', 48),
-(51, 'Personal -------', NULL, 'x', 48),
-(52, 'Crear', NULL, 'x', 49),
-(53, 'Programar', NULL, 'x', 49),
-(54, 'Consultar', NULL, 'x', 49),
-(55, 'Vehiculo', NULL, 'x', 52);
+(47, 'Turno', 'moduloPersonal/ListarTurno.xhtml', 'x', 37),
+(48, '---- Jefe de planta -----', ' ', 'x', NULL),
+(49, 'Envios', NULL, 'x', NULL),
+(52, 'Crear', '', 'x', 49),
+(53, 'Consultar', NULL, 'x', 49),
+(54, 'Programar', NULL, 'x', 49),
+(55, 'Usuarios', 'moduloEnvios/crearUsuario.xhtml', 'x', 52),
+(56, 'Cliente', 'moduloEnvios/crearCliente.xhtml', 'x', 52),
+(57, 'Alquiler', 'moduloEnvios/crearAlquiler.xhtml', 'x', 54),
+(58, 'Contrato', 'moduloEnvios/crearContrato.xhtml', 'x', 52),
+(59, 'Ruta', 'moduloEnvios/crearRuta.xhtml', 'x', 54),
+(60, 'Vehiculo', 'moduloEnvios/crearVehiculo.xhtml', 'x', 52),
+(61, 'Usuarios', 'moduloEnvios/listaUsuario.xhtml', 'x', 53),
+(62, 'Cliente', 'moduloEnvios/listaClientes.xhtml', 'x', 53),
+(63, 'Alquiler', 'moduloEnvios/listaAlquiler.xhtml', 'x', 53),
+(64, 'Contrato', 'moduloEnvios/listaContrato.xhtml', 'x', 53),
+(65, 'Ruta', 'moduloEnvios/listaRuta.xhtml', 'x', 53),
+(67, 'Vehiculo', 'moduloEnvios/listaVehiculos.xhtml', 'x', 53),
+(68, 'Mantenimiento', NULL, 'x', NULL),
+(69, 'Programa', NULL, 'x', 68),
+(70, 'Registra', NULL, 'x', 68),
+(71, 'Consulta', NULL, 'x', 68),
+(72, 'Mantenimiento Cilindro', 'moduloMantenimiento/registrarMantenimientoCilindro.xhtml', 'x', 69),
+(73, 'Mantenimiento', 'moduloMantenimiento/registrarMantenimiento.xhtml', 'x', 69),
+(74, 'Estado Mantenimiento', 'x-x-x-x-x--x-x--x-x--x-x--x-x--x-x-x--x-x--x-x-x-x--x', 'x', 69),
+(75, 'Cilindro', 'moduloMantenimiento/registrarCilindro.xhtml', 'x', 70),
+(76, 'Agenda', 'moduloMantenimiento/registrarAgenda.xhtml', 'x', 70),
+(77, 'Mantenimineto Cilindro', 'moduloMantenimiento/listaMantenimientoCilindro.xhtml', 'x', 71),
+(78, 'MAntenimiento', 'moduloMantenimiento/listaMantenimiento.xhtml', 'x', 71),
+(79, 'Estado Mantenimiento', 'x-x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-x-x-x-', 'x', 71),
+(80, 'Cilindro', 'moduloMantenimiento/listaCilindro.xhtml', 'x', 71),
+(81, 'Agenda', 'moduloMantenimiento/listaAgenda.xhtml', 'x', 71),
+(82, 'Personal', NULL, 'x', NULL),
+(83, 'Registra', NULL, 'x', 82),
+(84, 'Consulta', NULL, 'x', 82),
+(85, 'Turno', 'moduloPersonal/RegistrarTurno.xhtml', 'x', 83),
+(86, 'Punto', 'moduloPersonal/RegistrarPunto.xhtml', 'x', 83),
+(87, 'Permiso Laboral', 'moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 83),
+(88, 'Turno', 'moduloPersonal/ListarTurno.xhtml', 'x', 84),
+(89, 'Punto', 'moduloPersonal/ListarPunto.xhtml', 'x', 84),
+(90, 'Permiso Laboral', 'moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 84),
+(91, 'Tecnico', NULL, 'x', NULL),
+(92, 'Envios', NULL, 'x', NULL),
+(95, 'Consultar', NULL, 'x', 92),
+(96, 'Alquiler', 'moduloEnvios/listaAlquiler.xhtml', 'x', 95),
+(97, 'Ruta', 'moduloEnvios/listaRuta.xhtml', 'x', 95),
+(98, 'Vehiculo', 'moduloEnvios/listaVehiculos.xhtml', 'x', 95),
+(99, 'Usuario', 'moduloEnvios/listaUsuario.xhtml', 'x', 95),
+(100, 'Mantenimiento', '', 'x', NULL),
+(101, 'Registrar', NULL, 'x', 100),
+(102, 'Consultar', NULL, 'x', 100),
+(103, 'Agenda', 'moduloMantenimiento/listaAgenda.xhtml', 'x', 102),
+(104, 'Mantenimiento', 'moduloMantenimiento/listaMantenimiento.xhtml', 'x', 102),
+(105, 'Mantenimiento Cilindro', 'moduloMantenimiento/listaMantenimientoCilindro.xhtml', 'x', 102),
+(106, 'Estado Cilindro', 'x-x-x-x--x-x--x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 102),
+(107, 'Cilindro', 'moduloMantenimiento/registrarCilindro.xhtml', 'x', 101),
+(108, 'Cilindro', 'moduloMantenimiento/listaCilindro.xhtml', 'x', 102),
+(109, 'Personal', NULL, 'x', NULL),
+(110, 'Registrar', NULL, 'x', 109),
+(111, 'Consultar', NULL, 'x', 109),
+(112, 'Turno', 'moduloPersonal/ListarPunto.xhtml', 'x', 111),
+(113, 'Punto', 'moduloPersonal/ListarPunto.xhtml', 'x', 111),
+(114, 'Permiso Laboral', 'moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 111),
+(115, 'Permiso Laboral', 'moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 110),
+(118, 'Envios', NULL, 'x', NULL),
+(120, 'Personal', NULL, 'x', NULL),
+(121, 'consultar', NULL, 'x', 118),
+(122, 'Solicitud', 'moduloEnvios/listaSolicitud.xhtml', 'x', 121),
+(123, 'Alquiler', 'moduloEnvios/listaAlquiler.xhtml', 'x', 121),
+(124, 'Contrato', 'moduloEnvios/listaContrato.xhtml', 'x', 121);
 
 -- --------------------------------------------------------
 
@@ -456,13 +518,67 @@ INSERT INTO `rol_tiene_permiso` (`rol_idRol`, `permiso_id_permiso`) VALUES
 (1, 45),
 (1, 46),
 (1, 47),
-(2, 49),
-(2, 50),
-(2, 51),
-(2, 52),
-(2, 53),
-(2, 54),
-(2, 55);
+(2, 118),
+(3, 49),
+(3, 53),
+(3, 54),
+(3, 55),
+(3, 56),
+(3, 57),
+(3, 58),
+(3, 59),
+(3, 60),
+(3, 61),
+(3, 62),
+(3, 63),
+(3, 64),
+(3, 65),
+(3, 67),
+(3, 68),
+(3, 69),
+(3, 70),
+(3, 71),
+(3, 72),
+(3, 73),
+(3, 74),
+(3, 75),
+(3, 76),
+(3, 77),
+(3, 78),
+(3, 79),
+(3, 80),
+(3, 81),
+(3, 82),
+(3, 83),
+(3, 84),
+(3, 85),
+(3, 86),
+(3, 87),
+(3, 88),
+(3, 89),
+(3, 90),
+(4, 92),
+(4, 95),
+(4, 96),
+(4, 97),
+(4, 98),
+(4, 99),
+(4, 100),
+(4, 101),
+(4, 102),
+(4, 103),
+(4, 104),
+(4, 105),
+(4, 106),
+(4, 107),
+(4, 108),
+(4, 109),
+(4, 110),
+(4, 111),
+(4, 112),
+(4, 113),
+(4, 114),
+(4, 115);
 
 -- --------------------------------------------------------
 
@@ -504,7 +620,10 @@ CREATE TABLE `solicitud` (
 --
 
 INSERT INTO `solicitud` (`id_solicitud`, `formula`, `tamanio_cilindro`, `cliente_id_cliente`) VALUES
-(1, '2', 250, 3);
+(1, '2', 250, 3),
+(2, '/proyectoOMC/archivos/Tarea 2. Fundamentos_php.pdf', 32, 7),
+(3, '/proyectoOMC/archivos/Tarea 2. Fundamentos_php.pdf', 32, 7),
+(5, '/proyectoomc/archivos/tabla (3).xls', 12332, 6);
 
 -- --------------------------------------------------------
 
@@ -848,7 +967,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`
