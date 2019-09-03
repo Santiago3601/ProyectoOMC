@@ -10,6 +10,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import facade.*;
 import entidades.*;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -86,4 +87,10 @@ public class horarioControlador implements Serializable {
         horario = new Horario();
         return "editarHorario";
     }
+    
+    public void fecha(){
+       Date sisteFecha = new Date(); 
+    }
+    
+   
 }

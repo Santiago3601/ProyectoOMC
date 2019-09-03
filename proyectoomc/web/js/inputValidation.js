@@ -23,19 +23,19 @@ function setInputFilter(textbox, inputFilter) {
 
 
 // Install input filters.
-setInputFilter(document.getElementById("uintTextBox"), function(value) {
+setInputFilter(document.getElementById("uintTextBox"), function(value) { //// numeros positivos
   return /^\d*$/.test(value); });
-setInputFilter(document.getElementById("intLimitTextBox"), function(value) {
+setInputFilter(document.getElementById("intLimitTextBox"), function(value) {  /// numeros positivos menores a 500
   return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 500); });
-setInputFilter(document.getElementById("intTextBox"), function(value) {
+setInputFilter(document.getElementById("intTextBox"), function(value) {          ///numeros positivos y negativos
   return /^-?\d*$/.test(value); });
-setInputFilter(document.getElementById("floatTextBox"), function(value) {
+setInputFilter(document.getElementById("floatTextBox"), function(value) {     ///numeros decimales separados por puntos o coma
   return /^-?\d*[.,]?\d*$/.test(value); });
-setInputFilter(document.getElementById("currencyTextBox"), function(value) {
+setInputFilter(document.getElementById("currencyTextBox"), function(value) {   ////decimales separados por punto y coma con solo dos digitos
   return /^-?\d*[.,]?\d{0,2}$/.test(value); });
-setInputFilter(document.getElementById("basicLatinTextBox"), function(value) {
+setInputFilter(document.getElementById("basicLatinTextBox"), function(value) { //de la a -z
   return /^[a-z]*$/i.test(value); });
-setInputFilter(document.getElementById("extendedLatinTextBox"), function(value) {
+setInputFilter(document.getElementById("extendedLatinTextBox"), function(value) {  ////letras y caracteres especiales
   return /^[a-z\u00c0-\u024f]*$/i.test(value); });
-setInputFilter(document.getElementById("hexTextBox"), function(value) {
+setInputFilter(document.getElementById("hexTextBox"), function(value) {    ///nuemos hexadecimales
   return /^[0-9a-f]*$/i.test(value); });

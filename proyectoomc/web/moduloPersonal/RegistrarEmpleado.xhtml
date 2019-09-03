@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:s="http://xmlns.jcp.org/jsf/passthrough"
+      >
 <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
@@ -19,7 +21,7 @@
                 <h1><h:outputText value="Registrar Empleado"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Codigo Empleado:" for="idEmpleado" />
-                    <h:inputText id="idEmpleado" value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required."/>
+                    <h:inputText s:id="uintTextBox" value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required."/>
                     <h:outputLabel value="Usuario:" for="usuarioId" />
                     <h:selectOneMenu id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
                         <!-- TODO: update below reference to list of available items-->
@@ -30,6 +32,7 @@
             </h:form>
         </f:view>
      </div>
+        <script src="../js/inputValidation.js"></script>
     </h:body>
 </html>
 

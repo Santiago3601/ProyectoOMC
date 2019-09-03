@@ -106,4 +106,6 @@ public class rutaControlador implements Serializable {
         ruta = new Ruta();
         return "listaRuta";
     }
+    
+    
 }
