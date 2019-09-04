@@ -34,6 +34,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e")
     , @NamedQuery(name = "Empleado.findByIdEmpleado", query = "SELECT e FROM Empleado e WHERE e.idEmpleado = :idEmpleado")})
 public class Empleado implements Serializable {
+    @JoinColumn(name = "fk_estado", referencedColumnName = "id_estado_empleado")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private EstadoEmpleado fkEstado;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -146,6 +149,14 @@ public class Empleado implements Serializable {
     @Override
     public String toString() {
         return "entidades.Empleado[ idEmpleado=" + idEmpleado + " ]";
+    }
+
+    public EstadoEmpleado getFkEstado() {
+        return fkEstado;
+    }
+
+    public void setFkEstado(EstadoEmpleado fkEstado) {
+        this.fkEstado = fkEstado;
     }
     
 }

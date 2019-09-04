@@ -18,55 +18,70 @@ import javax.faces.context.FacesContext;
  * @author Ismael
  */
 @Named(value = "sessionController")
-@RequestScoped//Para que permanezca el idioma seleccionado durante la sesión debe usar el SessionScoped.
-public class SessionController implements Serializable{
+@SessionScoped//Para que permanezca el idioma seleccionado durante la sesión debe usar el SessionScoped.
+public class SessionController implements Serializable {
 
-    private Locale languageSelected=new Locale("es");
-    
+    private Locale languageSelected = new Locale("es");
+    private Locale spanishLanguague = new Locale("es");
+
     /**
      * Creates a new instance of SessionController
      */
     public SessionController() {
     }
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
         Locale idiomaUsuario = ec.getRequestLocale();
         boolean support = false;
         for (Locale l : getSupportLanguages()) {
-            if(l.getLanguage().equals(idiomaUsuario.getLanguage())){
-                support = true; break;
+            if (l.getLanguage().equals(idiomaUsuario.getLanguage())) {
+                support = true;
+                break;
             }
         }
-        languageSelected = (support) ? idiomaUsuario: new Locale("es");
-        
+        languageSelected = (support) ? idiomaUsuario : new Locale("es");
+
     }
 
     public Locale getLanguageSelected() {
         return languageSelected;
     }
+    
+ 
 
     public void setLanguageSelected(Locale languageSelected) {
         this.languageSelected = languageSelected;
     }
-    
-    public List<Locale> getSupportLanguages(){
+    public Locale getLanguagueToChange() {
+ Locale  languague = spanishLanguague;
+        Locale currentLanguague = (getLanguageSelected());
+        
+        if (currentLanguague.equals(Locale.ENGLISH)) {
+            languague = spanishLanguague;
+        } else {
+            languague = Locale.ENGLISH;
+        }
+        return languague/* = Locale.ENGLISH*/;
+    }
+
+    public List<Locale> getSupportLanguages() {
         List<Locale> idiomas = new ArrayList<>();
         Iterator<Locale> it = FacesContext.getCurrentInstance().getApplication().getSupportedLocales();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             idiomas.add(it.next());
         }
         return idiomas;
     }
-    
-    public String cambiarIdioma(Locale idioma){
-        if(idioma != null){
+
+    public String cambiarIdioma(Locale idioma) {
+        if (idioma != null) {
             this.languageSelected = idioma;
             FacesContext.getCurrentInstance().getViewRoot().setLocale(languageSelected);
         }
         return "";
     }
-    
+
 }

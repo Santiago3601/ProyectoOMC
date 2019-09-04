@@ -101,7 +101,7 @@
             <var>msjCrearAlq</var>
         </resource-bundle>        
         <resource-bundle>
-            <base-name>language.CrearCliente_es</base-name>
+            <base-name>language.CrearCliente</base-name>
             <var>msjCrearCli</var>
         </resource-bundle>  
         <resource-bundle>
@@ -152,6 +152,14 @@
         <resource-bundle>
             <base-name>language.EditarVehiculo</base-name>
             <var>msjCrearVeh</var>
+        </resource-bundle>           
+
+
+
+
+        <resource-bundle>
+            <base-name>language.ROL</base-name>
+            <var>msjROL</var>
         </resource-bundle>           
     </application>
 </faces-config>

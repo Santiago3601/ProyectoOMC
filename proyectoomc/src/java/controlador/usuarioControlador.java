@@ -145,17 +145,17 @@ public class usuarioControlador implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("sesionLogin", usuarioLogueado);
                 switch (usuarioLogueado.getRolidRol().getIdRol()) {
                     case 1:
-                        redirecionar = "dashboard/SI/1admin/index";
+                        redirecionar = "dashboard/SI/1admin/index?faces-redirect=true";
                         break;
                     case 2:
-                        redirecionar = "dashboard/SI/2cliente/index";
+                        redirecionar = "dashboard/SI/2cliente/index?faces-redirect=true";
                         break;
                     case 3:
                         //       redirecionar = "dashboard/SI/3jefe_planta/index";
-                        redirecionar = "dashboard/SI/3jefe_planta/index";
+                        redirecionar = "dashboard/SI/3jefe_planta/index?faces-redirect=true";
                         break;
                     case 4:
-                        redirecionar = "dashboard/SI/4tecnico/index";
+                        redirecionar = "dashboard/SI/4tecnico/index?faces-redirect=true";
                         break;
 
                     default:
