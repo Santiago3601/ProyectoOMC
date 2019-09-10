@@ -15,27 +15,33 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
-/**
- *
- * @author Aprendiz
- */
+
 @Named(value = "horarioControlador")
 @SessionScoped
 public class horarioControlador implements Serializable {
 
     @EJB
-    private HorarioFacade horarioFacade;
-    Horario horario;
+    HorarioFacade horarioFacade;
+    private Horario horario;
 
     @EJB
-    private EmpleadoFacade empleadoFacade;
-    Empleado empleado;
-
+    EmpleadoFacade empleadoFacade;
+    private Empleado empleado;
+    
+    private Fecha fecha;
+    
     @PostConstruct
     public void init() {
         empleado = new Empleado();
         horario = new Horario();
-       
+    }
+
+    public Fecha getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Fecha fecha) {
+        this.fecha = fecha;
     }
 
     public Horario getHorario() {
@@ -65,10 +71,23 @@ public class horarioControlador implements Serializable {
         horario = horarioFacade.find(horario.getIdHorario());
     }
 
-    public String registrarHorario() {
-        horario.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
+    public String registrarIngreso() {
+        horario.setEmpleadoIdEmpleado(getEmpleado());
+        this.horario.setFechaDeIngreso(getFecha().getObjDate());
+        //this.horario.setHoraIngreso(getFecha().getObjDate().getTime().);
         horarioFacade.create(horario);
         horario = new Horario();
+        this.empleado = new Empleado();
+        return "registrarHorario";
+    }
+    
+    public String registrarSalida(){
+        horario.setEmpleadoIdEmpleado(getEmpleado());
+        this.horario.setFechaDeSalida(getFecha().getObjDate());
+        //this.horario.setHoraSalida(getFecha().getSoyLaHora());
+        horarioFacade.edit(horario);
+        horario = new Horario();
+        this.empleado = new Empleado();
         return "registrarHorario";
     }
     
