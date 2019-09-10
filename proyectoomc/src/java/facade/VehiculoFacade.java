@@ -9,6 +9,7 @@ import entidades.Vehiculo;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +29,18 @@ public class VehiculoFacade extends AbstractFacade<Vehiculo> {
     public VehiculoFacade() {
         super(Vehiculo.class);
     }
-    
+        public String cargaArchivos(String archivo, String tabla) {
+        String resultado = "";
+        try {
+            Query query = em.createNativeQuery("LOAD DATA LOCAL INFILE '" + archivo + "' REPLACE INTO TABLE `"+ tabla +"` FIELDS TERMINATED BY ';' LINES TERMINATED BY '\\r\\n'");
+            resultado = Integer.toString(query.executeUpdate());
+
+            return resultado;
+        } catch (Exception e) {
+
+            System.out.println("Error: " + e);
+
+        }
+        return "resultado";
+        }
 }
