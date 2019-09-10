@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2019 a las 17:23:27
--- Versión del servidor: 10.3.16-MariaDB
--- Versión de PHP: 7.3.7
+-- Tiempo de generación: 10-09-2019 a las 15:54:06
+-- Versión del servidor: 10.1.30-MariaDB
+-- Versión de PHP: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -295,7 +295,7 @@ CREATE TABLE `mantenimiento_cilindro` (
 CREATE TABLE `permiso` (
   `id_permiso` int(11) NOT NULL,
   `nombre` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
-  `url` text COLLATE utf32_spanish_ci DEFAULT NULL,
+  `url` text COLLATE utf32_spanish_ci,
   `icon` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `permiso_padre` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
