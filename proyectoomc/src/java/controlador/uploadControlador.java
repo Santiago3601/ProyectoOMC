@@ -80,7 +80,7 @@ public class uploadControlador implements Serializable {
 
             path = path.replace("\\", "\\\\");
 
-            agendaFacade.cargaArchivos(path, tabla);
+            //agendaFacade.cargaArchivos(path, tabla);
 
         } catch (Exception e) {
             e.printStackTrace();
