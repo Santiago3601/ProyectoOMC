@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "estado_empleado")
@@ -34,8 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "EstadoEmpleado.findByIdEstadoEmpleado", query = "SELECT e FROM EstadoEmpleado e WHERE e.idEstadoEmpleado = :idEstadoEmpleado")
     , @NamedQuery(name = "EstadoEmpleado.findByEstado", query = "SELECT e FROM EstadoEmpleado e WHERE e.estado = :estado")})
 public class EstadoEmpleado implements Serializable {
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkEstado", fetch = FetchType.LAZY)
-    private List<Empleado> empleadoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,6 +45,8 @@ public class EstadoEmpleado implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "estado")
     private String estado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkEstado")
+    private List<Empleado> empleadoList;
 
     public EstadoEmpleado() {
     }
@@ -77,6 +76,15 @@ public class EstadoEmpleado implements Serializable {
         this.estado = estado;
     }
 
+    @XmlTransient
+    public List<Empleado> getEmpleadoList() {
+        return empleadoList;
+    }
+
+    public void setEmpleadoList(List<Empleado> empleadoList) {
+        this.empleadoList = empleadoList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -100,15 +108,6 @@ public class EstadoEmpleado implements Serializable {
     @Override
     public String toString() {
         return "entidades.EstadoEmpleado[ idEstadoEmpleado=" + idEstadoEmpleado + " ]";
-    }
-
-    @XmlTransient
-    public List<Empleado> getEmpleadoList() {
-        return empleadoList;
-    }
-
-    public void setEmpleadoList(List<Empleado> empleadoList) {
-        this.empleadoList = empleadoList;
     }
     
 }

@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "estado_cliente")
@@ -46,7 +45,7 @@ public class EstadoCliente implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "estado")
     private String estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoIdEstado", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoIdEstado")
     private List<Cliente> clienteList;
 
     public EstadoCliente() {

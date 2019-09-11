@@ -9,7 +9,6 @@ import entidades.Agenda;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  *
@@ -29,21 +28,5 @@ public class AgendaFacade extends AbstractFacade<Agenda> {
     public AgendaFacade() {
         super(Agenda.class);
     }
-    
-        public String cargaArchivos(String archivo, String tabla) {
-        String resultado = "";
-        try {
-            Query query = em.createNativeQuery("LOAD DATA LOCAL INFILE" + archivo + "REPLACE INTO TABLE" + tabla + "FIELDS TERMINATED BY ';' LINES TERMINATED BY '\\r\\n'");
-            resultado = Integer.toString(query.executeUpdate());
-
-            return resultado;
-        } catch (Exception e) {
-
-            System.out.println("Error: " + e);
-
-        }
-        return "resultado";
-    }
-    
     
 }

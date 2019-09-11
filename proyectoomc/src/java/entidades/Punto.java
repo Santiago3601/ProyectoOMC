@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "punto")
@@ -51,7 +50,7 @@ public class Punto implements Serializable {
     @Size(min = 1, max = 70)
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "puntoIdPuntos", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "puntoIdPuntos")
     private List<Turno> turnoList;
 
     public Punto() {

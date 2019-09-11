@@ -10,7 +10,6 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,11 +20,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "horario")
@@ -45,12 +45,12 @@ public class Horario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_horario")
     private Integer idHorario;
+    @Size(max = 20)
     @Column(name = "hora_ingreso")
-    @Temporal(TemporalType.TIME)
-    private Date horaIngreso;
+    private String horaIngreso;
+    @Size(max = 20)
     @Column(name = "hora_salida")
-    @Temporal(TemporalType.TIME)
-    private Date horaSalida;
+    private String horaSalida;
     @Column(name = "fecha_de_ingreso")
     @Temporal(TemporalType.DATE)
     private Date fechaDeIngreso;
@@ -58,7 +58,7 @@ public class Horario implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaDeSalida;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Empleado empleadoIdEmpleado;
 
     public Horario() {
@@ -76,19 +76,19 @@ public class Horario implements Serializable {
         this.idHorario = idHorario;
     }
 
-    public Date getHoraIngreso() {
+    public String getHoraIngreso() {
         return horaIngreso;
     }
 
-    public void setHoraIngreso(Date horaIngreso) {
+    public void setHoraIngreso(String horaIngreso) {
         this.horaIngreso = horaIngreso;
     }
 
-    public Date getHoraSalida() {
+    public String getHoraSalida() {
         return horaSalida;
     }
 
-    public void setHoraSalida(Date horaSalida) {
+    public void setHoraSalida(String horaSalida) {
         this.horaSalida = horaSalida;
     }
 

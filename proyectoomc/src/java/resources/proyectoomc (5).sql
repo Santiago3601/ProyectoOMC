@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2019 a las 17:04:01
--- Versión del servidor: 10.1.30-MariaDB
--- Versión de PHP: 7.2.2
+-- Tiempo de generación: 11-09-2019 a las 15:13:54
+-- Versión del servidor: 10.1.39-MariaDB
+-- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -245,8 +245,8 @@ CREATE TABLE `estado_mantenimiento` (
 
 CREATE TABLE `horario` (
   `id_horario` int(5) NOT NULL,
-  `hora_ingreso` time DEFAULT NULL,
-  `hora_salida` time DEFAULT NULL,
+  `hora_ingreso` varchar(20) COLLATE utf32_spanish_ci DEFAULT NULL,
+  `hora_salida` varchar(20) COLLATE utf32_spanish_ci DEFAULT NULL,
   `empleado_id_empleado` int(3) NOT NULL,
   `fecha_de_ingreso` date DEFAULT NULL,
   `fecha_de_salida` date DEFAULT NULL

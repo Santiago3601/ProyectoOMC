@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "ruta")
@@ -57,12 +56,12 @@ public class Ruta implements Serializable {
     @Column(name = "planilla")
     private String planilla;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Empleado empleadoIdEmpleado;
     @JoinColumn(name = "vehiculo_id_vehiculo", referencedColumnName = "id_vehiculo")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Vehiculo vehiculoIdVehiculo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutaIdRuta", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutaIdRuta")
     private List<Alquiler> alquilerList;
 
     public Ruta() {

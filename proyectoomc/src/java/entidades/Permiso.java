@@ -8,10 +8,8 @@ package entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -29,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "permiso")
@@ -40,8 +38,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Permiso.findByNombre", query = "SELECT p FROM Permiso p WHERE p.nombre = :nombre")
     , @NamedQuery(name = "Permiso.findByIcon", query = "SELECT p FROM Permiso p WHERE p.icon = :icon")})
 public class Permiso implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoIdPermiso", fetch = FetchType.LAZY)
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -66,17 +62,13 @@ public class Permiso implements Serializable {
     @JoinTable(name = "rol_tiene_permiso", joinColumns = {
         @JoinColumn(name = "permiso_id_permiso", referencedColumnName = "id_permiso")}, inverseJoinColumns = {
         @JoinColumn(name = "rol_idRol", referencedColumnName = "idRol")})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     private List<Rol> rolList;
-    
-    @OneToMany(mappedBy = "permisoPadre", fetch = FetchType.LAZY)
-    private List<Permiso> subPermisos;
-    
+    @OneToMany(mappedBy = "permisoPadre")
+    private List<Permiso> permisoList;
     @JoinColumn(name = "permiso_padre", referencedColumnName = "id_permiso")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Permiso permisoPadre;
-
-
 
     public Permiso() {
     }
@@ -133,12 +125,12 @@ public class Permiso implements Serializable {
     }
 
     @XmlTransient
-    public List<Permiso> getSubPermisos() {
-        return subPermisos;
+    public List<Permiso> getPermisoList() {
+        return permisoList;
     }
 
-    public void setSubPermisos(List<Permiso> subPermisos) {
-        this.subPermisos = subPermisos;
+    public void setPermisoList(List<Permiso> permisoList) {
+        this.permisoList = permisoList;
     }
 
     public Permiso getPermisoPadre() {
@@ -173,6 +165,5 @@ public class Permiso implements Serializable {
     public String toString() {
         return "entidades.Permiso[ idPermiso=" + idPermiso + " ]";
     }
-
-
+    
 }

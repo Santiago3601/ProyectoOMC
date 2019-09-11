@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "rol")
@@ -47,9 +46,9 @@ public class Rol implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "rol")
     private String rol;
-    @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "rolList")
     private List<Permiso> permisoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolidRol", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolidRol")
     private List<Usuario> usuarioList;
 
     public Rol() {

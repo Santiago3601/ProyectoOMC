@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "empleado")
@@ -34,9 +33,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e")
     , @NamedQuery(name = "Empleado.findByIdEmpleado", query = "SELECT e FROM Empleado e WHERE e.idEmpleado = :idEmpleado")})
 public class Empleado implements Serializable {
-    @JoinColumn(name = "fk_estado", referencedColumnName = "id_estado_empleado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private EstadoEmpleado fkEstado;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,19 +40,22 @@ public class Empleado implements Serializable {
     @NotNull
     @Column(name = "id_empleado")
     private Integer idEmpleado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado")
     private List<Horario> horarioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado")
     private List<Ruta> rutaList;
-    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idEmpleado")
     private List<Turno> turnoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado")
     private List<Agenda> agendaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado")
     private List<PermisoLaboral> permisoLaboralList;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Usuario usuarioId;
+    @JoinColumn(name = "fk_estado", referencedColumnName = "id_estado_empleado")
+    @ManyToOne(optional = false)
+    private EstadoEmpleado fkEstado;
 
     public Empleado() {
     }
@@ -126,6 +125,14 @@ public class Empleado implements Serializable {
         this.usuarioId = usuarioId;
     }
 
+    public EstadoEmpleado getFkEstado() {
+        return fkEstado;
+    }
+
+    public void setFkEstado(EstadoEmpleado fkEstado) {
+        this.fkEstado = fkEstado;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -149,14 +156,6 @@ public class Empleado implements Serializable {
     @Override
     public String toString() {
         return "entidades.Empleado[ idEmpleado=" + idEmpleado + " ]";
-    }
-
-    public EstadoEmpleado getFkEstado() {
-        return fkEstado;
-    }
-
-    public void setFkEstado(EstadoEmpleado fkEstado) {
-        this.fkEstado = fkEstado;
     }
     
 }

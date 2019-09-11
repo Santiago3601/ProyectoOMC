@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Aprendiz
+ * @author Stephi
  */
 @Entity
 @Table(name = "mantenimiento_cilindro")
@@ -45,10 +44,10 @@ public class MantenimientoCilindro implements Serializable {
     @Column(name = "tipo_mantenimiento")
     private String tipoMantenimiento;
     @JoinColumn(name = "cilindro_id_cilindro", referencedColumnName = "id_cilindro")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Cilindro cilindroIdCilindro;
     @JoinColumn(name = "mantenimiento_id_mantenimiento", referencedColumnName = "id_mantenimiento")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Mantenimiento mantenimientoIdMantenimiento;
 
     public MantenimientoCilindro() {
