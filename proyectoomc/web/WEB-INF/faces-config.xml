@@ -11,7 +11,7 @@
         </locale-config>
         
         <resource-bundle>
-            <base-name>language.RegistrarPermisoLaboral-es</base-name>
+            <base-name>language.RegistrarPermisoLaboral_es</base-name>
             <var>msjRegistrarPermisoLaboral</var>
         </resource-bundle>
         
