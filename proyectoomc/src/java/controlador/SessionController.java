@@ -55,7 +55,7 @@ public class SessionController implements Serializable {
     public void setLanguageSelected(Locale languageSelected) {
         this.languageSelected = languageSelected;
     }
-    public Locale getLanguagueToChange() {
+     public Locale getLanguagueToChange() {
  Locale  languague = spanishLanguague;
         Locale currentLanguague = (getLanguageSelected());
         

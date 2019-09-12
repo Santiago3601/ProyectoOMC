@@ -19,10 +19,7 @@
     </h:head>
 
     <h:body>
-
-        <f:view>
-
-
+         <f:view locale="#{sessionController.languageSelected}">
             <h:form>
                 <h1><h:outputText value="Lista Empleados"/></h1> <h:commandButton action="#{usuarioControlador.envioMantenimientos()}" value="AVISAR MANTENIMIENTO" />
                 <p:dataTable value="#{empleadoControlador.consultarTodos()}" var="item">

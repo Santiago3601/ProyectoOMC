@@ -14,7 +14,8 @@
     <h:body>
 
         <div id="form"> 
-            <f:view>
+         <f:view locale="#{sessionController.languageSelected}">
+
                 <h:form>
                     <h1><h:outputText value="Lista de clientes"/></h1>
                     <p:dataTable id="tablaCli" value="#{clienteControlador.consultarTodos()}" var="cli" >

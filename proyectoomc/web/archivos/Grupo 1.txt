@@ -1,0 +1,1 @@
+ingrese dos numeros y ingrese cual es el mayor y menos y si son iguales 

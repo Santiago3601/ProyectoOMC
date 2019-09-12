@@ -12,7 +12,8 @@
     </h:head>
     <h:body>
            <div id="form"> 
-        <f:view>
+     <f:view locale="#{sessionController.languageSelected}">
+
             <h:form>
                 <h1><h:outputText value="#{msjEditarVeh.h1TxtTitle}"/></h1>
                 <h:panelGrid columns="2">
