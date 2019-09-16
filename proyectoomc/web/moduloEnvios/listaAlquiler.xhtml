@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -7,33 +9,24 @@
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
-        <link rel="stylesheet" href="../../../css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
-
+        <link rel="stylesheet" href="../dashboard//css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+        <link rel="stylesheet" href="../css/prime-styles.css"></link>     
+        <link rel="stylesheet" href="../css/icons.js"></link>     
         <title>OMC</title>
     </h:head>
     <h:body>
-
-
         <div>
-
             <div id="content" class="center_content">
-
-
-       <f:view locale="#{sessionController.languageSelected}">
-
-
-
+                <f:view locale="#{sessionController.languageSelected}">
                     <h:form>
                         <h1><h:outputText value="Lista de alquiler"/></h1>
-                        <p:dataTable id="tablaAlq" value="#{alquilerControlador.consultarTodos()}" var="alq" >
+                        <p:dataTable id="tablaAlq" value="#{alquilerControlador.consultarTodos()}" var="alq"  resizableColumns="true" liveResize="true" >
                             <p:column filterBy="#{alq.idAlquiler}">
                                 <f:facet name="header">
                                     <h:outputText value="No."/>
                                 </f:facet>
                                 <h:outputText value="#{alq.idAlquiler}"/>
                             </p:column>
-
-
                             <p:column filterBy="#{alq.fechaDeEntrega}">
                                 <f:facet name="header">
                                     <h:outputText value="Fecha de entrega"/>
@@ -42,71 +35,116 @@
                                     <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
                             </p:column>
-                     
                             <p:column filterBy="#{alq.cilindroIdCilindro.idCilindro}">
                                 <f:facet name="header">
                                     <h:outputText value="No. cilindro"/>
                                 </f:facet>
                                 <h:outputText value="#{alq.cilindroIdCilindro.idCilindro}"/>
                             </p:column>
-
-
                             <p:column filterBy="#{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.nombre} #{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.apellido}">
                                 <f:facet name="header">
                                     <h:outputText value="Cliente"/>
                                 </f:facet>
                                 <h:outputText value="#{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.nombre} #{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.apellido}"/>
                             </p:column>
-
-
                             <p:column filterBy="#{alq.estadoAlquilerIdEstado.estado}">
                                 <f:facet name="header">
+
                                     <h:outputText value="Estado Alquiler"/>
+
                                 </f:facet>
+
                                 <h:outputText value="#{alq.estadoAlquilerIdEstado.estado}"/>
+
                             </p:column>
-                            
+
+
+
                             <p:column filterBy="#{alq.rutaIdRuta.idRuta}">
+
                                 <f:facet name="header">
+
                                     <h:outputText value="No. ruta"/>
+
                                 </f:facet>
+
                                 <h:outputText value="#{alq.rutaIdRuta.idRuta}"/>
+
                             </p:column>
+
                             <p:column filterBy="#{alq.novedades}">
+
                                 <f:facet name="header">
+
                                     <h:outputText value="Novedades"/>
+
                                 </f:facet>
+
                                 <h:outputText value="#{alq.novedades}"/>
+
                             </p:column>
+
+
+
+
+
 
 
 
 
                             <p:column exportable="false">
+
                                 <f:facet name="header">
+
                                     <h:outputText value="Accion"/>
+
                                 </f:facet>
+
                                 <h:commandLink  action="#{alquilerControlador.eliminarAlquiler(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                                <h:commandLink  action="#{alquilerControlador.entregado(alq)}" onclick="return confirm('Estas seguro?')"><i class="fad fa-truck-loading"></i></h:commandLink>
+
                                 <h:commandLink  action="#{alquilerControlador.preActualizarAlquiler(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+
                             </p:column>
+
                         </p:dataTable>
+
                         <h:commandLink id="excel">
+
                             <i class="far fa-file-excel"></i>
+
                             <p:dataExporter type="xls" target="tablaAlq" fileName="tablaDeAlquiler" />
+
                             <style>
+
                                 .far{
+
                                     padding: 2px;
+
                                     font-size: x-large;
+
                                 }
+
                             </style>
+
                         </h:commandLink>
+
                     </h:form>
+
                 </f:view>
 
+
+
             </div>
+
         </div>
 
 
+
+
+
     </h:body>
+
 </html>
+
 

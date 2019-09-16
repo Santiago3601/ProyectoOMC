@@ -120,6 +120,14 @@ public class alquilerControlador implements Serializable {
         alquiler = alquilerAct;
         return "editarAlquiler";
     }
+    public String entregado(Alquiler alquilerAct) {
+        alquiler.setRutaIdRuta(rutaFacade.find(ruta.getIdRuta()));
+        alquiler.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
+        alquiler.setEstadoAlquilerIdEstado(estadoAlquilerFacade.find(estadoAlquiler.getIdEstadoEntregado()));
+        alquiler.setSolicitudIdSolicitud(solicitudFacade.find(solicitud.getIdSolicitud()));
+        alquilerFacade.edit(alquiler);
+        return "listaAlquiler";
+    }
 
     public String actualizarAlquiler() {
         alquiler.setRutaIdRuta(rutaFacade.find(ruta.getIdRuta()));
@@ -127,7 +135,6 @@ public class alquilerControlador implements Serializable {
         alquiler.setEstadoAlquilerIdEstado(estadoAlquilerFacade.find(estadoAlquiler.getIdEstado()));
         alquiler.setSolicitudIdSolicitud(solicitudFacade.find(solicitud.getIdSolicitud()));
         alquilerFacade.edit(alquiler);
-        alquiler = new Alquiler();
         return "listaAlquiler";
     }
 
