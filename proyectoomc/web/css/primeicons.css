@@ -52,727 +52,727 @@
     }
 }
 
-.ui-step-backward-alt:before {
+.ui-step-backward-alt:before { font-family: PrimeIcons;
     content: "\e9ac";
 }
 
-.ui-step-forward-alt:before {
+.ui-step-forward-alt:before { font-family: PrimeIcons;
     content: "\e9ad";
 }
 
-.ui-forward:before {
+.ui-forward:before { font-family: PrimeIcons;
     content: "\e9ae";
 }
 
-.ui-backward:before {
+.ui-backward:before { font-family: PrimeIcons;
     content: "\e9af";
 }
 
-.ui-fast-backward:before {
+.ui-fast-backward:before { font-family: PrimeIcons;
     content: "\e9b0";
 }
 
-.ui-fast-forward:before {
+.ui-fast-forward:before { font-family: PrimeIcons;
     content: "\e9b1";
 }
 
-.ui-pause:before {
+.ui-pause:before { font-family: PrimeIcons;
     content: "\e9b2";
 }
 
-.ui-play:before {
+.ui-play:before { font-family: PrimeIcons;
     content: "\e9b3";
 }
 
-.ui-compass:before {
+.ui-compass:before { font-family: PrimeIcons;
     content: "\e9ab";
 }
 
-.ui-id-card:before {
+.ui-id-card:before { font-family: PrimeIcons;
     content: "\e9aa";
 }
 
-.ui-ticket:before {
+.ui-ticket:before { font-family: PrimeIcons;
     content: "\e9a9";
 }
 
-.ui-file-o:before {
+.ui-file-o:before { font-family: PrimeIcons;
     content: "\e9a8";
 }
 
-.ui-reply:before {
+.ui-reply:before { font-family: PrimeIcons;
     content: "\e9a7";
 }
 
-.ui-directions-alt:before {
+.ui-directions-alt:before { font-family: PrimeIcons;
     content: "\e9a5";
 }
 
-.ui-directions:before {
+.ui-directions:before { font-family: PrimeIcons;
     content: "\e9a6";
 }
 
-.ui-thumbs-up:before {
+.ui-thumbs-up:before { font-family: PrimeIcons;
     content: "\e9a3";
 }
 
-.ui-thumbs-down:before {
+.ui-thumbs-down:before { font-family: PrimeIcons;
     content: "\e9a4";
 }
 
-.ui-sort-numeric-down-alt:before {
+.ui-sort-numeric-down-alt:before { font-family: PrimeIcons;
     content: "\e996";
 }
 
-.ui-sort-numeric-up-alt:before {
+.ui-sort-numeric-up-alt:before { font-family: PrimeIcons;
     content: "\e997";
 }
 
-.ui-sort-alpha-down-alt:before {
+.ui-sort-alpha-down-alt:before { font-family: PrimeIcons;
     content: "\e998";
 }
 
-.ui-sort-alpha-up-alt:before {
+.ui-sort-alpha-up-alt:before { font-family: PrimeIcons;
     content: "\e999";
 }
 
-.ui-sort-numeric-down:before {
+.ui-sort-numeric-down:before { font-family: PrimeIcons;
     content: "\e99a";
 }
 
-.ui-sort-numeric-up:before {
+.ui-sort-numeric-up:before { font-family: PrimeIcons;
     content: "\e99b";
 }
 
-.ui-sort-alpha-down:before {
+.ui-sort-alpha-down:before { font-family: PrimeIcons;
     content: "\e99c";
 }
 
-.ui-sort-alpha-up:before {
+.ui-sort-alpha-up:before { font-family: PrimeIcons;
     content: "\e99d";
 }
 
-.ui-sort-alt:before {
+.ui-sort-alt:before { font-family: PrimeIcons;
     content: "\e99e";
 }
 
-.ui-sort-amount-up:before {
+.ui-sort-amount-up:before { font-family: PrimeIcons;
     content: "\e99f";
 }
 
-.ui-sort-amount-down:before {
+.ui-sort-amount-down:before { font-family: PrimeIcons;
     content: "\e9a0";
 }
 
-.ui-sort-amount-down-alt:before {
+.ui-sort-amount-down-alt:before { font-family: PrimeIcons;
     content: "\e9a1";
 }
 
-.ui-sort-amount-up-alt:before {
+.ui-sort-amount-up-alt:before { font-family: PrimeIcons;
     content: "\e9a2";
 }
 
-.ui-palette:before {
+.ui-palette:before { font-family: PrimeIcons;
     content: "\e995";
 }
 
-.ui-undo:before {
+.ui-undo:before { font-family: PrimeIcons;
     content: "\e994";
 }
 
-.ui-desktop:before {
+.ui-desktop:before { font-family: PrimeIcons;
     content: "\e993";
 }
 
-.ui-sliders-v:before {
+.ui-sliders-v:before { font-family: PrimeIcons;
     content: "\e991";
 }
 
-.ui-sliders-h:before {
+.ui-sliders-h:before { font-family: PrimeIcons;
     content: "\e992";
 }
 
-.ui-search-plus:before {
+.ui-search-plus:before { font-family: PrimeIcons;
     content: "\e98f";
 }
 
-.ui-search-minus:before {
+.ui-search-minus:before { font-family: PrimeIcons;
     content: "\e990";
 }
 
-.ui-file-excel:before {
+.ui-file-excel:before { font-family: PrimeIcons;
     content: "\e98e";
 }
 
-.ui-file-pdf:before {
+.ui-file-pdf:before { font-family: PrimeIcons;
     content: "\e98d";
 }
 
-.ui-check-square:before {
+.ui-check-square:before { font-family: PrimeIcons;
     content: "\e98c";
 }
 
-.ui-chart-line:before {
+.ui-chart-line:before { font-family: PrimeIcons;
     content: "\e98b";
 }
 
-.ui-user-edit:before {
+.ui-user-edit:before { font-family: PrimeIcons;
     content: "\e98a";
 }
 
-.ui-exclamation-circle:before {
+.ui-exclamation-circle:before { font-family: PrimeIcons;
     content: "\e989";
 }
 
-.ui-android:before {
+.ui-android:before { font-family: PrimeIcons;
     content: "\e985";
 }
 
-.ui-google:before {
+.ui-google:before { font-family: PrimeIcons;
     content: "\e986";
 }
 
-.ui-apple:before {
+.ui-apple:before { font-family: PrimeIcons;
     content: "\e987";
 }
 
-.ui-microsoft:before {
+.ui-microsoft:before { font-family: PrimeIcons;
     content: "\e988";
 }
 
-.ui-heart:before {
+.ui-heart:before { font-family: PrimeIcons;
     content: "\e984";
 }
 
-.ui-mobile:before {
+.ui-mobile:before { font-family: PrimeIcons;
     content: "\e982";
 }
 
-.ui-tablet:before {
+.ui-tablet:before { font-family: PrimeIcons;
     content: "\e983";
 }
 
-.ui-key:before {
+.ui-key:before { font-family: PrimeIcons;
     content: "\e981";
 }
 
-.ui-shopping-cart:before {
+.ui-shopping-cart:before { font-family: PrimeIcons;
     content: "\e980";
 }
 
-.ui-comments:before {
+.ui-comments:before { font-family: PrimeIcons;
     content: "\e97e";
 }
 
-.ui-comment:before {
+.ui-comment:before { font-family: PrimeIcons;
     content: "\e97f";
 }
 
-.ui-briefcase:before {
+.ui-briefcase:before { font-family: PrimeIcons;
     content: "\e97d";
 }
 
-.ui-bell:before {
+.ui-bell:before { font-family: PrimeIcons;
     content: "\e97c";
 }
 
-.ui-paperclip:before {
+.ui-paperclip:before { font-family: PrimeIcons;
     content: "\e97b";
 }
 
-.ui-share-alt:before {
+.ui-share-alt:before { font-family: PrimeIcons;
     content: "\e97a";
 }
 
-.ui-envelope:before {
+.ui-envelope:before { font-family: PrimeIcons;
     content: "\e979";
 }
 
-.ui-volume-down:before {
+.ui-volume-down:before { font-family: PrimeIcons;
     content: "\e976";
 }
 
-.ui-volume-up:before {
+.ui-volume-up:before { font-family: PrimeIcons;
     content: "\e977";
 }
 
-.ui-volume-off:before {
+.ui-volume-off:before { font-family: PrimeIcons;
     content: "\e978";
 }
 
-.ui-eject:before {
+.ui-eject:before { font-family: PrimeIcons;
     content: "\e975";
 }
 
-.ui-money-bill:before {
+.ui-money-bill:before { font-family: PrimeIcons;
     content: "\e974";
 }
 
-.ui-images:before {
+.ui-images:before { font-family: PrimeIcons;
     content: "\e973";
 }
 
-.ui-image:before {
+.ui-image:before { font-family: PrimeIcons;
     content: "\e972";
 }
 
-.ui-sign-in:before {
+.ui-sign-in:before { font-family: PrimeIcons;
     content: "\e970";
 }
 
-.ui-sign-out:before {
+.ui-sign-out:before { font-family: PrimeIcons;
     content: "\e971";
 }
 
-.ui-wifi:before {
+.ui-wifi:before { font-family: PrimeIcons;
     content: "\e96f";
 }
 
-.ui-sitemap:before {
+.ui-sitemap:before { font-family: PrimeIcons;
     content: "\e96e";
 }
 
-.ui-chart-bar:before {
+.ui-chart-bar:before { font-family: PrimeIcons;
     content: "\e96d";
 }
 
-.ui-camera:before {
+.ui-camera:before { font-family: PrimeIcons;
     content: "\e96c";
 }
 
-.ui-dollar:before {
+.ui-dollar:before { font-family: PrimeIcons;
     content: "\e96b";
 }
 
-.ui-lock-open:before {
+.ui-lock-open:before { font-family: PrimeIcons;
     content: "\e96a";
 }
 
-.ui-table:before {
+.ui-table:before { font-family: PrimeIcons;
     content: "\e969";
 }
 
-.ui-map-marker:before {
+.ui-map-marker:before { font-family: PrimeIcons;
     content: "\e968";
 }
 
-.ui-list:before {
+.ui-list:before { font-family: PrimeIcons;
     content: "\e967";
 }
 
-.ui-eye-slash:before {
+.ui-eye-slash:before { font-family: PrimeIcons;
     content: "\e965";
 }
 
-.ui-eye:before {
+.ui-eye:before { font-family: PrimeIcons;
     content: "\e966";
 }
 
-.ui-folder-open:before {
+.ui-folder-open:before { font-family: PrimeIcons;
     content: "\e964";
 }
 
-.ui-folder:before {
+.ui-folder:before { font-family: PrimeIcons;
     content: "\e963";
 }
 
-.ui-video:before {
+.ui-video:before { font-family: PrimeIcons;
     content: "\e962";
 }
 
-.ui-inbox:before {
+.ui-inbox:before { font-family: PrimeIcons;
     content: "\e961";
 }
 
-.ui-lock:before {
+.ui-lock:before { font-family: PrimeIcons;
     content: "\e95f";
 }
 
-.ui-unlock:before {
+.ui-unlock:before { font-family: PrimeIcons;
     content: "\e960";
 }
 
-.ui-tags:before {
+.ui-tags:before { font-family: PrimeIcons;
     content: "\e95d";
 }
 
-.ui-tag:before {
+.ui-tag:before { font-family: PrimeIcons;
     content: "\e95e";
 }
 
-.ui-power-off:before {
+.ui-power-off:before { font-family: PrimeIcons;
     content: "\e95c";
 }
 
-.ui-save:before {
+.ui-save:before { font-family: PrimeIcons;
     content: "\e95b";
 }
 
-.ui-question-circle:before {
+.ui-question-circle:before { font-family: PrimeIcons;
     content: "\e959";
 }
 
-.ui-question:before {
+.ui-question:before { font-family: PrimeIcons;
     content: "\e95a";
 }
 
-.ui-copy:before {
+.ui-copy:before { font-family: PrimeIcons;
     content: "\e957";
 }
 
-.ui-file:before {
+.ui-file:before { font-family: PrimeIcons;
     content: "\e958";
 }
 
-.ui-clone:before {
+.ui-clone:before { font-family: PrimeIcons;
     content: "\e955";
 }
 
-.ui-calendar-times:before {
+.ui-calendar-times:before { font-family: PrimeIcons;
     content: "\e952";
 }
 
-.ui-calendar-minus:before {
+.ui-calendar-minus:before { font-family: PrimeIcons;
     content: "\e953";
 }
 
-.ui-calendar-plus:before {
+.ui-calendar-plus:before { font-family: PrimeIcons;
     content: "\e954";
 }
 
-.ui-ellipsis-v:before {
+.ui-ellipsis-v:before { font-family: PrimeIcons;
     content: "\e950";
 }
 
-.ui-ellipsis-h:before {
+.ui-ellipsis-h:before { font-family: PrimeIcons;
     content: "\e951";
 }
 
-.ui-bookmark:before {
+.ui-bookmark:before { font-family: PrimeIcons;
     content: "\e94e";
 }
 
-.ui-globe:before {
+.ui-globe:before { font-family: PrimeIcons;
     content: "\e94f";
 }
 
-.ui-replay:before {
+.ui-replay:before { font-family: PrimeIcons;
     content: "\e94d";
 }
 
-.ui-filter:before {
+.ui-filter:before { font-family: PrimeIcons;
     content: "\e94c";
 }
 
-.ui-print:before {
+.ui-print:before { font-family: PrimeIcons;
     content: "\e94b";
 }
 
-.ui-align-right:before {
+.ui-align-right:before { font-family: PrimeIcons;
     content: "\e946";
 }
 
-.ui-align-left:before {
+.ui-align-left:before { font-family: PrimeIcons;
     content: "\e947";
 }
 
-.ui-align-center:before {
+.ui-align-center:before { font-family: PrimeIcons;
     content: "\e948";
 }
 
-.ui-align-justify:before {
+.ui-align-justify:before { font-family: PrimeIcons;
     content: "\e949";
 }
 
-.ui-cog:before {
+.ui-cog:before { font-family: PrimeIcons;
     content: "\e94a";
 }
 ui-row-editor-pencil{
         content: "\e94a";
 }
 
-.ui-cloud-download:before {
+.ui-cloud-download:before { font-family: PrimeIcons;
     content: "\e943";
 }
 
-.ui-cloud-upload:before {
+.ui-cloud-upload:before { font-family: PrimeIcons;
     content: "\e944";
 }
 
-.ui-cloud:before {
+.ui-cloud:before { font-family: PrimeIcons;
     content: "\e945";
 }
 
-.ui-pencil:before {
+.ui-pencil:before { font-family: PrimeIcons;
     content: "\e942";
 }
-.ui-pencil:before {
+.ui-pencil:before { font-family: PrimeIcons;
     content: "\e942";
 }
 
-.ui-users:before {
+.ui-users:before { font-family: PrimeIcons;
     content: "\e941";
 }
 
-.ui-clock:before {
+.ui-clock:before { font-family: PrimeIcons;
     content: "\e940";
 }
 
-.ui-user-minus:before {
+.ui-user-minus:before { font-family: PrimeIcons;
     content: "\e93e";
 }
 
-.ui-user-plus:before {
+.ui-user-plus:before { font-family: PrimeIcons;
     content: "\e93f";
 }
 
-.ui-trash:before {
+.ui-trash:before { font-family: PrimeIcons;
     content: "\e93d";
 }
 
-.ui-external-link:before {
+.ui-external-link:before { font-family: PrimeIcons;
     content: "\e93c";
 }
 
-.ui-window-maximize:before {
+.ui-window-maximize:before { font-family: PrimeIcons;
     content: "\e93b";
 }
 
-.ui-window-minimize:before {
+.ui-window-minimize:before { font-family: PrimeIcons;
     content: "\e93a";
 }
 
-.ui-refresh:before {
+.ui-refresh:before { font-family: PrimeIcons;
     content: "\e938";
 }
   
-.ui-user:before {
+.ui-user:before { font-family: PrimeIcons;
     content: "\e939";
 }
 
-.ui-exclamation-triangle:before {
+.ui-exclamation-triangle:before { font-family: PrimeIcons;
     content: "\e922";
 }
 
-.ui-calendar:before {
+.ui-calendar:before { font-family: PrimeIcons;
     content: "\e927";
 }
 
-.ui-chevron-circle-left:before {
+.ui-chevron-circle-left:before { font-family: PrimeIcons;
     content: "\e928";
 }
 
-.ui-chevron-circle-down:before {
+.ui-chevron-circle-down:before { font-family: PrimeIcons;
     content: "\e929";
 }
 
-.ui-chevron-circle-right:before {
+.ui-chevron-circle-right:before { font-family: PrimeIcons;
     content: "\e92a";
 }
 
-.ui-chevron-circle-up:before {
+.ui-chevron-circle-up:before { font-family: PrimeIcons;
     content: "\e92b";
 }
 
-.ui-angle-double-down:before {
+.ui-angle-double-down:before { font-family: PrimeIcons;
     content: "\e92c";
 }
 
-.ui-angle-double-left:before {
+.ui-angle-double-left:before { font-family: PrimeIcons;
     content: "\e92d";
 }
 
-.ui-angle-double-right:before {
+.ui-angle-double-right:before { font-family: PrimeIcons;
     content: "\e92e";
 }
 
-.ui-angle-double-up:before {
+.ui-angle-double-up:before { font-family: PrimeIcons;
     content: "\e92f";
 }
 
-.ui-angle-down:before {
+.ui-angle-down:before { font-family: PrimeIcons;
     content: "\e930";
 }
 
-.ui-angle-left:before {
+.ui-angle-left:before { font-family: PrimeIcons;
     content: "\e931";
 }
 
-.ui-angle-right:before {
+.ui-angle-right:before { font-family: PrimeIcons;
     content: "\e932";
 }
 
-.ui-angle-up:before {
+.ui-angle-up:before { font-family: PrimeIcons;
     content: "\e933";
 }
 
-.ui-upload:before {
+.ui-upload:before { font-family: PrimeIcons;
     content: "\e934";
 }
 
-.ui-download:before {
+.ui-download:before { font-family: PrimeIcons;
     content: "\e956";
 }
 
-.ui-ban:before {
+.ui-ban:before { font-family: PrimeIcons;
     content: "\e935";
 }
 
-.ui-star-o:before {
+.ui-star-o:before { font-family: PrimeIcons;
     content: "\e936";
 }
 
-.ui-star:before {
+.ui-star:before { font-family: PrimeIcons;
     content: "\e937";
 }
 
-.ui-chevron-left:before {
+.ui-chevron-left:before { font-family: PrimeIcons;
     content: "\e900";
 }
 
-.ui-chevron-right:before {
+.ui-chevron-right:before { font-family: PrimeIcons;
     content: "\e901";
 }
 
-.ui-chevron-down:before {
+.ui-chevron-down:before { font-family: PrimeIcons;
     content: "\e902";
 }
 
-.ui-chevron-up:before {
+.ui-chevron-up:before { font-family: PrimeIcons;
     content: "\e903";
 }
 
-.ui-caret-left:before {
+.ui-caret-left:before { font-family: PrimeIcons;
     content: "\e904";
 }
 
-.ui-caret-right:before {
+.ui-caret-right:before { font-family: PrimeIcons;
     content: "\e905";
 }
 
-.ui-caret-down:before {
+.ui-caret-down:before { font-family: PrimeIcons;
     content: "\e906";
 }
 
-.ui-caret-up:before {
+.ui-caret-up:before { font-family: PrimeIcons;
     content: "\e907";
 }
 
-.ui-search:before {
+.ui-search:before { font-family: PrimeIcons;
     content: "\e908";
 }
 
-.ui-check:before {
+.ui-check:before { font-family: PrimeIcons;
     content: "\e909";
 }
 
-.ui-check-circle:before {
+.ui-check-circle:before { font-family: PrimeIcons;
     content: "\e90a";
 }
 
-.ui-times:before {
+.ui-times:before { font-family: PrimeIcons;
     content: "\e90b";
 }
 
-.ui-times-circle:before {
+.ui-times-circle:before { font-family: PrimeIcons;
     content: "\e90c";
 }
 
-.ui-plus:before {
+.ui-plus:before { font-family: PrimeIcons;
     content: "\e90d";
 }
 
-.ui-plus-circle:before {
+.ui-plus-circle:before { font-family: PrimeIcons;
     content: "\e90e";
 }
 
-.ui-minus:before {
+.ui-minus:before { font-family: PrimeIcons;
     content: "\e90f";
 }
 
-.ui-minus-circle:before {
+.ui-minus-circle:before { font-family: PrimeIcons;
     content: "\e910";
 }
 
-.ui-circle-on:before {
+.ui-circle-on:before { font-family: PrimeIcons;
     content: "\e911";
 }
 
-.ui-circle-off:before {
+.ui-circle-off:before { font-family: PrimeIcons;
     content: "\e912";
 }
 
-.ui-sort-down:before {
+.ui-sort-down:before { font-family: PrimeIcons;
     content: "\e913";
 }
 
-.ui-sort-up:before {
+.ui-sort-up:before { font-family: PrimeIcons;
     content: "\e914";
 }
 
-.ui-sort:before {
+.ui-sort:before { font-family: PrimeIcons;
     content: "\e915";
 }
 
-.ui-step-backward:before {
+.ui-step-backward:before { font-family: PrimeIcons;
     content: "\e916";
 }
 
-.ui-step-forward:before {
+.ui-step-forward:before { font-family: PrimeIcons;
     content: "\e917";
 }
 
-.ui-th-large:before {
+.ui-th-large:before { font-family: PrimeIcons;
     content: "\e918";
 }
 
-.ui-arrow-down:before {
+.ui-arrow-down:before { font-family: PrimeIcons;
     content: "\e919";
 }
 
-.ui-arrow-left:before {
+.ui-arrow-left:before { font-family: PrimeIcons;
     content: "\e91a";
 }
 
-.ui-arrow-right:before {
+.ui-arrow-right:before { font-family: PrimeIcons;
     content: "\e91b";
 }
 
-.ui-arrow-up:before {
+.ui-arrow-up:before { font-family: PrimeIcons;
     content: "\e91c";
 }
 
-.ui-bars:before {
+.ui-bars:before { font-family: PrimeIcons;
     content: "\e91d";
 }
 
-.ui-arrow-circle-down:before {
+.ui-arrow-circle-down:before { font-family: PrimeIcons;
     content: "\e91e";
 }
 
-.ui-arrow-circle-left:before {
+.ui-arrow-circle-left:before { font-family: PrimeIcons;
     content: "\e91f";
 }
 
-.ui-arrow-circle-right:before {
+.ui-arrow-circle-right:before { font-family: PrimeIcons;
     content: "\e920";
 }
 
-.ui-arrow-circle-up:before {
+.ui-arrow-circle-up:before { font-family: PrimeIcons;
     content: "\e921";
 }
 
-body .ui-datatable .ui-datatable-data > tr .ui-row-editor .ui-icon.ui-icon-pencil:before {
+body .ui-datatable .ui-datatable-data > tr .ui-row-editor .ui-icon.ui-icon-pencil:before { font-family: PrimeIcons;
         content: "\e976"; }
 
-.ui-info-circle:before {
+.ui-info-circle:before { font-family: PrimeIcons;
     content: "\e924";
 }
 
-.ui-home:before {
+.ui-home:before { font-family: PrimeIcons;
     content: "\e925";
 }
 
-.ui-spinner:before {
+.ui-spinner:before { font-family: PrimeIcons;
     content: "\e926";
 }

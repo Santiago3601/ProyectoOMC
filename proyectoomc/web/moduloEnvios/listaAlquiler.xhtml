@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="../dashboard//css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
         <link rel="stylesheet" href="../css/prime-styles.css"></link>     
         <link rel="stylesheet" href="../css/icons.js"></link>     
+        <link rel="stylesheet" href="../css/primeicons.css"></link>     
         <title>OMC</title>
     </h:head>
     <h:body>
@@ -20,7 +21,7 @@
                 <f:view locale="#{sessionController.languageSelected}">
                     <h:form>
                         <h1><h:outputText value="Lista de alquiler"/></h1>
-                        <p:dataTable id="tablaAlq" value="#{alquilerControlador.consultarTodos()}" var="alq"  resizableColumns="true" liveResize="true" >
+                        <p:dataTable id="tablaAlq" value="#{alquilerControlador.consultarTodos()}" var="alq"  resizableColumns="true" liveResize="true"  rows="10"     paginator="true"    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
                             <p:column filterBy="#{alq.idAlquiler}">
                                 <f:facet name="header">
                                     <h:outputText value="No."/>
@@ -51,7 +52,6 @@
                                 <f:facet name="header">
 
                                     <h:outputText value="Estado Alquiler"/>
-
                                 </f:facet>
 
                                 <h:outputText value="#{alq.estadoAlquilerIdEstado.estado}"/>
@@ -101,8 +101,7 @@
                                 </f:facet>
 
                                 <h:commandLink  action="#{alquilerControlador.eliminarAlquiler(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
-                                <h:commandLink  action="#{alquilerControlador.entregado(alq)}" onclick="return confirm('Estas seguro?')"><i class="fad fa-truck-loading"></i></h:commandLink>
-
+                                <h:commandLink  action="#{alquilerControlador.cambiarEstado(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-truck-loading"></i></h:commandLink>
                                 <h:commandLink  action="#{alquilerControlador.preActualizarAlquiler(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
 
                             </p:column>

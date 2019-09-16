@@ -65,9 +65,7 @@ public class EstadoAlquiler implements Serializable {
     public Integer getIdEstado() {
         return idEstado;
     }
-    public Integer getIdEstadoEntregado() {
-        return 2;
-    }
+
 
     public void setIdEstado(Integer idEstado) {
         this.idEstado = idEstado;

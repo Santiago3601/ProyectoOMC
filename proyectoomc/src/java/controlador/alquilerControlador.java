@@ -32,11 +32,11 @@ public class alquilerControlador implements Serializable {
 
     @EJB
     private EstadoAlquilerFacade estadoAlquilerFacade;
-    EstadoAlquiler estadoAlquiler ;
+    EstadoAlquiler estadoAlquiler;
 
     @EJB
     private SolicitudFacade solicitudFacade;
-    Solicitud solicitud ;
+    Solicitud solicitud;
 
     @EJB
     private CilindroFacade cilindroFacade;
@@ -91,7 +91,6 @@ public class alquilerControlador implements Serializable {
         this.cilindro = cilindro;
     }
 
-  
     //Metodos
     public List<Alquiler> consultarTodos() {
         return alquilerFacade.findAll();
@@ -120,10 +119,27 @@ public class alquilerControlador implements Serializable {
         alquiler = alquilerAct;
         return "editarAlquiler";
     }
+    
+    public String cambiarEstado(Alquiler al){
+        this.alquiler = al;
+        this.estadoAlquiler.setIdEstado(2);
+        this.alquiler.setEstadoAlquilerIdEstado(getEstadoAlquiler());
+        this.alquilerFacade.edit(getAlquiler());
+        cilindro = new Cilindro();
+        ruta = new Ruta();
+        estadoAlquiler = new EstadoAlquiler();
+        alquiler = new Alquiler();
+        solicitud = new Solicitud();
+        return "listaAlquiler";
+    }
+    
     public String entregado(Alquiler alquilerAct) {
+        this.alquiler.setIdAlquiler(alquiler.getIdAlquiler());
+        this.alquiler.setFechaDeEntrega(alquiler.getFechaDeEntrega());
         alquiler.setRutaIdRuta(rutaFacade.find(ruta.getIdRuta()));
         alquiler.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
-        alquiler.setEstadoAlquilerIdEstado(estadoAlquilerFacade.find(estadoAlquiler.getIdEstadoEntregado()));
+
+        this.estadoAlquiler.setIdEstado(2);
         alquiler.setSolicitudIdSolicitud(solicitudFacade.find(solicitud.getIdSolicitud()));
         alquilerFacade.edit(alquiler);
         return "listaAlquiler";

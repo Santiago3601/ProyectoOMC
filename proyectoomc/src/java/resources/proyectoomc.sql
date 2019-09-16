@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2019 a las 18:41:41
--- Versión del servidor: 10.1.39-MariaDB
--- Versión de PHP: 7.3.5
+-- Tiempo de generación: 16-09-2019 a las 19:00:50
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -70,9 +70,14 @@ CREATE TABLE `alquiler` (
 --
 
 INSERT INTO `alquiler` (`id_alquiler`, `fecha_de_entrega`, `novedades`, `cilindro_id_cilindro`, `ruta_id_ruta`, `solicitud_id_solicitud`, `estado_alquiler_id_estado`) VALUES
-(1, '2019-07-20', 'La persona cancelo el envio', 1060293, 1, 1, 1),
-(3, '2001-01-27', 'No', 1060296, 6, 1, 1),
-(4, '2002-01-27', 'No', 1060296, 6, 1, 1);
+(1, '2019-07-20', 'La persona cancelo el envio', 1060293, 1, 1, 2),
+(3, '2001-01-27', 'No', 1060296, 6, 1, 2),
+(4, '2002-01-27', 'No', 1060296, 6, 1, 1),
+(5, '2019-01-08', 'Ninguna', 1060293, 1, 1, 1),
+(6, '2019-01-08', 'Ninguna', 1060293, 1, 6, 1),
+(7, '2019-01-08', 'Ninguna', 1060293, 1, 6, 2),
+(8, '2019-01-08', 'No', 1060294, 1, 7, 2),
+(9, '2019-01-08', 'No', 1060294, 1, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -121,7 +126,9 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`id_cliente`, `usuario_id`, `estado_id_estado`) VALUES
 (3, 23874610, 1),
 (6, 23879120, 1),
-(7, 1000283977, 1);
+(7, 1000283977, 1),
+(8, 1111222, 1),
+(9, 1000624311, 1);
 
 -- --------------------------------------------------------
 
@@ -295,7 +302,7 @@ CREATE TABLE `mantenimiento_cilindro` (
 CREATE TABLE `permiso` (
   `id_permiso` int(11) NOT NULL,
   `nombre` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
-  `url` text COLLATE utf32_spanish_ci,
+  `url` text COLLATE utf32_spanish_ci DEFAULT NULL,
   `icon` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `permiso_padre` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
@@ -419,7 +426,13 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `url`, `icon`, `permiso_padre`) V
 (121, 'consultar', NULL, 'x', 118),
 (122, 'Solicitud', '../../../moduloEnvios/listaSolicitud.xhtml', 'x', 121),
 (123, 'Alquiler', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 121),
-(124, 'Contrato', '../../../moduloEnvios/listaContrato.xhtml', 'x', 121);
+(124, 'Contrato', '../../../moduloEnvios/listaContrato.xhtml', 'x', 121),
+(125, 'Reportes', NULL, 'x', NULL),
+(126, 'Graficos', 'xx-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x--x-x', 'x', 125),
+(127, 'Pdf', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 125),
+(128, 'Cilindro', NULL, '', 126),
+(129, 'Certificado Laboral', NULL, '', 127),
+(130, 'Contrato', NULL, '', 127);
 
 -- --------------------------------------------------------
 
@@ -537,6 +550,9 @@ INSERT INTO `rol_tiene_permiso` (`rol_idRol`, `permiso_id_permiso`) VALUES
 (1, 45),
 (1, 46),
 (1, 47),
+(1, 125),
+(1, 126),
+(1, 127),
 (2, 118),
 (3, 49),
 (3, 53),
@@ -642,7 +658,9 @@ INSERT INTO `solicitud` (`id_solicitud`, `formula`, `tamanio_cilindro`, `cliente
 (1, '2', 250, 3),
 (2, '/proyectoOMC/archivos/Tarea 2. Fundamentos_php.pdf', 32, 7),
 (3, '/proyectoOMC/archivos/Tarea 2. Fundamentos_php.pdf', 32, 7),
-(5, '/proyectoomc/archivos/tabla (3).xls', 12332, 6);
+(5, '/proyectoomc/archivos/tabla (3).xls', 12332, 6),
+(6, '/proyectoomc/archivos/Grupo 1.txt', 250, 8),
+(7, '/proyectoomc/archivos/4.txt', 250, 9);
 
 -- --------------------------------------------------------
 
@@ -716,14 +734,16 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo`, `contrasenia`, `telefono`, `eps`, `fecha_de_nacimiento`, `edad`, `rol_idRol`) VALUES
-(12232, 1, 'Shirley', 'Bernal', 'wewe', 'sdsd', 'dsd', 3108184158, 'no', '2019-08-13', 0, 4),
+(1111222, 1, 'assa', 'sasas', 'sasas', 'santyago3601@gmail.com', 'sasa', 123123, 'sa', '2001-02-02', 18, 2),
 (23874610, 2, 'Julie', 'Pott Friedman', 'Cll 32 sur No. 32 - 77', 'shirleybernal70@gmail.com', 'RLhtPHexiJ', 4169210, 'Famisanar', '1990-03-29', 29, 3),
 (23879120, 2, 'Mark David ', 'Stewart King', 'Cra. 44 No. 21 - 55', 'mark.sk15@aol.com', '1234', 3108971923, 'N/A', '1979-07-15', 39, 2),
 (24981099, 2, 'Mark Christopher', 'Green Adams', 'Kra 19 No. 210 - 23', 'stephannybustos@gmail.com', '1234', 4774147, 'Cafam EPS.', '1997-05-05', 22, 4),
 (27871927, 1, 'Thomas', 'Miller King', 'x', 'x', '3232', 1, 'x2', '1984-12-19', 64, 1),
+(100030122, 1, 'Juan Camilo', 'Perez Martinez', 'Correo@mail.com', 'santyago3601@gmail.com', '1234', 122, 'No tiene', '2001-06-01', 18, 2),
 (1000283977, 2, 'Amy Michelle', 'Smith Allen', 'Cll 24 No. 31 -  34', 'amy.smith12@msn.com', 'rITñICjiNL', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
 (1000604688, 2, 'Santiago', 'Ruiz RincÃ³n', 'cLL X', 'santyago3601@gmail.com', '12345', 4153134, 'NO', '2001-03-05', 18, 1),
-(1000624311, 2, 'Jonh Nicolas', 'Welch Martinez', 'Cra 13 No. 123 - 23', 'jonhwelch@aol.com', '1234', 4139385, 'N/A', '1980-06-03', 39, 2);
+(1000624311, 2, 'Jonh Nicolas', 'Welch Martinez', 'Cra 13 No. 123 - 23', 'jonhwelch@aol.com', '1234', 4139385, 'N/A', '1980-06-03', 39, 2),
+(10002010212, 1, 'Juan Camilo', 'Perez Martinez', 'Cll x 24 -  23', 'dsdsa@misena.edu.co', '12345', 12345, 'No tiene', '2011-04-02', 8, 2);
 
 --
 -- Disparadores `usuario`
@@ -946,13 +966,13 @@ ALTER TABLE `agenda`
 -- AUTO_INCREMENT de la tabla `alquiler`
 --
 ALTER TABLE `alquiler`
-  MODIFY `id_alquiler` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_alquiler` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `contrato`
@@ -994,7 +1014,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`

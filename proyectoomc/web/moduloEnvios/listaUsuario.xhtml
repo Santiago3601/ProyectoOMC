@@ -21,7 +21,7 @@
 
                 <h:form>
                     <h1><h:outputText value="Lista de usuarios"/></h1>
-                    <p:dataTable id="tabla" value="#{usuarioControlador.consultarTodos()}" var="usuario" >
+                    <p:dataTable id="tabla" value="#{usuarioControlador.consultarTodos()}" var="usuario" resizableColumns="true" liveResize="true"  rows="4"     paginator="true"    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"> >
                         <p:column filterBy="#{usuario.id}">
                             <f:facet name="header">
                                 <h:outputText value="Id"/>

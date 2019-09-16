@@ -9,6 +9,7 @@ import entidades.Alquiler;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +28,16 @@ public class AlquilerFacade extends AbstractFacade<Alquiler> {
 
     public AlquilerFacade() {
         super(Alquiler.class);
+    }
+    
+    public void cambiarEstado(Alquiler al){
+        Query query;
+        try {
+            query = em.createNativeQuery("UPDATE alquiler SET estado_alquiler_id_estado = 2 WHERE id_alquiler =:id");
+            query.setParameter("id", al.getIdAlquiler());
+            
+        } catch (Exception e) {
+        }
     }
     
 }
