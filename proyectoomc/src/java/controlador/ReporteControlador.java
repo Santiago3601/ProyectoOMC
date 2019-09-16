@@ -5,11 +5,13 @@
  */
 package controlador;
 
-import entidades.Cilindro;
-import facade.CilindroFacade;
+import entidades.PermisoLaboral;
+import facade.PermisoLaboralFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 
 /**
@@ -24,8 +26,28 @@ public class ReporteControlador implements Serializable {
      * Creates a new instance of ReporteControlador
      */
     public ReporteControlador() {
+        this.permisoLaboral = permisoLaboral;
     }
     @EJB
-    CilindroFacade cilindroFacade;
+    PermisoLaboralFacade permisoLaboralFacade;
+    private PermisoLaboral permisoLaboral;
+            
+
+    public PermisoLaboral getPermisoLaboral() {
+        return permisoLaboral;
+    }
+
+    public void setPermisoLaboral(PermisoLaboral permisoLaboral) {
+        this.permisoLaboral = permisoLaboral;
+    }
+    //Metodos
+    
+    public void reporte(){
+        List<Object[]> listaPermisoLaboral = this.permisoLaboralFacade.reportePermisoLaboral();
+        List<ReportePermisoLaboral> listaReporte = new ArrayList<>(); 
+        for (Object[] ob: listaPermisoLaboral) {
+            
+        }
+    }
     
 }
