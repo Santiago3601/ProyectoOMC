@@ -23,8 +23,8 @@ public class Mailer {
                 + "";//cambiará en consecuencia al servidor utilizado
         final String pass = "Gaes3Proyectoomc";
 
-        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#0C0; font-weight: bold; text-transform: uppercase ; \">Nueva Contraseña" + "</h1>" + "<img src='https://lh3.googleusercontent.com/oEdehpVCY1RbeNe0S0_Mlc-9E4WmyuD7C5xdsrdHzDlpvEFnoTZQBqqSesPb1gjcz0G8dom01bA28OnL5cK6=w1366-h657'/ style=\"float: left;\"><p>" + usua2.getContrasenia() + "<br>\n"
-                + "<p style=\"text-align: center; color: #307EDF\">\n"
+        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#307C66; font-weight: bold; text-transform: uppercase ; \">Nueva Contraseña" + "</h1>" + "<img src='https://lh3.googleusercontent.com/oEdehpVCY1RbeNe0S0_Mlc-9E4WmyuD7C5xdsrdHzDlpvEFnoTZQBqqSesPb1gjcz0G8dom01bA28OnL5cK6=w1366-h657'/ style=\"float: left;\"><p>" + usua2.getContrasenia() + "<br>\n"
+                + "<p style=\"text-align: center; color: #307C66\">\n"
                 + "</p> \n"
                 + "<br>\n"
                 + "<p style=\"color:#0C0;font-weight: bold;\" > Gracias por formar parte de nuestra comunidad. </p> ";
@@ -89,8 +89,8 @@ public class Mailer {
                 + "";//cambiará en consecuencia al servidor utilizado
         final String pass = "Gaes3Proyectoomc";
 
-        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#0C0; font-weight: bold; text-transform: uppercase ; \">Nueva Contraseña" + "</h1>" + "<img src='https://lh3.googleusercontent.com/oEdehpVCY1RbeNe0S0_Mlc-9E4WmyuD7C5xdsrdHzDlpvEFnoTZQBqqSesPb1gjcz0G8dom01bA28OnL5cK6=w1366-h657'/ style=\"float: left;\"><p>El ssiteme estara en mantenimiento<br>\n"
-                + "<p style=\"text-align: center; color: #307EDF\">\n"
+        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#307C66; font-weight: bold; text-transform: uppercase ; \">Mantenimiento" + "</h1>" + "<img src='https://lh3.googleusercontent.com/oEdehpVCY1RbeNe0S0_Mlc-9E4WmyuD7C5xdsrdHzDlpvEFnoTZQBqqSesPb1gjcz0G8dom01bA28OnL5cK6=w1366-h657'/ style=\"float: left;\"><p>El sitema estara en mantenimiento<br>\n"
+                + "<p style=\"text-align: center; color: #307C66\">\n"
                 + "</p> \n"
                 + "<br>\n"
                 + "<p style=\"color:#0C0;font-weight: bold;\" > Gracias por formar parte de nuestra comunidad. </p> ";

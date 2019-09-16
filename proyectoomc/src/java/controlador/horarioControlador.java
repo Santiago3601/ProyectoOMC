@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-
+import javax.faces.context.FacesContext;
 
 @Named(value = "horarioControlador")
 @SessionScoped
@@ -23,25 +23,32 @@ public class horarioControlador implements Serializable {
     @EJB
     HorarioFacade horarioFacade;
     private Horario horario;
+    @EJB
+    UsuarioFacade usuarioFacade;
+    Usuario usuario;
 
     @EJB
     EmpleadoFacade empleadoFacade;
     private Empleado empleado;
+
+    private Date objDate;
     
-    private Fecha fecha;
-    
+     int id;
+
     @PostConstruct
     public void init() {
         empleado = new Empleado();
+        usuario = new Usuario();
         horario = new Horario();
+        objDate = new Date();
     }
 
-    public Fecha getFecha() {
-        return fecha;
+    public Date getObjDate() {
+        return objDate;
     }
 
-    public void setFecha(Fecha fecha) {
-        this.fecha = fecha;
+    public void setObjDate(Date objDate) {
+        this.objDate = objDate;
     }
 
     public Horario getHorario() {
@@ -52,7 +59,6 @@ public class horarioControlador implements Serializable {
         this.horario = horario;
     }
 
-
     public Empleado getEmpleado() {
         return empleado;
     }
@@ -61,6 +67,13 @@ public class horarioControlador implements Serializable {
         this.empleado = empleado;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     //METODOS
     public List<Horario> consultarTodos() {
@@ -71,26 +84,37 @@ public class horarioControlador implements Serializable {
         horario = horarioFacade.find(horario.getIdHorario());
     }
 
+    public String validarLogin() {
+
+        String redirecionar = "";
+
+        return redirecionar;
+    }
+
     public String registrarIngreso() {
-        horario.setEmpleadoIdEmpleado(getEmpleado());
-        this.horario.setFechaDeIngreso(getFecha().getObjDate());
-        //this.horario.setHoraIngreso(getFecha().getObjDate().getTime().);
+
+        horario.setEmpleadoIdEmpleado(empleado);
+        this.horario.setFechaDeIngreso(getObjDate());
+        this.horario.setHoraIngreso("" + getObjDate().getHours() + ":" + getObjDate().getMinutes());
+//        "+objDate.getHours()+":"+objDate.getMinutes());
+
         horarioFacade.create(horario);
         horario = new Horario();
         this.empleado = new Empleado();
         return "registrarHorario";
     }
-    
-    public String registrarSalida(){
+
+    public String registrarSalida() {
+        
         horario.setEmpleadoIdEmpleado(getEmpleado());
-        this.horario.setFechaDeSalida(getFecha().getObjDate());
-        //this.horario.setHoraSalida(getFecha().getSoyLaHora());
-        horarioFacade.edit(horario);
+        this.horario.setFechaDeSalida(getObjDate());
+        this.horario.setHoraSalida("" + getObjDate().getHours() + ":" + getObjDate().getHours());
+        horarioFacade.registrarSalida(horario,empleado);
         horario = new Horario();
         this.empleado = new Empleado();
         return "registrarHorario";
     }
-    
+
     public void eliminarHorario(Horario item) {
         this.horarioFacade.remove(item);
     }
@@ -106,10 +130,9 @@ public class horarioControlador implements Serializable {
         horario = new Horario();
         return "editarHorario";
     }
-    
-    public void fecha(){
-       Date sisteFecha = new Date(); 
+
+    public void fecha() {
+        Date sisteFecha = new Date();
     }
-    
-   
+
 }

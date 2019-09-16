@@ -1,5 +1,6 @@
 package controlador;
 
+import com.mysql.jdbc.PreparedStatement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,6 +22,9 @@ public class Fecha {
         System.out.println("Fecha"+soyLaFecha);
         System.out.println("Hora"+soyLaHora.toString());
         System.out.println("fecha 2    "+objDate.getHours()+":"+objDate.getMinutes());
+        
+        //PreparedStatement inserter =com.prepareStatement("INSERT INTO horario (hora) VALUES (?,?));
+
     }
 
     public Date getObjDate() {
