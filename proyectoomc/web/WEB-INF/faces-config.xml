@@ -26,6 +26,11 @@
         </resource-bundle>
         
         <resource-bundle>
+            <base-name>language.ListarEmpleado-es</base-name>
+            <var>msjListarEmpleado</var>
+        </resource-bundle>
+        
+        <resource-bundle>
             <base-name>language.RegistrarPermisoLaboral_es</base-name>
             <var>msjRegistrarPermisoLaboral</var>
         </resource-bundle>
@@ -63,6 +68,11 @@
         <resource-bundle>
             <base-name>language.RegistrarHorario-es</base-name>
             <var>msjRegistrarHorario</var>
+        </resource-bundle>
+        
+         <resource-bundle>
+            <base-name>language.ListarHorario-es</base-name>
+            <var>msjListarHorario</var>
         </resource-bundle>
         
         <resource-bundle>
