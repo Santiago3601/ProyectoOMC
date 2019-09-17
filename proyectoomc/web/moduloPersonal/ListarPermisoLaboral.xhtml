@@ -19,7 +19,7 @@
 
             <h:form>
                 <h1><h:outputText value="Lista Permiso Laboral"/></h1>
-                <p:dataTable value="#{permisoLaboralControlador.consultarTodos()}" var="item">
+                <p:dataTable  id="ListaPermisoLaboral" value="#{permisoLaboralControlador.consultarTodos()}" var="item">
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="IdPermisoLaboral"/>
@@ -64,7 +64,7 @@
                 </p:dataTable>
                 <h:commandLink id="excel">
                         <i class="far fa-file-excel"></i>
-                        <p:dataExporter type="xls" target="tablaCli" fileName="tablaDeClientes" />
+                        <p:dataExporter type="xls" target="ListaPermisoLaboral" fileName="TablaPermisoLaboral" />
                         <style>
                             .far{
                                 padding: 2px;

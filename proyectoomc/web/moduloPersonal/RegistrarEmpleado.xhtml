@@ -4,6 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:s="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       >
 <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -20,10 +21,14 @@
             <h:form>
                 <h1><h:outputText value="Registrar Empleado"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Codigo Empleado:" for="idEmpleado" />
-                    <h:inputText s:id="uintTextBox" value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required."/>
+                    
+                    <h:outputLabel value="#{msjRegistrarEmpleado.labelTxtIdEmpleado}" for="idEmpleado" /> 
+                    <h:inputText s:id="uintTextBox" id="horaPermiso" pt:placeholder="#{msjRegistrarEmpleado.placeholderTxtIdHorario}"  value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required."/>
+                    
                     <h:outputLabel value="Usuario:" for="usuarioId" />
-                    <h:selectOneMenu id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
+                     <h:selectOneMenu id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
+                        
+                        
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="u" itemValue="#{u.id}" itemLabel="#{u.nombre}#{u.apellido}#{u.rolidRol.rol}"/>
                     </h:selectOneMenu>

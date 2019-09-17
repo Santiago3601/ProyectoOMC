@@ -19,23 +19,23 @@
 
 
             <h:form>
-                <h1><h:outputText value="Lista Turno"/></h1>
+                <h1><h:outputText value="#{msjListarTurno.labelTxtIdTurno}"/></h1>
                 <p:dataTable value="#{turnoControlador.consultarTodos()}" var="item">
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdTurno"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtIdTurno}"/>
                         </f:facet>
                         <h:outputText value="#{item.idTurno}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Programacion"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtProgramacion}"/>
                         </f:facet>
                         <h:outputText value="#{item.programacion}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Hora Ingreso"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtHoraIngreso}"/>
                         </f:facet>
                         <h:outputText value="#{item.horaIngreso}">
                             <f:convertDateTime pattern="HH:mm:ss" />
@@ -43,7 +43,7 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Horas Salida"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtHorasSalida}"/>
                         </f:facet>
                         <h:outputText value="#{item.horasSalida}">
                             <f:convertDateTime pattern="HH:mm:ss" />
@@ -51,7 +51,7 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Fecha Inicial"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtFechaInicial}"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaInicial}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -59,7 +59,7 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Fecha Final"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtFechaFinal}"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaFinal}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -67,25 +67,25 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Observaciones"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtObservaciones}"/>
                         </f:facet>
                         <h:outputText value="#{item.observaciones}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Puntos"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtPuntos}"/>
                         </f:facet>
                         <h:outputText value="#{item.puntoIdPuntos.cantidad}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdEmpleado"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtIdEmpleado}"/>
                         </f:facet>
                         <h:outputText value="#{item.idEmpleado}"/>
                     </p:column>
                      <p:column>
                         <f:facet name="header" class="thead">
-                            <h:outputText value="Opciones"/>
+                            <h:outputText value="#{msjListarTurno.labelTxtOpciones}"/>
                         </f:facet>
                         <h:commandLink action="#{turnoControlador.preActualizar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
                         <h:commandLink action="#{turnoControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>

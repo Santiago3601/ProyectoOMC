@@ -11,6 +11,21 @@
         </locale-config>
         
         <resource-bundle>
+            <base-name>language.RegistrarEmpleado-es</base-name>
+            <var>msjRegistrarEmpleado</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>language.ActualizarEmpleado-es</base-name>
+            <var>msjActualizarEmpleado</var>
+        </resource-bundle>
+        
+        <resource-bundle>
+            <base-name>language.ListarTurno-es</base-name>
+            <var>msjListarTurno</var>
+        </resource-bundle>
+        
+        <resource-bundle>
             <base-name>language.RegistrarPermisoLaboral_es</base-name>
             <var>msjRegistrarPermisoLaboral</var>
         </resource-bundle>

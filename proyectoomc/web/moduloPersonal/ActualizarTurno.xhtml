@@ -16,22 +16,10 @@
     </h:head>
 
     <h:body>
+        <div id="form"> 
           <f:view locale="#{sessionController.languageSelected}">
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    #{msjApp.idioma} <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <c:forEach items="#{sessionController.supportLanguages}" var="l" >
-                        <li>
-                            <h:commandLink  value="#{msjApp[l.displayLanguage]}" action="#{sessionController.cambiarIdioma(l)}">
-                                <img src="#{request.contextPath}/resources/img/languages/#{l.language}.png" width="25px" alt="#{msjApp[l.displayLanguage]}"/>
-                            </h:commandLink>
-                        </li>
-                    </c:forEach>
-                </ul>
-            </div>
+            
 
             <h:form>
                 <h1><h:outputText value="Registrar Turno"/></h1>
@@ -83,7 +71,7 @@
         </f:view>
 
 
-
+            </div>
     </h:body>
 
 </html>

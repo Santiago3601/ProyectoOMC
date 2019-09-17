@@ -32,13 +32,15 @@ public class HorarioFacade extends AbstractFacade<Horario> {
     }
     public void registrarSalida(Horario hor,Empleado empleado){
        Query query;
+       int a=0;
         try {
-            query=em.createNativeQuery("UPDATE horario SET hora_salida =:horaSalida, fecha_de_salida =:fechaSalida  WHERE fecha_de_ingreso =:fechaIngreso AND empleado_id_empleado =:idEmpleado");
-            query.setParameter("horaSalida", hor.getHoraSalida());
-            query.setParameter("fechaSalida", hor.getFechaDeSalida());
-            query.setParameter("fechaIngreso", hor.getFechaDeSalida());
-            query.setParameter("idEmpleado",empleado.getIdEmpleado());
-            System.out.println("ERRORRR === "+query.getResultList());
+            query=em.createNativeQuery("UPDATE horario SET hora_salida =?1, fecha_de_salida =?2  WHERE fecha_de_ingreso =?3 AND empleado_id_empleado =?4");
+            query.setParameter(1, hor.getHoraSalida());
+            query.setParameter(2, hor.getFechaDeSalida());
+            query.setParameter(3, hor.getFechaDeSalida());
+            query.setParameter(4,empleado.getIdEmpleado());
+            a=query.executeUpdate();
+             System.out.println("ERRORRR === "+ a);
         } catch (Exception e) {
         }
     }
