@@ -42,12 +42,12 @@ public class ReporteControlador implements Serializable {
     }
     //Metodos
     
-    public void reporte(){
+ /*   public void reporte(){
         List<Object[]> listaPermisoLaboral = this.permisoLaboralFacade.reportePermisoLaboral();
         List<ReportePermisoLaboral> listaReporte = new ArrayList<>(); 
         for (Object[] ob: listaPermisoLaboral) {
             
         }
-    }
+    }*/
     
 }
