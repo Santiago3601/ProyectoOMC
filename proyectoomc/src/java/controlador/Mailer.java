@@ -23,7 +23,9 @@ public class Mailer {
                 + "";//cambiará en consecuencia al servidor utilizado
         final String pass = "Gaes3Proyectoomc";
 
-        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#307C66; font-weight: bold; text-transform: uppercase ; \">Nueva Contraseña" + "</h1>" + "<img src='https://lh3.googleusercontent.com/oEdehpVCY1RbeNe0S0_Mlc-9E4WmyuD7C5xdsrdHzDlpvEFnoTZQBqqSesPb1gjcz0G8dom01bA28OnL5cK6=w1366-h657'/ style=\"float: left;\"><p>" + usua2.getContrasenia() + "<br>\n"
+        String nuevoMensaje = " <style>\n" +
+"@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');\n" +
+"</style>  <h1 style=\"font-size: 20px; font-family: 'Questrial', sans-serif; color:#307C66;  \">Nueva Contraseña" + "</h1>" + "<p> Ingresas con: " + usua2.getCorreo() + "<br></br>"+" Tu contraseña es:" + usua2.getContrasenia() + "<br></br>" +"<br></br>" +"<br></br>" + "<img src='i.imgur.com/LU6DAe3.png'/ style=\"float: left; height: 50px; widght : auto;\">\n"
                 + "<p style=\"text-align: center; color: #307C66\">\n"
                 + "</p> \n"
                 + "<br>\n"
@@ -89,7 +91,7 @@ public class Mailer {
                 + "";//cambiará en consecuencia al servidor utilizado
         final String pass = "Gaes3Proyectoomc";
 
-        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#307C66; font-weight: bold; text-transform: uppercase ; \">Mantenimiento" + "</h1>" + "<img src='https://lh3.googleusercontent.com/oEdehpVCY1RbeNe0S0_Mlc-9E4WmyuD7C5xdsrdHzDlpvEFnoTZQBqqSesPb1gjcz0G8dom01bA28OnL5cK6=w1366-h657'/ style=\"float: left;\"><p>El sitema estara en mantenimiento<br>\n"
+        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#307C66; font-weight: bold; text-transform: uppercase ; \">Mantenimiento" + "</h1>" + "<img src='i.imgur.com/LU6DAe3.png'/ style=\"float: left;\"><p>El sitema estara en mantenimiento<br>\n"
                 + "<p style=\"text-align: center; color: #307C66\">\n"
                 + "</p> \n"
                 + "<br>\n"
