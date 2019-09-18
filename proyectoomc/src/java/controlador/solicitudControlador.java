@@ -33,6 +33,15 @@ public class solicitudControlador implements Serializable {
     private Part file;
     private String nombre;
     private String pathReal;
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public Part getFile() {
         return file;
@@ -75,6 +84,7 @@ public class solicitudControlador implements Serializable {
     public void init() {
         solicitud = new Solicitud();
         cliente = new Cliente();
+        usuario = new Usuario();
     }
 
     public Cliente getCliente() {
@@ -148,6 +158,38 @@ public class solicitudControlador implements Serializable {
             e.printStackTrace();
         }
         solicitud.setClienteIdCliente(getCliente());
+        this.solicitud.setFormula(pathReal);
+        solicitudFacade.create(solicitud);
+        solicitud = new Solicitud();
+
+        return "listaSolicitud";
+
+    }
+
+    public String uploadUsuario() {
+
+        String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");
+        path = path.substring(0, path.indexOf("\\build"));
+        path = path + "\\web\\Archivos\\";
+        try {
+            this.nombre = file.getSubmittedFileName();
+            pathReal = "/proyectoomc/archivos/" + nombre;
+            path = path + this.nombre;
+            InputStream in = file.getInputStream();
+
+            byte[] data = new byte[in.available()];
+            in.read(data);
+            FileOutputStream out = new FileOutputStream(new File(path));
+            out.write(data);
+            in.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        cliente = solicitudFacade.obtenerIdUsuario(usuario);
+        solicitud.setIdSolicitud(1);
+        solicitud.setClienteIdCliente(cliente);
         this.solicitud.setFormula(pathReal);
         solicitudFacade.create(solicitud);
         solicitud = new Solicitud();

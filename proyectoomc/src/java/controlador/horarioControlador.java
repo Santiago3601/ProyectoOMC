@@ -108,7 +108,7 @@ public class horarioControlador implements Serializable {
         
         horario.setEmpleadoIdEmpleado(getEmpleado());
         this.horario.setFechaDeSalida(getObjDate());
-        this.horario.setHoraSalida("" + getObjDate().getHours() + ":" + getObjDate().getHours());
+        this.horario.setHoraSalida("" + getObjDate().getHours() + ":" + getObjDate().getMinutes());
         horarioFacade.registrarSalida(horario,empleado);
         horario = new Horario();
         this.empleado = new Empleado();

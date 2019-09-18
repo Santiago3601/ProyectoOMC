@@ -5,10 +5,15 @@
  */
 package facade;
 
+import entidades.Cliente;
 import entidades.Solicitud;
+import entidades.Solicitud;
+import entidades.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +33,21 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
     public SolicitudFacade() {
         super(Solicitud.class);
     }
-    
+     public Cliente obtenerIdUsuario(Usuario us) {
+        Cliente cli =null;
+        try {
+            Query query = em.createQuery("SELECT c FROM Cliente c where c.usuarioId.id = :idUsuario");
+            query.setParameter("idUsuario", us.getId());
+            List<Cliente> cliL = query.getResultList();
+            if (!cliL.isEmpty()) {
+                cli = cliL.get(0);
+                return cli;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return cli;
+
+    }
 }
