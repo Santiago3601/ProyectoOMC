@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2019 a las 14:57:30
+-- Tiempo de generación: 18-09-2019 a las 19:01:41
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -23,6 +23,16 @@ SET time_zone = "+00:00";
 --
 
 DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_fecha_salida` (IN `_hora_salida` VARCHAR(20), IN `_fecha_salida` DATE, IN `_id_empleado` INT)  begin
+declare id_horario_actualizar int;
+Set id_horario_actualizar=(SELECT max(id_horario) FROM horario h WHERE h.empleado_id_empleado=_id_empleado and h.fecha_de_salida is null);
+
+UPDATE horario SET hora_salida =_hora_salida, fecha_de_salida =_fecha_salida  WHERE id_horario=id_horario_actualizar;
+END$$
+
 --
 -- Funciones
 --
@@ -124,6 +134,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `usuario_id`, `estado_id_estado`) VALUES
+(1, 10002010212, 1),
 (3, 23874610, 1),
 (6, 23879120, 1),
 (7, 1000283977, 1),
@@ -275,7 +286,9 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`id_horario`, `hora_ingreso`, `hora_salida`, `empleado_id_empleado`, `fecha_de_ingreso`, `fecha_de_salida`) VALUES
-(1, '02:00:00', NULL, 1, NULL, NULL);
+(1, '02:00:00', NULL, 1, NULL, NULL),
+(2, '11:51', '11:11', 1, '2019-09-18', '2019-09-18'),
+(3, '11:51', '11:51', 1, '2019-09-18', '2019-09-18');
 
 -- --------------------------------------------------------
 
@@ -444,7 +457,9 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (127, 'Pdf', 'Pdf', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 125),
 (128, 'Cilindro', 'Cylinder', NULL, '', 126),
 (129, 'Certificado Laboral', 'Work certificate', NULL, '', 127),
-(130, 'Contrato', 'Contract', NULL, '', 127);
+(130, 'Contrato', 'Contract', NULL, '', 127),
+(131, 'Registrar', 'a', '', '', 118),
+(132, 'Solicitud', 'a', '../../../moduloEnvios/crearSolicitudCliente.xhtml', '', 131);
 
 -- --------------------------------------------------------
 
@@ -673,7 +688,8 @@ INSERT INTO `solicitud` (`id_solicitud`, `formula`, `tamanio_cilindro`, `cliente
 (3, '/proyectoOMC/archivos/Tarea 2. Fundamentos_php.pdf', 32, 7),
 (5, '/proyectoomc/archivos/tabla (3).xls', 12332, 6),
 (6, '/proyectoomc/archivos/Grupo 1.txt', 250, 8),
-(7, '/proyectoomc/archivos/4.txt', 250, 9);
+(7, '/proyectoomc/archivos/4.txt', 250, 9),
+(8, '/proyectoomc/archivos/1.csv', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1010,7 +1026,7 @@ ALTER TABLE `estado_alquiler`
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimiento`
@@ -1034,7 +1050,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`
