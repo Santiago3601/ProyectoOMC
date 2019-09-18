@@ -3649,8 +3649,8 @@ body .ui-paginator {
     font-size: 1.25em;
     font-size: 1em;
     line-height: 2.643em; }
-    body .ui-paginator .ui-paginator-next:before {
-      content: ""; }
+    /* body .ui-paginator .ui-paginator-next:before {
+      content: ""; } */
     body .ui-paginator .ui-paginator-next:before {
       font-size: 1.25em;
       position: relative; }

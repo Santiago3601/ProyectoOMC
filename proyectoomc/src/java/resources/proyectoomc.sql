@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-09-2019 a las 19:00:50
+-- Tiempo de generación: 18-09-2019 a las 14:57:30
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -247,6 +247,17 @@ CREATE TABLE `estado_mantenimiento` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `estado_permiso_laboral`
+--
+
+CREATE TABLE `estado_permiso_laboral` (
+  `id_estado` int(2) NOT NULL,
+  `estado_permiso` varchar(50) COLLATE utf32_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `horario`
 --
 
@@ -302,6 +313,7 @@ CREATE TABLE `mantenimiento_cilindro` (
 CREATE TABLE `permiso` (
   `id_permiso` int(11) NOT NULL,
   `nombre` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
+  `nombre_en` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `url` text COLLATE utf32_spanish_ci DEFAULT NULL,
   `icon` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `permiso_padre` int(11) DEFAULT NULL
@@ -311,128 +323,128 @@ CREATE TABLE `permiso` (
 -- Volcado de datos para la tabla `permiso`
 --
 
-INSERT INTO `permiso` (`id_permiso`, `nombre`, `url`, `icon`, `permiso_padre`) VALUES
-(2, 'Envios', NULL, 'x', NULL),
-(3, 'Crear', NULL, 'x', 2),
-(4, 'Consultar', NULL, 'x', 2),
-(5, 'Programar', NULL, 'x', 2),
-(6, 'Cliente', '../../../moduloEnvios/crearCliente.xhtml', 'x', 3),
-(7, 'Contrato', '../../../moduloEnvios/crearContrato.xhtml', 'x', 3),
-(8, 'Usuario', '../../../moduloEnvios/crearUsuario.xhtml', 'x', 3),
-(9, 'Vehiculo', '../../../moduloEnvios/crearVehiculo.xhtml', 'x', 3),
-(10, 'Solicitud', '../../../moduloEnvios/crearSolicitud.xhtml', 'x', 3),
-(11, 'Alquiler', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 4),
-(12, 'Cliente', '../../../moduloEnvios/listaClientes.xhtml', 'x', 4),
-(13, 'Contrato', '../../../moduloEnvios/listaContrato.xhtml', 'x', 4),
-(14, 'Roles', '../../../moduloEnvios/listaRoles.xhtml', 'x', 4),
-(15, 'Ruta', '../../../moduloEnvios/listaRuta.xhtml', 'x', 4),
-(16, 'Vehiculos', '../../../moduloEnvios/listaVehiculos.xhtml', 'x', 4),
-(17, 'Usuarios', '../../../moduloEnvios/listaUsuario.xhtml', 'x', 4),
-(18, 'Solicitud', '../../../moduloEnvios/listaSolicitud.xhtml', 'x', 4),
-(19, 'Alquiler', '../../../moduloEnvios/crearAlquiler.xhtml', 'x', 5),
-(20, 'Ruta', '../../../moduloEnvios/crearRuta.xhtml', 'x', 5),
-(21, 'Mantenimiento', NULL, 'x', NULL),
-(22, 'Programar', NULL, 'x', 21),
-(23, 'Registrar', NULL, 'x', 21),
-(24, 'Consultar', NULL, 'x', 21),
-(25, 'Mantenimiento', '../../../moduloMantenimiento/registrarMantenimiento.xhtml', 'x', 22),
-(26, 'Mantenimiento cilindro', '../../../moduloMantenimiento/registrarMantenimientoCilindro.xhtml', 'x', 22),
-(27, 'Estado mantenimiento', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 22),
-(28, 'Agenda', '../../../moduloMantenimiento/registrarAgenda.xhtml', 'x', 23),
-(29, 'Cilindro', '../../../moduloMantenimiento/registrarCilindro.xhtml', 'x', 23),
-(30, 'Agenda', '../../../moduloMantenimiento/listaAgenda.xhtml', 'x', 24),
-(31, 'Cilindro', '../../../moduloMantenimiento/listaCilindro.xhtml', 'x', 24),
-(32, 'Mantenimiento', '../../../moduloMantenimiento/listaMantenimiento.xhtml', 'x', 24),
-(33, 'Mantenimiento Cilindro', '../../../moduloMantenimiento/listaMantenimientoCilindro.xhtml', 'x', 24),
-(34, 'Estado Mantenimiento', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 24),
-(35, 'Personal', NULL, 'x', NULL),
-(36, 'Registrar', NULL, 'x', 35),
-(37, 'Consultar', NULL, 'x', 35),
-(38, 'Empleado', '../../../moduloPersonal/RegistrarEmpleado.xhtml', 'x', 36),
-(39, 'Horario', '../../../moduloPersonal/RegistrarHorario.xhtml', 'x', 36),
-(40, 'Permiso Laboral', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 36),
-(41, 'Punto', '../../../moduloPersonal/RegistrarPunto.xhtml', 'x', 36),
-(42, 'Turno', '../../../moduloPersonal/RegistrarTurno.xhtml', 'x', 36),
-(43, 'Empleado', '../../../moduloPersonal/ListarEmpleado.xhtml', 'x', 37),
-(44, 'Horario', '../../../moduloPersonal/ListarHorario.xhtml', 'x', 37),
-(45, 'Permiso Laboral', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 37),
-(46, 'Punto', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 37),
-(47, 'Turno', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 37),
-(48, '---- Jefe de planta -----', ' ', 'x', NULL),
-(49, 'Envios', NULL, 'x', NULL),
-(52, 'Crear', '', 'x', 49),
-(53, 'Consultar', NULL, 'x', 49),
-(54, 'Programar', NULL, 'x', 49),
-(55, 'Usuarios', '../../../moduloEnvios/crearUsuario.xhtml', 'x', 52),
-(56, 'Cliente', '../../../moduloEnvios/crearCliente.xhtml', 'x', 52),
-(57, 'Alquiler', '../../../moduloEnvios/crearAlquiler.xhtml', 'x', 54),
-(58, 'Contrato', '../../../moduloEnvios/crearContrato.xhtml', 'x', 52),
-(59, 'Ruta', '../../../moduloEnvios/crearRuta.xhtml', 'x', 54),
-(60, 'Vehiculo', '../../../moduloEnvios/crearVehiculo.xhtml', 'x', 52),
-(61, 'Usuarios', '../../../moduloEnvios/listaUsuario.xhtml', 'x', 53),
-(62, 'Cliente', '../../../moduloEnvios/listaClientes.xhtml', 'x', 53),
-(63, 'Alquiler', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 53),
-(64, 'Contrato', '../../../moduloEnvios/listaContrato.xhtml', 'x', 53),
-(65, 'Ruta', '../../../moduloEnvios/listaRuta.xhtml', 'x', 53),
-(67, 'Vehiculo', '../../../moduloEnvios/listaVehiculos.xhtml', 'x', 53),
-(68, 'Mantenimiento', NULL, 'x', NULL),
-(69, 'Programa', NULL, 'x', 68),
-(70, 'Registra', NULL, 'x', 68),
-(71, 'Consulta', NULL, 'x', 68),
-(72, 'Mantenimiento Cilindro', '../../../moduloMantenimiento/registrarMantenimientoCilindro.xhtml', 'x', 69),
-(73, 'Mantenimiento', '../../../moduloMantenimiento/registrarMantenimiento.xhtml', 'x', 69),
-(74, 'Estado Mantenimiento', 'x-x-x-x-x--x-x--x-x--x-x--x-x--x-x-x--x-x--x-x-x-x--x', 'x', 69),
-(75, 'Cilindro', '../../../moduloMantenimiento/registrarCilindro.xhtml', 'x', 70),
-(76, 'Agenda', '../../../moduloMantenimiento/registrarAgenda.xhtml', 'x', 70),
-(77, 'Mantenimineto Cilindro', '../../../moduloMantenimiento/listaMantenimientoCilindro.xhtml', 'x', 71),
-(78, 'MAntenimiento', '../../../moduloMantenimiento/listaMantenimiento.xhtml', 'x', 71),
-(79, 'Estado Mantenimiento', 'x-x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-x-x-x-', 'x', 71),
-(80, 'Cilindro', '../../../moduloMantenimiento/listaCilindro.xhtml', 'x', 71),
-(81, 'Agenda', '../../../moduloMantenimiento/listaAgenda.xhtml', 'x', 71),
-(82, 'Personal', NULL, 'x', NULL),
-(83, 'Registra', NULL, 'x', 82),
-(84, 'Consulta', NULL, 'x', 82),
-(85, 'Turno', '../../../moduloPersonal/RegistrarTurno.xhtml', 'x', 83),
-(86, 'Punto', '../../../moduloPersonal/RegistrarPunto.xhtml', 'x', 83),
-(87, 'Permiso Laboral', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 83),
-(88, 'Turno', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 84),
-(89, 'Punto', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 84),
-(90, 'Permiso Laboral', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 84),
-(91, 'Tecnico', NULL, 'x', NULL),
-(92, 'Envios', NULL, 'x', NULL),
-(95, 'Consultar', NULL, 'x', 92),
-(96, 'Alquiler', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 95),
-(97, 'Ruta', '../../../moduloEnvios/listaRuta.xhtml', 'x', 95),
-(98, 'Vehiculo', '../../../moduloEnvios/listaVehiculos.xhtml', 'x', 95),
-(99, 'Usuario', '../../../moduloEnvios/listaUsuario.xhtml', 'x', 95),
-(100, 'Mantenimiento', '', 'x', NULL),
-(101, 'Registrar', NULL, 'x', 100),
-(102, 'Consultar', NULL, 'x', 100),
-(103, 'Agenda', '../../../moduloMantenimiento/listaAgenda.xhtml', 'x', 102),
-(104, 'Mantenimiento', '../../../moduloMantenimiento/listaMantenimiento.xhtml', 'x', 102),
-(105, 'Mantenimiento Cilindro', '../../../moduloMantenimiento/listaMantenimientoCilindro.xhtml', 'x', 102),
-(106, 'Estado Cilindro', 'x-x-x-x--x-x--x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 102),
-(107, 'Cilindro', '../../../moduloMantenimiento/registrarCilindro.xhtml', 'x', 101),
-(108, 'Cilindro', '../../../moduloMantenimiento/listaCilindro.xhtml', 'x', 102),
-(109, 'Personal', NULL, 'x', NULL),
-(110, 'Registrar', NULL, 'x', 109),
-(111, 'Consultar', NULL, 'x', 109),
-(112, 'Turno', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 111),
-(113, 'Punto', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 111),
-(114, 'Permiso Laboral', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 111),
-(115, 'Permiso Laboral', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 110),
-(118, 'Envios', NULL, 'x', NULL),
-(120, 'Personal', NULL, 'x', NULL),
-(121, 'consultar', NULL, 'x', 118),
-(122, 'Solicitud', '../../../moduloEnvios/listaSolicitud.xhtml', 'x', 121),
-(123, 'Alquiler', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 121),
-(124, 'Contrato', '../../../moduloEnvios/listaContrato.xhtml', 'x', 121),
-(125, 'Reportes', NULL, 'x', NULL),
-(126, 'Graficos', 'xx-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x--x-x', 'x', 125),
-(127, 'Pdf', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 125),
-(128, 'Cilindro', NULL, '', 126),
-(129, 'Certificado Laboral', NULL, '', 127),
-(130, 'Contrato', NULL, '', 127);
+INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `permiso_padre`) VALUES
+(2, 'Envios', 'Shipping', NULL, 'x', NULL),
+(3, 'Crear', 'Create', NULL, 'x', 2),
+(4, 'Consultar', 'Consult', NULL, 'x', 2),
+(5, 'Programar', 'Program', NULL, 'x', 2),
+(6, 'Cliente', 'Custumer', '../../../moduloEnvios/crearCliente.xhtml', 'x', 3),
+(7, 'Contrato', 'Contract', '../../../moduloEnvios/crearContrato.xhtml', 'x', 3),
+(8, 'Usuario', 'User', '../../../moduloEnvios/crearUsuario.xhtml', 'x', 3),
+(9, 'Vehiculo', 'Vehicle', '../../../moduloEnvios/crearVehiculo.xhtml', 'x', 3),
+(10, 'Solicitud', 'Request', '../../../moduloEnvios/crearSolicitud.xhtml', 'x', 3),
+(11, 'Alquiler', 'Rent', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 4),
+(12, 'Cliente', 'Custumer', '../../../moduloEnvios/listaClientes.xhtml', 'x', 4),
+(13, 'Contrato', 'Contract', '../../../moduloEnvios/listaContrato.xhtml', 'x', 4),
+(14, 'Roles', 'Roles', '../../../moduloEnvios/listaRoles.xhtml', 'x', 4),
+(15, 'Ruta', 'Route', '../../../moduloEnvios/listaRuta.xhtml', 'x', 4),
+(16, 'Vehiculos', 'Vehicle', '../../../moduloEnvios/listaVehiculos.xhtml', 'x', 4),
+(17, 'Usuarios', 'User', '../../../moduloEnvios/listaUsuario.xhtml', 'x', 4),
+(18, 'Solicitud', 'Request', '../../../moduloEnvios/listaSolicitud.xhtml', 'x', 4),
+(19, 'Alquiler', 'Rent', '../../../moduloEnvios/crearAlquiler.xhtml', 'x', 5),
+(20, 'Ruta', 'Route', '../../../moduloEnvios/crearRuta.xhtml', 'x', 5),
+(21, 'Mantenimiento', 'Maintenance', NULL, 'x', NULL),
+(22, 'Programar', 'Program', NULL, 'x', 21),
+(23, 'Registrar', 'Register', NULL, 'x', 21),
+(24, 'Consultar', 'Consult', NULL, 'x', 21),
+(25, 'Mantenimiento', 'Maintenance', '../../../moduloMantenimiento/registrarMantenimiento.xhtml', 'x', 22),
+(26, 'Mantenimiento cilindro', 'Cylinder Maintenace', '../../../moduloMantenimiento/registrarMantenimientoCilindro.xhtml', 'x', 22),
+(27, 'Estado mantenimiento', 'Maintenance State', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 22),
+(28, 'Agenda', 'Agenda', '../../../moduloMantenimiento/registrarAgenda.xhtml', 'x', 23),
+(29, 'Cilindro', 'Cylinder', '../../../moduloMantenimiento/registrarCilindro.xhtml', 'x', 23),
+(30, 'Agenda', 'Agenda', '../../../moduloMantenimiento/listaAgenda.xhtml', 'x', 24),
+(31, 'Cilindro', 'Cylinder', '../../../moduloMantenimiento/listaCilindro.xhtml', 'x', 24),
+(32, 'Mantenimiento', 'Maintenance', '../../../moduloMantenimiento/listaMantenimiento.xhtml', 'x', 24),
+(33, 'Mantenimiento Cilindro', 'Cylinder Maintenace', '../../../moduloMantenimiento/listaMantenimientoCilindro.xhtml', 'x', 24),
+(34, 'Estado Mantenimiento', 'Maintenance State', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 24),
+(35, 'Personal', 'Employees', NULL, 'x', NULL),
+(36, 'Registrar', 'Register', NULL, 'x', 35),
+(37, 'Consultar', 'Consult', NULL, 'x', 35),
+(38, 'Empleado', 'Employees', '../../../moduloPersonal/RegistrarEmpleado.xhtml', 'x', 36),
+(39, 'Horario', 'Schedule', '../../../moduloPersonal/RegistrarHorario.xhtml', 'x', 36),
+(40, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 36),
+(41, 'Punto', 'Point', '../../../moduloPersonal/RegistrarPunto.xhtml', 'x', 36),
+(42, 'Turno', 'Turn', '../../../moduloPersonal/RegistrarTurno.xhtml', 'x', 36),
+(43, 'Empleado', 'Employees', '../../../moduloPersonal/ListarEmpleado.xhtml', 'x', 37),
+(44, 'Horario', 'Schedule', '../../../moduloPersonal/ListarHorario.xhtml', 'x', 37),
+(45, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 37),
+(46, 'Punto', 'Point', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 37),
+(47, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 37),
+(48, '---- Jefe de planta -----', '', ' ', 'x', NULL),
+(49, 'Envios', 'Shipping', NULL, 'x', NULL),
+(52, 'Crear', 'Create', '', 'x', 49),
+(53, 'Consultar', 'Consult', NULL, 'x', 49),
+(54, 'Programar', 'Point', NULL, 'x', 49),
+(55, 'Usuarios', 'User', '../../../moduloEnvios/crearUsuario.xhtml', 'x', 52),
+(56, 'Cliente', 'Custumer', '../../../moduloEnvios/crearCliente.xhtml', 'x', 52),
+(57, 'Alquiler', 'Rent', '../../../moduloEnvios/crearAlquiler.xhtml', 'x', 54),
+(58, 'Contrato', 'Contract', '../../../moduloEnvios/crearContrato.xhtml', 'x', 52),
+(59, 'Ruta', 'Route', '../../../moduloEnvios/crearRuta.xhtml', 'x', 54),
+(60, 'Vehiculo', 'Vehicle', '../../../moduloEnvios/crearVehiculo.xhtml', 'x', 52),
+(61, 'Usuarios', 'User', '../../../moduloEnvios/listaUsuario.xhtml', 'x', 53),
+(62, 'Cliente', 'Custumer', '../../../moduloEnvios/listaClientes.xhtml', 'x', 53),
+(63, 'Alquiler', 'Rent', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 53),
+(64, 'Contrato', 'Contract', '../../../moduloEnvios/listaContrato.xhtml', 'x', 53),
+(65, 'Ruta', 'Route', '../../../moduloEnvios/listaRuta.xhtml', 'x', 53),
+(67, 'Vehiculo', 'Vehicle', '../../../moduloEnvios/listaVehiculos.xhtml', 'x', 53),
+(68, 'Mantenimiento', 'Maintenance', NULL, 'x', NULL),
+(69, 'Programa', 'Program', NULL, 'x', 68),
+(70, 'Registra', 'Register', NULL, 'x', 68),
+(71, 'Consulta', 'Consult', NULL, 'x', 68),
+(72, 'Mantenimiento Cilindro', 'Cylinder Maintenace', '../../../moduloMantenimiento/registrarMantenimientoCilindro.xhtml', 'x', 69),
+(73, 'Mantenimiento', 'Maintenance', '../../../moduloMantenimiento/registrarMantenimiento.xhtml', 'x', 69),
+(74, 'Estado Mantenimiento', 'Maintenance State', 'x-x-x-x-x--x-x--x-x--x-x--x-x--x-x-x--x-x--x-x-x-x--x', 'x', 69),
+(75, 'Cilindro', 'Cylinder', '../../../moduloMantenimiento/registrarCilindro.xhtml', 'x', 70),
+(76, 'Agenda', 'Agenda', '../../../moduloMantenimiento/registrarAgenda.xhtml', 'x', 70),
+(77, 'Mantenimineto Cilindro', 'Cylinder Maintenace', '../../../moduloMantenimiento/listaMantenimientoCilindro.xhtml', 'x', 71),
+(78, 'MAntenimiento', 'Maintenance', '../../../moduloMantenimiento/listaMantenimiento.xhtml', 'x', 71),
+(79, 'Estado Mantenimiento', 'Maintenance State', 'x-x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-x-x-x-', 'x', 71),
+(80, 'Cilindro', 'Cylinder', '../../../moduloMantenimiento/listaCilindro.xhtml', 'x', 71),
+(81, 'Agenda', 'Agenda', '../../../moduloMantenimiento/listaAgenda.xhtml', 'x', 71),
+(82, 'Personal', 'Employees', NULL, 'x', NULL),
+(83, 'Registra', 'Register', NULL, 'x', 82),
+(84, 'Consulta', 'Consult', NULL, 'x', 82),
+(85, 'Turno', 'Turn', '../../../moduloPersonal/RegistrarTurno.xhtml', 'x', 83),
+(86, 'Punto', 'Point', '../../../moduloPersonal/RegistrarPunto.xhtml', 'x', 83),
+(87, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 83),
+(88, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 84),
+(89, 'Punto', 'Point', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 84),
+(90, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 84),
+(91, 'Tecnico', 'Technical', NULL, 'x', NULL),
+(92, 'Envios', 'Shipping', NULL, 'x', NULL),
+(95, 'Consultar', 'Consult', NULL, 'x', 92),
+(96, 'Alquiler', 'Rent', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 95),
+(97, 'Ruta', 'Route', '../../../moduloEnvios/listaRuta.xhtml', 'x', 95),
+(98, 'Vehiculo', 'Vehicle', '../../../moduloEnvios/listaVehiculos.xhtml', 'x', 95),
+(99, 'Usuario', 'User', '../../../moduloEnvios/listaUsuario.xhtml', 'x', 95),
+(100, 'Mantenimiento', 'Maintenance', '', 'x', NULL),
+(101, 'Registrar', 'Register', NULL, 'x', 100),
+(102, 'Consultar', 'Consult', NULL, 'x', 100),
+(103, 'Agenda', 'Agenda', '../../../moduloMantenimiento/listaAgenda.xhtml', 'x', 102),
+(104, 'Mantenimiento', 'Maintenance', '../../../moduloMantenimiento/listaMantenimiento.xhtml', 'x', 102),
+(105, 'Mantenimiento Cilindro', 'Cylinder Maintenace', '../../../moduloMantenimiento/listaMantenimientoCilindro.xhtml', 'x', 102),
+(106, 'Estado Cilindro', 'Cylinder State', 'x-x-x-x--x-x--x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 102),
+(107, 'Cilindro', 'Cylinder', '../../../moduloMantenimiento/registrarCilindro.xhtml', 'x', 101),
+(108, 'Cilindro', 'Cylinder', '../../../moduloMantenimiento/listaCilindro.xhtml', 'x', 102),
+(109, 'Personal', 'Employees', NULL, 'x', NULL),
+(110, 'Registrar', 'Register', NULL, 'x', 109),
+(111, 'Consultar', 'Consult', NULL, 'x', 109),
+(112, 'Turno', 'Turn', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 111),
+(113, 'Punto', 'Point', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 111),
+(114, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 111),
+(115, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 110),
+(118, 'Envios', 'Shipping', NULL, 'x', NULL),
+(120, 'Personal', 'Employees', NULL, 'x', NULL),
+(121, 'consultar', 'Consult', NULL, 'x', 118),
+(122, 'Solicitud', 'Request', '../../../moduloEnvios/listaSolicitud.xhtml', 'x', 121),
+(123, 'Alquiler', 'Rent', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 121),
+(124, 'Contrato', 'Contract', '../../../moduloEnvios/listaContrato.xhtml', 'x', 121),
+(125, 'Reportes', 'Reports', NULL, 'x', NULL),
+(126, 'Graficos', 'Graphics', 'xx-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x--x-x', 'x', 125),
+(127, 'Pdf', 'Pdf', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 125),
+(128, 'Cilindro', 'Cylinder', NULL, '', 126),
+(129, 'Certificado Laboral', 'Work certificate', NULL, '', 127),
+(130, 'Contrato', 'Contract', NULL, '', 127);
 
 -- --------------------------------------------------------
 
@@ -445,6 +457,7 @@ CREATE TABLE `permiso_laboral` (
   `hora_permiso` time NOT NULL,
   `fecha_permiso` date NOT NULL,
   `obvservaciones` varchar(200) COLLATE utf32_spanish_ci DEFAULT NULL,
+  `estado` int(2) NOT NULL,
   `empleado_id_empleado` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
@@ -646,7 +659,7 @@ INSERT INTO `ruta` (`id_ruta`, `direccion`, `planilla`, `vehiculo_id_vehiculo`, 
 CREATE TABLE `solicitud` (
   `id_solicitud` int(7) NOT NULL,
   `formula` text COLLATE utf32_spanish_ci NOT NULL,
-  `tamanio_cilindro` int(5) NOT NULL,
+  `tamanio_cilindro` int(5) DEFAULT NULL,
   `cliente_id_cliente` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
@@ -735,9 +748,9 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo`, `contrasenia`, `telefono`, `eps`, `fecha_de_nacimiento`, `edad`, `rol_idRol`) VALUES
 (1111222, 1, 'assa', 'sasas', 'sasas', 'santyago3601@gmail.com', 'sasa', 123123, 'sa', '2001-02-02', 18, 2),
-(23874610, 2, 'Julie', 'Pott Friedman', 'Cll 32 sur No. 32 - 77', 'shirleybernal70@gmail.com', 'RLhtPHexiJ', 4169210, 'Famisanar', '1990-03-29', 29, 3),
+(23874610, 2, 'Julie', 'Pott Friedman', 'Cll 32 sur No. 32 - 77', 'shirleybernal70@gmail.com', 'URgbaHRhdl', 4169210, 'Famisanar', '1990-03-29', 29, 3),
 (23879120, 2, 'Mark David ', 'Stewart King', 'Cra. 44 No. 21 - 55', 'mark.sk15@aol.com', '1234', 3108971923, 'N/A', '1979-07-15', 39, 2),
-(24981099, 2, 'Mark Christopher', 'Green Adams', 'Kra 19 No. 210 - 23', 'stephannybustos@gmail.com', '1234', 4774147, 'Cafam EPS.', '1997-05-05', 22, 4),
+(24981099, 2, 'Mark Christopher', 'Green Adams', 'Kra 19 No. 210 - 23', 'stephannybustos@gmail.com', 'KwIkhXyOkb', 4774147, 'Cafam EPS.', '1997-05-05', 22, 4),
 (27871927, 1, 'Thomas', 'Miller King', 'x', 'x', '3232', 1, 'x2', '1984-12-19', 64, 1),
 (100030122, 1, 'Juan Camilo', 'Perez Martinez', 'Correo@mail.com', 'santyago3601@gmail.com', '1234', 122, 'No tiene', '2001-06-01', 18, 2),
 (1000283977, 2, 'Amy Michelle', 'Smith Allen', 'Cll 24 No. 31 -  34', 'amy.smith12@msn.com', 'rITñICjiNL', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
@@ -853,6 +866,12 @@ ALTER TABLE `estado_mantenimiento`
   ADD PRIMARY KEY (`id_estado`);
 
 --
+-- Indices de la tabla `estado_permiso_laboral`
+--
+ALTER TABLE `estado_permiso_laboral`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
 -- Indices de la tabla `horario`
 --
 ALTER TABLE `horario`
@@ -887,7 +906,8 @@ ALTER TABLE `permiso`
 --
 ALTER TABLE `permiso_laboral`
   ADD PRIMARY KEY (`id_permiso_laboral`),
-  ADD KEY `empleado_id_empleado` (`empleado_id_empleado`);
+  ADD KEY `empleado_id_empleado` (`empleado_id_empleado`),
+  ADD KEY `estado` (`estado`);
 
 --
 -- Indices de la tabla `punto`
@@ -1097,6 +1117,7 @@ ALTER TABLE `permiso`
 -- Filtros para la tabla `permiso_laboral`
 --
 ALTER TABLE `permiso_laboral`
+  ADD CONSTRAINT `fk_permiso_estado_permiso` FOREIGN KEY (`estado`) REFERENCES `estado_permiso_laboral` (`id_estado`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_permiso_laboral_empleado` FOREIGN KEY (`empleado_id_empleado`) REFERENCES `empleado` (`id_empleado`) ON UPDATE CASCADE;
 
 --

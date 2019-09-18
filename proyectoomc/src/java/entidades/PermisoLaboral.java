@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,6 +39,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PermisoLaboral.findByFechaPermiso", query = "SELECT p FROM PermisoLaboral p WHERE p.fechaPermiso = :fechaPermiso")
     , @NamedQuery(name = "PermisoLaboral.findByObvservaciones", query = "SELECT p FROM PermisoLaboral p WHERE p.obvservaciones = :obvservaciones")})
 public class PermisoLaboral implements Serializable {
+
+    @JoinColumn(name = "estado", referencedColumnName = "id_estado")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private EstadoPermisoLaboral estado;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -138,6 +143,14 @@ public class PermisoLaboral implements Serializable {
     @Override
     public String toString() {
         return "entidades.PermisoLaboral[ idPermisoLaboral=" + idPermisoLaboral + " ]";
+    }
+
+    public EstadoPermisoLaboral getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoPermisoLaboral estado) {
+        this.estado = estado;
     }
     
 }

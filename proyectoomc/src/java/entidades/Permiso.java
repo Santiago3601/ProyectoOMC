@@ -41,6 +41,12 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Permiso.findByIcon", query = "SELECT p FROM Permiso p WHERE p.icon = :icon")})
 public class Permiso implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "nombre_en")
+    private String nombreEn;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoIdPermiso", fetch = FetchType.LAZY)
 
     private static final long serialVersionUID = 1L;
@@ -172,6 +178,14 @@ public class Permiso implements Serializable {
     @Override
     public String toString() {
         return "entidades.Permiso[ idPermiso=" + idPermiso + " ]";
+    }
+
+    public String getNombreEn() {
+        return nombreEn;
+    }
+
+    public void setNombreEn(String nombreEn) {
+        this.nombreEn = nombreEn;
     }
 
 
