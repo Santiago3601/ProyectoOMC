@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2019 a las 19:01:41
+-- Tiempo de generación: 19-09-2019 a las 18:36:36
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -138,7 +138,7 @@ INSERT INTO `cliente` (`id_cliente`, `usuario_id`, `estado_id_estado`) VALUES
 (3, 23874610, 1),
 (6, 23879120, 1),
 (7, 1000283977, 1),
-(8, 1111222, 1),
+(8, 1111222, 3),
 (9, 1000624311, 1);
 
 -- --------------------------------------------------------
@@ -689,7 +689,29 @@ INSERT INTO `solicitud` (`id_solicitud`, `formula`, `tamanio_cilindro`, `cliente
 (5, '/proyectoomc/archivos/tabla (3).xls', 12332, 6),
 (6, '/proyectoomc/archivos/Grupo 1.txt', 250, 8),
 (7, '/proyectoomc/archivos/4.txt', 250, 9),
-(8, '/proyectoomc/archivos/1.csv', NULL, 1);
+(8, '/proyectoomc/archivos/1.csv', NULL, 1),
+(9, '/proyectoomc/archivos/1.csv', NULL, 9),
+(10, '/proyectoomc/archivos/GC-F-004_Formato_Plantilla_sustentacionF1 (1).pptx', NULL, 9),
+(11, '/proyectoomc/archivos/1.csv', NULL, 9),
+(12, '/proyectoomc/archivos/1.csv', NULL, 9),
+(13, '/proyectoomc/archivos/CASO DE USO MODULO 3 CLASIFICACION.docx', NULL, 9),
+(14, '/proyectoomc/archivos/', NULL, 9),
+(15, '/proyectoomc/archivos/1.csv', NULL, 9),
+(16, '/proyectoomc/archivos/GUIA_APRENDIZAJE 2.doc.docx', NULL, 9),
+(17, '/proyectoomc/archivos/ev1_plantillastakeholders (1) (1).xlsx', NULL, 9),
+(18, 'x2', NULL, 8),
+(19, 'sa', NULL, 7);
+
+--
+-- Disparadores `solicitud`
+--
+DELIMITER $$
+CREATE TRIGGER `insertarEstadoCliente` AFTER UPDATE ON `solicitud` FOR EACH ROW BEGIN
+update cliente SET cliente.estado_id_estado = 3 where new.cliente_id_cliente = id_cliente;
+
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -1050,7 +1072,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`
