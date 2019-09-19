@@ -14,9 +14,9 @@
 
 
             <h:form>
-                <h1><h:outputText value="Editar agenda"/></h1>
+                <h1><h:outputText value="#{msjsacta.h1TxtTitle}"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="No. Agenda:" for="idAgenda" />
+                    <h:outputLabel value="" for="idAgenda" />
                     <h:inputText id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" required="true" requiredMessage="The IdAgenda field is required."/>
                     <h:outputLabel value="Fecha Programada:" for="fechaProgramada" />
                     <h:inputText id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" required="true" requiredMessage="The FechaProgramada field is required.">

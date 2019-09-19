@@ -70,7 +70,7 @@
             <var>msjRegistrarHorario</var>
         </resource-bundle>
         
-         <resource-bundle>
+        <resource-bundle>
             <base-name>language.ListarHorario-es</base-name>
             <var>msjListarHorario</var>
         </resource-bundle>
@@ -80,30 +80,52 @@
             <var>msjListarPunto</var>
         </resource-bundle>
         
-        <resource-bundle>
-            <base-name>languague.RegistrarAgenda_es</base-name>
-            <var>msjRegistrarAgenda</var>
-        </resource-bundle>
+        
         
         <resource-bundle>
-            <base-name>languague.RegistrarCilindro_es</base-name>
-            <var>msjRegistrarCilindro</var>
+            <base-name>language.s</base-name>
+            <var>msjs</var>
         </resource-bundle>
         
-        <resource-bundle>
-            <base-name>languague.RegistrarMantenimiento_es</base-name>
-            <var>msjRegistrarMantenimiento</var>
-        </resource-bundle>
+        
+        
+        
         
         <resource-bundle>
-            <base-name>languague.RegistrarMantenimientoCilindro_es</base-name>
-            <var>msjRegstrarMantenimientoCilindro</var>
+            <base-name>language.agenda</base-name>
+            <var>msjsagedaD</var>
         </resource-bundle>
         
+        
+        
+        
         <resource-bundle>
-            <base-name>languague.ActualizArgenda_es</base-name>
-            <var>mjsListaAgenda</var>             
+            <base-name>language.cilindro</base-name>
+            <var>msjscilindro</var>
         </resource-bundle>
+        
+  
+        
+        <resource-bundle>
+            <base-name>language.mantenimiento</base-name>
+            <var>msjsmantenimiento</var>
+        </resource-bundle>
+        
+        
+        
+        <resource-bundle>
+            <base-name>language.mantenimientoCilindro</base-name>
+            <var>msjsmantenimientoci</var>
+        </resource-bundle>
+        
+        
+        
+            <resource-bundle>
+            <base-name>language.actagend</base-name>
+            <var>msjsacta</var>
+        </resource-bundle>
+        
+       
 
         <resource-bundle>
             <base-name>languague.ActualizarCilindro_es</base-name>

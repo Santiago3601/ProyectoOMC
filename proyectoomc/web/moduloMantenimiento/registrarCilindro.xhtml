@@ -16,20 +16,20 @@
 
 
             <h:form>
-                <h1><h:outputText value="Registrar cilindro"/></h1>
+                <h1><h:outputText value="#{msjscilindro.h1TxtTitle}"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="IdCilindro:" for="idCilindro" />
+                    <h:outputLabel value="#{msjscilindro.labelTxtIdCylinder}" for="idCilindro" />
                     <h:inputText id="idCilindro" value="#{cilindroControlador.cilindro.idCilindro}" title="IdCilindro" required="true" requiredMessage="The IdCilindro field is required."/>
-                    <h:outputLabel value="Estado:" for="estado" />
+                    <h:outputLabel value="#{msjscilindro.labelTxtState}" for="estado" />
                     <h:inputText id="estado" value="#{cilindroControlador.cilindro.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
-                    <h:outputLabel value="Tamanio:" for="tamanio" />
+                    <h:outputLabel value="#{msjscilindro.labelTxtSize}" for="tamanio" />
                     <h:inputText id="tamanio" value="#{cilindroControlador.cilindro.tamanio}" title="Tamanio" required="true" requiredMessage="The Tamanio field is required."/>
-                    <h:outputLabel value="FechaDeCreacion:" for="fechaDeCreacion" />
+                    <h:outputLabel value="#{msjscilindro.labelTxtICreationDate}" for="fechaDeCreacion" />
                     <h:inputText id="fechaDeCreacion" value="#{cilindroControlador.cilindro.fechaDeCreacion}" title="FechaDeCreacion" required="true" requiredMessage="The FechaDeCreacion field is required.">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
                 </h:panelGrid>
-                <h:commandButton value="Registrar" action="#{cilindroControlador.registrarCilindro()}"> </h:commandButton> 
+                <h:commandButton value="#{msjscilindro.labelbtn}" action="#{cilindroControlador.registrarCilindro()}"> </h:commandButton> 
 
             </h:form>
         </f:view>
