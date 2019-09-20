@@ -34,6 +34,16 @@ public class solicitudControlador implements Serializable {
     private String nombre;
     private String pathReal;
     private Usuario usuario;
+    private String est;
+    EstadoCliente estadoCliente;
+
+    public EstadoCliente getEstadoCliente() {
+        return estadoCliente;
+    }
+
+    public void setEstadoCliente(EstadoCliente estadoCliente) {
+        this.estadoCliente = estadoCliente;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -87,6 +97,7 @@ public class solicitudControlador implements Serializable {
         usuario = new Usuario();
     }
 
+    
     public Cliente getCliente() {
         return cliente;
     }
@@ -187,14 +198,27 @@ public class solicitudControlador implements Serializable {
             e.printStackTrace();
         }
         usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
-        cliente = solicitudFacade.obtenerIdUsuario(usuario);
+        this.cliente = solicitudFacade.obtenerIdUsuario(usuario);
         solicitud.setIdSolicitud(1);
         solicitud.setClienteIdCliente(cliente);
         this.solicitud.setFormula(pathReal);
+
         solicitudFacade.create(solicitud);
         solicitud = new Solicitud();
-
-        return "listaSolicitud";
+        return "confirmacionCliente";
 
     }
+
+    public String estado() {
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        est="";
+        this.cliente = solicitudFacade.obtenerIdUsuario(usuario);
+        if (cliente.getEstadoIdEstado().getIdEstado() == 3) {
+            est ="USTED HA SOLICITADO UN CILINDRO";
+        return est;  
+
+        }
+        return est;
+    }
+
 }

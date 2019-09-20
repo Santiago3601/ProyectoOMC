@@ -44,6 +44,8 @@ public class usuarioControlador implements Serializable {
     private TipoidFacade tipoIdFacade;
     Tipoid tipoId;
 
+    Usuario usuarioLogueado;
+
     @PostConstruct
     public void init() {
         usuario = new Usuario();
@@ -62,6 +64,14 @@ public class usuarioControlador implements Serializable {
         }
         languageSelected = (support) ? idiomaUsuario : new Locale("es");
 
+    }
+
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    public void setUsuarioLogueado(Usuario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
     }
 
     public Tipoid getTipoId() {
@@ -109,6 +119,14 @@ public class usuarioControlador implements Serializable {
 
     }
 
+    public String registrarUsuarioIndex() {
+        usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
+        usuarioFacade.create(usuario);
+        usuario = new Usuario();
+        return "moduloEnvios/confirmacionClienteRegistro";
+
+    }
+
     public void eliminarUsuario(Usuario u) {
         this.usuarioFacade.remove(u);
     }
@@ -131,7 +149,7 @@ public class usuarioControlador implements Serializable {
         String redirecionar = "";
 
         try {
-            Usuario usuarioLogueado = usuarioFacade.login(usuario);
+            usuarioLogueado = usuarioFacade.login(usuario);
             if (usuarioLogueado != null) {
                 rol = usuarioLogueado.getRolidRol();
 
@@ -215,23 +233,23 @@ public class usuarioControlador implements Serializable {
         return "";
     }
 
-    public String recuperarContrasena() throws UnsupportedEncodingException{
+    public String recuperarContrasena() throws UnsupportedEncodingException {
         Usuario usa;
-        usa=usuarioFacade.find(getUsuario().getId());
-        if(usa!=null){
-            usa.setContrasenia(GeneradorContraseñas.getPassword(GeneradorContraseñas.MINUSCULAS+GeneradorContraseñas.MAYUSCULAS,10));
+        usa = usuarioFacade.find(getUsuario().getId());
+        if (usa != null) {
+            usa.setContrasenia(GeneradorContraseñas.getPassword(GeneradorContraseñas.MINUSCULAS + GeneradorContraseñas.MAYUSCULAS, 10));
             usuarioFacade.edit(usa);
             Mailer.send(usa);
-                    
+
         }
-        
+
         return null;
     }
-    
-    public void envioMantenimientos() throws UnsupportedEncodingException{
+
+    public void envioMantenimientos() throws UnsupportedEncodingException {
         for (Usuario usuario1 : usuarioFacade.findAll()) {
             Mailer.mantenimiento(usuario1);
         }
     }
-    
+
 }

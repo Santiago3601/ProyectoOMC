@@ -47,6 +47,23 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         return usuarioLogin;
 
     }
+    public Usuario validar(Usuario usuario) {
+        Usuario usuariov = null;
+        try {
+            Query query = em.createQuery("select u from Usuario u where u.correo =?1 and u.contrasenia = ?2");
+            query.setParameter(1, usuario.getCorreo());
+            query.setParameter(2, usuario.getContrasenia());
+            List<Usuario> list = query.getResultList();
+            if (!list.isEmpty()) {
+                usuariov=list.get(0);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return usuariov;
+
+    }
    /* public String subirDatos(){
         Query query = em.createNativeQuery();
         return"";

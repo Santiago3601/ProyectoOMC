@@ -50,4 +50,5 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
         return cli;
 
     }
+    
 }
