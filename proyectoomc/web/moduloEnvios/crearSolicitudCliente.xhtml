@@ -22,7 +22,8 @@
                 <h:form enctype="multipart/form-data">
                     <h1><h:outputText value="#{msjCrearSoli.h1TxtTitle}"/></h1>
                     <h:panelGrid columns="2">
-                        <h:inputHidden ></h:inputHidden>
+                        <h:outputLabel value="#{msjCrearSoli.labelTxtCilynderSize}" for="tamanioCilindro" />
+                        <h:inputText id="tamanioCilindro" value="#{solicitudControlador.solicitud.tamanioCilindro}" title="TamanioCilindro" required="true" requiredMessage="The TamanioCilindro field is required."/>
                         <h:outputLabel value="#{msjCrearSoli.labelTxtFormula}" for="formula" />
                         Archivo: <br/><h:inputFile value="#{solicitudControlador.file}"/>
                         <br/><h:commandButton value="Subir Archivo" action="#{solicitudControlador.uploadUsuario()}"/>

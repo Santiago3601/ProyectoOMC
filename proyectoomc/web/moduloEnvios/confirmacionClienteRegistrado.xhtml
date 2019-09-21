@@ -18,9 +18,15 @@
                 <img src="../img/logo_col.png" alt=""/>
                 <div>
                     <div id="text" >
-                        <h:outputLabel value="Se ha registrado correctamente, a continuación se le envío a su correo la confirmación de este mensaje"/>
+                        <h:outputLabel value="El usuario que esta intentado registrar ya se encuentra registrado"/>
                     </div>
-                    
+                    <div id="text2" >
+                        <h:outputLabel value="¿Problemas para ingresar?"/>
+                    </div>
+                    <div id="text3" >
+                        <a href="../recuperar_contraseña.xhtml" >Recuperar Contraseña</a>
+
+                    </div>
                 </div>
                 <style>
                     img{
@@ -30,6 +36,12 @@
                     }
                     #text{
                         margin-top: 150px;
+                    }
+                    #text2{
+                        margin-top: 25px;
+                    }
+                    #text3{
+                        margin-top: 5px;
                     }
                     .fa-home:before{
                         font-size: 23px;

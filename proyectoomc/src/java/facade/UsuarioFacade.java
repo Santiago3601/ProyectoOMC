@@ -50,9 +50,9 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public Usuario validar(Usuario usuario) {
         Usuario usuariov = null;
         try {
-            Query query = em.createQuery("select u from Usuario u where u.correo =?1 and u.contrasenia = ?2");
+            Query query = em.createQuery("select u from Usuario u where u.correo =?1 and u.id = ?2");
             query.setParameter(1, usuario.getCorreo());
-            query.setParameter(2, usuario.getContrasenia());
+            query.setParameter(2, usuario.getId());
             List<Usuario> list = query.getResultList();
             if (!list.isEmpty()) {
                 usuariov=list.get(0);

@@ -111,6 +111,7 @@ public class usuarioControlador implements Serializable {
     }
 
     public String registrarUsuario() {
+
         usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
         usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
         usuarioFacade.create(usuario);
@@ -120,11 +121,15 @@ public class usuarioControlador implements Serializable {
     }
 
     public String registrarUsuarioIndex() {
-        usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
-        usuarioFacade.create(usuario);
-        usuario = new Usuario();
-        return "moduloEnvios/confirmacionClienteRegistro";
-
+        usuarioLogueado = usuarioFacade.validar(usuario);
+        if (usuarioLogueado != null) {
+            usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
+            usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
+            usuarioFacade.create(usuario);
+            usuario = new Usuario();
+            return "moduloEnvios/confirmacionClienteRegistro";
+        }
+        return "moduloEnvios/confirmacionClienteRegistrado";
     }
 
     public void eliminarUsuario(Usuario u) {

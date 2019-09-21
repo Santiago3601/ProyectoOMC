@@ -133,7 +133,7 @@
             }, false);
             })();
         </script>
-        
+
         <!-- Modal Sing up -->
         <div class="modal fade" id="Sing-up" tabindex="-1" role="dialog" aria-labelledby="Sing-up-inLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -165,7 +165,11 @@
                                     <h:outputLabel value="Id:" for="id" />
                                     <div class="form-row">
                                         <div class="col-6">
-                                            <h:inputText id="tpId" class="form-control" value="#{usuarioControlador.usuario.tpId}" title="TpId" required="true" requiredMessage="The TpId field is required."/>
+                                            <h:selectOneMenu id="tpId" value="#{usuarioControlador.tipoId.idTipoID}" title="TpId" required="true" requiredMessage="The TpId field is required.">
+                                                <!-- TODO: update below reference to list of available items-->
+                                                <f:selectItems value="#{tipoIdControlador.consultarTodos()}" var="tp" itemValue="#{tp.idTipoID}" itemLabel="#{tp.tipoID}"/>
+                                            </h:selectOneMenu>
+
 
                                         </div>
                                         <div class="col-6"> 
@@ -212,12 +216,7 @@
                                         </h:inputText>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="form-row">
-                                        <h:outputLabel value="Edad:" for="edad" />
-                                        <h:inputText class="form-control" id="edad" value="#{usuarioControlador.usuario.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
-                                    </div>
-                                </div>
+
                                 <div class="form-group">
                                     <div class="form-row">
                                         <h:outputLabel value="RolidRol:" for="rolidRol" />
@@ -227,7 +226,7 @@
                                         </h:selectOneMenu>
                                     </div>
                                 </div>
-                                <h:commandButton value="Registrarse" onclick="enter()" action="#{usuarioControlador.registrarUsuario()}"> </h:commandButton>  
+                                <h:commandButton value="Registrarse" action="#{usuarioControlador.registrarUsuarioIndex()}"> </h:commandButton>  
                             </h:form>
                         </f:view>
 
@@ -444,7 +443,7 @@
         <script src="js/freelancer.min.js"></script>
         <script src="js/sweetalert.min.js"></script>
         <script src="js/alertas.js"></script>
-        
+
     </h:body>
 </html>
 
