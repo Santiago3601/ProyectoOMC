@@ -209,7 +209,7 @@ public class Mailer {
         }
         return "SE HA ENVIADO EL CORREO";
     }
-    public static String sendConfirmacion(Usuario usua2) throws UnsupportedEncodingException {
+    public static String sendConfirmation(Usuario usua2) throws UnsupportedEncodingException {
 
         final String user = "proyectoomcomc@gmail.com"
                 + "";//cambiará en consecuencia al servidor utilizado
@@ -217,7 +217,7 @@ public class Mailer {
 
         String nuevoMensaje = " <style>\n"
                 + "@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');\n"
-                + "</style>  <h1 style=\"font-size: 20px; font-family: 'Questrial', sans-serif; color:#307C66;  \">Hola, " + usua2.getCorreo() + "<br></br>" + " acabaste de registrarte en el sistema de Organización  y Mantenimiento Cryogas (OMC) <br></br>" + "<br></br>" + "<img src='i.imgur.com/LU6DAe3.png'/ style=\"float: left; height: 50px; widght : auto;\">\n"
+                + "</style>  <h1 style=\"font-size: 20px; font-family: 'Questrial', sans-serif; color:#307C66;  \">Hola, " + usua2.getNombre() + "<br></br>" + " acabaste de registrarte en el sistema de Organización  y Mantenimiento Cryogas (OMC) <br></br>" + "<br></br>" + "<img src='i.imgur.com/LU6DAe3.png'/ style=\"float: left; height: 50px; widght : auto;\">\n"
                 + "<p style=\"text-align: center; color: #307C66\">\n"
                 + "</p> \n"
                 + "<br>\n"               ;

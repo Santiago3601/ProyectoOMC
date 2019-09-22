@@ -120,11 +120,14 @@ public class usuarioControlador implements Serializable {
 
     }
 
-    public String registrarUsuarioIndex() {
+    public String registrarUsuarioIndex() throws UnsupportedEncodingException {
         usuarioLogueado = usuarioFacade.validar(usuario);
-        if (usuarioLogueado != null) {
+        if (usuarioLogueado == null) {
             usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
             usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
+            Mailer.sendConfirmation(usuario);
+            
+
             usuarioFacade.create(usuario);
             usuario = new Usuario();
             return "moduloEnvios/confirmacionClienteRegistro";

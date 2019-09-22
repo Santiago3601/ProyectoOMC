@@ -13,6 +13,7 @@ import entidades.*;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -27,8 +28,18 @@ public class alquilerControlador implements Serializable {
     Alquiler alquiler;
 
     @EJB
+    private ClienteFacade clienteFacade;
+    Cliente cliente;
+    @EJB
+    private EstadoClienteFacade estadoClienteFacade;
+    EstadoCliente estadoCliente;
+
+    @EJB
     private RutaFacade rutaFacade;
     Ruta ruta;
+    @EJB
+    private UsuarioFacade usuariiFacade;
+    Usuario usuario;
 
     @EJB
     private EstadoAlquilerFacade estadoAlquilerFacade;
@@ -49,10 +60,37 @@ public class alquilerControlador implements Serializable {
         estadoAlquiler = new EstadoAlquiler();
         alquiler = new Alquiler();
         solicitud = new Solicitud();
+        cliente = new Cliente();
+        estadoCliente = new EstadoCliente();
+        usuario = new Usuario();
     }
 
     public Alquiler getAlquiler() {
         return alquiler;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public EstadoCliente getEstadoCliente() {
+        return estadoCliente;
+    }
+
+    public void setEstadoCliente(EstadoCliente estadoCliente) {
+        this.estadoCliente = estadoCliente;
     }
 
     public void setAlquiler(Alquiler alquiler) {
@@ -101,12 +139,15 @@ public class alquilerControlador implements Serializable {
     }
 
     public String registrarAlquiler() {
+        alquilerFacade.cambiarEstadoCliente(alquiler);
         alquiler.setRutaIdRuta(rutaFacade.find(ruta.getIdRuta()));
         alquiler.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
         alquiler.setEstadoAlquilerIdEstado(estadoAlquilerFacade.find(estadoAlquiler.getIdEstado()));
         alquiler.setSolicitudIdSolicitud(solicitudFacade.find(solicitud.getIdSolicitud()));
         alquilerFacade.create(alquiler);
+
         alquiler = new Alquiler();
+
         return "listaAlquiler";
 
     }
@@ -119,8 +160,8 @@ public class alquilerControlador implements Serializable {
         alquiler = alquilerAct;
         return "editarAlquiler";
     }
-    
-    public String cambiarEstado(Alquiler al){
+
+    public String cambiarEstado(Alquiler al) {
         this.alquiler = al;
         this.estadoAlquiler.setIdEstado(2);
         this.alquiler.setEstadoAlquilerIdEstado(getEstadoAlquiler());
@@ -132,7 +173,7 @@ public class alquilerControlador implements Serializable {
         solicitud = new Solicitud();
         return "listaAlquiler";
     }
-    
+
     public String entregado(Alquiler alquilerAct) {
         this.alquiler.setIdAlquiler(alquiler.getIdAlquiler());
         this.alquiler.setFechaDeEntrega(alquiler.getFechaDeEntrega());

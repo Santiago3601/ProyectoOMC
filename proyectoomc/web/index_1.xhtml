@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
 
         <meta charset="utf-8"></meta>
@@ -211,9 +212,9 @@
                                 <div class="form-group">
                                     <div class="form-row">
                                         <h:outputLabel value="FechaDeNacimiento:" for="fechaDeNacimiento" />
-                                        <h:inputText class="form-control" id="fechaDeNacimiento" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
-                                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                                        </h:inputText>
+                                           <h:inputText id="fechaDeNacimiento" ps:placeholder="#{msjCrearUsu.inputDate}" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
                                     </div>
                                 </div>
 
