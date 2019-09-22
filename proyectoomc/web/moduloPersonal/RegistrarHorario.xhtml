@@ -22,10 +22,10 @@
                     <h:form id="ingresar" class="justify-content-center">
                         <h2 class="mt-5 mb-5 text-center">Ingresar</h2>
                         <hr/>
-                        <h:outputLabel value="Cedula:" />
-                        <h:inputText value="#{horarioControlador.empleado.idEmpleado}" />
+                        <h:outputLabel value="Codigo Empleado:" />
+                        <h:inputText pt:id="uintTextBox" value="#{horarioControlador.empleado.idEmpleado}" />
                         <hr/>
-                        <h:commandButton action="#{horarioControlador.registrarIngreso()}" value="Ingresar"/>
+                        <h:commandButton action="#{horarioControlador.registrarIngreso()}" value="Ingresar" onclick="return window.alert('Bienvenido')" />
                     </h:form>
                 </div>  
                 
@@ -33,15 +33,16 @@
                     <h:form id="salir" class="justify-content-center">
                         <h2 class="mt-5 mb-5 text-center">Salir</h2>
                          <hr/>
-                        <h:outputLabel value="Cedula:" />
-                        <h:inputText value="#{horarioControlador.empleado.idEmpleado}" />
+                        <h:outputLabel value="Codigo Empleado:" />
+                        <h:inputText pt:id="uintTextBox" value="#{horarioControlador.empleado.idEmpleado}" />
                         <hr/>
-                        <h:commandButton action="#{horarioControlador.registrarSalida()}" value="Salir"/>
+                        <h:commandButton action="#{horarioControlador.registrarSalida()}" value="Salir" onclick="return window.alert('Gracias')" />
                     </h:form>
                 </div>
             </div>
-
+             
         </f:view>
+        <script src="js/inputValidation.js"></script>
     </h:body>
 
 </html>

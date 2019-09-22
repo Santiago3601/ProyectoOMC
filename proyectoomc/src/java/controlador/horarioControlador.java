@@ -41,7 +41,12 @@ public class horarioControlador implements Serializable {
         usuario = new Usuario();
         horario = new Horario();
         objDate = new Date();
+        
     }
+
+    
+    
+    
 
     public Date getObjDate() {
         return objDate;
@@ -99,6 +104,7 @@ public class horarioControlador implements Serializable {
 //        "+objDate.getHours()+":"+objDate.getMinutes());
 
         horarioFacade.create(horario);
+       
         horario = new Horario();
         this.empleado = new Empleado();
         return "registrarHorario";
