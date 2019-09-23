@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2019 a las 18:36:36
+-- Tiempo de generación: 23-09-2019 a las 18:54:50
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -80,14 +80,12 @@ CREATE TABLE `alquiler` (
 --
 
 INSERT INTO `alquiler` (`id_alquiler`, `fecha_de_entrega`, `novedades`, `cilindro_id_cilindro`, `ruta_id_ruta`, `solicitud_id_solicitud`, `estado_alquiler_id_estado`) VALUES
-(1, '2019-07-20', 'La persona cancelo el envio', 1060293, 1, 1, 2),
 (3, '2001-01-27', 'No', 1060296, 6, 1, 2),
 (4, '2002-01-27', 'No', 1060296, 6, 1, 1),
 (5, '2019-01-08', 'Ninguna', 1060293, 1, 1, 1),
 (6, '2019-01-08', 'Ninguna', 1060293, 1, 6, 1),
 (7, '2019-01-08', 'Ninguna', 1060293, 1, 6, 2),
-(8, '2019-01-08', 'No', 1060294, 1, 7, 2),
-(9, '2019-01-08', 'No', 1060294, 1, 7, 2);
+(8, '2019-01-08', 'No', 1060294, 1, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -139,7 +137,8 @@ INSERT INTO `cliente` (`id_cliente`, `usuario_id`, `estado_id_estado`) VALUES
 (6, 23879120, 1),
 (7, 1000283977, 1),
 (8, 1111222, 3),
-(9, 1000624311, 1);
+(9, 1000624311, 1),
+(10, 23, 1);
 
 -- --------------------------------------------------------
 
@@ -154,15 +153,6 @@ CREATE TABLE `contrato` (
   `fecha_final_contrato` date NOT NULL,
   `alquiler_id_alquiler` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
-
---
--- Volcado de datos para la tabla `contrato`
---
-
-INSERT INTO `contrato` (`id_contrato`, `tipo_contrato`, `fecha_inicio_contrato`, `fecha_final_contrato`, `alquiler_id_alquiler`) VALUES
-(4, ' ', '2019-07-01', '2019-08-01', 1),
-(8, 'x', '2000-12-31', '2001-01-31', 1),
-(9, 'x', '2001-12-31', '2002-01-31', 1);
 
 -- --------------------------------------------------------
 
@@ -288,7 +278,12 @@ CREATE TABLE `horario` (
 INSERT INTO `horario` (`id_horario`, `hora_ingreso`, `hora_salida`, `empleado_id_empleado`, `fecha_de_ingreso`, `fecha_de_salida`) VALUES
 (1, '02:00:00', NULL, 1, NULL, NULL),
 (2, '11:51', '11:11', 1, '2019-09-18', '2019-09-18'),
-(3, '11:51', '11:51', 1, '2019-09-18', '2019-09-18');
+(3, '11:51', '11:51', 1, '2019-09-18', '2019-09-18'),
+(4, '11:3', '11:3', 1, '2019-09-20', '2019-09-20'),
+(5, '11:3', NULL, 1, '2019-09-20', NULL),
+(6, '11:3', NULL, 1, '2019-09-20', NULL),
+(7, '10:3', NULL, 1, '2019-09-21', NULL),
+(8, '11:53', '11:53', 1, '2019-09-23', '2019-09-23');
 
 -- --------------------------------------------------------
 
@@ -700,15 +695,23 @@ INSERT INTO `solicitud` (`id_solicitud`, `formula`, `tamanio_cilindro`, `cliente
 (16, '/proyectoomc/archivos/GUIA_APRENDIZAJE 2.doc.docx', NULL, 9),
 (17, '/proyectoomc/archivos/ev1_plantillastakeholders (1) (1).xlsx', NULL, 9),
 (18, 'x2', NULL, 8),
-(19, 'sa', NULL, 7);
+(19, 'sa', NULL, 7),
+(45, '/proyectoomc/archivos/UNIDAD 3.pdf', NULL, 1),
+(46, '/proyectoomc/archivos/UNIDAD 3.pdf', NULL, 1),
+(47, '/proyectoomc/archivos/Material_Formacion_3.pdf', 250, 1);
 
 --
 -- Disparadores `solicitud`
 --
 DELIMITER $$
-CREATE TRIGGER `insertarEstadoCliente` AFTER UPDATE ON `solicitud` FOR EACH ROW BEGIN
+CREATE TRIGGER `eliminarSolicitud` AFTER UPDATE ON `solicitud` FOR EACH ROW BEGIN
+update cliente SET cliente.estado_id_estado = 1 where old.cliente_id_cliente = id_cliente;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `insertarNuevoEstadoSolicitud` AFTER INSERT ON `solicitud` FOR EACH ROW BEGIN
 update cliente SET cliente.estado_id_estado = 3 where new.cliente_id_cliente = id_cliente;
-
 END
 $$
 DELIMITER ;
@@ -785,6 +788,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo`, `contrasenia`, `telefono`, `eps`, `fecha_de_nacimiento`, `edad`, `rol_idRol`) VALUES
+(23, 1, '1', '1', '1', '1', '1', 1, '1', '1993-02-03', 26, 2),
+(1212, 1, 'c2380068@urhen.com', 'c2380068@urhen.com', 'c2380068@urhen.com', 'c2380068@urhen.com', 'c2380068@urhen.com', 1321, 'c2380068@urhen.com', '2012-03-02', 7, 2),
+(54123, 1, 'xew19223@bcaoo.com', 'fxk84307@bcaoo.com', 'xew19223@bcaoo.com', 'xew19223@bcaoo.com', 'xew19223@bcaoo.com', 554, 'xew19223@bcaoo.com', '2012-03-02', 7, 2),
 (1111222, 1, 'assa', 'sasas', 'sasas', 'santyago3601@gmail.com', 'sasa', 123123, 'sa', '2001-02-02', 18, 2),
 (23874610, 2, 'Julie', 'Pott Friedman', 'Cll 32 sur No. 32 - 77', 'shirleybernal70@gmail.com', 'URgbaHRhdl', 4169210, 'Famisanar', '1990-03-29', 29, 3),
 (23879120, 2, 'Mark David ', 'Stewart King', 'Cra. 44 No. 21 - 55', 'mark.sk15@aol.com', '1234', 3108971923, 'N/A', '1979-07-15', 39, 2),
@@ -802,6 +808,14 @@ INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo
 DELIMITER $$
 CREATE TRIGGER `insertarEdad` BEFORE INSERT ON `usuario` FOR EACH ROW BEGIN
   SET NEW.edad = sf_edad(new.fecha_de_nacimiento);
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `insertarNuevoCliente` AFTER INSERT ON `usuario` FOR EACH ROW BEGIN
+if new.rol_idRol = 2 then
+insert into cliente (estado_id_estado, usuario_id) values (1, new.id);
+end if;
 END
 $$
 DELIMITER ;
@@ -1030,7 +1044,7 @@ ALTER TABLE `alquiler`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `contrato`
@@ -1048,7 +1062,7 @@ ALTER TABLE `estado_alquiler`
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimiento`
@@ -1072,7 +1086,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`
