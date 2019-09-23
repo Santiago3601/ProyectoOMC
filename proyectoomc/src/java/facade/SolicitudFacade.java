@@ -50,5 +50,21 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
         return cli;
 
     }
+     public void cambiarEstado(Usuario us) {
+        Cliente cli =null;
+        try {
+            Query query = em.createQuery("SELECT c FROM Cliente c where c.usuarioId.id = :idUsuario");
+            query.setParameter("idUsuario", us.getId());
+            List<Cliente> cliL = query.getResultList();
+            if (!cliL.isEmpty()) {
+                cli = cliL.get(0);
+
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+    }
     
 }

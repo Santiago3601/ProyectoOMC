@@ -126,7 +126,6 @@ public class usuarioControlador implements Serializable {
             usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
             usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
             Mailer.sendConfirmation(usuario);
-            
 
             usuarioFacade.create(usuario);
             usuario = new Usuario();
@@ -150,6 +149,18 @@ public class usuarioControlador implements Serializable {
         usuarioFacade.edit(usuario);
         usuario = new Usuario();
         return "listaUsuario";
+    }
+
+    public String actualizarUsuarioCliente() {
+        Usuario us;
+        us = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        this.usuario.setId(us.getId());
+        usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
+        usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
+        usuarioFacade.edit(usuario);
+        usuario = new Usuario();
+
+        return "confirmacionClienteEditarDatos";
     }
 
     public String validarLogin() {

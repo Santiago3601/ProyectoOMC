@@ -34,8 +34,8 @@ public class solicitudControlador implements Serializable {
     private String nombre;
     private String pathReal;
     private Usuario usuario;
-    private String est;
     EstadoCliente estadoCliente;
+
 
     public EstadoCliente getEstadoCliente() {
         return estadoCliente;
@@ -87,14 +87,31 @@ public class solicitudControlador implements Serializable {
     Cliente cliente;
 
     @EJB
+    private EstadoClienteFacade estadoClienteFacade;
+
+    @EJB
     private SolicitudFacade solicitudFacade;
     Solicitud solicitud;
+    
+    @EJB
+    private AlquilerFacade alquilerFacade;
+    Alquiler alquiler;
 
     @PostConstruct
     public void init() {
         solicitud = new Solicitud();
+        alquiler = new Alquiler();
         cliente = new Cliente();
         usuario = new Usuario();
+        estadoCliente = new EstadoCliente();
+    }
+
+    public Alquiler getAlquiler() {
+        return alquiler;
+    }
+
+    public void setAlquiler(Alquiler alquiler) {
+        this.alquiler = alquiler;
     }
 
     
@@ -207,18 +224,6 @@ public class solicitudControlador implements Serializable {
         solicitud = new Solicitud();
         return "confirmacionCliente";
 
-    }
-
-    public String estado() {
-        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
-        est="";
-        this.cliente = solicitudFacade.obtenerIdUsuario(usuario);
-        if (cliente.getEstadoIdEstado().getIdEstado() == 3) {
-            est ="USTED HA SOLICITADO UN CILINDRO";
-        return est;  
-
-        }
-        return est;
     }
 
 }

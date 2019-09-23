@@ -145,11 +145,8 @@ public class alquilerControlador implements Serializable {
         alquiler.setEstadoAlquilerIdEstado(estadoAlquilerFacade.find(estadoAlquiler.getIdEstado()));
         alquiler.setSolicitudIdSolicitud(solicitudFacade.find(solicitud.getIdSolicitud()));
         alquilerFacade.create(alquiler);
-
         alquiler = new Alquiler();
-
         return "listaAlquiler";
-
     }
 
     public void eliminarAlquiler(Alquiler a) {
@@ -198,4 +195,10 @@ public class alquilerControlador implements Serializable {
     public alquilerControlador() {
     }
 
+    public String consultaIndividual(Alquiler al) {
+        alquiler = al;
+        solicitud= al.getSolicitudIdSolicitud();
+        
+        return "listaIDAlquiler?faces-redirect=true";
+    }
 }

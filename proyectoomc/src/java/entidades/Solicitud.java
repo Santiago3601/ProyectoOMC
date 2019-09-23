@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "solicitud")
@@ -38,9 +39,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Solicitud.findByIdSolicitud", query = "SELECT s FROM Solicitud s WHERE s.idSolicitud = :idSolicitud")
     , @NamedQuery(name = "Solicitud.findByTamanioCilindro", query = "SELECT s FROM Solicitud s WHERE s.tamanioCilindro = :tamanioCilindro")})
 public class Solicitud implements Serializable {
-
-    @Column(name = "tamanio_cilindro")
-    private Integer tamanioCilindro;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,10 +52,14 @@ public class Solicitud implements Serializable {
     @Size(min = 1, max = 16383)
     @Column(name = "formula")
     private String formula;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "tamanio_cilindro")
+    private int tamanioCilindro;
     @JoinColumn(name = "cliente_id_cliente", referencedColumnName = "id_cliente")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cliente clienteIdCliente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitudIdSolicitud")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitudIdSolicitud", fetch = FetchType.LAZY)
     private List<Alquiler> alquilerList;
 
     public Solicitud() {
@@ -137,12 +139,6 @@ public class Solicitud implements Serializable {
     @Override
     public String toString() {
         return "entidades.Solicitud[ idSolicitud=" + idSolicitud + " ]";
-    }
-
-
-
-    public void setTamanioCilindro(Integer tamanioCilindro) {
-        this.tamanioCilindro = tamanioCilindro;
     }
     
 }
