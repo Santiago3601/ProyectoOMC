@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -34,11 +35,16 @@ public class clienteControlador implements Serializable {
     private EstadoClienteFacade estadoClienteFacade;
     EstadoCliente estadoCliente;
 
+    @EJB
+    private SolicitudFacade solicitudFacade;
+    Solicitud solicitud;
+
     @PostConstruct
     public void init() {
         cliente = new Cliente();
         usuario = new Usuario();
         estadoCliente = new EstadoCliente();
+        solicitud = new Solicitud();
     }
 
     public Cliente getCliente() {
@@ -103,4 +109,14 @@ public class clienteControlador implements Serializable {
     public clienteControlador() {
     }
 
+    public String estado() {
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        this.cliente = solicitudFacade.obtenerIdUsuario(usuario);
+
+        if (this.cliente.getEstadoIdEstado().getIdEstado() == 1) {
+            return "confirmacionClienteCilindroAgendado";
+        }
+
+        return "confirmacionClienteCilindroNoAgendado";
+    }
 }

@@ -16,18 +16,21 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-              <div id="form"> 
+        <div id="form"> 
+            <h:form>
+                <h:commandButton action="#{clienteControlador.estado()}" value="consultar" />
 
-            <div id="content" class="center_content">
-                <f:view locale="#{sessionController.languageSelected}">
-                    <h:outputLabel value="Bienvenido #{usuarioControlador.usuarioLogueado.nombre}"/>
-                </f:view>
+                <div id="content" class="center_content">
+                    <f:view locale="#{sessionController.languageSelected}">
+                        <h:outputLabel value="Bienvenido #{usuarioControlador.usuarioLogueado.nombre}"/>
+                    </f:view>
 
 
 
-            </div>
+                </div>
+            </h:form>
 
-              </div>
+        </div>
 
 
 

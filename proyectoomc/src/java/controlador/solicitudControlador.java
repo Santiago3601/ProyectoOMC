@@ -36,7 +36,6 @@ public class solicitudControlador implements Serializable {
     private Usuario usuario;
     EstadoCliente estadoCliente;
 
-
     public EstadoCliente getEstadoCliente() {
         return estadoCliente;
     }
@@ -92,7 +91,7 @@ public class solicitudControlador implements Serializable {
     @EJB
     private SolicitudFacade solicitudFacade;
     Solicitud solicitud;
-    
+
     @EJB
     private AlquilerFacade alquilerFacade;
     Alquiler alquiler;
@@ -114,7 +113,6 @@ public class solicitudControlador implements Serializable {
         this.alquiler = alquiler;
     }
 
-    
     public Cliente getCliente() {
         return cliente;
     }
@@ -195,7 +193,6 @@ public class solicitudControlador implements Serializable {
     }
 
     public String uploadUsuario() {
-
         String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");
         path = path.substring(0, path.indexOf("\\build"));
         path = path + "\\web\\Archivos\\";
@@ -219,11 +216,13 @@ public class solicitudControlador implements Serializable {
         solicitud.setIdSolicitud(1);
         solicitud.setClienteIdCliente(cliente);
         this.solicitud.setFormula(pathReal);
-
         solicitudFacade.create(solicitud);
         solicitud = new Solicitud();
         return "confirmacionCliente";
 
     }
+
+  
+  
 
 }

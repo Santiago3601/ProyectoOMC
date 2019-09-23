@@ -66,5 +66,21 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
         }
 
     }
+         public Solicitud obtenerEstado(Cliente cl) {
+        Solicitud sol = null;
+        try {
+            Query query2 = em.createQuery("SELECT s FROM Solicitud s where s.clienteIdCliente = :idCliente");
+            query2.setParameter("idCliente", cl.getIdCliente());
+            List<Solicitud> solL = query2.getResultList();
+            if (!solL.isEmpty()) {
+                sol = solL.get(0);
+                return sol;
+            }
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return sol;
+
+    }
     
 }

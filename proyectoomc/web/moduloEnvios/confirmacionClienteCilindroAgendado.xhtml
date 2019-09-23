@@ -3,26 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
-        <link rel="stylesheet" href="../css/prime-styles.css"></link>   
-        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>  
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+
+        <title>OMC</title>
     </h:head>
     <h:body>
-        <f:view locale="#{sessionController.languageSelected}">
+        <div id="form"> 
+
+              <f:view locale="#{sessionController.languageSelected}">
+                  <h:outputLabel value="Usuario, usted tiene un cilindro agendado, en los proximos dias se le informara por correo la fecha de entrega"/>
+         
+            </f:view>
 
 
-
-            <h:form>
-                <h1><h:outputText value="Consultar solicitudes"/></h1>
-                <h:commandButton action="#{clienteControlador.estado()}" value="consultar" />
-            </h:form>
-        </f:view>
-
-
+        </div>
+       
     </h:body>
 </html>
 
