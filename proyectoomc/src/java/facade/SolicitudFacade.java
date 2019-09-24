@@ -33,8 +33,9 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
     public SolicitudFacade() {
         super(Solicitud.class);
     }
-     public Cliente obtenerIdUsuario(Usuario us) {
-        Cliente cli =null;
+
+    public Cliente obtenerIdUsuario(Usuario us) {
+        Cliente cli = null;
         try {
             Query query = em.createQuery("SELECT c FROM Cliente c where c.usuarioId.id = :idUsuario");
             query.setParameter("idUsuario", us.getId());
@@ -43,15 +44,16 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
                 cli = cliL.get(0);
                 return cli;
             }
-            
+
         } catch (Exception e) {
             System.out.println("Error " + e.getMessage());
         }
         return cli;
 
     }
-     public void cambiarEstado(Usuario us) {
-        Cliente cli =null;
+
+    public void cambiarEstado(Usuario us) {
+        Cliente cli = null;
         try {
             Query query = em.createQuery("SELECT c FROM Cliente c where c.usuarioId.id = :idUsuario");
             query.setParameter("idUsuario", us.getId());
@@ -60,13 +62,14 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
                 cli = cliL.get(0);
 
             }
-            
+
         } catch (Exception e) {
             System.out.println("Error " + e.getMessage());
         }
 
     }
-         public Solicitud obtenerEstado(Cliente cl) {
+
+    public Solicitud obtenerEstado(Cliente cl) {
         Solicitud sol = null;
         try {
             Query query2 = em.createQuery("SELECT s FROM Solicitud s where s.clienteIdCliente = :idCliente");
@@ -82,5 +85,6 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
         return sol;
 
     }
-    
+  
+
 }

@@ -219,10 +219,6 @@ public class solicitudControlador implements Serializable {
         solicitudFacade.create(solicitud);
         solicitud = new Solicitud();
         return "confirmacionCliente";
-
     }
-
-  
-  
 
 }

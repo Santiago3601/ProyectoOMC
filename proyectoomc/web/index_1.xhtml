@@ -212,9 +212,10 @@
                                 <div class="form-group">
                                     <div class="form-row">
                                         <h:outputLabel value="FechaDeNacimiento:" for="fechaDeNacimiento" />
-                                           <h:inputText id="fechaDeNacimiento" ps:placeholder="#{msjCrearUsu.inputDate}" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:inputText>
+                                        <h:inputText id="fechaDeNacimiento" ps:placeholder="DD/MM/AAAA" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:inputText>
+
                                     </div>
                                 </div>
 
