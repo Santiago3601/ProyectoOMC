@@ -23,8 +23,15 @@
                         <h2 class="mt-5 mb-5 text-center">Ingresar</h2>
                         <hr/>
                         <h:outputLabel value="Codigo Empleado:" />
-                        <h:inputText pt:id="uintTextBox" value="#{horarioControlador.empleado.idEmpleado}" />
-                        <hr/>
+                         <br></br>
+                        <h:message id="mensajesalida" for="uintTextBox"/>
+                        <br></br>
+                        <h:inputText pt:id="uintTextBox" id="uintTextBox" value="#{horarioControlador.empleado.idEmpleado}" required="true" requiredMessage="Este campo es obligatorio" converterMessage="Por favor digite el numero" >
+                       
+                            <f:converter converterId="javax.faces.Integer"/>
+                            <f:ajax event="click" render="mensajesalida"/>
+                            <f:ajax event="keyup" render="mensajesalida"/>
+                        </h:inputText>    
                         <h:commandButton action="#{horarioControlador.registrarIngreso()}" value="Ingresar" onclick="return window.alert('Bienvenido')" />
                     </h:form>
                 </div>  
@@ -34,7 +41,15 @@
                         <h2 class="mt-5 mb-5 text-center">Salir</h2>
                          <hr/>
                         <h:outputLabel value="Codigo Empleado:" />
-                        <h:inputText pt:id="uintTextBox" value="#{horarioControlador.empleado.idEmpleado}" />
+                        <br></br>
+                        <h:message id="mensajesalida" for="uintTextBox1"/>
+                        <br></br>
+                        <h:inputText id="uintTextBox1" value="#{horarioControlador.empleado.idEmpleado}" required="true" requiredMessage="Este campo es obligatorio" converterMessage="Por favor digite el numero" >
+                            <f:converter converterId="javax.faces.Integer"/>
+                            <f:ajax event="click" render="mensajesalida"/>
+                            <f:ajax event="keyup" render="mensajesalida"/>
+                            
+                        </h:inputText>
                         <hr/>
                         <h:commandButton action="#{horarioControlador.registrarSalida()}" value="Salir" onclick="return window.alert('Gracias')" />
                     </h:form>
@@ -42,7 +57,7 @@
             </div>
              
         </f:view>
-        <script src="js/inputValidation.js"></script>
+        <script src="../js/inputValidation.js"></script>
     </h:body>
 
 </html>

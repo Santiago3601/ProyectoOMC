@@ -52,7 +52,7 @@
                     </h:inputText>
                     
                     <h:outputLabel value="#{msjRegistrarTurno.labelTxtObservaciones}" for="observaciones" />
-                    <h:inputText id="observaciones" pt:placeholder="#{msjRegistrarTurno.placeholderTxtObservaciones}" value="#{empleadoControlador.turno.observaciones}" title="Observaciones" required="true" requiredMessage="The Observaciones field is required."/>
+                    <h:inputText id="observaciones" pt:placeholder="#{msjRegistrarTurno.placeholderTxtObservaciones}" value="#{empleadoControlador.turno.observaciones}" title="Observaciones" required="true" requiredMessage="The Observaciones field is required." maxlength="70" />
                     <h:outputLabel value="Puntos:" for="puntoIdPuntos" />
                     
                     <h:selectOneMenu id="puntoIdPuntos" value="#{empleadoControlador.turno.puntoIdPuntos}" title="PuntoIdPuntos" required="true" requiredMessage="The PuntoIdPuntos field is required.">

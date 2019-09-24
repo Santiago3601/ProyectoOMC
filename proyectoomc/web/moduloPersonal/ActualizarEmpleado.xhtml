@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:s="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       >
     
@@ -22,7 +23,7 @@
                 <h1><h:outputText value="Actualizar Empleado"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{msjActualizarEmpleado.labelTxtIdEmpleado}" for="idEmpleado" />
-                    <h:inputText id="idEmpleado"  pt:placeholder="#{msjActualizarEmpleado.placeholderTxtIdHorario}"  value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required."/>
+                    <h:inputText s:id="uintTextBox"  id="idEmpleado"  pt:placeholder="#{msjActualizarEmpleado.placeholderTxtIdHorario}"  value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required."/>
                     <h:outputLabel value="Usuario:" for="usuarioId" />
                     <h:selectOneMenu id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
                         <!-- TODO: update below reference to list of available items-->
@@ -33,5 +34,6 @@
             </h:form>
         </f:view>
      </div>
+        <script src="../js/inputValidation.js"></script>
     </h:body>
 </html>

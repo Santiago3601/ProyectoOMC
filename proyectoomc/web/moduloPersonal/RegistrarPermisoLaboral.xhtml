@@ -37,7 +37,7 @@
                         </h:inputText>
 
                         <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtObvservaciones}" for="obvservaciones" />
-                        <h:inputText id="obvservaciones" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtObvservaciones}"  value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" />
+                        <h:inputText id="obvservaciones" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtObvservaciones}"  value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" maxlength="70" />
                         <h:outputLabel value="Empleado:" for="empleadoIdEmpleado" />
 
                         <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
@@ -52,36 +52,7 @@
 
         </div>
         
-        <p:calendar id="popup" value="#{ordenProduccionControlador.ordenproduccion.fechainicio}" locale="es" pt:placeholder="AAAA-MM-DD" pattern="yyyy-MM-dd" />
-        <script type="text/javascript">
-                                    PrimeFaces.locales['es'] = {
-                                        closeText: 'Cerrar',
-                                        prevText: 'Anterior',
-                                        nextText: 'Siguiente',
-                                        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                                        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                                        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                                        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-                                        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
-                                        weekHeader: 'Semana',
-                                        firstDayOfWeek: 1,
-                                        isRTL: false,
-                                        showMonthAfterYear: false,
-                                        yearSuffix: '',
-                                        timeOnlyTitle: 'Sólo hora',
-                                        timeText: 'Tiempo',
-                                        hourText: 'Hora',
-                                        minuteText: 'Minuto',
-                                        secondText: 'Segundo',
-                                        currentText: 'Fecha actual',
-                                        ampm: false,
-                                        month: 'Mes',
-                                        week: 'Semana',
-                                        day: 'Día',
-                                        allDayText: 'Todo el día'
-                                    };
-                                </script>
-        
+       
     </h:body>
 
 </html>

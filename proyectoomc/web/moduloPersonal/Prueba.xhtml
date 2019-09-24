@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+    </h:head>
+    <h:body>
+         <f:view locale="#{sessionController.languageSelected}">
+
+
+            <h:form>
+                <h1><h:outputText value="Lista Permiso Laboral"/></h1>
+                <p:dataTable  id="ListaPermisoLaboral" value="#{permisoLaboralControlador.consultarTodos()}" var="item">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdPermisoLaboral"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idPermisoLaboral}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="HoraPermiso"/>
+                        </f:facet>
+                        <h:outputText value="#{item.horaPermiso}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="FechaPermiso"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fechaPermiso}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Obvservaciones"/>
+                        </f:facet>
+                        <h:outputText value="#{item.obvservaciones}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Empleado"/>
+                        </f:facet>
+                        <h:outputText value="#{item.empleadoIdEmpleado.usuarioId.id}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Estado"/>
+                        </f:facet>
+                        <h:outputText value="#{item.estado.estadoPermiso}"/>
+                       
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header" class="thead">
+                            <h:outputText value="Opciones"/>
+                        </f:facet>
+                        <h:commandLink action="#{permisoLaboralControlador.preActualizar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                        <h:commandLink action="#{permisoLaboralControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                        
+                    </p:column>
+                </p:dataTable>
+                <h:commandLink id="excel">
+                        <i class="far fa-file-excel"></i>
+                        <p:dataExporter type="xls" target="ListaPermisoLaboral" fileName="TablaPermisoLaboral" />
+                        <style>
+                            .far{
+                                padding: 2px;
+                                font-size: x-large;
+                            }
+                            
+                        </style>
+                    </h:commandLink>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

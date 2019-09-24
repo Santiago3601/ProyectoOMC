@@ -25,8 +25,7 @@
                 <h1><h:outputText value="Registrar Turno"/></h1>
                 <h:panelGrid columns="2">
                     
-                    <h:outputLabel value="#{msjRegistrarTurno.labelTxtidTurno}" for="idTurno" />
-                    <h:inputText id="idTurno" pt:placeholder="#{msjRegistrarTurno.placeholderTxtidTurno}"  value="#{empleadoControlador.turno.idTurno}" title="IdTurno" required="true" requiredMessage="The IdTurno field is required."/>
+                    
                     
                     <h:outputLabel value="#{msjRegistrarTurno.labelTxtProgramacion}" for="programacion" />
                     <h:inputText id="programacion" pt:placeholder="#{msjRegistrarTurno.placeholderTxtProgramacion}"  value="#{empleadoControlador.turno.programacion}" title="Programacion" required="true" requiredMessage="The Programacion field is required."/>
@@ -52,7 +51,7 @@
                     </h:inputText>
                     
                     <h:outputLabel value="#{msjRegistrarTurno.labelTxtObservaciones}" for="observaciones" />
-                    <h:inputText id="observaciones" pt:placeholder="#{msjRegistrarTurno.placeholderTxtObservaciones}" value="#{empleadoControlador.turno.observaciones}" title="Observaciones" required="true" requiredMessage="The Observaciones field is required."/>
+                    <h:inputText id="observaciones" pt:placeholder="#{msjRegistrarTurno.placeholderTxtObservaciones}" value="#{empleadoControlador.turno.observaciones}" title="Observaciones" required="true" requiredMessage="The Observaciones field is required." maxlength="70" />
                     <h:outputLabel value="Puntos:" for="puntoIdPuntos" />
                     
                     <h:selectOneMenu id="puntoIdPuntos" value="#{empleadoControlador.turno.puntoIdPuntos}" title="PuntoIdPuntos" required="true" requiredMessage="The PuntoIdPuntos field is required.">

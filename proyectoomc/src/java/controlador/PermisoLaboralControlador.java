@@ -6,9 +6,11 @@
 package controlador;
 
 import entidades.Empleado;
+import entidades.EstadoPermisoLaboral;
 import entidades.PermisoLaboral;
 
 import facade.EmpleadoFacade;
+import facade.EstadoPermisoLaboralFacade;
 import facade.PermisoLaboralFacade;
 
 import javax.inject.Named;
@@ -31,10 +33,15 @@ public class PermisoLaboralControlador implements Serializable {
     PermisoLaboral permisoLaboral;
     Empleado empleado;
 
+    @EJB
+    private EstadoPermisoLaboralFacade estadoPermisoLaboralFacade;
+    EstadoPermisoLaboral estadoPermisoLaboral;
+
     @PostConstruct
     public void init() {
         permisoLaboral = new PermisoLaboral();
         empleado = new Empleado();
+        estadoPermisoLaboral = new EstadoPermisoLaboral();
 
     }
 
@@ -60,11 +67,21 @@ public class PermisoLaboralControlador implements Serializable {
         this.empleado = empleado;
     }
 
+    public EstadoPermisoLaboral getEstadoPermisoLaboral() {
+        return estadoPermisoLaboral;
+    }
+
+    public void setEstadoPermisoLaboral(EstadoPermisoLaboral estadoPermisoLaboral) {
+        this.estadoPermisoLaboral = estadoPermisoLaboral;
+    }
+
     //METODOS
     public String registrarp() {
 
         this.permisoLaboral.setEmpleadoIdEmpleado(getEmpleado());
-        permisoLaboralFacade.create(this.permisoLaboral);
+        this.estadoPermisoLaboral.setIdEstado(1);
+        this.permisoLaboral.setEstado(getEstadoPermisoLaboral());
+        permisoLaboralFacade.create(getPermisoLaboral());
         permisoLaboral = new PermisoLaboral();
         return "RegistrarPermisoLaboral";
     }
@@ -96,5 +113,25 @@ public class PermisoLaboralControlador implements Serializable {
         return "ListarPermisoLaboral";
     }
 
-
+    public String CambiarEstado(PermisoLaboral pl) {
+        this.permisoLaboral = pl;
+        this.estadoPermisoLaboral.setIdEstado(2);
+        this.permisoLaboral.setEstado(getEstadoPermisoLaboral());
+        permisoLaboralFacade.edit(getPermisoLaboral());
+        permisoLaboral = new PermisoLaboral();
+        empleado = new Empleado();
+        estadoPermisoLaboral = new EstadoPermisoLaboral();
+        return "ListarPermisoLaboral";
+    }
+    
+    public String CambiarEstado1(PermisoLaboral pl) {
+        this.permisoLaboral = pl;
+        this.estadoPermisoLaboral.setIdEstado(3);
+        this.permisoLaboral.setEstado(getEstadoPermisoLaboral());
+        permisoLaboralFacade.edit(getPermisoLaboral());
+        permisoLaboral = new PermisoLaboral();
+        empleado = new Empleado();
+        estadoPermisoLaboral = new EstadoPermisoLaboral();
+        return "ListarPermisoLaboral";
+    }
 }

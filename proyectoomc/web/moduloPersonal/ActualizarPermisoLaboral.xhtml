@@ -34,7 +34,7 @@
                     </h:inputText>
                     
                     <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtObvservaciones}" for="obvservaciones" />
-                    <h:inputText id="obvservaciones" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtObvservaciones}"  value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" />
+                    <h:inputText id="obvservaciones" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtObvservaciones}"  value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" maxlength="200" />
                     <h:outputLabel value="Empleado:" for="empleadoIdEmpleado" />
 
                     <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">

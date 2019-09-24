@@ -55,11 +55,21 @@
                         <h:outputText value="#{item.empleadoIdEmpleado.usuarioId.id}"/>
                     </p:column>
                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Estado"/>
+                        </f:facet>
+                        <h:outputText value="#{item.estado.estadoPermiso}"/>
+                       
+                    </p:column>
+                    
+                    <p:column>
                         <f:facet name="header" class="thead">
                             <h:outputText value="Opciones"/>
                         </f:facet>
                         <h:commandLink action="#{permisoLaboralControlador.preActualizar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
                         <h:commandLink action="#{permisoLaboralControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                        <h:commandLink action="#{permisoLaboralControlador.CambiarEstado(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-check-circle"></i></h:commandLink>
+                       <h:commandLink action="#{permisoLaboralControlador.CambiarEstado1(item)}" onclick="return confirm('Estas seguro?')"><i class="fas fa-ban"></i></h:commandLink>
                     </p:column>
                 </p:dataTable>
                 <h:commandLink id="excel">
@@ -67,6 +77,10 @@
                         <p:dataExporter type="xls" target="ListaPermisoLaboral" fileName="TablaPermisoLaboral" />
                         <style>
                             .far{
+                                padding: 2px;
+                                font-size: x-large;
+                            }
+                            .fas{
                                 padding: 2px;
                                 font-size: x-large;
                             }
