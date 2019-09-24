@@ -43,6 +43,20 @@
                             <f:convertDateTime pattern="HH:mm:ss" />
                         </h:outputText>
                     </p:column>
+                    
+                    
+                     <p:column>
+                        <f:facet name="header">
+                            
+                            <h:outputText value="FechaIngreso"/>
+                            
+                        </f:facet>
+                         <h:outputText value="#{item.fechaDeIngreso}">
+                            <f:convertDateTime pattern="yyyy/MM/dd" />
+                        </h:outputText>
+                    </p:column>
+                    
+                    
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="HoraSalida"/>
@@ -51,6 +65,19 @@
                             <f:convertDateTime pattern="HH:mm:ss" />
                         </h:outputText>
                     </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            
+                            <h:outputText value="FechaSalida"/>
+                            
+                        </f:facet>
+                        <h:outputText value="#{item.fechaDeSalida}">
+                            <f:convertDateTime pattern="yyyy/MM/dd" />
+                        </h:outputText>
+                    </p:column>
+                    
+                    
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="EmpleadoIdEmpleado"/>
