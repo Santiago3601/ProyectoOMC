@@ -69,6 +69,7 @@
                 </nav>
             </b:form>
 
+
             <!--Start Modal loggin & Sing up -->
 
             <!-- Modal loggin -->
@@ -87,27 +88,27 @@
                         <div class="modal-body">
 
 
-                            <h:form class="needs-validation" >
+                            <h:form class="needs-validation" ps:novalidate="true">
 
 
                                 <f:view>
 
                                     <div class="form-group">
                                         <label for="validationDefault01">Correo</label>
-                                        <h:inputText class="form-control" ps:type="email" id="txtCorreo" value="#{usuarioControlador.usuario.correo}">
+                                        <h:inputText class="form-control" ps:placeholder="E-mail" ps:type="email" id="txtCorreo" value="#{usuarioControlador.usuario.correo}">
 
                                         </h:inputText>
                                     </div>
 
-                                    <label for="exampleInputPassword1">Id</label>
+                                    <label for="exampleInputPassword1">Contraseña</label>
 
-                                    <h:inputSecret class="form-control" id="validationCustom01"  ps:placeholder="Contraseña"  required="true" value="#{usuarioControlador.usuario.contrasenia}">
+                                    <h:inputSecret  class="form-control" id="validationCustom01"  ps:placeholder="Contraseña"  required="true" value="#{usuarioControlador.usuario.contrasenia}">
 
                                     </h:inputSecret>
 
                                 </f:view>
                                 <div class="modal-footer">
-
+                                    <a href="recuperar_contraseña.xhtml" target="_blanck" >Recuperar Contraseña</a>
                                     <h:commandButton  action="#{usuarioControlador.validarLogin()}" value="Login"></h:commandButton>
                                 </div>
                             </h:form>
@@ -122,30 +123,31 @@
 
             <script>
                 // Example starter JavaScript for disabling form submissions if there are invalid fields
-                (function () {
-                    'use strict';
-                    window.addEventListener('load', function () {
-                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                        var forms = document.getElementsByClassName('needs-validation');
-                        // Loop over them and prevent submission
-                        var validation = Array.prototype.filter.call(forms, function (form) {
-                            form.addEventListener('submit', function (event) {
-                                if (form.checkValidity() === false) {
-                                    event.preventDefault();
-                                    event.stopPropagation();
-                                }
-                                form.classList.add('was-validated');
-                            }, false);
-                        });
-                    }, false);
+                (function() {
+                'use strict';
+                window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+                }, false);
+                });
+                }, false);
                 })();
             </script>
+
             <!-- Modal Sing up -->
             <div class="modal fade" id="Sing-up" tabindex="-1" role="dialog" aria-labelledby="Sing-up-inLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="Sing-up-inLabel">Sing-up</h5>
+                            <h5 class="modal-title" id="Sing-up-inLabel">Registrarse</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -154,7 +156,7 @@
                             <f:view>
 
 
-                                <h:form class="needs-validation">
+                                <h:form class="needs-validation" ps:novalidate="true" ps:name="registroUsuario" >
                                     <label for="validationDefault01">Nombre completo</label>
                                     <div class="form-group">
                                         <div class="form-row">
@@ -171,7 +173,11 @@
                                         <h:outputLabel value="Id:" for="id" />
                                         <div class="form-row">
                                             <div class="col-6">
-                                                <h:inputText id="tpId" class="form-control" value="#{usuarioControlador.usuario.tpId}" title="TpId" required="true" requiredMessage="The TpId field is required."/>
+                                                <h:selectOneMenu id="tpId" value="#{usuarioControlador.tipoId.idTipoID}" title="TpId" required="true" requiredMessage="The TpId field is required.">
+                                                    <!-- TODO: update below reference to list of available items-->
+                                                    <f:selectItems value="#{tipoIdControlador.consultarTodos()}" var="tp" itemValue="#{tp.idTipoID}" itemLabel="#{tp.tipoID}"/>
+                                                </h:selectOneMenu>
+
 
                                             </div>
                                             <div class="col-6"> 
@@ -194,7 +200,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="form-row">
-                                            <h:outputLabel value="Contrasenia:" for="contrasenia" />
+                                            <h:outputLabel value="Contraseña:" for="contrasenia" />
                                             <h:inputSecret class="form-control" id="contrasenia" value="#{usuarioControlador.usuario.contrasenia}" title="Contrasenia" required="true" requiredMessage="The Contrasenia field is required."/>
                                         </div>
                                     </div>
@@ -212,28 +218,24 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="form-row">
-                                            <h:outputLabel value="FechaDeNacimiento:" for="fechaDeNacimiento" />
-                                            <h:inputText class="form-control" id="fechaDeNacimiento" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
-                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            <h:outputLabel value="Fecha de nacimiento:" for="fechaDeNacimiento" />
+                                            <h:inputText id="fechaDeNacimiento" ps:placeholder="DD/MM/AAAA" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
                                             </h:inputText>
+
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <div class="form-row">
-                                            <h:outputLabel value="Edad:" for="edad" />
-                                            <h:inputText class="form-control" id="edad" value="#{usuarioControlador.usuario.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <h:outputLabel value="RolidRol:" for="rolidRol" />
+                                            <h:outputLabel value="Rol:" for="rolidRol" />
                                             <h:selectOneMenu id="rolidRol" value="#{usuarioControlador.rol.idRol}" title="RolidRol" required="true" requiredMessage="The RolidRol field is required.">
                                                 <!-- TODO: update below reference to list of available items-->
                                                 <f:selectItems value="#{rolControlador.consultarTodos()}" var="rol" itemValue="#{rol.idRol}" itemLabel="#{rol.rol}"/>
                                             </h:selectOneMenu>
                                         </div>
                                     </div>
-                                    <h:commandButton value="Registrarse" action="#{usuarioControlador.registrarUsuario()}"> </h:commandButton>  
+                                    <h:commandButton value="Registrarse" action="#{usuarioControlador.registrarUsuarioIndex()}"> </h:commandButton>  
                                 </h:form>
                             </f:view>
 
@@ -246,24 +248,25 @@
 
             <script>
                 // Example starter JavaScript for disabling form submissions if there are invalid fields
-                (function () {
-                    'use strict';
-                    window.addEventListener('load', function () {
-                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                        var forms = document.getElementsByClassName('needs-validation');
-                        // Loop over them and prevent submission
-                        var validation = Array.prototype.filter.call(forms, function (form) {
-                            form.addEventListener('submit', function (event) {
-                                if (form.checkValidity() === false) {
-                                    event.preventDefault();
-                                    event.stopPropagation();
-                                }
-                                form.classList.add('was-validated');
-                            }, false);
-                        });
-                    }, false);
+                (function() {
+                'use strict';
+                window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+                }, false);
+                });
+                }, false);
                 })();
             </script>
+            <!--End Modal loggin & Sing up -->
             <!--End Modal loggin & Sing up -->
             <!-- Header -->
             <header class="masthead bg-primary text-white text-center" id="page-top">
