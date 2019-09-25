@@ -13,16 +13,22 @@
         <title>OMC</title>
     </h:head>
     <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Mensaje de confirmación</li>
+            </ol>
+        </nav>
         <div id="form"> 
 
-              <f:view locale="#{sessionController.languageSelected}">
-                  <h:outputLabel value="Usuario, usted tiene un cilindro agendado, en los proximos dias se le informara por correo la fecha de entrega"/>
-                  <h:commandButton
-            </f:view>
+            <f:view locale="#{sessionController.languageSelected}">
+                <h:outputLabel value="Usuario, usted tiene un cilindro agendado, en los proximos dias se le informara por correo la fecha de entrega"/>
+                <h:commandButton
+        </f:view>
 
 
-        </div>
-       
-    </h:body>
+    </div>
+
+</h:body>
 </html>
 

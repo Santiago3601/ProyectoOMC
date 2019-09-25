@@ -30,5 +30,6 @@
         <error-code>500</error-code>
         <location>/error-page-500.xhtml</location>
     </error-page>
+
     
 </web-app>

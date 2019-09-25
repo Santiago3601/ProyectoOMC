@@ -124,7 +124,7 @@ public class usuarioControlador implements Serializable {
         usuarioLogueado = usuarioFacade.validar(usuario);
         if (usuarioLogueado == null) {
             usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
-            usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
+            usuario.setRolidRol(rolFacade.find(2));
             Mailer.sendConfirmation(usuario);
 
             usuarioFacade.create(usuario);

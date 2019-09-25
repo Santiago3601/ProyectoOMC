@@ -85,6 +85,21 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
         return sol;
 
     }
-  
+
+    public boolean pedidoAgendado(Cliente cli) {
+        boolean sol = false;
+        try {
+            Query query2 = em.createNativeQuery("SELECT * FROM solicitud WHERE cliente_id_cliente = ?1");
+            query2.setParameter(1, cli.getIdCliente());
+            List<Object[]> solL = query2.getResultList();
+            if (!solL.isEmpty()) {
+                sol = true;
+                return sol;
+            }
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return sol;
+    }
 
 }

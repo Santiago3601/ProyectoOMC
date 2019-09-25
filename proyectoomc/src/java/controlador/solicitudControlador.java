@@ -219,6 +219,14 @@ public class solicitudControlador implements Serializable {
         solicitudFacade.create(solicitud);
         solicitud = new Solicitud();
         return "confirmacionCliente";
+    
+    }
+    public boolean validarPedidoAgendado(){
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        this.cliente = solicitudFacade.obtenerIdUsuario(usuario);
+        boolean estado;
+        estado = solicitudFacade.pedidoAgendado(cliente);
+        return estado;
     }
 
 }

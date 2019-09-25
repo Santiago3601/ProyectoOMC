@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2019 a las 18:54:50
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 25-09-2019 a las 15:29:52
+-- Versión del servidor: 10.1.39-MariaDB
+-- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,6 +58,23 @@ CREATE TABLE `agenda` (
   `novedades` varchar(300) COLLATE utf32_spanish_ci DEFAULT NULL,
   `empleado_id_empleado` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `agenda`
+--
+
+INSERT INTO `agenda` (`id_agenda`, `fecha_programada`, `novedades`, `empleado_id_empleado`) VALUES
+(1, '2019-09-26', 'Mantenimiento', 1),
+(2, '2019-09-25', 'Envios', 5),
+(3, '2019-09-30', 'Mantenimiento', 2),
+(4, '2019-09-25', 'Recolecta de cilindros', 4),
+(5, '2019-09-26', 'Instalacion', 21),
+(6, '2019-10-02', 'Envios', 4),
+(7, '2019-10-02', 'Capacitación', 3),
+(8, '2019-10-03', 'Capacitación', 4),
+(9, '2019-10-01', 'Capacitación', 2),
+(10, '2019-09-25', 'Capacitación', 21),
+(11, '2019-10-16', 'Capacitación', 3);
 
 -- --------------------------------------------------------
 
@@ -135,7 +152,7 @@ INSERT INTO `cliente` (`id_cliente`, `usuario_id`, `estado_id_estado`) VALUES
 (1, 10002010212, 1),
 (3, 23874610, 1),
 (6, 23879120, 1),
-(7, 1000283977, 1),
+(7, 1015410897, 1),
 (8, 1111222, 3),
 (9, 1000624311, 1),
 (10, 23, 1);
@@ -153,6 +170,20 @@ CREATE TABLE `contrato` (
   `fecha_final_contrato` date NOT NULL,
   `alquiler_id_alquiler` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `contrato`
+--
+
+INSERT INTO `contrato` (`id_contrato`, `tipo_contrato`, `fecha_inicio_contrato`, `fecha_final_contrato`, `alquiler_id_alquiler`) VALUES
+(10, 'persona natural', '2010-08-12', '2019-09-22', 5),
+(11, 'persona natural', '2019-08-01', '2019-09-30', 6),
+(12, 'persona natural', '2009-08-01', '2019-08-01', 7),
+(13, 'persona natural', '2009-01-01', '2019-01-01', 7),
+(14, 'Hospital', '2009-01-01', '2019-01-01', 4),
+(15, 'persona natural', '2012-01-01', '2012-09-09', 7),
+(16, 'persona natural', '2013-09-09', '2014-09-09', 6),
+(17, 'persona natural', '2012-09-01', '2002-09-30', 3);
 
 -- --------------------------------------------------------
 
@@ -172,6 +203,10 @@ CREATE TABLE `empleado` (
 
 INSERT INTO `empleado` (`id_empleado`, `usuario_id`, `fk_estado`) VALUES
 (1, 23874610, 1),
+(2, 10002010212, 1),
+(3, 100030122, 1),
+(4, 1111222, 1),
+(5, 24981099, 1),
 (21, 24981099, 1);
 
 -- --------------------------------------------------------
@@ -245,6 +280,14 @@ CREATE TABLE `estado_mantenimiento` (
   `estado` varchar(50) COLLATE utf32_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `estado_mantenimiento`
+--
+
+INSERT INTO `estado_mantenimiento` (`id_estado`, `estado`) VALUES
+(1, 'Realizado'),
+(2, 'Falta');
+
 -- --------------------------------------------------------
 
 --
@@ -255,6 +298,15 @@ CREATE TABLE `estado_permiso_laboral` (
   `id_estado` int(2) NOT NULL,
   `estado_permiso` varchar(50) COLLATE utf32_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `estado_permiso_laboral`
+--
+
+INSERT INTO `estado_permiso_laboral` (`id_estado`, `estado_permiso`) VALUES
+(1, 'pendiente'),
+(2, 'aprobado'),
+(3, 'rechazado');
 
 -- --------------------------------------------------------
 
@@ -299,6 +351,16 @@ CREATE TABLE `mantenimiento` (
   `estado_mantenimiento` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `mantenimiento`
+--
+
+INSERT INTO `mantenimiento` (`id_mantenimiento`, `fecha_inicio_mantenimiento`, `fecha_final_mantenimiento`, `agenda_id_agenda`, `estado_mantenimiento`) VALUES
+(2, '2019-09-16', '2019-09-16', 6, 2),
+(3, '2019-09-25', '2019-09-25', 3, 2),
+(4, '2019-10-01', '2019-10-01', 4, 2),
+(5, '2019-09-28', '2019-09-28', 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -322,7 +384,7 @@ CREATE TABLE `permiso` (
   `id_permiso` int(11) NOT NULL,
   `nombre` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `nombre_en` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
-  `url` text COLLATE utf32_spanish_ci DEFAULT NULL,
+  `url` text COLLATE utf32_spanish_ci,
   `icon` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `permiso_padre` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
@@ -444,7 +506,7 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (118, 'Envios', 'Shipping', NULL, 'x', NULL),
 (120, 'Personal', 'Employees', NULL, 'x', NULL),
 (121, 'consultar', 'Consult', NULL, 'x', 118),
-(122, 'Solicitud', 'Request', '../../../moduloEnvios/listaSolicitud.xhtml', 'x', 121),
+(122, 'Solicitud', 'Request', '../../../moduloEnvios/consultarSolicitudCliente.xhtml', 'x', 121),
 (123, 'Alquiler', 'Rent', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 121),
 (124, 'Contrato', 'Contract', '../../../moduloEnvios/listaContrato.xhtml', 'x', 121),
 (125, 'Reportes', 'Reports', NULL, 'x', NULL),
@@ -471,6 +533,26 @@ CREATE TABLE `permiso_laboral` (
   `empleado_id_empleado` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `permiso_laboral`
+--
+
+INSERT INTO `permiso_laboral` (`id_permiso_laboral`, `hora_permiso`, `fecha_permiso`, `obvservaciones`, `estado`, `empleado_id_empleado`) VALUES
+(1, '10:00:00', '2019-09-24', 'Cita medica', 1, 21),
+(2, '14:30:00', '2019-09-28', 'Viaje', 1, 5),
+(3, '07:00:00', '2019-09-26', 'Reunión en el colegio ', 1, 4),
+(4, '15:00:00', '2019-09-28', 'Cita medica', 1, 4),
+(5, '16:00:00', '2019-09-28', 'Reunión familiar ', 1, 4),
+(6, '08:00:00', '2019-09-30', 'Cita medica', 1, 4),
+(7, '17:00:00', '2019-10-02', 'Cumpleaños', 1, 21),
+(8, '10:00:00', '2019-10-08', 'Reunión en el colegio ', 3, 4),
+(9, '02:15:00', '2016-12-11', 'incapacidad', 1, 3),
+(10, '12:15:00', '2016-12-11', 'incapacidad', 1, 3),
+(11, '12:15:00', '2016-01-11', 'Cita Medica', 1, 3),
+(12, '02:15:00', '2016-12-11', 'incapacidad', 1, 1),
+(13, '05:00:30', '2016-01-11', 'Cita Medica', 1, 1),
+(14, '05:00:30', '2016-12-11', 'Cita Medica', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -488,7 +570,17 @@ CREATE TABLE `punto` (
 --
 
 INSERT INTO `punto` (`id_punto`, `cantidad`, `descripcion`) VALUES
-(1, 50, 'Ha trabajado 50 horas extras');
+(1, 2, 'quince minutos'),
+(2, 5, 'una hora'),
+(3, 10, 'tres horas de permiso'),
+(4, 15, 'cuatro horas de permiso'),
+(5, 17, 'cinco horas de permiso'),
+(6, 19, 'seis horas de permiso'),
+(7, 21, 'un dia de permiso'),
+(8, 0, 'tes horas de permiso en fin de semana'),
+(9, 24, 'seis horas de permiso en fin de semana'),
+(10, 27, 'un dia de permiso en fin de semana'),
+(11, 29, 'un dia de permiso cuando lo solicite ');
 
 -- --------------------------------------------------------
 
@@ -658,7 +750,16 @@ CREATE TABLE `ruta` (
 
 INSERT INTO `ruta` (`id_ruta`, `direccion`, `planilla`, `vehiculo_id_vehiculo`, `empleado_id_empleado`) VALUES
 (1, 'Cll 26 Entre Cra 68 y Cra 7', 'Cll 25 No. 23 - 27', 3, 1),
-(6, 'Cll 45 entre carrera 17 y 32', 'clle', 1, 1);
+(2, 'Cra. 44 No. 21 - 55', 'calera', 12, 2),
+(3, 'cll 68 n 14 32', 'Fontibón', 3, 2),
+(4, 'av 14 n 12 12', 'soacha', 9, 1),
+(5, 'cll 101 n 70 26 ', 'toberin', 4, 21),
+(6, 'Cll 45 entre carrera 17 y 32', 'clle', 1, 1),
+(107, 'Cra. 44 No. 21 - 55', 'bosa', 7, 21),
+(108, 'Cra. 46 No. 21 - 55', 'suba', 13, 3),
+(109, 'Cra. 14 No. 21 - 55', 'usme', 10, 4),
+(110, 'Cra. 24 No. 21 - 55', 'usme', 7, 21),
+(111, 'Cra. 44 No. 21 - 50', 'usme', 11, 4);
 
 -- --------------------------------------------------------
 
@@ -760,7 +861,20 @@ CREATE TABLE `turno` (
 --
 
 INSERT INTO `turno` (`id_turno`, `programacion`, `hora_ingreso`, `horas_salida`, `fecha_inicial`, `fecha_final`, `observaciones`, `punto_id_puntos`, `id_empleado`) VALUES
-(2, 'x', '00:06:06', '00:01:15', '2001-03-20', '2003-06-13', 'za', 1, 1);
+(2, 'Entregas', '00:06:06', '00:01:15', '2001-03-20', '2003-06-13', 'Entregas', 2, 4),
+(3, 'Mantenimiento', '06:00:00', '12:00:00', '2019-09-25', '2019-09-25', 'Mantenimiento', 1, 5),
+(4, 'Entregas', '10:00:00', '17:00:00', '2019-09-16', '2019-09-16', 'Entregas', 1, 5),
+(5, 'Mantenimiento', '13:00:00', '21:00:00', '2019-09-09', '2019-09-09', 'Mantenimientos', 2, 4),
+(6, 'Mantenimiento', '08:00:00', '18:00:00', '2019-09-25', '2019-09-25', 'Mantenimiento', 2, 2),
+(7, 'Capacitacion', '13:00:00', '21:00:00', '2019-09-03', '2019-09-03', 'Capacitacion', 2, 3),
+(8, 'Mantenimiento', '09:30:00', '19:30:00', '2019-09-26', '2019-09-26', 'Mantenimiento', 3, 4),
+(9, 'Mantenimiento', '12:00:00', '20:00:00', '2019-09-02', '2019-09-02', 'Mantenimiento', 4, 3),
+(10, 'Mantenimiento', '14:00:00', '22:00:00', '2019-07-03', '2019-07-03', 'Mantenimiento', 8, 2),
+(11, 'Mantenimiento', '12:30:00', '17:30:00', '2019-09-01', '2019-09-01', 'Mantenimiento', 7, 3),
+(12, 'Envios', '07:00:00', '17:00:00', '2019-07-03', '2019-07-05', 'Envíos', 5, 2),
+(13, 'Envios', '12:00:00', '22:00:00', '2019-05-01', '2019-05-01', 'Envíos', 4, 2),
+(14, 'Envíos', '14:00:00', '22:00:00', '2019-09-02', '2019-09-02', 'Envíos', 8, 21),
+(15, 'mantenimiento', '05:10:10', '15:00:00', '2019-12-11', '2019-12-31', 'mantenimiento', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -788,19 +902,18 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo`, `contrasenia`, `telefono`, `eps`, `fecha_de_nacimiento`, `edad`, `rol_idRol`) VALUES
-(23, 1, '1', '1', '1', '1', '1', 1, '1', '1993-02-03', 26, 2),
-(1212, 1, 'c2380068@urhen.com', 'c2380068@urhen.com', 'c2380068@urhen.com', 'c2380068@urhen.com', 'c2380068@urhen.com', 1321, 'c2380068@urhen.com', '2012-03-02', 7, 2),
-(54123, 1, 'xew19223@bcaoo.com', 'fxk84307@bcaoo.com', 'xew19223@bcaoo.com', 'xew19223@bcaoo.com', 'xew19223@bcaoo.com', 554, 'xew19223@bcaoo.com', '2012-03-02', 7, 2),
+(23, 1, 'Salome', 'Diaz', 'cr 14 n 14 113', 'sbustos@misena.edu.co', '12345', 121212, 'Salud total', '1993-02-03', 26, 2),
+(54123, 1, 'Samuel', 'Villanueva', 'Cr 101- 70 26', 'patriciamongui397@gmail.com', 'VXPwnIpaCc', 12121234, 'Salud total', '2009-03-02', 7, 4),
 (1111222, 1, 'assa', 'sasas', 'sasas', 'santyago3601@gmail.com', 'sasa', 123123, 'sa', '2001-02-02', 18, 2),
 (23874610, 2, 'Julie', 'Pott Friedman', 'Cll 32 sur No. 32 - 77', 'shirleybernal70@gmail.com', 'URgbaHRhdl', 4169210, 'Famisanar', '1990-03-29', 29, 3),
-(23879120, 2, 'Mark David ', 'Stewart King', 'Cra. 44 No. 21 - 55', 'mark.sk15@aol.com', '1234', 3108971923, 'N/A', '1979-07-15', 39, 2),
+(23879120, 2, 'Mark David ', 'Stewart King', 'Cra. 44 No. 21 - 55', 'saquintero074@misena.edu.co', '1234', 3108971923, 'Sanitas', '1979-07-15', 39, 2),
 (24981099, 2, 'Mark Christopher', 'Green Adams', 'Kra 19 No. 210 - 23', 'stephannybustos@gmail.com', 'KwIkhXyOkb', 4774147, 'Cafam EPS.', '1997-05-05', 22, 4),
-(27871927, 1, 'Thomas', 'Miller King', 'x', 'x', '3232', 1, 'x2', '1984-12-19', 64, 1),
+(27871927, 1, 'Thomas', 'Miller King', 'av 68 n 14- 32', 'dybautista2@misena.edu.co', '3232', 12121230, 'Cafe salud', '1989-12-19', 30, 4),
 (100030122, 1, 'Juan Camilo', 'Perez Martinez', 'Correo@mail.com', 'santyago3601@gmail.com', '1234', 122, 'No tiene', '2001-06-01', 18, 2),
-(1000283977, 2, 'Amy Michelle', 'Smith Allen', 'Cll 24 No. 31 -  34', 'amy.smith12@msn.com', 'rITñICjiNL', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
 (1000604688, 2, 'Santiago', 'Ruiz RincÃ³n', 'cLL X', 'santyago3601@gmail.com', '12345', 4153134, 'NO', '2001-03-05', 18, 1),
-(1000624311, 2, 'Jonh Nicolas', 'Welch Martinez', 'Cra 13 No. 123 - 23', 'jonhwelch@aol.com', '1234', 4139385, 'N/A', '1980-06-03', 39, 2),
-(10002010212, 1, 'Juan Camilo', 'Perez Martinez', 'Cll x 24 -  23', 'dsdsa@misena.edu.co', '12345', 12345, 'No tiene', '2011-04-02', 8, 2);
+(1000624311, 2, 'Carol', 'Martinez', 'Cra 13 No. 123 - 23', 'carolbustos1@gmail.com ', '1234', 4139385, 'Colmedica', '1980-06-03', 39, 2),
+(1015410897, 1, 'Emili', 'Smith ', 'Cll 24 No. 31 -  34', 'jprodriguez744@misena.edu.co', '454545', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
+(10002010212, 1, 'Camila', 'Perez', 'Cll x 24 -  23', 'stbernal0@misena.edu.co', '12345', 12345, 'Salud total', '2011-04-02', 8, 2);
 
 --
 -- Disparadores `usuario`
@@ -841,7 +954,15 @@ INSERT INTO `vehiculo` (`id_vehiculo`, `matricula`) VALUES
 (3, 'BOG-219'),
 (4, 'SOR-419'),
 (5, 'SOR-221'),
-(6, 'AGD-390');
+(6, 'AGD-390'),
+(7, 'AGD-391'),
+(8, 'AGD-392'),
+(9, 'AGD-360'),
+(10, 'ATD-190'),
+(11, 'ASD-330'),
+(12, 'AMD-350'),
+(13, 'AGR-391'),
+(14, 'AZD-290');
 
 --
 -- Índices para tablas volcadas
@@ -1032,13 +1153,13 @@ ALTER TABLE `vehiculo`
 -- AUTO_INCREMENT de la tabla `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_agenda` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `alquiler`
 --
 ALTER TABLE `alquiler`
-  MODIFY `id_alquiler` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_alquiler` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -1050,7 +1171,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `contrato`
 --
 ALTER TABLE `contrato`
-  MODIFY `id_contrato` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_contrato` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `estado_alquiler`
@@ -1068,19 +1189,19 @@ ALTER TABLE `horario`
 -- AUTO_INCREMENT de la tabla `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
-  MODIFY `id_mantenimiento` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mantenimiento` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `permiso_laboral`
 --
 ALTER TABLE `permiso_laboral`
-  MODIFY `id_permiso_laboral` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permiso_laboral` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `ruta`
 --
 ALTER TABLE `ruta`
-  MODIFY `id_ruta` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_ruta` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitud`
@@ -1092,13 +1213,13 @@ ALTER TABLE `solicitud`
 -- AUTO_INCREMENT de la tabla `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `id_turno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_turno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  MODIFY `id_vehiculo` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_vehiculo` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

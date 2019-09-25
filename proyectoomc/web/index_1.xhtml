@@ -219,15 +219,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="form-row">
-                                        <h:outputLabel value="Rol:" for="rolidRol" />
-                                        <h:selectOneMenu id="rolidRol" value="#{usuarioControlador.rol.idRol}" title="RolidRol" required="true" requiredMessage="The RolidRol field is required.">
-                                            <!-- TODO: update below reference to list of available items-->
-                                            <f:selectItems value="#{rolControlador.consultarTodos()}" var="rol" itemValue="#{rol.idRol}" itemLabel="#{rol.rol}"/>
-                                        </h:selectOneMenu>
-                                    </div>
-                                </div>
+          
                                 <h:commandButton value="Sign up" action="#{usuarioControlador.registrarUsuarioIndex()}"> </h:commandButton>  
                             </h:form>
                         </f:view>
