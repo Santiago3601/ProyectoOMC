@@ -89,7 +89,7 @@ public class Mailer {
                 + "";//cambiará en consecuencia al servidor utilizado
         final String pass = "Gaes3Proyectoomc";
 
-        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#307C66; font-weight: bold; text-transform: uppercase ; \">Mantenimiento" + "</h1>" + "<img src='i.imgur.com/LU6DAe3.png'/ style=\"float: left;\"><p>El sitema estara en mantenimiento<br>\n"
+        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#307C66; font-weight: bold; text-transform: uppercase ; \">Mantenimiento" + "</h1>" + "<img src='i.imgur.com/LU6DAe3.png'/ style=\"float: left; height: 50px; widght : auto;\"><p>El sitema estara en mantenimiento<br>\n"
                 + "<p style=\"text-align: center; color: #307C66\">\n"
                 + "</p> \n"
                 + "<br>\n"
@@ -278,13 +278,13 @@ public class Mailer {
     }
     
     
-    public static String Usodelsistema(Usuario usua2) throws UnsupportedEncodingException {
+    public static String mantenimiento2(Usuario usua2) throws UnsupportedEncodingException {
 
         final String user = "proyectoomcomc@gmail.com"
                 + "";//cambiará en consecuencia al servidor utilizado
         final String pass = "Gaes3Proyectoomc";
 
-        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#307C66; font-weight: bold; text-transform: uppercase ; \">Mantenimiento" + "</h1>" + "<img src='i.imgur.com/LU6DAe3.png'/ style=\"float: left;\"><p>Gracias por la espera el sistema ya esta disponible de nuevo<br>\n"
+        String nuevoMensaje = "<h1 style=\"font-size: 20px; color:#307C66; font-weight: bold; text-transform: uppercase ; \">Mantenimiento" + "</h1>" + "<img src='i.imgur.com/LU6DAe3.png'/ style=\"float: left; height: 50px; widght : auto;\"><p>Gracias por la espera el sistema ya esta disponible de nuevo<br>\n"
                 + "<p style=\"text-align: center; color: #307C66\">\n"
                 + "</p> \n"
                 + "<br>\n"

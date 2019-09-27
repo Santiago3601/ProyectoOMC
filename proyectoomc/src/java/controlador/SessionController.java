@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped//Para que permanezca el idioma seleccionado durante la sesión debe usar el SessionScoped.
 public class SessionController implements Serializable {
 
-    private Locale languageSelected = new Locale("es");
+    private Locale languageSelected;
     private Locale spanishLanguague = new Locale("es");
 
     /**
@@ -48,6 +48,14 @@ public class SessionController implements Serializable {
 
     public Locale getLanguageSelected() {
         return languageSelected;
+    }
+
+    public Locale getSpanishLanguague() {
+        return spanishLanguague;
+    }
+
+    public void setSpanishLanguague(Locale spanishLanguague) {
+        this.spanishLanguague = spanishLanguague;
     }
     
  

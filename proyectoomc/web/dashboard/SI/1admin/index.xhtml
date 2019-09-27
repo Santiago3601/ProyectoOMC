@@ -53,10 +53,17 @@
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
                                     <div id="accessibility-buttons">
+                                        <a href="#" data-target="#exampleModal" data-toggle="modal">
+                                            <i class="far fa-envelope"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <div id="accessibility-buttons">
 
                                         <a href="#" title="Acciones" data-toggle="popover" data-placement="bottom" data-content="Mensaje">  <i class="far fa-cog"></i></a>
 
-                                     
+
                                     </div>
                                 </li>
 
@@ -110,21 +117,42 @@
                                 <li>
                                     <c:if test="#{empty p.permisoPadre}">
                                         <a >
-                                            #{p.nombre}
+                                            <c:if test="#{sessionController.spanishLanguague == sessionController.languageSelected}">
+                                                #{p.nombre}
+                                            </c:if>
+                                            <c:if test="#{!(sessionController.spanishLanguague == sessionController.languageSelected)}">
+                                                #{p.nombreEn}
+                                            </c:if>
                                         </a>
                                     </c:if>
                                     <ul>
                                         <c:forEach items="#{p.subPermisos}" var="sp">
                                             <li>
-                                                <a >
-                                                    #{sp.nombre}
-                                                </a>
+                                                <c:if test="#{sessionController.spanishLanguague == sessionController.languageSelected}">
+                                                    <a>
+                                                        #{sp.nombre}
+                                                    </a>
+                                                </c:if>
+                                                <c:if test="#{!(sessionController.spanishLanguague == sessionController.languageSelected)}">
+                                                    <a>
+                                                        #{sp.nombreEn}
+                                                    </a>
+                                                </c:if>
                                                 <ul>
                                                     <c:forEach items="#{sp.subPermisos}" var="ssp">
                                                         <li>
-                                                            <a href="#{ssp.url}" target="area-de-trabajo">
-                                                                #{ssp.nombre}
-                                                            </a>
+                                                            <c:if test="#{(sessionController.spanishLanguague == sessionController.languageSelected)}">
+
+                                                                <a href="#{ssp.url}" target="area-de-trabajo">
+                                                                    #{ssp.nombre}
+                                                                </a>
+                                                            </c:if>
+                                                            <c:if test="#{!(sessionController.spanishLanguague == sessionController.languageSelected)}">
+
+                                                                <a href="#{ssp.url}" target="area-de-trabajo">
+                                                                    #{ssp.nombreEn}
+                                                                </a>
+                                                            </c:if>
                                                         </li>
                                                     </c:forEach>
                                                 </ul>
@@ -142,6 +170,21 @@
 
 
                 </nav>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Editar datos</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <iframe src="../../../moduloEnvios/editarDatosUsuario.xhtml" name="" style="margin-top: 5px; border: none;"  ></iframe>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <section>
                     <iframe name="area-de-trabajo" src=""></iframe>
                 </section>

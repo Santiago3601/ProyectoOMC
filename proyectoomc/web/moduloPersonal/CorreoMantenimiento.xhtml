@@ -24,7 +24,7 @@
                 <h1><h:outputText value="Lista de Usuarios"/></h1>
                  <h:commandButton action="#{usuarioControlador.envioMantenimientos()}" value="Mantenimiento" />
                  <br></br>
-                  <h:commandButton action="#{usuarioControlador.envioMantenimientos()}" value="Uso del sistema" />
+                 <h:commandButton action="#{usuarioControlador.envioMantenimientos2()}" value="Uso del sistema" />
                 <p:dataTable value="#{usuarioControlador.consultarTodos()}" var="item">
                     <p:column>
                         <f:facet name="header">

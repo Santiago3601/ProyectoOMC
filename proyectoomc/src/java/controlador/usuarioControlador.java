@@ -271,4 +271,9 @@ public class usuarioControlador implements Serializable {
         }
     }
 
+    public void envioMantenimientos2() throws UnsupportedEncodingException {
+        for (Usuario usuario1 : usuarioFacade.findAll()) {
+            Mailer.mantenimiento2(usuario1);
+        }
+    }
 }

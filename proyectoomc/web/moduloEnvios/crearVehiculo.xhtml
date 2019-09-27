@@ -11,21 +11,23 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-     <f:view locale="#{sessionController.languageSelected}">
+        <div id="form"> 
 
-            <h:form>
-                <h1><h:outputText value="#{msjCrearVeh.h1TxtTitle}"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{msjCrearVeh.labelTxtID}" for="idVehiculo" />
-                    <h:inputText id="idVehiculo" value="#{vehiculoControlador.vehiculo.idVehiculo}" title="IdVehiculo" required="true" requiredMessage="The IdVehiculo field is required."/>
-                    <h:outputLabel value="#{msjCrearVeh.labelTxtPlate}" for="matricula" />
-                    <h:inputText id="matricula" value="#{vehiculoControlador.vehiculo.matricula}" title="Matricula" required="true" requiredMessage="The Matricula field is required."/>
-                </h:panelGrid>
-                <h:commandButton value="#{msjCrearVeh.btnRegister}" action="#{vehiculoControlador.registrarVehiculo()}"> </h:commandButton>
-            </h:form>
-            <a href="subidadDeDatosVehiculos.xhtml">click</a>
-        </f:view>
-           </div>
-</h:body>
+            <f:view locale="#{sessionController.languageSelected}">
+
+                <h:form>
+                    <h1><h:outputText value="#{msjCrearVeh.h1TxtTitle}"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{msjCrearVeh.labelTxtID}" for="idVehiculo" />
+                        <h:inputText id="idVehiculo" value="#{vehiculoControlador.vehiculo.idVehiculo}" title="IdVehiculo" required="true" requiredMessage="The IdVehiculo field is required."/>
+                        <h:outputLabel value="#{msjCrearVeh.labelTxtPlate}" for="matricula" />
+                        <h:inputText id="matricula" value="#{vehiculoControlador.vehiculo.matricula}" title="Matricula" required="true" requiredMessage="The Matricula field is required."/>
+                    </h:panelGrid>
+                    <h:commandButton value="#{msjCrearVeh.btnRegister}" action="#{vehiculoControlador.registrarVehiculo()}"> </h:commandButton>
+                </h:form>
+                <a href="subidadDeDatosVehiculos.xhtml">click</a>
+            </f:view>
+        </div>
+    </h:body>
 </html>
 
