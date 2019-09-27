@@ -24,17 +24,17 @@ import javax.ejb.EJB;
 public class TurnoControlador implements Serializable {
 
 
-    @EJB
-    private PuntoFacade puntoFacade;
-    Punto punto;
+@EJB
+   PuntoFacade puntoFacade;
+    private Punto punto;
 
     @EJB
-    private EmpleadoFacade empleadoFacade;
-    Empleado empleado;
+  EmpleadoFacade empleadoFacade;
+   private Empleado empleado;
 
     @EJB
-    private TurnoFacade turnoFacade;
-    Turno turno;
+     TurnoFacade turnoFacade;
+   private Turno turno;
 
     @PostConstruct
     public void init() {
@@ -84,8 +84,9 @@ public class TurnoControlador implements Serializable {
     }
 
     public String registrar() {
-        turno.setPuntoIdPuntos(puntoFacade.find(punto.getIdPunto()));
-        turno.setIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
+      turno.setPuntoIdPuntos(getPunto());
+       turno.setIdEmpleado(getEmpleado());
+         
         turnoFacade.create(turno);
         turno = new Turno();
         return "RegistrarTurno";
@@ -116,4 +117,8 @@ public class TurnoControlador implements Serializable {
         turno = new Turno();
         return "ListarTurno";
     }
+     public void prueba()
+     {
+         System.out.println("Prueba de controlador");
+     }
 }

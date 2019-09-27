@@ -4,8 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+    <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
         <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,12 +15,13 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-         <f:view locale="#{sessionController.languageSelected}">
+        <f:view locale="#{sessionController.languageSelected}">
 
 
             <h:form>
+
                 <h1><h:outputText value="#{msjListarTurno.labelTxtIdTurno}"/></h1>
-                <p:dataTable value="#{turnoControlador.consultarTodos()}" var="item">
+                <p:dataTable id="tablaCli" value="#{turnoControlador.consultarTodos()}" var="item">
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="#{msjListarTurno.labelTxtIdTurno}"/>
@@ -81,9 +82,9 @@
                         <f:facet name="header">
                             <h:outputText value="#{msjListarTurno.labelTxtIdEmpleado}"/>
                         </f:facet>
-                        <h:outputText value="#{item.idEmpleado}"/>
+                        <h:outputText value="#{item.idEmpleado.idEmpleado}"/>
                     </p:column>
-                     <p:column>
+                    <p:column>
                         <f:facet name="header" class="thead">
                             <h:outputText value="#{msjListarTurno.labelTxtOpciones}"/>
                         </f:facet>
@@ -91,20 +92,20 @@
                         <h:commandLink action="#{turnoControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                     </p:column>
                 </p:dataTable>
-               <h:commandLink id="excel">
-                        <i class="far fa-file-excel"></i>
-                        <p:dataExporter type="xls" target="tablaCli" fileName="tablaDeClientes" />
-                        <style>
-                            .far{
-                                padding: 2px;
-                                font-size: x-large;
-                            }
-                        </style>
-                    </h:commandLink>
+                <h:commandLink id="excel">
+                    <i class="far fa-file-excel"></i>
+                    <p:dataExporter type="xls" target="tablaCli" fileName="ListarTurnos" />
+                    <style>
+                        .far{
+                            padding: 2px;
+                            font-size: x-large;
+                        }
+                    </style>
+                </h:commandLink>
             </h:form>
         </f:view>
 
-   
+
     </h:body>
 </html>
 
