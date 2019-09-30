@@ -12,8 +12,8 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-        
-            <f:view locale="#{sessionController.languageSelected}">
+
+        <f:view locale="#{sessionController.languageSelected}">
 
 
 
@@ -53,19 +53,19 @@
 
                         <h:commandLink  action="#{agendaControlador.preActualizarAgenda(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
                         <h:commandLink  action="#{agendaControlador.eliminarAgenda(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
-                        
+
                     </p:column>
                 </p:dataTable>
-                                        <h:commandLink id="excel">
-                            <i class="far fa-file-excel"></i>
-                            <p:dataExporter type="xls" target="tablaAgenda" fileName="tablaAgenda" />
-                            <style>
-                                .far{
-                                    padding: 2px;
-                                    font-size: x-large;
-                                }
-                            </style>
-                        </h:commandLink>
+                <h:commandLink id="excel">
+                    <i class="far fa-file-excel"></i>
+                    <p:dataExporter type="xls" target="tablaAgenda" fileName="tablaAgenda" />
+                    <style>
+                        .far{
+                            padding: 2px;
+                            font-size: x-large;
+                        }
+                    </style>
+                </h:commandLink>
             </h:form>
         </f:view>
 

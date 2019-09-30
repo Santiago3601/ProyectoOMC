@@ -11,34 +11,42 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-                <div id="form"> 
-             <f:view locale="#{sessionController.languageSelected}">
+        
+         <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumbMant.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.programar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.mantenimiento}</li>
+            </ol>
+        </nav>
+        <div id="form"> 
+            <f:view locale="#{sessionController.languageSelected}">
 
 
 
-            <h:form>
-                <h1><h:outputText value="#{msjsmantenimiento.h1TxtTitle}"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{msjsmantenimiento.labelTxtmaidmaintenance}" for="idMantenimiento" />
-                    <h:inputText id="idMantenimiento" value="#{mantenimientoControlador.mantenimiento.idMantenimiento}" title="IdMantenimiento" required="true" requiredMessage="The IdMantenimiento field is required."/>
-                    <h:outputLabel value="#{msjsmantenimiento.labelTxtmaintenancestartdate}" for="fechaInicioMantenimiento" />
-                    <h:inputText id="fechaInicioMantenimiento" value="#{mantenimientoControlador.mantenimiento.fechaInicioMantenimiento}" title="FechaInicioMantenimiento" required="true" requiredMessage="The FechaInicioMantenimiento field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="#{msjsmantenimiento.labelTxtenddatemaintenance}" for="fechaFinalMantenimiento" />
-                    <h:inputText id="fechaFinalMantenimiento" value="#{mantenimientoControlador.mantenimiento.fechaFinalMantenimiento}" title="FechaFinalMantenimiento" required="true" requiredMessage="The FechaFinalMantenimiento field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="#{msjsmantenimiento.labelTxtagendaidagenda}" for="agendaIdAgenda" />
-                    <h:selectOneMenu id="empleadoIdEmpleado" value="#{mantenimientoControlador.agenda.idAgenda}" title="AgendaIdAgenda" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{agendaControlador.consultarTodos()}" var="agen" itemValue="#{agen.idAgenda}" itemLabel="#{agen.idAgenda}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <h:commandButton value="#{msjsmantenimiento.labelbtnregister}" action="#{mantenimientoControlador.registrarMantenimiento()}"> </h:commandButton>
-            </h:form>
-        </f:view>
-                </div>
+                <h:form>
+                    <h1><h:outputText value="#{msjsmantenimiento.h1TxtTitle}"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{msjsmantenimiento.labelTxtmaidmaintenance}" for="idMantenimiento" />
+                        <h:inputText id="idMantenimiento" value="#{mantenimientoControlador.mantenimiento.idMantenimiento}" title="IdMantenimiento" required="true" requiredMessage="The IdMantenimiento field is required."/>
+                        <h:outputLabel value="#{msjsmantenimiento.labelTxtmaintenancestartdate}" for="fechaInicioMantenimiento" />
+                        <h:inputText id="fechaInicioMantenimiento" value="#{mantenimientoControlador.mantenimiento.fechaInicioMantenimiento}" title="FechaInicioMantenimiento" required="true" requiredMessage="The FechaInicioMantenimiento field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputLabel value="#{msjsmantenimiento.labelTxtenddatemaintenance}" for="fechaFinalMantenimiento" />
+                        <h:inputText id="fechaFinalMantenimiento" value="#{mantenimientoControlador.mantenimiento.fechaFinalMantenimiento}" title="FechaFinalMantenimiento" required="true" requiredMessage="The FechaFinalMantenimiento field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputLabel value="#{msjsmantenimiento.labelTxtagendaidagenda}" for="agendaIdAgenda" />
+                        <h:selectOneMenu id="empleadoIdEmpleado" value="#{mantenimientoControlador.agenda.idAgenda}" title="AgendaIdAgenda" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{agendaControlador.consultarTodos()}" var="agen" itemValue="#{agen.idAgenda}" itemLabel="#{agen.idAgenda}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:commandButton value="#{msjsmantenimiento.labelbtnregister}" action="#{mantenimientoControlador.registrarMantenimiento()}"> </h:commandButton>
+                </h:form>
+            </f:view>
+        </div>
     </h:body>
 </html>
 
