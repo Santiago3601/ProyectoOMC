@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2019 a las 15:29:52
--- Versión del servidor: 10.1.39-MariaDB
--- Versión de PHP: 7.3.5
+-- Tiempo de generación: 30-09-2019 a las 15:50:11
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -155,7 +155,14 @@ INSERT INTO `cliente` (`id_cliente`, `usuario_id`, `estado_id_estado`) VALUES
 (7, 1015410897, 1),
 (8, 1111222, 3),
 (9, 1000624311, 1),
-(10, 23, 1);
+(10, 23, 1),
+(11, 100020251, 3),
+(12, 32131, 1),
+(13, 10211425, 1),
+(14, 11111, 1),
+(15, 41521452, 1),
+(16, 645452, 1),
+(17, 15321541, 1);
 
 -- --------------------------------------------------------
 
@@ -328,14 +335,33 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`id_horario`, `hora_ingreso`, `hora_salida`, `empleado_id_empleado`, `fecha_de_ingreso`, `fecha_de_salida`) VALUES
-(1, '02:00:00', NULL, 1, NULL, NULL),
-(2, '11:51', '11:11', 1, '2019-09-18', '2019-09-18'),
-(3, '11:51', '11:51', 1, '2019-09-18', '2019-09-18'),
-(4, '11:3', '11:3', 1, '2019-09-20', '2019-09-20'),
-(5, '11:3', NULL, 1, '2019-09-20', NULL),
-(6, '11:3', NULL, 1, '2019-09-20', NULL),
-(7, '10:3', NULL, 1, '2019-09-21', NULL),
-(8, '11:53', '11:53', 1, '2019-09-23', '2019-09-23');
+(16, '9:44', '9:44', 1, '2019-09-25', '2019-09-25'),
+(17, '10:19', '10:19', 1, '2019-09-25', '2019-09-25'),
+(18, '10:19', NULL, 1, '2019-09-25', NULL),
+(19, '10:19', NULL, 1, '2019-09-25', NULL),
+(20, '10:19', NULL, 1, '2019-09-25', NULL),
+(21, '10:19', NULL, 1, '2019-09-25', NULL),
+(22, '10:19', NULL, 1, '2019-09-25', NULL),
+(23, '10:19', NULL, 1, '2019-09-25', NULL),
+(24, '10:19', NULL, 1, '2019-09-25', NULL),
+(25, '10:19', NULL, 1, '2019-09-25', NULL),
+(26, '10:19', '10:19', 1, '2019-09-25', '2019-09-25'),
+(27, '10:19', NULL, 1, '2019-09-25', NULL),
+(28, '10:19', NULL, 1, '2019-09-25', NULL),
+(29, '10:19', NULL, 1, '2019-09-25', NULL),
+(30, '10:50', NULL, 1, '2019-09-25', NULL),
+(31, '10:50', NULL, 1, '2019-09-25', NULL),
+(32, '10:50', NULL, 1, '2019-09-25', NULL),
+(33, '10:50', NULL, 1, '2019-09-25', NULL),
+(34, '10:50', NULL, 1, '2019-09-25', NULL),
+(35, '10:50', NULL, 1, '2019-09-25', NULL),
+(36, '10:50', NULL, 1, '2019-09-25', NULL),
+(37, '10:50', NULL, 1, '2019-09-25', NULL),
+(38, '10:50', NULL, 1, '2019-09-25', NULL),
+(39, '10:50', NULL, 1, '2019-09-25', NULL),
+(40, '10:57', NULL, 1, '2019-09-25', NULL),
+(41, '10:57', NULL, 1, '2019-09-25', NULL),
+(42, '10:57', NULL, 1, '2019-09-25', NULL);
 
 -- --------------------------------------------------------
 
@@ -384,7 +410,7 @@ CREATE TABLE `permiso` (
   `id_permiso` int(11) NOT NULL,
   `nombre` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `nombre_en` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
-  `url` text COLLATE utf32_spanish_ci,
+  `url` text COLLATE utf32_spanish_ci DEFAULT NULL,
   `icon` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `permiso_padre` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
@@ -510,13 +536,14 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (123, 'Alquiler', 'Rent', '../../../moduloEnvios/listaAlquiler.xhtml', 'x', 121),
 (124, 'Contrato', 'Contract', '../../../moduloEnvios/listaContrato.xhtml', 'x', 121),
 (125, 'Reportes', 'Reports', NULL, 'x', NULL),
-(126, 'Graficos', 'Graphics', 'xx-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x--x-x', 'x', 125),
+(126, 'Graficos', 'Graphics', 'xx-x-x--x-x-x-x-x-x-x-x-x-x-x-x-x-x--x-x', 'x', 125),
 (127, 'Pdf', 'Pdf', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 125),
-(128, 'Cilindro', 'Cylinder', NULL, '', 126),
-(129, 'Certificado Laboral', 'Work certificate', NULL, '', 127),
-(130, 'Contrato', 'Contract', NULL, '', 127),
-(131, 'Registrar', 'a', '', '', 118),
-(132, 'Solicitud', 'a', '../../../moduloEnvios/crearSolicitudCliente.xhtml', '', 131);
+(128, 'Cilindro', 'Cylinder', NULL, 'x', 126),
+(130, 'Contrato', 'Contract', NULL, 'x', 127),
+(131, 'Registrar', 'a', '', 'x', 118),
+(132, 'Solicitud', 'a', '../../../moduloEnvios/crearSolicitudCliente.xhtml', 'x', 131),
+(133, 'Envio masivo', 'Mass sending', '', 'x', 125),
+(134, 'Mantenimiento del sistema', 'System maintenance', '../../../moduloPersonal/CorreoMantenimiento.xhtml', 'x', 133);
 
 -- --------------------------------------------------------
 
@@ -799,7 +826,8 @@ INSERT INTO `solicitud` (`id_solicitud`, `formula`, `tamanio_cilindro`, `cliente
 (19, 'sa', NULL, 7),
 (45, '/proyectoomc/archivos/UNIDAD 3.pdf', NULL, 1),
 (46, '/proyectoomc/archivos/UNIDAD 3.pdf', NULL, 1),
-(47, '/proyectoomc/archivos/Material_Formacion_3.pdf', 250, 1);
+(47, '/proyectoomc/archivos/Material_Formacion_3.pdf', 250, 1),
+(48, '/proyectoomc/archivos/UNIDAD 3.pdf', 300, 11);
 
 --
 -- Disparadores `solicitud`
@@ -903,12 +931,19 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo`, `contrasenia`, `telefono`, `eps`, `fecha_de_nacimiento`, `edad`, `rol_idRol`) VALUES
 (23, 1, 'Salome', 'Diaz', 'cr 14 n 14 113', 'sbustos@misena.edu.co', '12345', 121212, 'Salud total', '1993-02-03', 26, 2),
+(11111, 1, 'fxk84307@bcaoo.com', 'fxk84307@bcaoo.com', 'ffxk84307@bcaoo.com', 'ffxk84307@bcaoo.com', 'ffxk84307@bcaoo.com', 32125145, 'ffxk84307@bcaoo.com', '2019-09-07', 0, 2),
+(32131, 1, 'c2991589@urhen.com', 'c2991589@urhen.com', 'c2991589@urhen.com', 'c2991589@urhen.com', 'c2991589@urhen.com', 320323, 'c2991589@urhen.com', '2019-09-18', 0, 2),
 (54123, 1, 'Samuel', 'Villanueva', 'Cr 101- 70 26', 'patriciamongui397@gmail.com', 'VXPwnIpaCc', 12121234, 'Salud total', '2009-03-02', 7, 4),
-(1111222, 1, 'assa', 'sasas', 'sasas', 'santyago3601@gmail.com', 'sasa', 123123, 'sa', '2001-02-02', 18, 2),
+(645452, 1, 'imhs947ds79@bcaoo.com', 'imhs947ds79@bcaoo.com', 'imhs947ds79@bcaoo.com', 'imhs947ds79@bcaoo.com', 'imhs947ds79@bcaoo.com', 51545, 'imhs947ds79@bcaoo.com', '2019-10-15', 0, 2),
+(1111222, 1, 'assa', 'sasas', 'sasas', 'santyago3601@gmail.com', 'RiVGImysla', 123123, 'sa', '2001-02-02', 18, 2),
+(10211425, 1, 'cwf44416@bcaoo.com', 'cwf44416@bcaoo.com', 'fcwf44416@bcaoo.com', 'fcwf44416@bcaoo.com', 'fcwf44416@bcaoo.com', 533514654, 'fcwf44416@bcaoo.com', '2007-01-16', 12, 2),
+(15321541, 1, 'sdimhs947ds79@bcaoo.com', 'sdimhs947ds79@bcaoo.com', 'sdimhs947ds79@bcaoo.com', 'sdimhs947ds79@bcaoo.com', 'sdimhs947ds79@bcaoo.com', 534564, 'sdimhs947ds79@bcaoo.com', '2019-09-08', 0, 2),
 (23874610, 2, 'Julie', 'Pott Friedman', 'Cll 32 sur No. 32 - 77', 'shirleybernal70@gmail.com', 'URgbaHRhdl', 4169210, 'Famisanar', '1990-03-29', 29, 3),
 (23879120, 2, 'Mark David ', 'Stewart King', 'Cra. 44 No. 21 - 55', 'saquintero074@misena.edu.co', '1234', 3108971923, 'Sanitas', '1979-07-15', 39, 2),
 (24981099, 2, 'Mark Christopher', 'Green Adams', 'Kra 19 No. 210 - 23', 'stephannybustos@gmail.com', 'KwIkhXyOkb', 4774147, 'Cafam EPS.', '1997-05-05', 22, 4),
 (27871927, 1, 'Thomas', 'Miller King', 'av 68 n 14- 32', 'dybautista2@misena.edu.co', '3232', 12121230, 'Cafe salud', '1989-12-19', 30, 4),
+(41521452, 1, 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 56546, 'imh94779@bcaoo.com', '2019-09-10', 0, 2),
+(100020251, 1, 'aaaaa', 'aaaaaa', 'algo', 'juanx@gmail.com', '123454', 456135, 'No tiene', '2012-03-02', 7, 2),
 (100030122, 1, 'Juan Camilo', 'Perez Martinez', 'Correo@mail.com', 'santyago3601@gmail.com', '1234', 122, 'No tiene', '2001-06-01', 18, 2),
 (1000604688, 2, 'Santiago', 'Ruiz RincÃ³n', 'cLL X', 'santyago3601@gmail.com', '12345', 4153134, 'NO', '2001-03-05', 18, 1),
 (1000624311, 2, 'Carol', 'Martinez', 'Cra 13 No. 123 - 23', 'carolbustos1@gmail.com ', '1234', 4139385, 'Colmedica', '1980-06-03', 39, 2),
@@ -1165,7 +1200,7 @@ ALTER TABLE `alquiler`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `contrato`
@@ -1183,7 +1218,7 @@ ALTER TABLE `estado_alquiler`
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimiento`
@@ -1207,7 +1242,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`
