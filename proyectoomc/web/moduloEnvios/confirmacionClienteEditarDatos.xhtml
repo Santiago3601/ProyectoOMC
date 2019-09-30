@@ -12,14 +12,20 @@
         <title>OMC</title>
     </h:head>
     <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Mensaje}</li>
+            </ol>
+        </nav>
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
-               
+
                 <div>
                     <div id="text" >
                         <h:outputLabel value="Se ha registrado correctamente, a continuación se le envío a su correo la confirmación de este mensaje"/>
                     </div>
-                    
+
                 </div>
                 <style>
                     img{
@@ -37,9 +43,9 @@
             </f:view>
 
         </div>
-        <script>  
+        <script>
             $(function () {
-            $('[data-toggle="popover"]').popover()
+                $('[data-toggle="popover"]').popover()
             })
         </script>
         <script scr="../js/popper.min.js"></script>
