@@ -26,37 +26,35 @@
 
                 <h:form>
                     <h1><h:outputText value="#{msjCrearAlq.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="#{msjCrearAlq.labelTxtID}" for="idAlquiler" />
-                        <h:inputText id="idAlquiler" value="#{alquilerControlador.alquiler.idAlquiler}" title="IdAlquiler" required="true" requiredMessage="The IdAlquiler field is required."/>
+                        <h:outputLabel  value="#{msjCrearAlq.labelTxtID}" for="idAlquiler" />
+                        <h:inputText ps:class="form-control" id="idAlquiler" value="#{alquilerControlador.alquiler.idAlquiler}" title="IdAlquiler" required="true" requiredMessage="The IdAlquiler field is required."/>
                         <h:outputLabel value="#{msjCrearAlq.labelTxtDeliveryDate}" for="fechaDeEntrega" />
-                        <h:inputText id="fechaDeEntrega" ps:placeholder="#{msjCrearAlq.inputTxtPlaceHolderDeliveryDate}" value="#{alquilerControlador.alquiler.fechaDeEntrega}" title="FechaDeEntrega" required="true" requiredMessage="The FechaDeEntrega field is required.">
+                        <h:inputText ps:class="form-control" id="fechaDeEntrega" ps:placeholder="#{msjCrearAlq.inputTxtPlaceHolderDeliveryDate}" value="#{alquilerControlador.alquiler.fechaDeEntrega}" title="FechaDeEntrega" required="true" requiredMessage="The FechaDeEntrega field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
                         <h:outputLabel value="#{msjCrearAlq.labelTxtNovelties}" for="novedades" />
-                        <h:inputText id="novedades" value="#{alquilerControlador.alquiler.novedades}" title="Novedades" required="true" requiredMessage="The Novedades field is required."/>
+                        <h:inputText ps:class="form-control" id="novedades" value="#{alquilerControlador.alquiler.novedades}" title="Novedades" required="true" requiredMessage="The Novedades field is required."/>
                         <h:outputLabel value="#{msjCrearAlq.labelTxtCilynder}" for="cilindroIdCilindro" />
-                        <h:selectOneMenu id="cilindroIdCilindro" value="#{alquilerControlador.cilindro.idCilindro}" title="CilindroIdCilindro" required="true" requiredMessage="The CilindroIdCilindro field is required.">
+                        <h:selectOneMenu ps:class="form-control" id="cilindroIdCilindro" value="#{alquilerControlador.cilindro.idCilindro}" title="CilindroIdCilindro" required="true" requiredMessage="The CilindroIdCilindro field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{cilindroControlador.consultarTodos()}" var="cil" itemValue="#{cil.idCilindro}" itemLabel="#{cil.idCilindro} #{cil.tamanio}cm³ #{cil.estado}"/>
                         </h:selectOneMenu>
                         <h:outputLabel value="#{msjCrearAlq.labelTxtRoute}" for="rutaIdRuta" />
-                        <h:selectOneMenu id="rutaIdRuta" value="#{alquilerControlador.ruta.idRuta}" title="RutaIdRuta" required="true" requiredMessage="The RutaIdRuta field is required.">
+                        <h:selectOneMenu ps:class="form-control" id="rutaIdRuta" value="#{alquilerControlador.ruta.idRuta}" title="RutaIdRuta" required="true" requiredMessage="The RutaIdRuta field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{rutaControlador.consultarTodos()}"  var="ruta" itemValue="#{ruta.idRuta}" itemLabel="#{ruta.idRuta}"/>
                         </h:selectOneMenu>
                         <h:outputLabel value="#{msjCrearAlq.labelTxtRequest}" for="solicitudIdSolicitud" />
-                        <h:selectOneMenu id="solicitudIdSolicitud" value="#{alquilerControlador.solicitud.idSolicitud}" title="SolicitudIdSolicitud" required="true" requiredMessage="The SolicitudIdSolicitud field is required.">
+                        <h:selectOneMenu ps:class="form-control" id="solicitudIdSolicitud" value="#{alquilerControlador.solicitud.idSolicitud}" title="SolicitudIdSolicitud" required="true" requiredMessage="The SolicitudIdSolicitud field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{solicitudControlador.consultarTodos()}" var="sol" itemValue="#{sol.idSolicitud}" itemLabel="#{sol.clienteIdCliente.usuarioId.nombre} #{sol.clienteIdCliente.usuarioId.apellido} #{sol.tamanioCilindro}cm³"/>
                         </h:selectOneMenu>
                         <h:outputLabel value="#{msjCrearAlq.labelTxtState}" for="estadoAlquilerIdEstado" />
-                        <h:selectOneMenu id="estadoAlquilerIdEstado" value="#{alquilerControlador.estadoAlquiler.idEstado}" title="EstadoAlquilerIdEstado" required="true" requiredMessage="The EstadoAlquilerIdEstado field is required.">
+                        <h:selectOneMenu ps:class="form-control" id="estadoAlquilerIdEstado" value="#{alquilerControlador.estadoAlquiler.idEstado}" title="EstadoAlquilerIdEstado" required="true" requiredMessage="The EstadoAlquilerIdEstado field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{estadoAlquilerControlador.consultarTodos()}" var="est" itemValue="#{est.idEstado}" itemLabel="#{est.estado}"/>
                         </h:selectOneMenu>
-                    </h:panelGrid>
-                    <h:commandButton value="#{msjCrearAlq.btnRegister}" action="#{alquilerControlador.registrarAlquiler()}"> </h:commandButton> 
+                    <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjCrearAlq.btnRegister}" action="#{alquilerControlador.registrarAlquiler()}"> </h:commandButton> 
 
                 </h:form>
             </f:view>

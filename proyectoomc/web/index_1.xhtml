@@ -116,22 +116,22 @@
 
         <script>
             // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-            }, false);
-            });
-            }, false);
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
             })();
         </script>
 
@@ -212,14 +212,16 @@
                                 <div class="form-group">
                                     <div class="form-row">
                                         <h:outputLabel value="Bith date" for="fechaDeNacimiento" />
-                                        <h:inputText  id="fechaDeNacimiento" ps:placeholder="DD/MM/AAAA" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
-                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        <h:inputText  ps:id="fecha" ps:type="date" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
+                                            <f:convertDateTime pattern="yyyy-MM-dd" />
                                         </h:inputText>
-
+                                        <script>
+                                            fecha.max = new Date().toISOString().split("T")[0];
+                                        </script>
                                     </div>
                                 </div>
 
-          
+
                                 <h:commandButton value="Sign up" action="#{usuarioControlador.registrarUsuarioIndex()}"> </h:commandButton>  
                             </h:form>
                         </f:view>
@@ -233,22 +235,22 @@
 
         <script>
             // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-            }, false);
-            });
-            }, false);
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
             })();
         </script>
         <!--End Modal loggin & Sing up -->
