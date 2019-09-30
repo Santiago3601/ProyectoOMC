@@ -90,7 +90,6 @@
         
         
         
-        
         <resource-bundle>
             <base-name>language.agenda</base-name>
             <var>msjsagedaD</var>
@@ -120,12 +119,19 @@
         
         
         
-            <resource-bundle>
+        <resource-bundle>
             <base-name>language.actagend</base-name>
             <var>msjsacta</var>
         </resource-bundle>
         
        
+        <resource-bundle>
+            <base-name>language.BreadCrumbMant</base-name>
+            <var>msjBreadCrumbMante</var>
+        </resource-bundle>
+       
+
+
 
         <resource-bundle>
             <base-name>languague.ActualizarCilindro_es</base-name>

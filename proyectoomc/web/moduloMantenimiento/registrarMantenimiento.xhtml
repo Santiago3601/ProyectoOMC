@@ -21,8 +21,8 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{msjsmantenimiento.labelTxtmaidmaintenance}" for="idMantenimiento" />
                     <h:inputText id="idMantenimiento" value="#{mantenimientoControlador.mantenimiento.idMantenimiento}" title="IdMantenimiento" required="true" requiredMessage="The IdMantenimiento field is required."/>
-                    <h:outputLabel value="FechaInicioMantenimiento:" for="fechaInicioMantenimiento" />
-                    <h:inputText id="#{msjsmantenimiento.labelTxtmaintenancestartdate}" value="#{mantenimientoControlador.mantenimiento.fechaInicioMantenimiento}" title="FechaInicioMantenimiento" required="true" requiredMessage="The FechaInicioMantenimiento field is required.">
+                    <h:outputLabel value="#{msjsmantenimiento.labelTxtmaintenancestartdate}" for="fechaInicioMantenimiento" />
+                    <h:inputText id="fechaInicioMantenimiento" value="#{mantenimientoControlador.mantenimiento.fechaInicioMantenimiento}" title="FechaInicioMantenimiento" required="true" requiredMessage="The FechaInicioMantenimiento field is required.">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
                     <h:outputLabel value="#{msjsmantenimiento.labelTxtenddatemaintenance}" for="fechaFinalMantenimiento" />
