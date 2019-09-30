@@ -1,10 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 // Restricts input for the given textbox to the given inputFilter.
 function setInputFilter(textbox, inputFilter) {
   ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
@@ -23,19 +16,19 @@ function setInputFilter(textbox, inputFilter) {
 
 
 // Install input filters.
-setInputFilter(document.getElementById("uintTextBox"), function(value) { //// numeros positivos
+setInputFilter(document.getElementById("uintTextBox"), function(value) {
   return /^\d*$/.test(value); });
-setInputFilter(document.getElementById("intLimitTextBox"), function(value) {  /// numeros positivos menores a 500
+setInputFilter(document.getElementById("intLimitTextBox"), function(value) {
   return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 500); });
-setInputFilter(document.getElementById("intTextBox"), function(value) {          ///numeros positivos y negativos
+setInputFilter(document.getElementById("intTextBox"), function(value) {
   return /^-?\d*$/.test(value); });
-setInputFilter(document.getElementById("floatTextBox"), function(value) {     ///numeros decimales separados por puntos o coma
+setInputFilter(document.getElementById("floatTextBox"), function(value) {
   return /^-?\d*[.,]?\d*$/.test(value); });
-setInputFilter(document.getElementById("currencyTextBox"), function(value) {   ////decimales separados por punto y coma con solo dos digitos
+setInputFilter(document.getElementById("currencyTextBox"), function(value) {
   return /^-?\d*[.,]?\d{0,2}$/.test(value); });
-setInputFilter(document.getElementById("basicLatinTextBox"), function(value) { //de la a -z
+setInputFilter(document.getElementById("basicLatinTextBox"), function(value) {
   return /^[a-z]*$/i.test(value); });
-setInputFilter(document.getElementById("extendedLatinTextBox"), function(value) {  ////letras y caracteres especiales
+setInputFilter(document.getElementById("extendedLatinTextBox"), function(value) {
   return /^[a-z\u00c0-\u024f]*$/i.test(value); });
-setInputFilter(document.getElementById("hexTextBox"), function(value) {    ///nuemos hexadecimales
+setInputFilter(document.getElementById("hexTextBox"), function(value) {
   return /^[0-9a-f]*$/i.test(value); });
