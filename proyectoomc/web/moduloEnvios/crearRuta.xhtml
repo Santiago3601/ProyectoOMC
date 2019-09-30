@@ -11,34 +11,41 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-           <div id="form"> 
-     <f:view locale="#{sessionController.languageSelected}">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Crear}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Ruta}</li>
+            </ol>
+        </nav>
+        <div id="form"> 
+            <f:view locale="#{sessionController.languageSelected}">
 
 
-            <h:form>
-                <h1><h:outputText value="#{msjCrearRut.h1TxtTitle}"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{msjCrearRut.labelTxtID}" for="idRuta" />
-                    <h:inputText id="idRuta" value="#{rutaControlador.ruta.idRuta}" title="IdRuta" required="true" requiredMessage="The IdRuta field is required."/>
-                    <h:outputLabel value="#{msjCrearRut.labelTxtRouteAddress}" for="direccion" />
-                    <h:inputText id="direccion" value="#{rutaControlador.ruta.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
-                    <h:outputLabel value="#{msjCrearRut.labelTxtDeliveryAddresses}" for="planilla" />
-                    <h:inputText id="planilla" value="#{rutaControlador.ruta.planilla}" title="Planilla" required="true" requiredMessage="The Planilla field is required."/>
-                    <h:outputLabel value="#{msjCrearRut.labelTxtEmployee}" for="empleadoIdEmpleado" />
-                    <h:selectOneMenu id="empleadoIdEmpleado" value="#{rutaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="empleado" itemValue="#{empleado.idEmpleado}" itemLabel="#{empleado.usuarioId.nombre} #{empleado.usuarioId.apellido}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{msjCrearRut.labelTxtVehicle}" for="vehiculoIdVehiculo" />
-                    <h:selectOneMenu id="vehiculoIdVehiculo" value="#{rutaControlador.vehiculo.idVehiculo}" title="VehiculoIdVehiculo" required="true" requiredMessage="The VehiculoIdVehiculo field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" itemValue="#{vehiculo.idVehiculo}" itemLabel="#{vehiculo.matricula}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <h:commandButton value="#{msjCrearRut.btnRegister}" action="#{rutaControlador.registrarRuta()}"> </h:commandButton>  
-            </h:form>
-        </f:view>
-           </div>
+                <h:form>
+                    <h1><h:outputText value="#{msjCrearRut.h1TxtTitle}"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{msjCrearRut.labelTxtID}" for="idRuta" />
+                        <h:inputText id="idRuta" value="#{rutaControlador.ruta.idRuta}" title="IdRuta" required="true" requiredMessage="The IdRuta field is required."/>
+                        <h:outputLabel value="#{msjCrearRut.labelTxtRouteAddress}" for="direccion" />
+                        <h:inputText id="direccion" value="#{rutaControlador.ruta.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
+                        <h:outputLabel value="#{msjCrearRut.labelTxtDeliveryAddresses}" for="planilla" />
+                        <h:inputText id="planilla" value="#{rutaControlador.ruta.planilla}" title="Planilla" required="true" requiredMessage="The Planilla field is required."/>
+                        <h:outputLabel value="#{msjCrearRut.labelTxtEmployee}" for="empleadoIdEmpleado" />
+                        <h:selectOneMenu id="empleadoIdEmpleado" value="#{rutaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="empleado" itemValue="#{empleado.idEmpleado}" itemLabel="#{empleado.usuarioId.nombre} #{empleado.usuarioId.apellido}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="#{msjCrearRut.labelTxtVehicle}" for="vehiculoIdVehiculo" />
+                        <h:selectOneMenu id="vehiculoIdVehiculo" value="#{rutaControlador.vehiculo.idVehiculo}" title="VehiculoIdVehiculo" required="true" requiredMessage="The VehiculoIdVehiculo field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" itemValue="#{vehiculo.idVehiculo}" itemLabel="#{vehiculo.matricula}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:commandButton value="#{msjCrearRut.btnRegister}" action="#{rutaControlador.registrarRuta()}"> </h:commandButton>  
+                </h:form>
+            </f:view>
+        </div>
     </h:body>
 </html>
 

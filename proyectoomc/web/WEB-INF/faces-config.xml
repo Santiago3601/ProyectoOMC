@@ -168,6 +168,10 @@
             <var>msjCrearUsu</var>
         </resource-bundle>    
         <resource-bundle>
+            <base-name>language.BreadCrumb</base-name>
+            <var>msjBreadCrumb</var>
+        </resource-bundle>    
+        <resource-bundle>
             <base-name>language.CrearVehiculo</base-name>
             <var>msjCrearVeh</var>
         </resource-bundle>         

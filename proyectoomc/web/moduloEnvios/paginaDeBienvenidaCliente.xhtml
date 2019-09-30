@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -26,7 +27,36 @@
 
                 <div id="content" class="center_content">
                     <f:view locale="#{sessionController.languageSelected}">
-                        <h:outputLabel value="Bienvenido #{usuarioControlador.usuarioLogueado.nombre}"/>
+
+                        <div class="contenedor">
+                            <div class="centrado">
+                                <h:outputLabel ps:class="texto-centrado" value="Bienvenido #{usuarioControlador.usuarioLogueado.nombre}"/>
+
+                            </div>
+                            <img src="../img/imagenDeBienvenida.png" alt="" style="width: 80pc; "/>
+
+                        </div>
+
+                        <style>
+
+                            .contenedor{
+                                position: relative;
+                                display: inline-block;
+                                text-align: center;
+                            }
+
+                            .texto-encima{
+                                position: absolute;
+                                top: 10px;
+                                left: 10px;
+                            }
+                            .centrado{
+                                position: absolute;
+                                top: 20%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                        </style>
                     </f:view>
 
 

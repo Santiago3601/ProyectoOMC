@@ -12,8 +12,15 @@
         <title>OMC</title>
     </h:head>
     <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Crear}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Alquiler}</li>
+            </ol>
+        </nav>
         <div id="form"> 
-              <f:view locale="#{sessionController.languageSelected}">
+            <f:view locale="#{sessionController.languageSelected}">
 
 
 

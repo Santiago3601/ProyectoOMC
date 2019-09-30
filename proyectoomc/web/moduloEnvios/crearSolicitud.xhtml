@@ -12,13 +12,20 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-                   <div id="form"> 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Crear}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Solicitud}</li>
+            </ol>
+        </nav>
+        <div id="form"> 
 
-     <f:view locale="#{sessionController.languageSelected}">
+            <f:view locale="#{sessionController.languageSelected}">
 
 
 
-        
+
                 <h:form enctype="multipart/form-data">
                     <h1><h:outputText value="#{msjCrearSoli.h1TxtTitle}"/></h1>
                     <h:panelGrid columns="2">

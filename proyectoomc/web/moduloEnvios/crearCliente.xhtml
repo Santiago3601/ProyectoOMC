@@ -6,7 +6,7 @@
       xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       >
     <h:head>
-       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
         <link rel="stylesheet" href="../css/prime-styles.css"></link>   
@@ -14,31 +14,38 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-           <div id="form"> 
-               <f:view locale="#{sessionController.languageSelected}">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Crear}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Cliente}</li>
+            </ol>
+        </nav>
+        <div id="form"> 
+            <f:view locale="#{sessionController.languageSelected}">
 
 
-                   <h:form>
-                       <h1><h:outputText value="#{msjCrearCli.h1TxtTitle}"/></h1>
-                       <h:panelGrid columns="2">
-                           <h:outputLabel value="#{msjCrearCli.labelTxtID}" for="idCliente" />
-                           <h:inputText id="idCliente" value="#{clienteControlador.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The IdCliente field is required."/>
-                           <h:outputLabel value="#{msjCrearCli.labelTxtState}" for="estadoIdEstado" />
-                           <h:selectOneMenu id="estadoIdEstado" value="#{clienteControlador.estadoCliente.idEstado}" title="EstadoIdEstado" required="true" requiredMessage="The EstadoIdEstado field is required.">
-                               <!-- TODO: update below reference to list of available items-->
-                               <f:selectItems value="#{estadoClienteControlador.consultarTodos()}" var="es" itemValue="#{es.idEstado}" itemLabel="#{es.estado}"/>
-                           </h:selectOneMenu>
-                           <h:outputLabel value="#{msjCrearCli.labelTxtUserName}" for="usuarioId" />
-                           <h:selectOneMenu id="usuarioId" value="#{clienteControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
-                               <!-- TODO: update below reference to list of available items-->
-                               <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="us" itemValue="#{us.id}" itemLabel="#{us.nombre} #{us.apellido} : #{us.rolidRol.rol}"/>
-                           </h:selectOneMenu>
-                       </h:panelGrid>
-                       <h:commandButton value="#{msjCrearCli.btnRegister}" action="#{clienteControlador.registrarCliente()}"></h:commandButton>
-                   </h:form>
-               </f:view>
+                <h:form>
+                    <h1><h:outputText value="#{msjCrearCli.h1TxtTitle}"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{msjCrearCli.labelTxtID}" for="idCliente" />
+                        <h:inputText id="idCliente" value="#{clienteControlador.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The IdCliente field is required."/>
+                        <h:outputLabel value="#{msjCrearCli.labelTxtState}" for="estadoIdEstado" />
+                        <h:selectOneMenu id="estadoIdEstado" value="#{clienteControlador.estadoCliente.idEstado}" title="EstadoIdEstado" required="true" requiredMessage="The EstadoIdEstado field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{estadoClienteControlador.consultarTodos()}" var="es" itemValue="#{es.idEstado}" itemLabel="#{es.estado}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="#{msjCrearCli.labelTxtUserName}" for="usuarioId" />
+                        <h:selectOneMenu id="usuarioId" value="#{clienteControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="us" itemValue="#{us.id}" itemLabel="#{us.nombre} #{us.apellido} : #{us.rolidRol.rol}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:commandButton value="#{msjCrearCli.btnRegister}" action="#{clienteControlador.registrarCliente()}"></h:commandButton>
+                </h:form>
+            </f:view>
 
-           </div>
+        </div>
     </h:body>
 </html>
 
