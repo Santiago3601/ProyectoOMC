@@ -9,45 +9,55 @@
       >
 
     <h:head>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
         <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link> 
         <title>ActualizarPermisoLaboral</title>
     </h:head>
 
     <h:body>
-         <div id="form"> 
-        <f:view locale="#{sessionController.languageSelected}">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjMigaDePanPersoal.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Actualizar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.PermisoLaboral}</li>
+            </ol>
+        </nav>
+        <div id="form"> 
+            <f:view locale="#{sessionController.languageSelected}">
 
-           
-            <h:form>
-                <h1><h:outputText value="Actualizar Permiso Laboral"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtHoraPermiso}" for="horaPermiso" />
-                    <h:inputText id="horaPermiso" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtHoraPermiso}" value="#{permisoLaboralControlador.permisoLaboral.horaPermiso}" title="HoraPermiso" required="true" requiredMessage="The HoraPermiso field is required.">
-                        <f:convertDateTime pattern="HH:mm:ss" />
-                    </h:inputText>
-                    
-                    <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtfechaPermiso}" for="fechaPermiso" />
-                    <h:inputText id="fechaPermiso" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtfechaPermiso}"   value="#{permisoLaboralControlador.permisoLaboral.fechaPermiso}" title="FechaPermiso" required="true" requiredMessage="The FechaPermiso field is required.">
-                        <f:convertDateTime pattern="yyyy/MM/dd" />
-                    </h:inputText>
-                    
-                    <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtObvservaciones}" for="obvservaciones" />
-                    <h:inputText id="obvservaciones" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtObvservaciones}"  value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" maxlength="200" />
-                    <h:outputLabel value="Empleado:" for="empleadoIdEmpleado" />
 
-                    <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.id}" />
-                    </h:selectOneMenu>
+                <h:form>
+                    <h1><h:outputText value="Actualizar Permiso Laboral"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtHoraPermiso}" for="horaPermiso" />
+                        <h:inputText id="horaPermiso" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtHoraPermiso}" value="#{permisoLaboralControlador.permisoLaboral.horaPermiso}" title="HoraPermiso" required="true" requiredMessage="The HoraPermiso field is required.">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:inputText>
 
-                    <h:commandButton action ="#{permisoLaboralControlador.actualizar()}" value="Actualizar"/>
-                </h:panelGrid>
-            </h:form>
-        </f:view>
+                        <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtfechaPermiso}" for="fechaPermiso" />
+                        <h:inputText  pt:id="fecha" pt:type="date" value="#{permisoLaboralControlador.permisoLaboral.fechaPermiso}" title="fechaPermiso" required="true" requiredMessage="The fechaPermiso field is required.">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:inputText>
 
-             </div>
+                        <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtObvservaciones}" for="obvservaciones" />
+                        <h:inputText id="obvservaciones" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtObvservaciones}"  value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" maxlength="200" />
+                        <h:outputLabel value="Empleado:" for="empleadoIdEmpleado" />
+
+                        <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.id}" />
+                        </h:selectOneMenu>
+
+                        <h:commandButton action ="#{permisoLaboralControlador.actualizar()}" value="Actualizar"/>
+                    </h:panelGrid>
+                </h:form>
+            </f:view>
+
+        </div>
+        <script type="text/javascript">
+            fecha.min = new Date().toISOString().split("T")[0];
+        </script>
     </h:body>
 
 </html>

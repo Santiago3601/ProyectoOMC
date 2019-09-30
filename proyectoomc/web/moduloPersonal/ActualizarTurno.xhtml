@@ -16,6 +16,13 @@
     </h:head>
 
     <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjMigaDePanPersoal.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Actualizar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Turno}</li>
+            </ol>
+        </nav>
         <div id="form"> 
           <f:view locale="#{sessionController.languageSelected}">
 

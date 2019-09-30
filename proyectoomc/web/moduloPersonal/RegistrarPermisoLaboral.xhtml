@@ -17,6 +17,13 @@
     </h:head>
 
     <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjMigaDePanPersoal.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Registrar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.PermisoLaboral}</li>
+            </ol>
+        </nav>
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
 
@@ -32,9 +39,11 @@
                         </h:inputText>
 
                         <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtfechaPermiso}" for="fechaPermiso" />
-                        <h:inputText pm:id="uintTextBox1"  id="fechaPermiso" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtfechaPermiso}"   value="#{permisoLaboralControlador.permisoLaboral.fechaPermiso}"  title="FechaPermiso" required="true" requiredMessage="The FechaPermiso field is required.">
-                            <f:convertDateTime pattern="yyyy/MM/dd" />
+                        <h:inputText  pt:id="fecha" pt:type="date" value="#{permisoLaboralControlador.permisoLaboral.fechaPermiso}" title="FechaDeNacimiento" required="true" requiredMessage="The fechaPermiso field is required.">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:inputText>
+                                
+
 
                         <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtObvservaciones}" for="obvservaciones" />
                         <h:inputText id="obvservaciones" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtObvservaciones}"  value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" maxlength="70" />
@@ -42,7 +51,7 @@
 
                         <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                             <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.id}" />
+                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.nombre} #{emp.usuarioId.apellido}" />
                         </h:selectOneMenu>
 
                         <h:commandButton action ="#{permisoLaboralControlador.registrarp()}" value="registrar"/>
@@ -51,8 +60,9 @@
             </f:view>
 
         </div>
-        <script src="../js/inputValidation.js"></script>
-
+        <script>
+            fecha.min = new Date().toISOString().split("T")[0];
+        </script>
     </h:body>
 
 </html>

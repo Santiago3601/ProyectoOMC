@@ -16,6 +16,13 @@
     </h:head>
 
     <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjMigaDePanPersoal.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Registrar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Punto}</li>
+            </ol>
+        </nav>
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
 
@@ -41,13 +48,13 @@
 
                         </h:inputText>
                         <h:outputLabel value="#{msjRegistrarTurno.labelTxtFechaInicial}"  for="fechaInicial" />
-                        <h:inputText id="fechaInicial" pt:placeholder="#{msjRegistrarTurno.placeholderTxtFechaInicial}" value="#{turnoControlador.turno.fechaInicial}"  title="FechaInicial" required="true" requiredMessage="The FechaInicial field is required.">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
-
+                        <h:inputText  pt:id="fecha2" pt:type="date" value="#{turnoControlador.turno.fechaInicial}" title="FechaDeNacimiento" required="true" requiredMessage="The fechaPermiso field is required.">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:inputText>
+                        
                         <h:outputLabel value="#{msjRegistrarTurno.labelTxtFechaFinal}" for="fechaFinal" />
-                        <h:inputText id="fechaFinal" pt:placeholder="#{msjRegistrarTurno.placeholderTxtFechaFinal}" value="#{turnoControlador.turno.fechaFinal}"  title="FechaFinal" required="true" requiredMessage="The FechaFinal field is required.">
-                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                        <h:inputText pt:id="fecha1" pt:type="date" id="fechaFinal" pt:placeholder="#{msjRegistrarTurno.placeholderTxtFechaFinal}" value="#{turnoControlador.turno.fechaFinal}"  title="FechaFinal" required="true" requiredMessage="The FechaFinal field is required.">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:inputText>
 
                         <h:outputLabel value="#{msjRegistrarTurno.labelTxtObservaciones}" for="observaciones" />
@@ -67,11 +74,16 @@
 
                     </h:panelGrid>
                     <h:commandButton action="#{turnoControlador.registrar()}" value="registrar"/>
+             
                 </h:form>
             </f:view>
 
 
         </div>
+        <script>
+            fecha1.min = new Date().toISOString().split("T")[0];
+            fecha2.min = new Date().toISOString().split("T")[0];
+        </script>
     </h:body>
 
 </html>
