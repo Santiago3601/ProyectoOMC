@@ -22,32 +22,32 @@
 
                 <h:form>
                     <h1><h:outputText value="Lista de usuarios"/></h1>
-                    <p:dataTable id="tabla" value="#{usuarioControlador.consultarTodos()}" var="usuario" resizableColumns="true" liveResize="true"  rows="4"     paginator="true"    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"> >
-                        <p:column filterBy="#{usuario.id}">
+                    <p:dataTable id="tabla" value="#{usuarioControlador.consultarTodos()}" var="usuario" resizableColumns="true" liveResize="true"> >
+                        <p:column filterBy="#{usuario.id}"     style="width: 74.004px;">
                             <f:facet name="header">
                                 <h:outputText value="Id"/>
                             </f:facet>
                             <h:outputText value="#{usuario.id}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.tpId}">
+                        <p:column filterBy="#{usuario.tpId}" style="    width: 132px;">
                             <f:facet name="header">
                                 <h:outputText value="Tipo id"/>
                             </f:facet>
                             <h:outputText value="#{usuario.tpId.tipoID}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.nombre}">
+                        <p:column filterBy="#{usuario.nombre}" style="width: 130px;">
                             <f:facet name="header">
                                 <h:outputText value="Nombre"/>
                             </f:facet>
                             <h:outputText value="#{usuario.nombre}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.apellido}">
+                        <p:column filterBy="#{usuario.apellido}" style="width: 130px;">
                             <f:facet name="header">
                                 <h:outputText value="Apellido"/>
                             </f:facet>
                             <h:outputText value="#{usuario.apellido}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.direccion}">
+                        <p:column filterBy="#{usuario.direccion}" style="width: 124px;">
                             <f:facet name="header">
                                 <h:outputText value="Direccion"/>
                             </f:facet>
@@ -55,29 +55,29 @@
                         </p:column>
                         <p:column filterBy="#{usuario.correo}">
                             <f:facet name="header">
-                                <h:outputText value="Correo"/>
+                                <h:outputText value="Correo" style="width: 180px;"/>
                             </f:facet>
                             <h:outputText value="#{usuario.correo}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.contrasenia}">
+                        <p:column filterBy="#{usuario.contrasenia}" style="width: 113px;">
                             <f:facet name="header">
                                 <h:outputText value="Contraseña"/>
                             </f:facet>
                             <h:outputText value="#{usuario.contrasenia}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.telefono}">
+                        <p:column filterBy="#{usuario.telefono}" style="width: 113px;">
                             <f:facet name="header">
                                 <h:outputText value="Telefono"/>
                             </f:facet>
                             <h:outputText value="#{usuario.telefono}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.eps}">
+                        <p:column filterBy="#{usuario.eps}" style="width: 138px;">
                             <f:facet name="header">
                                 <h:outputText value="Eps"/>
                             </f:facet>
                             <h:outputText value="#{usuario.eps}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.fechaDeNacimiento}">
+                        <p:column filterBy="#{usuario.fechaDeNacimiento}" style="width: 163px;">
                             <f:facet name="header">
                                 <h:outputText value="FechaDeNacimiento"/>
                             </f:facet>
@@ -85,19 +85,19 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:outputText>
                         </p:column>
-                        <p:column filterBy="#{usuario.edad}">
+                        <p:column filterBy="#{usuario.edad}" style="width: 70px;">
                             <f:facet name="header">
                                 <h:outputText value="Edad"/>
                             </f:facet>
                             <h:outputText value="#{usuario.edad}"/>
                         </p:column>
-                        <p:column filterBy="#{usuario.rolidRol.rol}">
+                        <p:column filterBy="#{usuario.rolidRol.rol}" style="    width: 115.058px;">
                             <f:facet name="header">
                                 <h:outputText value="Rol"/>
                             </f:facet>
                             <h:outputText value="#{usuario.rolidRol.rol}"/>
                         </p:column>
-                        <p:column exportable="false">
+                        <p:column exportable="false" style="width: 97px;">
                             <f:facet name="header">
                                 <h:outputText value="Accion"/>
                             </f:facet>

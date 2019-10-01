@@ -24,7 +24,7 @@
  
 
                     <h:form>
-                        <h1><h:outputText value="Lista de contratos"/></h1>
+                        <h1><h:outputText value="#{msjListaContratos.lista}"/></h1>
                         <p:dataTable id="tablaCon" value="#{contratoContolador.consultarTodos()}" var="con" >
                             <p:column filterBy="#{con.idContrato}">
                                 <f:facet name="header">
@@ -34,13 +34,13 @@
                             </p:column>
                             <p:column filterBy="#{con.tipoContrato}">
                                 <f:facet name="header">
-                                    <h:outputText value="Tpo. de contrato"/>
+                                    <h:outputText value="#{msjListaContratos.contractTY}"/>
                                 </f:facet>
                                 <h:outputText value="#{con.tipoContrato}"/>
                             </p:column>
                             <p:column filterBy="#{con.fechaInicioContrato}">
                                 <f:facet name="header">
-                                    <h:outputText value="fechaInicioContrato"/>
+                                    <h:outputText value="#{msjListaContratos.StartDate}"/>
                                 </f:facet>
                                 <h:outputText value="#{con.fechaInicioContrato}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -49,7 +49,7 @@
           
                             <p:column filterBy="#{con.fechaFinalContrato}">
                                 <f:facet name="header">
-                                    <h:outputText value="fecha Final Contrato"/>
+                                    <h:outputText value="#{msjListaContratos.Finish_date}"/>
                                 </f:facet>
                                 <h:outputText value="#{con.fechaFinalContrato}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -59,14 +59,14 @@
                             
                             <p:column filterBy="#{con.alquilerIdAlquiler.idAlquiler}">
                                 <f:facet name="header">
-                                    <h:outputText value="Cod Alquiler"/>
+                                    <h:outputText value="#{msjListaContratos.Alqu}"/>
                                 </f:facet>
                                 <h:outputText value="#{con.alquilerIdAlquiler.idAlquiler}"/>
                             </p:column>
 
                             <p:column exportable="false">
                                 <f:facet name="header">
-                                    <h:outputText value="Accion"/>
+                                    <h:outputText value="#{msjListaContratos.Accion}"/>
                                 </f:facet>
                                 <h:commandLink  action="#{contratoContolador.eliminarContrato(con)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                                 <h:commandLink  action="#{contratoContolador.preActualizarContrato(con)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>

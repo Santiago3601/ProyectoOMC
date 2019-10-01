@@ -195,7 +195,7 @@ public class Mailer {
 
             message.addRecipient(Message.RecipientType.BCC, new InternetAddress(usua2.getCorreo())); //RECEPTOR
 
-            message.setSubject("Recupeacion de contraseña"); //ASUNTO
+            message.setSubject("Registro dentro del sistema"); //ASUNTO
 
             message.setContent(multiparte, "text/html; charset=utf-8"); //CONTENIDO
 

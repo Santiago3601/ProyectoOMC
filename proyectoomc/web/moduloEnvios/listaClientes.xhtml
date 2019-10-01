@@ -17,31 +17,31 @@
          <f:view locale="#{sessionController.languageSelected}">
 
                 <h:form>
-                    <h1><h:outputText value="Lista de clientes"/></h1>
+                    <h1><h:outputText value="#{msjListaClientes.lista}"/></h1>
                     <p:dataTable id="tablaCli" value="#{clienteControlador.consultarTodos()}" var="cli" >
                         <p:column filterBy="#{cli.usuarioId.id}">
                             <f:facet name="header">
-                                <h:outputText value="Cedula"/>
+                                <h:outputText value="#{msjListaClientes.cedul}"/>
                             </f:facet>
                             <h:outputText value="#{cli.usuarioId.id}"/>
                         </p:column>
 
                         <p:column filterBy="#{cli.usuarioId.nombre} #{cli.usuarioId.apellido}">
                             <f:facet name="header">
-                                <h:outputText value="Nombre del cliente"/>
+                                <h:outputText value="#{msjListaClientes.CusName}"/>
                             </f:facet>
                             <h:outputText value="#{cli.usuarioId.nombre} #{cli.usuarioId.apellido}"/>
                         </p:column>
                         <p:column filterBy="#{cli.estadoIdEstado.estado}">
                             <f:facet name="header">
-                                <h:outputText value="Estado"/>
+                                <h:outputText value="#{msjListaClientes}"/>
                             </f:facet>
                             <h:outputText value="#{cli.estadoIdEstado.estado}"/>
                         </p:column>
 
                         <p:column exportable="false">
                             <f:facet name="header">
-                                <h:outputText value="Accion"/>
+                                <h:outputText value="#{msjListaClientes.Accion}"/>
                             </f:facet>
                             <h:commandLink  action="#{clienteControlador.eliminarCliente(cli)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                             <h:commandLink  action="#{clienteControlador.preActualizarCliente(cli)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>

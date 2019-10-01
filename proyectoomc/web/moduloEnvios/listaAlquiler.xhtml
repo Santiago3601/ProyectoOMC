@@ -18,7 +18,7 @@
             <div id="content" class="center_content">
                 <f:view locale="#{sessionController.languageSelected}">
                     <h:form>
-                        <h1><h:outputText value="Lista de alquiler"/></h1>
+                        <h1><h:outputText value="#{msjListaAlquiler.lista}"/></h1>
                         <p:dataTable id="tablaAlq" value="#{alquilerControlador.consultarTodos()}" var="alq"  resizableColumns="true" liveResize="true"  rows="10"     paginator="true"    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
                             <p:column filterBy="#{alq.idAlquiler}">
                                 <f:facet name="header">
@@ -28,7 +28,7 @@
                             </p:column>
                             <p:column filterBy="#{alq.fechaDeEntrega}">
                                 <f:facet name="header">
-                                    <h:outputText value="Fecha de entrega"/>
+                                    <h:outputText value="#{msjListaAlquiler.fechaE}"/>
                                 </f:facet>
                                 <h:outputText value="#{alq.fechaDeEntrega}">
                                     <f:convertDateTime pattern="dd/MM/yyyy" />
@@ -36,20 +36,20 @@
                             </p:column>
                             <p:column filterBy="#{alq.cilindroIdCilindro.idCilindro}">
                                 <f:facet name="header">
-                                    <h:outputText value="No. cilindro"/>
+                                    <h:outputText value="#{msjListaAlquiler.NumCil}"/>
                                 </f:facet>
                                 <h:outputText value="#{alq.cilindroIdCilindro.idCilindro}"/>
                             </p:column>
                             <p:column filterBy="#{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.nombre} #{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.apellido}">
                                 <f:facet name="header">
-                                    <h:outputText value="Cliente"/>
+                                    <h:outputText value="#{msjListaAlquiler.cliente}"/>
                                 </f:facet>
                                 <h:outputText value="#{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.nombre} #{alq.solicitudIdSolicitud.clienteIdCliente.usuarioId.apellido}"/>
                             </p:column>
                             <p:column filterBy="#{alq.estadoAlquilerIdEstado.estado}">
                                 <f:facet name="header">
 
-                                    <h:outputText value="Estado Alquiler"/>
+                                    <h:outputText value="#{msjListaAlquiler.State}"/>
                                 </f:facet>
 
                                 <h:outputText value="#{alq.estadoAlquilerIdEstado.estado}"/>
@@ -59,7 +59,7 @@
 
                                 <f:facet name="header">
 
-                                    <h:outputText value="No. ruta"/>
+                                    <h:outputText value="#{msjListaAlquiler.route}"/>
 
                                 </f:facet>
 
@@ -68,13 +68,13 @@
                             </p:column>
                             <p:column filterBy="#{alq.novedades}">
                                 <f:facet name="header">
-                                    <h:outputText value="Novedades"/>
+                                    <h:outputText value="#{msjListaAlquiler.Novedades}"/>
                                 </f:facet>
                                 <h:outputText value="#{alq.novedades}"/>
                             </p:column>
                             <p:column exportable="false">
                                 <f:facet name="header">
-                                    <h:outputText value="Accion"/>
+                                    <h:outputText value="#{msjListaAlquiler.Novedades}"/>
                                 </f:facet>
                                 <h:commandLink  action="#{alquilerControlador.eliminarAlquiler(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                                 <h:commandLink  action="#{alquilerControlador.cambiarEstado(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-truck-loading"></i></h:commandLink>

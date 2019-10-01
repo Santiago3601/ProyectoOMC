@@ -112,7 +112,6 @@ public class clienteControlador implements Serializable {
     public String estado() {
         usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
         this.cliente = solicitudFacade.obtenerIdUsuario(usuario);
-
         if (this.cliente.getEstadoIdEstado().getIdEstado() == 3) {
             return "confirmacionClienteCilindroAgendado";
         }

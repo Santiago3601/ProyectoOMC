@@ -13,28 +13,28 @@
     </h:head>
     <h:body>         
         <f:view locale="#{sessionController.languageSelected}">
-            <h1><h:outputText value="DATOS DEL ALQUILER"/></h1>
+            <h1><h:outputText value="#{msjListaIDAlquiler.title}"/></h1>
             <div id="form"> 
                 <h:form style="width: 500px;">
-                    <h:outputLabel value="Nombre del cliente" for="nombre" />
+                    <h:outputLabel value="#{msjListaIDAlquiler.cusName}" for="nombre" />
                     <div class="form-group">
                         <div class="form-row">
                             <h:outputLabel class="form-control" value="#{alquilerControlador.solicitud.clienteIdCliente.usuarioId.nombre} #{alquilerControlador.solicitud.clienteIdCliente.usuarioId.apellido}" />
                         </div>
                     </div>
-                    <h:outputLabel value="Identificación" for="nombre" />
+                    <h:outputLabel value="#{msjListaIDAlquiler.ID}" for="nombre" />
                     <div class="form-group">
                         <div class="form-row">
                             <h:outputLabel class="form-control" value="#{alquilerControlador.solicitud.clienteIdCliente.usuarioId.tpId.tipoID} : #{alquilerControlador.solicitud.clienteIdCliente.usuarioId.id}" />
                         </div>
                     </div>
-                    <h:outputLabel value="Dirección de domicilio" for="nombre" />
+                    <h:outputLabel value="#{msjListaIDAlquiler.Delivery_address}" for="nombre" />
                     <div class="form-group">
                         <div class="form-row">
                             <h:outputLabel class="form-control" value="#{alquilerControlador.solicitud.clienteIdCliente.usuarioId.direccion}" />
                         </div>
                     </div>
-                    <h:outputLabel value="Telefono de contacto" for="nombre" />
+                    <h:outputLabel value="#{msjListaIDAlquiler.Cell}" for="nombre" />
                     <div class="form-group">
                         <div class="form-row">
                             <h:outputLabel class="form-control" value="#{alquilerControlador.solicitud.clienteIdCliente.usuarioId.telefono}" />

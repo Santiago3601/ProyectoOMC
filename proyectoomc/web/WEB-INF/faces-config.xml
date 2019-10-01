@@ -150,8 +150,24 @@
         
         
         <resource-bundle>
-            <base-name>language.CrearAlquiler_es</base-name>
+            <base-name>language.CrearAlquiler</base-name>
             <var>msjCrearAlq</var>
+        </resource-bundle>        
+        <resource-bundle>
+            <base-name>language.ListaAlquiler</base-name>
+            <var>msjListaAlquiler</var>
+        </resource-bundle>        
+        <resource-bundle>
+            <base-name>language.ListaClientes</base-name>
+            <var>msjListaClientes</var>
+        </resource-bundle>        
+        <resource-bundle>
+            <base-name>language.ListaContratos</base-name>
+            <var>msjListaContratos</var>
+        </resource-bundle>        
+        <resource-bundle>
+            <base-name>language.ListaIDAlquiler</base-name>
+            <var>msjListaIDAlquiler</var>
         </resource-bundle>        
         <resource-bundle>
             <base-name>language.CrearCliente</base-name>
