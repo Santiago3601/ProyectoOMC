@@ -102,4 +102,12 @@ public class SolicitudFacade extends AbstractFacade<Solicitud> {
         return sol;
     }
 
+    public void cancelarSol(Cliente cli) {
+        try {
+            Query query2 = em.createNativeQuery("DELETE FROM solicitud WHERE cliente_id_cliente = '"+cli.getIdCliente()+"'");
+            query2.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+    }
 }
