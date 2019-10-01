@@ -141,6 +141,7 @@ public class alquilerControlador implements Serializable {
 
     public String registrarAlquiler() throws UnsupportedEncodingException {
         alquilerFacade.cambiarEstadoCliente(alquiler);
+        alquiler.setIdAlquiler(1);
         alquiler.setRutaIdRuta(rutaFacade.find(ruta.getIdRuta()));
         alquiler.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
         alquiler.setEstadoAlquilerIdEstado(estadoAlquilerFacade.find(estadoAlquiler.getIdEstado()));

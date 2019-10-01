@@ -18,6 +18,8 @@ function setInputFilter(textbox, inputFilter) {
 // Install input filters.
 setInputFilter(document.getElementById("uintTextBox"), function(value) {
   return /^\d*$/.test(value); });
+setInputFilter(document.getElementById("uintTextBox1"), function(value) {
+  return /^\d*$/.test(value); });
 setInputFilter(document.getElementById("intLimitTextBox"), function(value) {
   return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 500); });
 setInputFilter(document.getElementById("intTextBox"), function(value) {
