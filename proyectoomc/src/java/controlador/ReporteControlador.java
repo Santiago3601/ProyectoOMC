@@ -28,15 +28,17 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
  *
  * @author SENA
  */
-@Named(value = "reporteCilindro")
+@Named(value = "reporteControlador")
 @SessionScoped
-public class reporteCilindro implements Serializable {
+public class ReporteControlador implements Serializable {
 
     /**
-     * Creates a new instance of reporteCilindro
+     * Creates a new instance of ReporteControlador
      */
-    public reporteCilindro() {
+    public ReporteControlador() {
     }
+    
+    
     @EJB
     CilindroFacade cilindroFacade;
     private List<Cilindro> listaCilindro;
@@ -58,10 +60,11 @@ public class reporteCilindro implements Serializable {
 
     }
 
-    public void PDF(ActionEvent actionEvent) throws JRException, IOException {
+    public void PDFC(ActionEvent actionEvent) throws JRException, IOException {
+        getListaCilindro();
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(listaCilindro);
         String ruta = FacesContext.getCurrentInstance().getExternalContext().getRealPath("//reportes//");
-        jasperPrint = JasperFillManager.fillReport(ruta + "//cilindro.jasper", new HashMap(), beanCollectionDataSource);
+        jasperPrint = JasperFillManager.fillReport(ruta + "//CilindroR.jasper", new HashMap(), beanCollectionDataSource);
         HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         httpServletResponse.addHeader("Content-disposition", "attachment; filename=report.pdf");
         ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
@@ -83,4 +86,5 @@ public class reporteCilindro implements Serializable {
     public void listaFinal() {
         cilindroFacade.calcularTotal();
     }
+    
 }
