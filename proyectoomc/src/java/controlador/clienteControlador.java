@@ -115,7 +115,18 @@ public class clienteControlador implements Serializable {
         if (this.cliente.getEstadoIdEstado().getIdEstado() == 3) {
             return "confirmacionClienteCilindroAgendado";
         }
-        
-         return "confirmacionClienteCilindroNoAgendado";
+
+        return "confirmacionClienteCilindroNoAgendado";
+    }
+
+    public boolean consultarEstado() {
+        boolean flag = false;
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        this.cliente = solicitudFacade.obtenerIdUsuario(usuario);
+        if (this.cliente.getEstadoIdEstado().getIdEstado() == 3) {
+            flag = true;
+            return flag;
+        }
+        return flag;
     }
 }

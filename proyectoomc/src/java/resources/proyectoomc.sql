@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2019 a las 15:50:11
+-- Tiempo de generación: 01-10-2019 a las 19:03:11
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -150,19 +150,21 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`id_cliente`, `usuario_id`, `estado_id_estado`) VALUES
 (1, 10002010212, 1),
-(3, 23874610, 1),
+(3, 23874610, 3),
 (6, 23879120, 1),
 (7, 1015410897, 1),
 (8, 1111222, 3),
 (9, 1000624311, 1),
 (10, 23, 1),
 (11, 100020251, 3),
-(12, 32131, 1),
+(12, 32131, 3),
 (13, 10211425, 1),
 (14, 11111, 1),
 (15, 41521452, 1),
 (16, 645452, 1),
-(17, 15321541, 1);
+(17, 15321541, 1),
+(18, 1000205411, 3),
+(19, 102154151515, 1);
 
 -- --------------------------------------------------------
 
@@ -538,8 +540,7 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (125, 'Reportes', 'Reports', NULL, 'x', NULL),
 (126, 'Graficos', 'Graphics', 'xx-x-x--x-x-x-x-x-x-x-x-x-x-x-x-x-x--x-x', 'x', 125),
 (127, 'Pdf', 'Pdf', 'x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x', 'x', 125),
-(128, 'Cilindro', 'Cylinder', NULL, 'x', 126),
-(130, 'Contrato', 'Contract', NULL, 'x', 127),
+(128, 'Cilindro', 'Cylinder', '../../../moduloMantenimiento/vistaControlador.xhtml', 'x', 126),
 (131, 'Registrar', 'a', '', 'x', 118),
 (132, 'Solicitud', 'a', '../../../moduloEnvios/crearSolicitudCliente.xhtml', 'x', 131),
 (133, 'Envio masivo', 'Mass sending', '', 'x', 125),
@@ -839,6 +840,12 @@ END
 $$
 DELIMITER ;
 DELIMITER $$
+CREATE TRIGGER `eliminarSolicitudEstado` AFTER DELETE ON `solicitud` FOR EACH ROW BEGIN
+update cliente SET cliente.estado_id_estado = 1 where old.cliente_id_cliente = id_cliente;
+END
+$$
+DELIMITER ;
+DELIMITER $$
 CREATE TRIGGER `insertarNuevoEstadoSolicitud` AFTER INSERT ON `solicitud` FOR EACH ROW BEGIN
 update cliente SET cliente.estado_id_estado = 3 where new.cliente_id_cliente = id_cliente;
 END
@@ -945,10 +952,12 @@ INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo
 (41521452, 1, 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 56546, 'imh94779@bcaoo.com', '2019-09-10', 0, 2),
 (100020251, 1, 'aaaaa', 'aaaaaa', 'algo', 'juanx@gmail.com', '123454', 456135, 'No tiene', '2012-03-02', 7, 2),
 (100030122, 1, 'Juan Camilo', 'Perez Martinez', 'Correo@mail.com', 'santyago3601@gmail.com', '1234', 122, 'No tiene', '2001-06-01', 18, 2),
+(1000205411, 1, 'c3081485@urhen.com', 'c3081485@urhen.com', 'c3081485@urhen.com', 'c3081485@urhen.com', 'c3081485@urhen.com', 415415615, 'Aliansalud EPS', '1997-06-16', 22, 2),
 (1000604688, 2, 'Santiago', 'Ruiz RincÃ³n', 'cLL X', 'santyago3601@gmail.com', '12345', 4153134, 'NO', '2001-03-05', 18, 1),
 (1000624311, 2, 'Carol', 'Martinez', 'Cra 13 No. 123 - 23', 'carolbustos1@gmail.com ', '1234', 4139385, 'Colmedica', '1980-06-03', 39, 2),
 (1015410897, 1, 'Emili', 'Smith ', 'Cll 24 No. 31 -  34', 'jprodriguez744@misena.edu.co', '454545', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
-(10002010212, 1, 'Camila', 'Perez', 'Cll x 24 -  23', 'stbernal0@misena.edu.co', '12345', 12345, 'Salud total', '2011-04-02', 8, 2);
+(10002010212, 1, 'Camila', 'Perez', 'Cll x 24 -  23', 'stbernal0@misena.edu.co', '12345', 12345, 'Salud total', '2011-04-02', 8, 2),
+(102154151515, 1, 'wim33398@bcaoo.com', 'wim33398@bcaoo.com', 'wim33398@bcaoo.com', 'wim33398@bcaoo.com', 'wim33398@bcaoo.com', 15154152415, 'Universidad Industrial de Santander', '2011-01-16', 8, 2);
 
 --
 -- Disparadores `usuario`
@@ -1200,7 +1209,7 @@ ALTER TABLE `alquiler`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `contrato`
@@ -1242,7 +1251,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`

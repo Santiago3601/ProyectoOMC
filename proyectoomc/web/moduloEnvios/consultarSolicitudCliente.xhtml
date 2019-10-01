@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -19,17 +20,40 @@
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Solicitud}</li>
             </ol>
         </nav>
-        <f:view locale="#{sessionController.languageSelected}">
+        <c:if test="#{clienteControlador.consultarEstado() eq false}">
+            <f:view locale="#{sessionController.languageSelected}" >
+                <div id="form"> 
+
+                    <f:view locale="#{sessionController.languageSelected}">
+                        <a href="../index.xhtml"><i class="fad fa-home-lg"  data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Regresar a la pagina de inicio"></i></a>
+                        <h:outputLabel value="Estimado usuario usted no tiene ningun cilindro agendado"/>
+
+                    </f:view>
 
 
-
-            <h:form>
-                <h1><h:outputText value="Consultar solicitudes"/></h1>
-                <h:commandButton action="#{clienteControlador.estado()}" value="consultar" />
-            </h:form>
-        </f:view>
+                </div>
 
 
+            </f:view>
+
+        </c:if>
+        <c:if test="#{clienteControlador.consultarEstado() eq false}">
+
+            <div id="form"> 
+
+                <f:view locale="#{sessionController.languageSelected}">
+                    <h:form>
+                        <h:outputLabel value="Usuario, usted tiene un cilindro agendado, en los proximos dias se le informara por correo la fecha de entrega"/>
+                        <h:outputLabel value="¿Que desea hacer?"/>
+                        <h:commandLink action="#{solicitudControlador.cancelarSolicitud()}" value="Cancelar solicitud"/>
+                    </h:form>
+                </f:view>
+
+
+            </div>
+
+
+        </c:if>
     </h:body>
 </html>
 
