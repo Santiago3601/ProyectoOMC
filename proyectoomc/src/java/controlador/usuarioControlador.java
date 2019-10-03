@@ -121,8 +121,9 @@ public class usuarioControlador implements Serializable {
     }
 
     public String registrarUsuarioIndex() throws UnsupportedEncodingException {
-        usuarioLogueado = usuarioFacade.validar(usuario);
-        if (usuarioLogueado == null) {
+        boolean flag; 
+        flag = usuarioFacade.validar(usuario);
+        if (flag == false) {
             usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
             usuario.setRolidRol(rolFacade.find(2));
             Mailer.sendConfirmation(usuario);
@@ -275,5 +276,8 @@ public class usuarioControlador implements Serializable {
         for (Usuario usuario1 : usuarioFacade.findAll()) {
             Mailer.mantenimiento2(usuario1);
         }
+    }
+    public String redireccionar(){
+        return "../recuperar_contraseña";
     }
 }

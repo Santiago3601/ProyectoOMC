@@ -15,25 +15,30 @@
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
                 <a href="../faces/index.xhtml"  data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Regresar a la pagina de inicio"><i class="fas fa-home" ></i></a>
-                <img src="../img/logo_col.png" alt=""/>
-                <div>
-                    <div id="text" >
-                        <h:outputLabel value="El usuario que esta intentado registrar ya se encuentra registrado"/>
-                    </div>
-                    <div id="text2" >
-                        <h:outputLabel value="¿Problemas para ingresar?"/>
-                    </div>
-                    <div id="text3" >
-                        <a href="../recuperar_contraseña.xhtml" >Recuperar Contraseña</a>
 
-                    </div>
+                <img src="../img/logo_col.png" alt="" style="     height: 80px;
+                     width: auto;
+                     position: absolute;"/>
+                <div>
+                    <h:form>
+                        <div id="text" >
+                            <h:outputLabel value="#{msjConfirm.usuRegistrado}"/>
+                        </div>
+                        <div id="text2" >
+                            <h:outputLabel value="#{msjConfirm.problems}"/>
+                        </div>
+                        <div id="text3" >
+                            <a href="../recuperar_contraseña.xhtml" >#{msjConfirm.restore_password}</a>
+                        </div>
+                    </h:form>
                 </div>
+                <h:form>
+                    <h:commandLink action="#{sessionController.cambiarIdioma(sessionController.languagueToChange)}">
+                        <i class="fas fa-globe-americas"></i>
+                    </h:commandLink>
+                </h:form>
                 <style>
-                    img{
-                        height: 80px;
-                        width: auto;
-                        position: absolute;
-                    }
+
                     #text{
                         margin-top: 150px;
                     }
@@ -45,14 +50,20 @@
                     }
                     .fa-home:before{
                         font-size: 23px;
+                        color: #557c71;
+                    }
+                    .fa-globe-americas:before{
+                        font-size: 23px;
+                        color: #557c71;
+
                     }
                 </style>
             </f:view>
 
         </div>
-        <script>  
+        <script>
             $(function () {
-            $('[data-toggle="popover"]').popover()
+                $('[data-toggle="popover"]').popover()
             })
         </script>
         <script scr="../js/popper.min.js"></script>
