@@ -109,30 +109,20 @@
             <base-name>language.mantenimiento</base-name>
             <var>msjsmantenimiento</var>
         </resource-bundle>
-        
-        
-        
+
         <resource-bundle>
             <base-name>language.mantenimientoCilindro</base-name>
             <var>msjsmantenimientoci</var>
-        </resource-bundle>
-        
-        
+        </resource-bundle>  
         
         <resource-bundle>
             <base-name>language.actagend</base-name>
             <var>msjsacta</var>
         </resource-bundle>
-        
-       
         <resource-bundle>
             <base-name>language.BreadCrumbMant</base-name>
             <var>msjBreadCrumbMant</var>
         </resource-bundle>
-       
-
-
-
         <resource-bundle>
             <base-name>languague.ActualizarCilindro_es</base-name>
             <var>mjsListaCilindro</var>
@@ -146,6 +136,22 @@
         <resource-bundle>
             <base-name>languague.ActualizarMantenimientoCilindro</base-name>
             <var>msjListaMantenimientoCilindro</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>language.ListaAgenda</base-name>
+            <var>msjListaAgenda</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>language.ListaCilindro</base-name>
+            <var>msjListaCilindro</var>
+        </resource-bundle>
+         <resource-bundle>
+            <base-name>language.ListaMantenimiento</base-name>
+            <var>msjListaMantenimientoA</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>language.ListaMantenimientocilindroc</base-name>
+            <var>msjListaMantenimientoc</var>
         </resource-bundle>
         <resource-bundle>
             <base-name>language.CrearAlquiler</base-name>

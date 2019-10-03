@@ -57,8 +57,8 @@
                         <f:facet name="header">
                             <h:outputText value="Acciones"/>
                         </f:facet>
-                        <h:commandLink value="Eliminar" action="#{mantenimientoCilindroControlador.eliminarMantenimientoCilindro(item)}" onclick="return confirm('Estas seguro?')"></h:commandLink>
-                        <h:commandLink value="Editar" action="#{mantenimientoCilindroControlador.pre_actualizarMantenimientoCilindro(item)}" onclick="return confirm('Estas seguro?')"></h:commandLink>
+                        <h:commandLink action="#{mantenimientoCilindroControlador.eliminarMantenimientoCilindro(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                        <h:commandLink  action="#{mantenimientoCilindroControlador.pre_actualizarMantenimientoCilindro(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
 
                     </p:column>
                 </p:dataTable>

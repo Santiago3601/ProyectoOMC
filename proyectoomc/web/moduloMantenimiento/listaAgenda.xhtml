@@ -26,17 +26,17 @@
 
 
             <h:form>
-                <h1><h:outputText value="Lista de agenda"/></h1>
+                <h1><h:outputText value="#{msjListaAgenda.lista}"/></h1>
                 <p:dataTable id="tablaAgenda" value="#{agendaControlador.consultarTodos()}" var="item">
                     <p:column filterBy="#{item.idAgenda}"> 
                         <f:facet name="header">
-                            <h:outputText value="No. Agenda"/>
+                            <h:outputText value="#{msjListaAgenda.lista}"/>
                         </f:facet>
                         <h:outputText value="#{item.idAgenda}"/>
                     </p:column>
                     <p:column filterBy="#{item.fechaProgramada}">
                         <f:facet name="header">
-                            <h:outputText value="Fecha Programada"/>
+                            <h:outputText value="#{msjListaAgenda.fechaProgramada}"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaProgramada}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -44,13 +44,13 @@
                     </p:column>
                     <p:column filterBy="#{item.novedades}">
                         <f:facet name="header">
-                            <h:outputText value="Novedades"/>
+                            <h:outputText value="#{msjListaAgenda.novedades}"/>
                         </f:facet>
                         <h:outputText value="#{item.novedades}"/>
                     </p:column>
                     <p:column filterBy="#{item.empleadoIdEmpleado}">
                         <f:facet name="header">
-                            <h:outputText value="No. Empleado"/>
+                            <h:outputText value="#{msjListaAgenda.noEmpleado}"/>
                         </f:facet>
                         <h:outputText value="#{item.empleadoIdEmpleado.idEmpleado}"/>
                     </p:column>

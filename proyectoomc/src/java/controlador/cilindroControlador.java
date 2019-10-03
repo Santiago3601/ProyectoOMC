@@ -6,7 +6,9 @@
 package controlador;
 
 import entidades.Cilindro;
+import entidades.EstadoMantenimiento;
 import facade.CilindroFacade;
+import facade.EstadoMantenimientoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -28,8 +30,11 @@ public class cilindroControlador implements Serializable {
     @EJB
     private CilindroFacade cilindroFacade;
     Cilindro cilindro;
-    
-        @PostConstruct
+    @EJB
+    private EstadoMantenimientoFacade estadoMantenimientoFacade;
+    EstadoMantenimiento estadoMantenimiento;
+
+    @PostConstruct
     public void init() {
         cilindro = new Cilindro();
     }
@@ -40,19 +45,26 @@ public class cilindroControlador implements Serializable {
 
     public void setCilindro(Cilindro cilindro) {
         this.cilindro = cilindro;
+
     }
 
-    
-    
+    public EstadoMantenimiento getEstadoMantenimiento() {
+        return estadoMantenimiento;
+    }
+
+    public void setEstadoMantenimiento(EstadoMantenimiento estadoMantenimiento) {
+        this.estadoMantenimiento = estadoMantenimiento;
+    }
+
     //METODOS
-    public String registrarCilindro(){
-        
+    public String registrarCilindro() {
+
         cilindroFacade.create(cilindro);
         cilindro = new Cilindro();
         return "listaCilindro";
-        
+
     }
-    
+
     public List<Cilindro> consultarTodos() {
         return cilindroFacade.findAll();
     }
@@ -67,18 +79,24 @@ public class cilindroControlador implements Serializable {
         return "listarCilindro";
     }
 
-    
     public String preActualizarCilindro(Cilindro cilindroAct) {
-       cilindro = cilindroAct;
+        cilindro = cilindroAct;
         return "editarCilindro";
 
     }
-     public String actualizarCilindro(){
+
+    public String actualizarCilindro() {
         cilindroFacade.edit(cilindro);
         cilindro = new Cilindro();
         return "listaCilindro";
-    
-    
-}
-}
+    }
 
+    public String cambiarEstado(Cilindro ci) {
+        this.cilindro = ci;
+        this.estadoMantenimiento.setIdEstado(2);
+        this.cilindroFacade.edit(getCilindro());
+        estadoMantenimiento = new EstadoMantenimiento();
+        cilindro = new Cilindro();
+        return "listaCilindro";
+    }
+}

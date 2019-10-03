@@ -23,17 +23,17 @@
         <f:view locale="#{sessionController.languageSelected}">
 
             <h:form>
-                <h1><h:outputText value="Lista mantenimiento"/></h1>
+                <h1><h:outputText value="#{msjListaMantenimientoA.listaMantenimiento}"/></h1>
                 <p:dataTable id="tablaMantenimiento" value="#{mantenimientoControlador.consultarTodos()}" var="item">
                     <p:column filterBy="#{item.idMantenimiento}">
                         <f:facet name="header">
-                            <h:outputText value="IdMantenimiento"/>
+                            <h:outputText value="#{msjListaMantenimientoA.IdMantenimiento}"/>
                         </f:facet>
                         <h:outputText value="#{item.idMantenimiento}"/>
                     </p:column>
                     <p:column filterBy="#{item.fechaInicioMantenimiento}">
                         <f:facet name="header">
-                            <h:outputText value="Fecha Inicio Mantenimiento"/>
+                            <h:outputText value="#{msjListaMantenimientoA.fechaInicio}"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaInicioMantenimiento}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -41,7 +41,7 @@
                     </p:column>
                     <p:column filterBy="#{item.fechaFinalMantenimiento}">
                         <f:facet name="header">
-                            <h:outputText value="Fecha Final Mantenimiento"/>
+                            <h:outputText value="#{msjListaMantenimientoA.fechaFinal}"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaFinalMantenimiento}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -49,16 +49,16 @@
                     </p:column>
                     <p:column filterBy="#{item.agendaIdAgenda}" >
                         <f:facet name="header">
-                            <h:outputText value="AgendaIdAgenda"/>
+                            <h:outputText value="agenda"/>
                         </f:facet>
                         <h:outputText value="#{item.agendaIdAgenda}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Acciones"/>
+                            <h:outputText value="#{msjListaMantenimientoA.acciones}"/>
                         </f:facet>
-                        <h:commandLink value="Eliminar" action="#{mantenimientoControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"></h:commandLink>
-                        <h:commandLink value="Editar" action="#{mantenimientoControlador.pre_actualizar(item)}" onclick="return confirm('Estas seguro?')"></h:commandLink>
+                        <h:commandLink  action="#{mantenimientoControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                        <h:commandLink  action="#{mantenimientoControlador.pre_actualizar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
 
                     </p:column>
                 </p:dataTable>
