@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -30,17 +31,17 @@
                     <h1><h:outputText value="#{msjCrearSoli.h1TxtTitle}"/></h1>
                     <h:panelGrid columns="2">
                         <h:outputLabel value="#{msjCrearSoli.labelTxtID}" for="idSolicitud" />
-                        <h:inputText id="idSolicitud" value="#{solicitudControlador.solicitud.idSolicitud}" title="IdSolicitud" required="true" requiredMessage="The IdSolicitud field is required."/>
+                        <h:inputText ps:class="form-control"  id="idSolicitud" value="#{solicitudControlador.solicitud.idSolicitud}" title="IdSolicitud" required="true" requiredMessage="The IdSolicitud field is required."/>
                         <h:outputLabel value="#{msjCrearSoli.labelTxtCilynderSize}" for="tamanioCilindro" />
-                        <h:inputText id="tamanioCilindro" value="#{solicitudControlador.solicitud.tamanioCilindro}" title="TamanioCilindro" required="true" requiredMessage="The TamanioCilindro field is required."/>
+                        <h:inputText ps:class="form-control"  id="tamanioCilindro" value="#{solicitudControlador.solicitud.tamanioCilindro}" title="TamanioCilindro" required="true" requiredMessage="The TamanioCilindro field is required."/>
                         <h:outputLabel value="#{msjCrearSoli.labelTxtCustomerName}" for="clienteIdCliente" />
-                        <h:selectOneMenu id="clienteIdCliente" value="#{solicitudControlador.cliente.idCliente}" title="ClienteIdCliente" required="true" requiredMessage="The ClienteIdCliente field is required.">
+                        <h:selectOneMenu  ps:class="form-control" id="clienteIdCliente" value="#{solicitudControlador.cliente.idCliente}" title="ClienteIdCliente" required="true" requiredMessage="The ClienteIdCliente field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{clienteControlador.consultarTodos()}" var="cli" itemValue="#{cli.idCliente}" itemLabel="#{cli.usuarioId.nombre} #{cli.usuarioId.apellido}"/>
                         </h:selectOneMenu>
                         <h:outputLabel value="#{msjCrearSoli.labelTxtFormula}" for="formula" />
-                        Archivo: <br/><h:inputFile value="#{solicitudControlador.file}"/>
-                        <br/><h:commandButton value="Subir Archivo" action="#{solicitudControlador.upload()}"/>
+                        <h:inputFile ps:class="form-control"  value="#{solicitudControlador.file}"/>
+                        <h:commandButton value="Subir Archivo" action="#{solicitudControlador.upload()}"/>
 
                     </h:panelGrid>
                 </h:form>

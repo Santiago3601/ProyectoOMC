@@ -27,21 +27,18 @@
 
                 <h:form>
                     <h1><h:outputText value="#{msjCrearCli.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="#{msjCrearCli.labelTxtID}" for="idCliente" />
-                        <h:inputText id="idCliente" value="#{clienteControlador.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The IdCliente field is required."/>
+                        
                         <h:outputLabel value="#{msjCrearCli.labelTxtState}" for="estadoIdEstado" />
-                        <h:selectOneMenu id="estadoIdEstado" value="#{clienteControlador.estadoCliente.idEstado}" title="EstadoIdEstado" required="true" requiredMessage="The EstadoIdEstado field is required.">
+                        <h:selectOneMenu  ps:class="form-control" id="estadoIdEstado" value="#{clienteControlador.estadoCliente.idEstado}" title="EstadoIdEstado" required="true" requiredMessage="The EstadoIdEstado field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{estadoClienteControlador.consultarTodos()}" var="es" itemValue="#{es.idEstado}" itemLabel="#{es.estado}"/>
                         </h:selectOneMenu>
                         <h:outputLabel value="#{msjCrearCli.labelTxtUserName}" for="usuarioId" />
-                        <h:selectOneMenu id="usuarioId" value="#{clienteControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
+                        <h:selectOneMenu  ps:class="form-control" id="usuarioId" value="#{clienteControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="us" itemValue="#{us.id}" itemLabel="#{us.nombre} #{us.apellido} : #{us.rolidRol.rol}"/>
                         </h:selectOneMenu>
-                    </h:panelGrid>
-                    <h:commandButton value="#{msjCrearCli.btnRegister}" action="#{clienteControlador.registrarCliente()}"></h:commandButton>
+                    <h:commandButton ps:id="boton" class="btn btn-primary "  value="#{msjCrearCli.btnRegister}" action="#{clienteControlador.registrarCliente()}"></h:commandButton>
                 </h:form>
             </f:view>
 

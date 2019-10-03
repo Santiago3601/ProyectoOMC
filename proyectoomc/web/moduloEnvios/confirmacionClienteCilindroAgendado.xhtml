@@ -23,9 +23,15 @@
 
             <f:view locale="#{sessionController.languageSelected}">
                 <h:form>
-                    <h:outputLabel value="Usuario, usted tiene un cilindro agendado, en los proximos dias se le informara por correo la fecha de entrega"/>
+                    <h1><h:outputLabel value="Usuario, usted tiene un cilindro agendado, en los proximos dias se le informara por correo la fecha de entrega"/></h1>
+                    <br></br>
                     <h:outputLabel value="¿Que desea hacer?"/>
+                                       <br></br>
+
                     <h:commandLink action="#{solicitudControlador.cancelarSolicitud()}" value="Cancelar solicitud"/>
+                                      <br></br>
+
+                    <h:commandLink action="#{solicitudControlador.redireccionar()}" value="Volver al inicio"/>
                 </h:form>
             </f:view>
 

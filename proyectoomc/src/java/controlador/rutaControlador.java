@@ -82,6 +82,7 @@ public class rutaControlador implements Serializable {
     }
 
     public String registrarRuta() {
+        ruta.setIdRuta(1);
         ruta.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
         ruta.setVehiculoIdVehiculo(vehiculoFacade.find(vehiculo.getIdVehiculo()));
         rutaFacade.create(ruta);

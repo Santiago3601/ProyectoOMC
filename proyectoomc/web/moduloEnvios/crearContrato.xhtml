@@ -21,35 +21,35 @@
         </nav>
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
-
-
-
                 <h:form>
                     <h1><h:outputText value="#{msjCrearCon.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="#{msjCrearCon.labelTxtID}" for="idContrato" />
-                        <h:inputText id="idContrato" value="#{contratoContolador.contrato.idContrato}" title="IdContrato" required="true" requiredMessage="The IdContrato field is required."/>
-                        <h:outputLabel value="#{msjCrearCon.labelTxtContractType}" for="tipoContrato" />
+                   
+                    <h:outputLabel value="#{msjCrearCon.labelTxtContractType}" for="tipoContrato" />
+                    <h:inputText ps:class="form-control"  id="tipoContrato" value="#{contratoControlador.contrato.tipoContrato}" title="TipoContrato" required="true" requiredMessage="The TipoContrato field is required."/>
+                    <h:outputLabel value="#{msjCrearCon.labelTxtStartDate}" for="fechaInicioContrato" />
+                    <h:inputText ps:id="fecha1" ps:type="date" ps:class="form-control"  id="fechaInicioContrato" value="#{contratoControlador.contrato.fechaInicioContrato}" title="FechaInicioContrato" required="true" requiredMessage="The FechaInicioContrato field is required.">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:inputText>
+                    <h:outputLabel value="#{msjCrearCon.labelTxtFinishDate}" for="fechaFinalContrato" />
+                    <h:inputText ps:id="fecha2" ps:type="date" ps:class="form-control"  id="fechaFinalContrato" value="#{contratoControlador.contrato.fechaFinalContrato}" title="FechaFinalContrato" required="true" requiredMessage="The FechaFinalContrato field is required.">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:inputText>
 
-                        <h:inputText id="tipoContrato" value="#{contratoContolador.contrato.tipoContrato}" title="TipoContrato" required="true" requiredMessage="The TipoContrato field is required."/>
-                        <h:outputLabel value="#{msjCrearCon.labelTxtRentID}" for="alquilerIdAlquiler" />
-                        <h:selectOneMenu id="alquilerIdAlquiler" value="#{contratoContolador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="alq" itemValue="#{alq.idAlquiler}" itemLabel="#{alq.idAlquiler}"/>
-                        </h:selectOneMenu>
-                        <h:outputLabel value="#{msjCrearCon.labelTxtStartDate}" for="fechaInicioContrato" />
-                        <h:inputText id="fechaInicioContrato" ps:placeholder="#{msjCrearCon.inputTxtPlaceHolderDate}" value="#{contratoContolador.contrato.fechaInicioContrato}" title="FechaInicioContrato" required="true" requiredMessage="The FechaInicioContrato field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:inputText>
-                        <h:outputLabel value="#{msjCrearCon.labelTxtFinishDate}" for="fechaFinalContrato" />
-                        <h:inputText id="fechaFinalContrato" ps:placeholder="#{msjCrearCon.inputTxtPlaceHolderDate}" value="#{contratoContolador.contrato.fechaFinalContrato}" title="FechaFinalContrato" required="true" requiredMessage="The FechaFinalContrato field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:inputText>
-                    </h:panelGrid>
-                    <h:commandButton value="#{msjCrearCon.btnRegister}" action="#{contratoControlador.registrarContrato()}"> </h:commandButton>  
+                    <h:outputLabel value="#{msjCrearCon.labelTxtRentID}" for="alquilerIdAlquiler" />
+                    <div class="form-group">
+                        <div class="form-row">
+                            <h:selectOneMenu ps:class="form-control" id="alquilerIdAlquiler" value="#{contratoControlador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.idAlquiler}"/>
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                    <h:commandButton ps:id="boton" class="btn btn-primary "  value="#{msjCrearCon.btnRegister}" action="#{contratoControlador.registrarContrato()}"> </h:commandButton>  
+                    <script>fecha1.min = new Date().toISOString().split("T")[0];</script>
+                    <script>fecha2.min = new Date().toISOString().split("T")[0];</script>
+
                 </h:form>
             </f:view>
-
         </div>
     </h:body>
 </html>

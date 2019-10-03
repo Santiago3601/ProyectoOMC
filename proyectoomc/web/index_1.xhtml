@@ -175,10 +175,10 @@
                                         <div class="col-6">
                                             <h:selectOneMenu style="height: 38px;" id="tpId" class="form-control" value="#{usuarioControlador.tipoId.idTipoID}" title="TpId" ps:required="true" requiredMessage="The TpId field is required.">
                                                 <!-- TODO: update below reference to list of available items-->
+                                                <f:selectItem itemLabel="Please select one option" itemValue="" />
                                                 <f:selectItems value="#{tipoIdControlador.consultarTodos()}" var="tp" itemValue="#{tp.idTipoID}" itemLabel="#{tp.tipoID}"/>
+
                                             </h:selectOneMenu>
-
-
                                         </div>
                                         <div class="col-6"> 
                                             <h:inputText ps:minlength="5" ps:placeholder="Id" ps:id="uintTextBox" id="id" class="form-control" value="#{usuarioControlador.usuario.id}" title="Id" ps:required="true" requiredMessage="The Id field is required."/>
@@ -229,6 +229,7 @@
 
                                     <div class="form-row">
                                         <h:selectOneMenu  class="form-control" id="eps"  value="#{usuarioControlador.usuario.eps}" title="Eps" ps:required="true" >
+                                            <f:selectItem itemLabel="Please select one option" itemValue="" />
                                             <f:selectItem itemLabel="Aliansalud EPS" itemValue="Aliansalud EPS" />
                                             <f:selectItem itemLabel="Asociación Indígena del Cauca - A.I.C." itemValue="Asociación Indígena del Cauca - A.I.C." />
                                             <f:selectItem itemLabel="Asociación Mutual Barrios Unidos de Quibdó AMBUQ" itemValue="Asociación Mutual Barrios Unidos de Quibdó AMBUQ" />

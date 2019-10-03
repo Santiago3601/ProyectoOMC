@@ -12,9 +12,15 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Consultar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Cliente}</li>
+            </ol>
+        </nav>
         <div id="form"> 
-         <f:view locale="#{sessionController.languageSelected}">
+            <f:view locale="#{sessionController.languageSelected}">
 
                 <h:form>
                     <h1><h:outputText value="#{msjListaClientes.lista}"/></h1>
@@ -34,7 +40,7 @@
                         </p:column>
                         <p:column filterBy="#{cli.estadoIdEstado.estado}">
                             <f:facet name="header">
-                                <h:outputText value="#{msjListaClientes}"/>
+                                <h:outputText value="#{msjListaClientes.estado}"/>
                             </f:facet>
                             <h:outputText value="#{cli.estadoIdEstado.estado}"/>
                         </p:column>

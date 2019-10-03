@@ -30,11 +30,9 @@ public class vehiculoControlador implements Serializable {
     private VehiculoFacade vehiculoFacade;
     Vehiculo vehiculo = new Vehiculo();
 
-
     public vehiculoControlador() {
     }
 
-    
     private Part file;
     private String nombre;
     private String pathReal;
@@ -62,8 +60,7 @@ public class vehiculoControlador implements Serializable {
     public void setPathReal(String pathReal) {
         this.pathReal = pathReal;
     }
-    
-    
+
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
@@ -71,7 +68,7 @@ public class vehiculoControlador implements Serializable {
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
-    
+
     //METODOS
     public List<Vehiculo> consultarTodos() {
         return vehiculoFacade.findAll();
@@ -81,33 +78,29 @@ public class vehiculoControlador implements Serializable {
         vehiculo = vehiculoFacade.find(vehiculo.getIdVehiculo());
     }
 
-    
-        public void eliminarVehiculo(Vehiculo u){
+    public void eliminarVehiculo(Vehiculo u) {
         this.vehiculoFacade.remove(u);
     }
 
-    
     public String preActualizarVehiculo(Vehiculo vehiculoAct) {
-       vehiculo = vehiculoAct;
-       return "editarVehiculo";
-   }
-
-   public String actualizarVehiculo() {
-       
-       vehiculoFacade.edit(vehiculo);
-       vehiculo = new Vehiculo();
-       return "listaVehiculos";
-   }
-    
-    public String registrarVehiculo(){
-     
-       vehiculoFacade.create(vehiculo);
-       vehiculo = new Vehiculo();
-              return "listaVehiculos";
+        vehiculo = vehiculoAct;
+        return "editarVehiculo";
     }
-    
-    
-        public String upload(String tabla) {
+
+    public String actualizarVehiculo() {
+
+        vehiculoFacade.edit(vehiculo);
+        vehiculo = new Vehiculo();
+        return "listaVehiculos";
+    }
+
+    public String registrarVehiculo() {
+        vehiculoFacade.create(vehiculo);
+        vehiculo = new Vehiculo();
+        return "listaVehiculos";
+    }
+
+    public String upload() {
         String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");
         path = path.substring(0, path.indexOf("\\build"));
         path = path + "\\web\\Archivos\\";
@@ -127,7 +120,7 @@ public class vehiculoControlador implements Serializable {
 
             path = path.replace("\\", "\\\\");
 
-            vehiculoFacade.cargaArchivos(path, tabla);
+            vehiculoFacade.cargaArchivos(path, "vehiculo");
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -32,7 +32,7 @@ public class VehiculoFacade extends AbstractFacade<Vehiculo> {
         public String cargaArchivos(String archivo, String tabla) {
         String resultado = "";
         try {
-            Query query = em.createNativeQuery("LOAD DATA INFILE '"+archivo+"' IGNORE INTO TABLE '"+tabla+"' FIELDS TERMINATED BY ';' LINES TERMINATED BY '\\r\\n'");
+            Query query = em.createNativeQuery("LOAD DATA INFILE '" + archivo + "' IGNORE INTO TABLE '"+ tabla +"' FIELDS TERMINATED BY ',' ENCLOSED BY '\\\"' ESCAPED BY '\\\\' LINES TERMINATED BY '\\r\\n'");
             resultado = Integer.toString(query.executeUpdate());
 
             return resultado;
@@ -41,6 +41,6 @@ public class VehiculoFacade extends AbstractFacade<Vehiculo> {
             System.out.println("Error: " + e);
 
         }
-        return "resultado";
+        return resultado;
         }
 }  

@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -25,19 +26,18 @@
                 <h:form>
                     <h1><h:outputText value="#{msjCrearRut.h1TxtTitle}"/></h1>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="#{msjCrearRut.labelTxtID}" for="idRuta" />
-                        <h:inputText id="idRuta" value="#{rutaControlador.ruta.idRuta}" title="IdRuta" required="true" requiredMessage="The IdRuta field is required."/>
+                      
                         <h:outputLabel value="#{msjCrearRut.labelTxtRouteAddress}" for="direccion" />
-                        <h:inputText id="direccion" value="#{rutaControlador.ruta.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
+                        <h:inputText ps:class="form-control"  id="direccion" value="#{rutaControlador.ruta.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
                         <h:outputLabel value="#{msjCrearRut.labelTxtDeliveryAddresses}" for="planilla" />
-                        <h:inputText id="planilla" value="#{rutaControlador.ruta.planilla}" title="Planilla" required="true" requiredMessage="The Planilla field is required."/>
+                        <h:inputText ps:class="form-control"  id="planilla" value="#{rutaControlador.ruta.planilla}" title="Planilla" required="true" requiredMessage="The Planilla field is required."/>
                         <h:outputLabel value="#{msjCrearRut.labelTxtEmployee}" for="empleadoIdEmpleado" />
-                        <h:selectOneMenu id="empleadoIdEmpleado" value="#{rutaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                        <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{rutaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="empleado" itemValue="#{empleado.idEmpleado}" itemLabel="#{empleado.usuarioId.nombre} #{empleado.usuarioId.apellido}"/>
                         </h:selectOneMenu>
                         <h:outputLabel value="#{msjCrearRut.labelTxtVehicle}" for="vehiculoIdVehiculo" />
-                        <h:selectOneMenu id="vehiculoIdVehiculo" value="#{rutaControlador.vehiculo.idVehiculo}" title="VehiculoIdVehiculo" required="true" requiredMessage="The VehiculoIdVehiculo field is required.">
+                        <h:selectOneMenu ps:class="form-control" id="vehiculoIdVehiculo" value="#{rutaControlador.vehiculo.idVehiculo}" title="VehiculoIdVehiculo" required="true" requiredMessage="The VehiculoIdVehiculo field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" itemValue="#{vehiculo.idVehiculo}" itemLabel="#{vehiculo.matricula}"/>
                         </h:selectOneMenu>

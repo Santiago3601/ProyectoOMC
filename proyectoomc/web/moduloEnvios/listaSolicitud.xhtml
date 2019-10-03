@@ -12,12 +12,19 @@
         <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>  
     </h:head>
     <h:body>
+                        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Consultar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Solicitud}</li>
+            </ol>
+        </nav>
       <f:view locale="#{sessionController.languageSelected}">
 
 
 
             <h:form>
-                <h1><h:outputText value="Lista de solicitudes pendientes"/></h1>
+                <h1><h:outputText value="#{msjListaSolicitud.title}"/></h1>
                 <p:dataTable id="tablaSolicitudes" value="#{solicitudControlador.consultarTodos()}" var="solicitud">
                     <p:column filterBy="#{solicitud.idSolicitud}">
                         <f:facet name="header">
@@ -27,25 +34,25 @@
                     </p:column>
                     <p:column filterBy="#{solicitud.tamanioCilindro}">
                         <f:facet name="header">
-                            <h:outputText value="Tamaño Cilindro"/>
+                            <h:outputText value="#{msjListaSolicitud.size}"/>
                         </f:facet>
                         <h:outputText value="#{solicitud.tamanioCilindro}"/>
                     </p:column>
                     <p:column filterBy="#{solicitud.clienteIdCliente.usuarioId.nombre} #{solicitud.clienteIdCliente.usuarioId.apellido}">
                         <f:facet name="header">
-                            <h:outputText value="Cliente"/>
+                            <h:outputText value="#{msjListaSolicitud.cusName}"/>
                         </f:facet>
                         <h:outputText value="#{solicitud.clienteIdCliente.usuarioId.nombre} #{solicitud.clienteIdCliente.usuarioId.apellido}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Formula"/>
+                            <h:outputText value="#{msjListaSolicitud.formula}"/>
                         </f:facet>
                         <a href="#{solicitud.formula}" ><i class="far fa-file-download"></i></a>
                     </p:column>
                        <p:column exportable="false">
                                 <f:facet name="header">
-                                    <h:outputText value="Accion"/>
+                                    <h:outputText value="#{msjListaSolicitud.Accion}"/>
                                 </f:facet>
                            <h:commandLink  action="#{solicitudControlador.eliminarSolicitud(solicitud)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                            <h:commandLink  action="#{solicitudControlador.preActualizarSolicitud(solicitud)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>

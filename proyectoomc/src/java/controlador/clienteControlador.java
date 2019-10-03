@@ -81,7 +81,6 @@ public class clienteControlador implements Serializable {
     }
 
     public String registrarCliente() {
-        //cliente.setUsuarioId(usuarioFacade.find(usuario.getId()));
         cliente.setUsuarioId(usuarioFacade.find(usuario.getId()));
         cliente.setEstadoIdEstado(estadoClienteFacade.find(estadoCliente.getIdEstado()));
         clienteFacade.create(cliente);

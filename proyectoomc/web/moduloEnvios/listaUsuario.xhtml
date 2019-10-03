@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,12 +16,19 @@
     </h:head>
 
     <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Consultar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Usuario}</li>
+            </ol>
+        </nav>
         <div id="form"> 
-     <f:view locale="#{sessionController.languageSelected}">
+            <f:view locale="#{sessionController.languageSelected}">
 
 
                 <h:form>
-                    <h1><h:outputText value="Lista de usuarios"/></h1>
+                    <h1><h:outputText value="#{msjListaVehicluos.title}"/></h1>
                     <p:dataTable id="tabla" value="#{usuarioControlador.consultarTodos()}" var="usuario" resizableColumns="true" liveResize="true"> >
                         <p:column filterBy="#{usuario.id}"     style="width: 74.004px;">
                             <f:facet name="header">
@@ -31,43 +38,43 @@
                         </p:column>
                         <p:column filterBy="#{usuario.tpId}" style="    width: 132px;">
                             <f:facet name="header">
-                                <h:outputText value="Tipo id"/>
+                                <h:outputText value="#{msjListaVehicluos.type}"/>
                             </f:facet>
                             <h:outputText value="#{usuario.tpId.tipoID}"/>
                         </p:column>
                         <p:column filterBy="#{usuario.nombre}" style="width: 130px;">
                             <f:facet name="header">
-                                <h:outputText value="Nombre"/>
+                                <h:outputText value="#{msjListaVehicluos.Name}"/>
                             </f:facet>
                             <h:outputText value="#{usuario.nombre}"/>
                         </p:column>
                         <p:column filterBy="#{usuario.apellido}" style="width: 130px;">
                             <f:facet name="header">
-                                <h:outputText value="Apellido"/>
+                                <h:outputText value="#{msjListaVehicluos.Last_name}"/>
                             </f:facet>
                             <h:outputText value="#{usuario.apellido}"/>
                         </p:column>
                         <p:column filterBy="#{usuario.direccion}" style="width: 124px;">
                             <f:facet name="header">
-                                <h:outputText value="Direccion"/>
+                                <h:outputText value="#{msjListaVehicluos.Address}"/>
                             </f:facet>
                             <h:outputText value="#{usuario.direccion}"/>
                         </p:column>
                         <p:column filterBy="#{usuario.correo}">
                             <f:facet name="header">
-                                <h:outputText value="Correo" style="width: 180px;"/>
+                                <h:outputText value="#{msjListaVehicluos.mail}" style="width: 180px;"/>
                             </f:facet>
                             <h:outputText value="#{usuario.correo}"/>
                         </p:column>
                         <p:column filterBy="#{usuario.contrasenia}" style="width: 113px;">
                             <f:facet name="header">
-                                <h:outputText value="Contraseña"/>
+                                <h:outputText value="#{msjListaVehicluos.password}"/>
                             </f:facet>
                             <h:outputText value="#{usuario.contrasenia}"/>
                         </p:column>
                         <p:column filterBy="#{usuario.telefono}" style="width: 113px;">
                             <f:facet name="header">
-                                <h:outputText value="Telefono"/>
+                                <h:outputText value="#{msjListaVehicluos.telefono}"/>
                             </f:facet>
                             <h:outputText value="#{usuario.telefono}"/>
                         </p:column>
@@ -79,7 +86,7 @@
                         </p:column>
                         <p:column filterBy="#{usuario.fechaDeNacimiento}" style="width: 163px;">
                             <f:facet name="header">
-                                <h:outputText value="FechaDeNacimiento"/>
+                                <h:outputText value="#{msjListaVehicluos.Birth}"/>
                             </f:facet>
                             <h:outputText value="#{usuario.fechaDeNacimiento}">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -87,7 +94,7 @@
                         </p:column>
                         <p:column filterBy="#{usuario.edad}" style="width: 70px;">
                             <f:facet name="header">
-                                <h:outputText value="Edad"/>
+                                <h:outputText value="#{msjListaVehicluos.edad}"/>
                             </f:facet>
                             <h:outputText value="#{usuario.edad}"/>
                         </p:column>
@@ -99,7 +106,7 @@
                         </p:column>
                         <p:column exportable="false" style="width: 97px;">
                             <f:facet name="header">
-                                <h:outputText value="Accion"/>
+                                <h:outputText value="#{msjListaVehicluos.Action}"/>
                             </f:facet>
                             <h:commandLink  action="#{usuarioControlador.eliminarUsuario(usuario)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                             <h:commandLink  action="#{usuarioControlador.preActualizarUsuario(usuario)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>

@@ -12,19 +12,25 @@
         <title>OMC</title>
     </h:head>
     <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Consultar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Ruta}</li>
+            </ol>
+        </nav>
 
-                
         <div>
 
             <div id="content" class="center_content">
 
 
-     <f:view locale="#{sessionController.languageSelected}">
+                <f:view locale="#{sessionController.languageSelected}">
 
 
 
                     <h:form>
-                        <h1><h:outputText value="Lista de rutas"/></h1>
+                        <h1><h:outputText value="#{msjListaRuta.title}"/></h1>
                         <p:dataTable id="tablaRuta" value="#{rutaControlador.consultarTodos()}" var="ruta" >
                             <p:column filterBy="#{ruta.idRuta}">
                                 <f:facet name="header">
@@ -34,19 +40,19 @@
                             </p:column>
                             <p:column filterBy="#{ruta.direccion}">
                                 <f:facet name="header">
-                                    <h:outputText value="Dirección"/>
+                                    <h:outputText value="#{msjListaRuta.Delivery_address}"/>
                                 </f:facet>
                                 <h:outputText value="#{ruta.direccion}"/>
                             </p:column>
                             <p:column filterBy="#{ruta.planilla}">
                                 <f:facet name="header">
-                                    <h:outputText value="Planilla"/>
+                                    <h:outputText value="#{msjListaRuta.planilla}"/>
                                 </f:facet>
                                 <h:outputText value="#{ruta.planilla}"/>
                             </p:column>
                             <p:column filterBy="#{ruta.vehiculoIdVehiculo.matricula}">
                                 <f:facet name="header">
-                                    <h:outputText value="Matricula"/>
+                                    <h:outputText value="#{msjListaRuta.Matri}"/>
                                 </f:facet>
                                 <h:outputText value="#{ruta.vehiculoIdVehiculo.matricula}"/>
                             </p:column>
@@ -57,10 +63,10 @@
                                 <h:outputText value="#{ruta.empleadoIdEmpleado.usuarioId.nombre} #{ruta.empleadoIdEmpleado.usuarioId.apellido}"/>
                             </p:column>
 
-          
+
                             <p:column exportable="false">
                                 <f:facet name="header">
-                                    <h:outputText value="Accion"/>
+                                    <h:outputText value="#{msjListaRuta.Accion}"/>
                                 </f:facet>
                                 <h:commandLink  action="#{rutaControlador.eliminarRuta(ruta)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                                 <h:commandLink  action="#{rutaControlador.preActualizarRuta(ruta)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>

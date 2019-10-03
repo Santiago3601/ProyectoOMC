@@ -7,87 +7,82 @@
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
-        <link rel="stylesheet" href="../../../css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+        <link rel="stylesheet" href="../../../css/CSS ENVIOS/MODULO-ENVIOS.css"></link>   
+        <link rel="stylesheet" href="../css/prime-styles.css"></link>   
+
 
         <title>OMC</title>
     </h:head>
     <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Consultar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Contrato}</li>
+            </ol>
+        </nav>
+        <div id="form"> 
+            <f:view locale="#{sessionController.languageSelected}">
+                <h:form>
+                    <h1><h:outputText value="#{msjCrearCon.h1TxtTitle}"/></h1>
+                    <p:dataTable value="#{contratoControlador.consultarTodos()}" var="item" >
+                        <p:column filterBy="#{item.idContrato}">
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idContrato}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.tipoContrato}">
+                            <f:facet name="header">
+                                <h:outputText value="#{msjListaContratos.contractTY}"/>
 
-                       
-        <div>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoContrato}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.fechaInicioContrato}">
+                            <f:facet name="header">
+                                <h:outputText value="#{msjListaContratos.StartDate}"/>
 
-            <div id="content" class="center_content">
-
-
-     <f:view locale="#{sessionController.languageSelected}">
-
- 
-
-                    <h:form>
-                        <h1><h:outputText value="#{msjListaContratos.lista}"/></h1>
-                        <p:dataTable id="tablaCon" value="#{contratoContolador.consultarTodos()}" var="con" >
-                            <p:column filterBy="#{con.idContrato}">
-                                <f:facet name="header">
-                                    <h:outputText value="No."/>
-                                </f:facet>
-                                <h:outputText value="#{con.idContrato}"/>
-                            </p:column>
-                            <p:column filterBy="#{con.tipoContrato}">
-                                <f:facet name="header">
-                                    <h:outputText value="#{msjListaContratos.contractTY}"/>
-                                </f:facet>
-                                <h:outputText value="#{con.tipoContrato}"/>
-                            </p:column>
-                            <p:column filterBy="#{con.fechaInicioContrato}">
-                                <f:facet name="header">
-                                    <h:outputText value="#{msjListaContratos.StartDate}"/>
-                                </f:facet>
-                                <h:outputText value="#{con.fechaInicioContrato}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-          
-                            <p:column filterBy="#{con.fechaFinalContrato}">
-                                <f:facet name="header">
-                                    <h:outputText value="#{msjListaContratos.Finish_date}"/>
-                                </f:facet>
-                                <h:outputText value="#{con.fechaFinalContrato}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-          
-                            
-                            <p:column filterBy="#{con.alquilerIdAlquiler.idAlquiler}">
-                                <f:facet name="header">
-                                    <h:outputText value="#{msjListaContratos.Alqu}"/>
-                                </f:facet>
-                                <h:outputText value="#{con.alquilerIdAlquiler.idAlquiler}"/>
-                            </p:column>
-
-                            <p:column exportable="false">
-                                <f:facet name="header">
-                                    <h:outputText value="#{msjListaContratos.Accion}"/>
-                                </f:facet>
-                                <h:commandLink  action="#{contratoContolador.eliminarContrato(con)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
-                                <h:commandLink  action="#{contratoContolador.preActualizarContrato(con)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
-                            </p:column>
-                        </p:dataTable>
-                        <h:commandLink id="excel">
-                            <i class="far fa-file-excel"></i>
-                            <p:dataExporter type="xls" target="tablaCon" fileName="tablaDeContratos" />
-                            <style>
-                                .far{
-                                    padding: 2px;
-                                    font-size: x-large;
-                                }
-                            </style>
-                        </h:commandLink>
-                    </h:form>
-                </f:view>
-
-            </div>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaInicioContrato}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{item.fechaFinalContrato}">
+                            <f:facet name="header">
+                                <h:outputText value="#{msjListaContratos.Finish_date}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFinalContrato}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{item.alquilerIdAlquiler.idAlquiler}">
+                            <f:facet name="header">
+                                <h:outputText value="#{msjListaContratos.Alqu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.alquilerIdAlquiler.idAlquiler}"/>
+                        </p:column>
+                        <p:column exportable="false">
+                            <f:facet name="header">
+                                <h:outputText value="#{msjListaContratos.Accion}"/>
+                            </f:facet>
+                            <h:commandLink  action="#{contratoContolador.eliminarContrato(con)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                            <h:commandLink  action="#{contratoContolador.preActualizarContrato(con)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                        </p:column>
+                    </p:dataTable>
+                    <h:commandLink id="excel">
+                        <i class="far fa-file-excel"></i>
+                        <p:dataExporter type="xls" target="tablaCon" fileName="tablaDeContratos" />
+                        <style>
+                            .far{
+                                padding: 2px;
+                                font-size: x-large;
+                            }
+                        </style>
+                    </h:commandLink>
+                </h:form>
+            </f:view>
         </div>
-
     </h:body>
 </html>
 

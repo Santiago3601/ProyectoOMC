@@ -16,8 +16,9 @@
     <h:body>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registrar solicitud de cilindro</li>
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Crear}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.SolicitudCilindro}</li>
             </ol>
         </nav>
 
@@ -38,12 +39,11 @@
                                 </h:selectOneMenu>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="custom-file">
-                                    <h:outputLabel ps:class="custom-file-label" value="#{msjCrearSoli.labelTxtFormula}" for="formula" />
-                                    <h:inputFile ps:class="custom-file-input" value="#{solicitudControlador.file}" ps:accept=".pdf"/>
-                                </div>
+
+                        <h:outputLabel value="#{msjCrearSoli.labelTxtFormula}" for="formula" />
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <h:inputFile ps:class="form-control" value="#{solicitudControlador.file}" ps:accept=".pdf"/>
                             </div>
                         </div>
                         <h:commandButton ps:id="boton" class="btn btn-primary " value="Subir Archivo" action="#{solicitudControlador.uploadUsuario()}"/>

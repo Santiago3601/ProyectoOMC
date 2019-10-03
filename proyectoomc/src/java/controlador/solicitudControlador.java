@@ -237,4 +237,7 @@ public class solicitudControlador implements Serializable {
         return "confirmacionClienteCilindroCancelado";
     }
 
+    public String redireccionar(){
+        return "paginaDeBienvenidaCliente";
+    }
 }
