@@ -5,6 +5,8 @@
  */
 package entidades;
 
+import java.util.Date;
+
 /**
  *
  * @author SENA
@@ -15,6 +17,8 @@ public class CilindroR {
     private String estado;
     private int tamanio;
     private int lote;
+    private Date fechaDeCreacion;
+    
 
     public int getIdCilindro() {
         return idCilindro;
@@ -48,6 +52,14 @@ public class CilindroR {
 
     public void setLote(int lote) {
         this.lote = lote;
+    }
+
+    public Date getFechaDeCreacion() {
+        return fechaDeCreacion;
+    }
+
+    public void setFechaDeCreacion(Date fechaDeCreacion) {
+        this.fechaDeCreacion = fechaDeCreacion;
     }
     
     

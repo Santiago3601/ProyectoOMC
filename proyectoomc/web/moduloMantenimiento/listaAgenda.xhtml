@@ -13,6 +13,14 @@
     </h:head>
     <h:body>
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumbMant.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.consultar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.agenda}</li>
+            </ol>
+        </nav>
+
         <f:view locale="#{sessionController.languageSelected}">
 
 

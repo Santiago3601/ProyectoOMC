@@ -12,7 +12,15 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-         <f:view locale="#{sessionController.languageSelected}">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumbMant.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.consultar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.mantenimiento}</li>
+            </ol>
+        </nav>
+        <f:view locale="#{sessionController.languageSelected}">
 
             <h:form>
                 <h1><h:outputText value="Lista mantenimiento"/></h1>
@@ -54,16 +62,16 @@
 
                     </p:column>
                 </p:dataTable>
-                  <h:commandLink id="excel">
-                            <i class="far fa-file-excel"></i>
-                            <p:dataExporter type="xls" target="tablaMantenimiento" fileName="tablaMantenimiento" />
-                            <style>
-                                .far{
-                                    padding: 2px;
-                                    font-size: x-large;
-                                }
-                            </style>
-                        </h:commandLink>
+                <h:commandLink id="excel">
+                    <i class="far fa-file-excel"></i>
+                    <p:dataExporter type="xls" target="tablaMantenimiento" fileName="tablaMantenimiento" />
+                    <style>
+                        .far{
+                            padding: 2px;
+                            font-size: x-large;
+                        }
+                    </style>
+                </h:commandLink>
             </h:form>
         </f:view>
     </h:body>

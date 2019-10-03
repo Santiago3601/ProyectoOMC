@@ -7,11 +7,24 @@
 	<field name="tamanio" class="java.lang.Integer"/>
 	<field name="lote" class="java.lang.Integer"/>
 	<field name="idCilindro" class="java.lang.Integer"/>
+	<field name="fechaDeCreacion" class="java.util.Date"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="4" y="0" width="200" height="75" uuid="82458958-7ed5-4a6b-8b78-e36894b0d7ba"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Desktop\\proyecto\\proyectoomc\\proyectoomc\\web\\img\\OMC.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="239" y="19" width="292" height="56" uuid="dab09a12-246f-4e5d-998c-e34f7d91c17b"/>
+				<textElement>
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Reportes cilindros]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
@@ -34,6 +47,10 @@
 				<reportElement x="0" y="2" width="100" height="20" uuid="a4c332ad-5c01-497d-9439-57ae44a7a9ba"/>
 				<text><![CDATA[idCilindro]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="431" y="2" width="100" height="20" uuid="fc3156cc-64d3-4f8c-bd30-5f68e8fa7a10"/>
+				<text><![CDATA[fechaDeCreacion]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -53,6 +70,10 @@
 			<textField>
 				<reportElement x="4" y="33" width="100" height="20" uuid="0e58b10d-0964-45a8-a250-6e6a8847b5dd"/>
 				<textFieldExpression><![CDATA[$F{idCilindro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="413" y="33" width="142" height="20" uuid="7993f2e5-1679-4015-9431-d569f620a2e1"/>
+				<textFieldExpression><![CDATA[$F{fechaDeCreacion}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
