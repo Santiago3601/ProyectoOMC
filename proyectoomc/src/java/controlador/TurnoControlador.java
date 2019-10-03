@@ -94,6 +94,10 @@ public class TurnoControlador implements Serializable {
     
     
     
+    
+    
+    
+    
     public List<Turno> consultarTodos() {
         return turnoFacade.findAll();
     }

@@ -6,13 +6,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pm="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       >
 
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
         <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link> 
-        <title>ActualizarPermisoLaboral</title>
+        <title>Registrar Permiso Laboral</title>
     </h:head>
 
     <h:body>
@@ -27,35 +30,61 @@
             <f:view locale="#{sessionController.languageSelected}">
 
 
-                <h:form>
+                <h:form ps:class="needs-validation" ps:novalidate="true" >
                     <h1><h:outputText value="Actualizar Permiso Laboral"/></h1>
-                    <h:panelGrid columns="2">
+                    
+
                         <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtHoraPermiso}" for="horaPermiso" />
-                        <h:inputText id="horaPermiso" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtHoraPermiso}" value="#{permisoLaboralControlador.permisoLaboral.horaPermiso}" title="HoraPermiso" required="true" requiredMessage="The HoraPermiso field is required.">
+                        <h:inputText pt:class="form-control"  pt:id="uintTextBox" id="horaPermiso" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtHoraPermiso}" value="#{permisoLaboralControlador.permisoLaboral.horaPermiso}" title="HoraPermiso" pt:required="true" requiredMessage="The HoraPermiso field is required.">
                             <f:convertDateTime pattern="HH:mm:ss" />
+
                         </h:inputText>
 
                         <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtfechaPermiso}" for="fechaPermiso" />
-                        <h:inputText  pt:id="fecha" pt:type="date" value="#{permisoLaboralControlador.permisoLaboral.fechaPermiso}" title="fechaPermiso" required="true" requiredMessage="The fechaPermiso field is required.">
+                        <h:inputText pt:class="form-control"  pt:id="fecha" pt:type="date" value="#{permisoLaboralControlador.permisoLaboral.fechaPermiso}" title="FechaDeNacimiento" pt:required="true" requiredMessage="The fechaPermiso field is required.">
                             <f:convertDateTime pattern="yyyy-MM-dd" />
+                        <div class="invalid-feedback">Este campo es importante </div>
                         </h:inputText>
+                                
+
 
                         <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtObvservaciones}" for="obvservaciones" />
-                        <h:inputText id="obvservaciones" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtObvservaciones}"  value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" maxlength="200" />
+                        <h:inputText pt:class="form-control"  id="obvservaciones" pt:placeholder="#{msjRegistrarPermisoLaboral.placeholderTxtObvservaciones}"  value="#{permisoLaboralControlador.permisoLaboral.obvservaciones}" title="Obvservaciones" maxlength="70" />
+                        <div class="invalid-feedback">Este campo es importante </div>
                         <h:outputLabel value="Empleado:" for="empleadoIdEmpleado" />
 
-                        <h:selectOneMenu id="empleadoIdEmpleado" value="#{permisoLaboralControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                        <h:selectOneMenu pt:class="form-control" id="empleadoIdEmpleado" value="#{permisoLaboralControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" >
                             <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.id}" />
+                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.nombre} #{emp.usuarioId.apellido}" />
                         </h:selectOneMenu>
 
-                        <h:commandButton action ="#{permisoLaboralControlador.actualizar()}" value="Actualizar"/>
-                    </h:panelGrid>
+                        <h:commandButton action ="#{permisoLaboralControlador.actualizar()}" value="actualizar"/>
+                   
+                     <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
                 </h:form>
             </f:view>
 
         </div>
-        <script type="text/javascript">
+        <script>
             fecha.min = new Date().toISOString().split("T")[0];
         </script>
     </h:body>

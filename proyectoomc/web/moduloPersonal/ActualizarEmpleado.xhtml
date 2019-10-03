@@ -5,6 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:s="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       >
     
 <h:head>
@@ -23,24 +24,56 @@
             </ol>
         </nav>
         <div id="form"> 
-         <f:view locale="#{sessionController.languageSelected}">
+       <f:view locale="#{sessionController.languageSelected}">
 
 
-            <h:form>
-                <h1><h:outputText value="Actualizar Empleado"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{msjActualizarEmpleado.labelTxtIdEmpleado}" for="idEmpleado" />
-                    <h:inputText s:id="uintTextBox"  id="idEmpleado"  pt:placeholder="#{msjActualizarEmpleado.placeholderTxtIdHorario}"  value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado" required="true" requiredMessage="The IdEmpleado field is required."/>
-                    <h:outputLabel value="Usuario:" for="usuarioId" />
-                    <h:selectOneMenu id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="u" itemValue="#{u.id}" itemLabel="#{u.nombre}#{u.apellido}#{u.rolidRol.rol}"/>
-                    </h:selectOneMenu>
-                    <h:commandButton action ="#{empleadoControlador.actualizarEmpleado()}" value="Actualizar"/>
-                </h:panelGrid>
-            </h:form>
-        </f:view>
-     </div>
+                <h:form ps:class="needs-validation" ps:novalidate="true" >
+                    <h1><h:outputText pt:class="form-control" value="Registrar Empleado"/></h1>
+                    
+
+                        <h:outputLabel value="#{msjRegistrarEmpleado.labelTxtIdEmpleado}" for="idEmpleado" /> 
+
+
+                        <h:message id="mensajesalida" for="horaPermiso"/>
+
+
+                        <h:inputText pt:class="form-control" pt:id="uintTextBox" id="horaPermiso" pt:placeholder="#{msjRegistrarEmpleado.placeholderTxtIdHorario}"  value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado"  pt:required="true" requiredMessage="Este campo es obligatorio" maxlength="3" />
+
+                        <br/>
+                        <h:outputLabel value="Usuario:" for="usuarioId" />
+                        <br/>
+                        <h:selectOneMenu pt:class="form-control" id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
+
+
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="u" itemValue="#{u.id}" itemLabel="#{u.nombre}#{u.apellido}#{u.rolidRol.rol}"/>
+                        </h:selectOneMenu>
+                        <br/>
+                        <h:commandButton action ="#{empleadoControlador.actualizarEmpleado()}" value="actualizar"/>
+                      <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
+                </h:form>
+            </f:view>
+        </div>
         <script src="../js/inputValidation.js"></script>
     </h:body>
 </html>
+

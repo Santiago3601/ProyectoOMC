@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
 
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -20,7 +21,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjMigaDePanPersoal.Inicio}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Registrar}</li>
-                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Punto}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Turno}</li>
             </ol>
         </nav>
         <div id="form"> 
@@ -28,53 +29,71 @@
 
 
 
-                <h:form>
+                <h:form ps:class="needs-validation" ps:novalidate="true">
+
                     <h1><h:outputText value="Registrar Turno"/></h1>
-                    <h:panelGrid columns="2">
+                    <h:outputLabel value="#{msjRegistrarTurno.labelTxtProgramacion}" for="programacion" />
+                    <h:inputText  pt:class="form-control"  id="programacion" pt:placeholder="#{msjRegistrarTurno.placeholderTxtProgramacion}"  value="#{turnoControlador.turno.programacion}" title="Programacion" pt:required="true" requiredMessage="Este campo es obigatorio"/>
+                    <div class="invalid-feedback">Este campo es importante </div>
+                    <h:outputLabel value="#{msjRegistrarTurno.labelTxtHoraIngreso}" for="horaIngreso" />
+                    <h:inputText  pt:class="form-control"  id="horaIngreso" pt:placeholder="#{msjRegistrarTurno.placeholderTxtHoraIngreso}" value="#{turnoControlador.turno.horaIngreso}"  title="HoraIngreso" pt:required="true" requiredMessage="Este campo es obigatorio">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                        <div class="invalid-feedback">Este campo es importante </div>
+                    </h:inputText>
+                    <h:outputLabel value="#{msjRegistrarTurno.labelTxtHoraSalida}" for="horaSalida" />
+                    <h:inputText  pt:class="form-control"  id="horaSalida" pt:placeholder="#{msjRegistrarTurno.placeholderTxtHoraSalida}"  value="#{turnoControlador.turno.horasSalida}"  title="HorasSalida" pt:required="true" requiredMessage="Este campo es obigatorio">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                        <div class="invalid-feedback">Este campo es importante </div>
 
+                    </h:inputText>
+                    <h:outputLabel value="#{msjRegistrarTurno.labelTxtFechaInicial}"  for="fechaInicial" />
 
+                    <h:inputText  pt:class="form-control"   pt:id="fecha2" pt:type="date" value="#{turnoControlador.turno.fechaInicial}" title="FechaDeNacimiento" pt:required="true" requiredMessage="Este campo es obigatorio">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:inputText>
+                    <h:outputLabel value="#{msjRegistrarTurno.labelTxtFechaFinal}" for="fechaFinal" />
 
-                        <h:outputLabel value="#{msjRegistrarTurno.labelTxtProgramacion}" for="programacion" />
-                        <h:inputText id="programacion" pt:placeholder="#{msjRegistrarTurno.placeholderTxtProgramacion}"  value="#{turnoControlador.turno.programacion}" title="Programacion" required="true" requiredMessage="The Programacion field is required."/>
+                    <h:inputText  pt:class="form-control"  pt:id="fecha1" pt:type="date" id="fechaFinal" pt:placeholder="#{msjRegistrarTurno.placeholderTxtFechaFinal}" value="#{turnoControlador.turno.fechaFinal}"  title="FechaFinal" pt:required="true" requiredMessage="Este campo es obigatorio">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:inputText>
+                    <h:outputLabel value="#{msjRegistrarTurno.labelTxtObservaciones}" for="observaciones" />
 
-                        <h:outputLabel value="#{msjRegistrarTurno.labelTxtHoraIngreso}" for="horaIngreso" />
-                        <h:inputText id="horaIngreso" pt:placeholder="#{msjRegistrarTurno.placeholderTxtHoraIngreso}" value="#{turnoControlador.turno.horaIngreso}"  title="HoraIngreso" required="true" requiredMessage="The HoraIngreso field is required.">
-                            <f:convertDateTime pattern="HH:mm:ss" />
+                    <h:inputText  pt:class="form-control"  id="observaciones" pt:placeholder="#{msjRegistrarTurno.placeholderTxtObservaciones}" value="#{turnoControlador.turno.observaciones}" title="Observaciones" pt:required="true" requiredMessage="Este campo es obigatorio" maxlength="70" />
 
-                        </h:inputText>
-                        <h:outputLabel value="#{msjRegistrarTurno.labelTxtHoraSalida}" for="horaSalida" />
-                        <h:inputText id="horaSalida" pt:placeholder="#{msjRegistrarTurno.placeholderTxtHoraSalida}"  value="#{turnoControlador.turno.horasSalida}"  title="HorasSalida" required="true" requiredMessage="The HorasSalida field is required.">
-                            <f:convertDateTime pattern="HH:mm:ss" />
+                    <h:outputLabel value="Puntos:" for="puntoIdPuntos" />
 
-                        </h:inputText>
-                        <h:outputLabel value="#{msjRegistrarTurno.labelTxtFechaInicial}"  for="fechaInicial" />
-                        <h:inputText  pt:id="fecha2" pt:type="date" value="#{turnoControlador.turno.fechaInicial}" title="FechaDeNacimiento" required="true" requiredMessage="The fechaPermiso field is required.">
-                            <f:convertDateTime pattern="yyyy-MM-dd" />
-                        </h:inputText>
-                        
-                        <h:outputLabel value="#{msjRegistrarTurno.labelTxtFechaFinal}" for="fechaFinal" />
-                        <h:inputText pt:id="fecha1" pt:type="date" id="fechaFinal" pt:placeholder="#{msjRegistrarTurno.placeholderTxtFechaFinal}" value="#{turnoControlador.turno.fechaFinal}"  title="FechaFinal" required="true" requiredMessage="The FechaFinal field is required.">
-                            <f:convertDateTime pattern="yyyy-MM-dd" />
-                        </h:inputText>
+                    <h:selectOneMenu pt:class="form-control"  id="puntoIdPuntos" value="#{turnoControlador.punto.idPunto}" title="PuntoIdPuntos" required="true" requiredMessage="Este campo es obigatorio">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{puntoControlador.consultarTodos()}" var="pu" itemValue="#{pu.idPunto}" itemLabel="#{pu.cantidad}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Empleado:" for="idEmpleado" />
 
-                        <h:outputLabel value="#{msjRegistrarTurno.labelTxtObservaciones}" for="observaciones" />
-                        <h:inputText id="observaciones" pt:placeholder="#{msjRegistrarTurno.placeholderTxtObservaciones}" value="#{turnoControlador.turno.observaciones}" title="Observaciones" required="true" requiredMessage="The Observaciones field is required." maxlength="70" />
-                        <h:outputLabel value="Puntos:" for="puntoIdPuntos" />
+                    <h:selectOneMenu pt:class="form-control" id="idEmpleado" value="#{turnoControlador.empleado.idEmpleado}" title="IdEmpleado" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.apellido}" />
+                    </h:selectOneMenu>
+                    <h:commandButton  action="#{turnoControlador.registrar()}" value="registrar"/>
 
-                        <h:selectOneMenu id="puntoIdPuntos" value="#{turnoControlador.punto.idPunto}" title="PuntoIdPuntos" required="true" requiredMessage="The PuntoIdPuntos field is required.">
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{puntoControlador.consultarTodos()}" var="pu" itemValue="#{pu.idPunto}" itemLabel="#{pu.cantidad}"/>
-                        </h:selectOneMenu>
-
-                        <h:outputLabel value="Empleado:" for="idEmpleado" />
-                        <h:selectOneMenu id="idEmpleado" value="#{turnoControlador.empleado.idEmpleado}" title="IdEmpleado" >
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.apellido}" />
-                        </h:selectOneMenu>
-
-                    </h:panelGrid>
-                    <h:commandButton action="#{turnoControlador.registrar()}" value="registrar"/>
-             
+                    <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
                 </h:form>
             </f:view>
 
@@ -84,6 +103,7 @@
             fecha1.min = new Date().toISOString().split("T")[0];
             fecha2.min = new Date().toISOString().split("T")[0];
         </script>
+
     </h:body>
 
 </html>

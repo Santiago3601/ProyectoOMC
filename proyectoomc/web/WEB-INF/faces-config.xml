@@ -253,6 +253,11 @@
         <resource-bundle>
             <base-name>language.EditarVehiculo</base-name>
             <var>msjEditarVeh</var>
+        </resource-bundle> 
+                  
+        <resource-bundle>
+            <base-name>language.BreadCrumbPersonal</base-name>
+            <var>msjMigaDePanPersoal</var>
         </resource-bundle>           
 
 
