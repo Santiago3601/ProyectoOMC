@@ -35,6 +35,7 @@
                     <div class="container">
                         <div class="col">
                             <a class="navbar-brand js-scaccessibility-buttonsl-trigger" href="#page-top"><img src="../../img/OMC.png" alt=""></img></a>
+
                         </div>
                         <div class="col">
                             <div id="rol">
@@ -112,21 +113,42 @@
                                 <li>
                                     <c:if test="#{empty p.permisoPadre}">
                                         <a >
-                                            #{p.nombre}
+                                            <c:if test="#{sessionController.spanishLanguague == sessionController.languageSelected}">
+                                                #{p.nombre}
+                                            </c:if>
+                                            <c:if test="#{!(sessionController.spanishLanguague == sessionController.languageSelected)}">
+                                                #{p.nombreEn}
+                                            </c:if>
                                         </a>
                                     </c:if>
                                     <ul>
                                         <c:forEach items="#{p.subPermisos}" var="sp">
                                             <li>
-                                                <a >
-                                                    #{sp.nombre}
-                                                </a>
+                                                <c:if test="#{sessionController.spanishLanguague == sessionController.languageSelected}">
+                                                    <a>
+                                                        #{sp.nombre}
+                                                    </a>
+                                                </c:if>
+                                                <c:if test="#{!(sessionController.spanishLanguague == sessionController.languageSelected)}">
+                                                    <a>
+                                                        #{sp.nombreEn}
+                                                    </a>
+                                                </c:if>
                                                 <ul>
                                                     <c:forEach items="#{sp.subPermisos}" var="ssp">
                                                         <li>
-                                                            <a href="#{ssp.url}" target="area-de-trabajo">
-                                                                #{ssp.nombre}
-                                                            </a>
+                                                            <c:if test="#{(sessionController.spanishLanguague == sessionController.languageSelected)}">
+
+                                                                <a href="#{ssp.url}" target="area-de-trabajo">
+                                                                    #{ssp.nombre}
+                                                                </a>
+                                                            </c:if>
+                                                            <c:if test="#{!(sessionController.spanishLanguague == sessionController.languageSelected)}">
+
+                                                                <a href="#{ssp.url}" target="area-de-trabajo">
+                                                                    #{ssp.nombreEn}
+                                                                </a>
+                                                            </c:if>
                                                         </li>
                                                     </c:forEach>
                                                 </ul>

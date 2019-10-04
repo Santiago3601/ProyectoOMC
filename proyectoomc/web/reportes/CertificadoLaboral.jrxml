@@ -19,7 +19,7 @@
 			</staticText>
 			<image>
 				<reportElement x="13" y="15" width="361" height="51" uuid="80f71aa1-b53a-4e69-b7c4-ca9373afbb7d"/>
-				<imageExpression><![CDATA["i.imgur.com/LU6DAe3.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\Stephi\\Desktop\\proyectoOMC\\proyectoomc\\web\\img\\logo_col.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

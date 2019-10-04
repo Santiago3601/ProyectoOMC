@@ -11,7 +11,7 @@
         </locale-config>
         
         <resource-bundle>
-            <base-name>language.RegistrarEmpleado-es</base-name>
+            <base-name>language.RegistrarEmpleado</base-name>
             <var>msjRegistrarEmpleado</var>
         </resource-bundle>
         

@@ -13,10 +13,6 @@
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<image>
-				<reportElement x="4" y="0" width="200" height="75" uuid="82458958-7ed5-4a6b-8b78-e36894b0d7ba"/>
-				<imageExpression><![CDATA["C:\\Users\\ASUS\\Desktop\\proyecto\\proyectoomc\\proyectoomc\\web\\img\\OMC.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="239" y="19" width="292" height="56" uuid="dab09a12-246f-4e5d-998c-e34f7d91c17b"/>
 				<textElement>
@@ -24,6 +20,10 @@
 				</textElement>
 				<text><![CDATA[Reportes cilindros]]></text>
 			</staticText>
+			<image>
+				<reportElement x="14" y="18" width="150" height="57" uuid="58250f97-6e1c-4616-ba09-0db3dea09a79"/>
+				<imageExpression><![CDATA["C:\\Users\\Stephi\\Desktop\\proyectoOMC\\proyectoomc\\web\\img\\logo_col.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

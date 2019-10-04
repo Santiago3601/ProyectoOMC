@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-10-2019 a las 15:12:05
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 04-10-2019 a las 19:06:50
+-- Versión del servidor: 10.1.39-MariaDB
+-- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -100,8 +100,8 @@ INSERT INTO `alquiler` (`id_alquiler`, `fecha_de_entrega`, `novedades`, `cilindr
 (3, '2001-01-27', 'No', 1060296, 6, 1, 2),
 (4, '2002-01-26', 'No', 1060294, 5, 11, 3),
 (5, '2019-01-08', 'Ninguna', 1060293, 1, 1, 1),
-(7, '2019-01-08', 'Ninguna', 1060293, 1, 6, 2),
-(8, '2019-01-08', 'No', 1060294, 1, 7, 2);
+(8, '2019-01-08', 'No', 1060294, 1, 7, 2),
+(9, '2019-10-22', 'No', 1060293, 1, 60, 1);
 
 -- --------------------------------------------------------
 
@@ -157,14 +157,17 @@ INSERT INTO `cliente` (`id_cliente`, `usuario_id`, `estado_id_estado`) VALUES
 (13, 10211425, 1),
 (17, 15321541, 1),
 (18, 10002054, 3),
-(20, 10002102, 1),
+(20, 10002102, 3),
 (21, 10002012, 1),
 (22, 23456789, 1),
 (23, 43243213, 1),
 (24, 213213, 1),
 (26, 10003012, 4),
 (27, 23294719, 1),
-(28, 213213, 1);
+(28, 213213, 1),
+(29, 1007296769, 1),
+(30, 1000204011, 3),
+(31, 1000033789, 1);
 
 -- --------------------------------------------------------
 
@@ -334,33 +337,16 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`id_horario`, `hora_ingreso`, `hora_salida`, `empleado_id_empleado`, `fecha_de_ingreso`, `fecha_de_salida`) VALUES
-(16, '9:44', '9:44', 1, '2019-09-25', '2019-09-25'),
 (17, '10:19', '10:19', 1, '2019-09-25', '2019-09-25'),
-(18, '10:19', NULL, 1, '2019-09-25', NULL),
-(19, '10:19', NULL, 1, '2019-09-25', NULL),
-(20, '10:19', NULL, 1, '2019-09-25', NULL),
-(21, '10:19', NULL, 1, '2019-09-25', NULL),
-(22, '10:19', NULL, 1, '2019-09-25', NULL),
-(23, '10:19', NULL, 1, '2019-09-25', NULL),
-(24, '10:19', NULL, 1, '2019-09-25', NULL),
-(25, '10:19', NULL, 1, '2019-09-25', NULL),
 (26, '10:19', '10:19', 1, '2019-09-25', '2019-09-25'),
-(27, '10:19', NULL, 1, '2019-09-25', NULL),
-(28, '10:19', NULL, 1, '2019-09-25', NULL),
-(29, '10:19', NULL, 1, '2019-09-25', NULL),
-(30, '10:50', NULL, 1, '2019-09-25', NULL),
-(31, '10:50', NULL, 1, '2019-09-25', NULL),
-(32, '10:50', NULL, 1, '2019-09-25', NULL),
-(33, '10:50', NULL, 1, '2019-09-25', NULL),
-(34, '10:50', NULL, 1, '2019-09-25', NULL),
-(35, '10:50', NULL, 1, '2019-09-25', NULL),
-(36, '10:50', NULL, 1, '2019-09-25', NULL),
-(37, '10:50', NULL, 1, '2019-09-25', NULL),
-(38, '10:50', NULL, 1, '2019-09-25', NULL),
-(39, '10:50', NULL, 1, '2019-09-25', NULL),
-(40, '10:57', NULL, 1, '2019-09-25', NULL),
-(41, '10:57', NULL, 1, '2019-09-25', NULL),
-(42, '10:57', NULL, 1, '2019-09-25', NULL);
+(42, '10:57', '9:48', 1, '2019-09-25', '2019-10-04'),
+(43, '9:48', '9:48', 1, '2019-10-04', '2019-10-04'),
+(44, '9:48', '9:59', 1, '2019-10-04', '2019-10-04'),
+(45, '9:48', '9:48', 1, '2019-10-04', '2019-10-04'),
+(46, '9:56', '9:56', 1, '2019-10-04', '2019-10-04'),
+(47, '9:59', '9:59', 1, '2019-10-04', '2019-10-04'),
+(48, '9:59', '9:59', 1, '2019-10-04', '2019-10-04'),
+(50, '9:59', '9:59', 1, '2019-10-04', '2019-10-04');
 
 -- --------------------------------------------------------
 
@@ -404,7 +390,9 @@ CREATE TABLE `mantenimiento_cilindro` (
 --
 
 INSERT INTO `mantenimiento_cilindro` (`id_mantenimiento_cilindro`, `mantenimiento_id_mantenimiento`, `cilindro_id_cilindro`, `tipo_mantenimiento`) VALUES
+(43, 4, 1060295, 'preventivo'),
 (582, 2, 1060293, 'Preventivo'),
+(654, 5, 1060296, 'preventivo'),
 (3535, 3, 1060294, 'Correctivo');
 
 -- --------------------------------------------------------
@@ -417,7 +405,7 @@ CREATE TABLE `permiso` (
   `id_permiso` int(11) NOT NULL,
   `nombre` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `nombre_en` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
-  `url` text COLLATE utf32_spanish_ci DEFAULT NULL,
+  `url` text COLLATE utf32_spanish_ci,
   `icon` varchar(45) COLLATE utf32_spanish_ci NOT NULL,
   `permiso_padre` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
@@ -796,16 +784,18 @@ CREATE TABLE `solicitud` (
 
 INSERT INTO `solicitud` (`id_solicitud`, `formula`, `tamanio_cilindro`, `cliente_id_cliente`) VALUES
 (1, '/proyectoomc/archivos/cert_02.pdf', 250, 3),
-(3, '/proyectoOMC/archivos/cert_01.pdf', 300, 7),
+(3, '/proyectoomc/archivos/cert_01.pdf', 300, 7),
 (5, '/proyectoomc/archivos/cert_02.pdf', 200, 6),
 (6, '/proyectoomc/archivos/cert_03.pdf', 250, 8),
-(7, '/proyectoOMC/archivos/cert_01.pdf', 250, 9),
-(11, '/proyectoOMC/archivos/cert_01.pdf', 400, 9),
+(7, '/proyectoomc/archivos/cert_01.pdf', 250, 9),
+(11, '/proyectoomc/archivos/cert_01.pdf', 400, 9),
 (48, '/proyectoomc/archivos/cert_03.pdf', 300, 11),
-(55, '/proyectoOMC/archivos/cert_01.pdf', 300, 21),
-(56, '/proyectoOMC/archivos/cert_01.pdf', 300, 22),
+(55, '/proyectoomc/archivos/cert_01.pdf', 300, 21),
+(56, '/proyectoomc/archivos/cert_01.pdf', 300, 22),
 (57, '/proyectoomc/archivos/cert_03.pdf', 450, 23),
-(58, '/proyectoomc/archivos/cert_03.pdf', 400, 24);
+(58, '/proyectoomc/archivos/cert_03.pdf', 400, 24),
+(59, '/proyectoomc/archivos/10002102Inventario.pdf', 450, 20),
+(60, '/proyectoomc/archivos/1000204011CertificadoDonacion.pdf', 400, 30);
 
 --
 -- Disparadores `solicitud`
@@ -929,6 +919,7 @@ INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo
 (10154108, 1, 'Emili', 'Smith ', 'Cll 24 No. 31 -  34', 'jprodriguez744@misena.edu.co', '454545', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
 (10201021, 1, 'Camila', 'Perez', 'Cll x 24 -  23', 'stbernal0@misena.edu.co', '12345', 12345, 'Salud total', '2011-04-02', 8, 2),
 (10211425, 1, 'Marina Yolanda', 'Pedraza Gonzalez', 'Cra 21 No. 45-65', 'fcwf44416@bcaoo.com', '5415fd', 3224119851, 'Comfacundi - CCF de Cundinamarca', '2007-01-16', 12, 2),
+(12121210, 1, 'Maria Elvira', 'Hernandez', 'Cll x 24 -  23', 'mlyndaortiz@gmail.com', 'claveM121234', 232323, 'Salud total', '2019-02-05', 0, 4),
 (15321541, 1, 'Thomas ', 'Quintana Duarte', 'Dg 23 No. 12-23 Sur', 'sdimhs947ds79@bcaoo.com', '15151fdd', 3112447512, 'Comfacundi - CCF de Cundinamarca', '2019-09-08', 0, 2),
 (23294719, 2, 'Salome', 'Diaz duarte', 'cr 14 n 14 113', 'sbustos@misena.edu.co', '546789', 3115447952, 'Comfacundi - CCF de Cundinamarca', '1993-02-02', 26, 2),
 (23456789, 3, 'Pablo ', 'Moneros Renteria', 'Cra 21 No. 45-65', 'lvu68354@eveav.com', '324356jhj3', 4153265, 'Comfenalco Valle EPS', '2012-05-09', 7, 2),
@@ -938,7 +929,10 @@ INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo
 (27451749, 1, 'Samuel', 'Villanueva', 'Cr 101- 70 26', 'patriciamongui397@gmail.com', 'VXPwnIpaCc', 4235154, 'Salud total', '2009-03-02', 7, 4),
 (27871927, 1, 'Thomas', 'Miller King', 'av 68 n 14- 32', '4n1ma98@gmail.com', '3232', 4151815, 'Cafe salud', '1989-12-19', 30, 4),
 (43243213, 1, 'Miguel Alonso', 'Escobar Martinez', 'Cll 21 no. 12-32', 'tli22651@bcaoo.com', 'tli22651@bcaoo.com', 131243245, 'Comfacundi - CCF de Cundinamarca', '1962-06-11', 57, 2),
-(1000201266, 1, 'Maria Linda', 'Ortiz Baez', 'Cll 22 C No. 24-21', 'mlyndaortiz@gmail.com', 'claveM123456789', 3152249852, 'Aliansalud EPS', '1999-01-12', 20, 3);
+(1000033789, 1, 'Santiago', 'Reyes', 'Calle 145  Autopista Norte', 'Sreyes98@misena.edu.co', '123456789', 3228565504, 'E.P.S Sanitas', '2001-03-11', 18, 2),
+(1000201266, 1, 'Maria Linda', 'Ortiz Baez', 'Cll 22 C No. 24-21', 'mlyndaortiz@gmail.com', 'claveM123456789', 3152249852, 'Aliansalud EPS', '1999-01-12', 20, 3),
+(1000204011, 1, 'Juan pablo', 'Murcia', 'Cll 234 - 24', 'gbm35439@eveav.com', '12345678', 31152246325, 'Capital Salud EPSS S.A.S.', '2019-06-30', 0, 2),
+(1007296769, 1, 'Jonathan', 'patiÃ±o', 'Cl 124-10', 'japatino967@misena.edu.co', 'Jonatan1234', 3135216393, 'Cafesalud EPS', '2019-10-03', 0, 2);
 
 --
 -- Disparadores `usuario`
@@ -1185,13 +1179,13 @@ ALTER TABLE `agenda`
 -- AUTO_INCREMENT de la tabla `alquiler`
 --
 ALTER TABLE `alquiler`
-  MODIFY `id_alquiler` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_alquiler` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `contrato`
@@ -1209,7 +1203,7 @@ ALTER TABLE `estado_alquiler`
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimiento`
@@ -1233,7 +1227,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`
@@ -1339,6 +1333,13 @@ ALTER TABLE `ruta`
 ALTER TABLE `turno`
   ADD CONSTRAINT `fk_turno_punto` FOREIGN KEY (`punto_id_puntos`) REFERENCES `punto` (`id_punto`) ON UPDATE CASCADE,
   ADD CONSTRAINT `turno_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `fk_rol` FOREIGN KEY (`rol_idRol`) REFERENCES `rol` (`idRol`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_tp` FOREIGN KEY (`tp_id`) REFERENCES `tipoid` (`idTipoID`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
