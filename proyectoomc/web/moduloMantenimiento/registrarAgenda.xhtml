@@ -32,15 +32,15 @@
                     <h1><h:outputText value="#{msjsagedaD.h1TxtTitle}"/></h1>
 
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="#{msjsagedaD.labelTxtId}" for="idAgenda" />
+                        <h:outputLabel value="#{msjsagedaD.labelTxtId}" for="IdAgenda" />
                         <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" ps:required="true" requiredMessage="The IdAgenda field is required."/>
-                        <h:outputLabel value="#{msjsagedaD.labelTxtScheduledDate}" for="fechaProgramada" />
+                        <h:outputLabel value="#{msjsagedaD.labelTxtScheduledDate}" for="FechaProgramada" />
                         <h:inputText ps:class="form-control" pt:id="fecha1" pt:type="date" id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" ps:required="true" requiredMessage="The FechaProgramada field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
-                        <h:outputLabel value="#{msjsagedaD.labelTxtSize}" for="novedades" />
+                        <h:outputLabel value="#{msjsagedaD.labelTxtSize}" for="Novedades" />
                         <h:inputText ps:class="form-control" id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" />
-                        <h:outputLabel value="#{msjsagedaD.labelTxtIdemployee}" for="empleadoIdEmpleado" />
+                        <h:outputLabel value="#{msjsagedaD.labelTxtIdemployee}" for="EmpleadoIdEmpleado" />
                         <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.nombre}"/>

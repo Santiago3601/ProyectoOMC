@@ -29,17 +29,17 @@
                 <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjsmantenimientoci.h1TxtTitle}"/></h1>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="#{msjsmantenimientoci.labelTxtmaidmaintenancecylinder}" for="idMantenimientoCilindro" />
+                        <h:outputLabel value="#{msjsmantenimientoci.labelTxtmaidmaintenancecylinder}" for="IdMantenimientoCilindro" />
                         <h:inputText ps:class="form-control" id="idMantenimientoCilindro" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.idMantenimientoCilindro}" title="IdMantenimientoCilindro" ps:required="true" requiredMessage="The IdMantenimientoCilindro field is required."/>
-                        <h:outputLabel value="#{msjsmantenimientoci.labelTxttypeofmaintenance}" for="tipoMantenimiento" />
+                        <h:outputLabel value="#{msjsmantenimientoci.labelTxttypeofmaintenance}" for="TipoMantenimiento" />
                         <h:inputText ps:class="form-control" id="tipoMantenimiento" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.tipoMantenimiento}" title="TipoMantenimiento" ps:required="true" requiredMessage="The TipoMantenimiento field is required."/>
-                        <h:outputLabel value="#{msjsmantenimientoci.labelTxtcylinderidcylinder}" for="cilindroIdCilindro" />
+                        <h:outputLabel value="#{msjsmantenimientoci.labelTxtcylinderidcylinder}" for="CilindroIdCilindro" />
                         <h:selectOneMenu ps:class="form-control" id="cilindroIdCilindro" value="#{mantenimientoCilindroControlador.cilindro.idCilindro}" title="CilindroIdCilindro" ps:required="true" requiredMessage="The CilindroIdCilindro field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{cilindroControlador.consultarTodos()}" var="cil" itemValue="#{cil.idCilindro}" itemLabel="#{cil.idCilindro}"/>
                         </h:selectOneMenu>
 
-                        <h:outputLabel value="#{msjsmantenimientoci.labelTxtagendaidagenda}" for="mantenimientoIdMantenimiento" />
+                        <h:outputLabel value="#{msjsmantenimientoci.labelTxtagendaidagenda}" for="MantenimientoIdMantenimiento" />
                         <h:selectOneMenu ps:class="form-control" id="mantenimientoIdMantenimiento" value="#{mantenimientoCilindroControlador.mantenimiento.idMantenimiento}" title="MantenimientoIdMantenimiento" ps:required="true" requiredMessage="The MantenimientoIdMantenimiento field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{mantenimientoControlador.consultarTodos()}" var="mant" itemValue="#{mant.idMantenimiento}" itemLabel="#{mant.idMantenimiento}"/>
