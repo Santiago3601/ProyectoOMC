@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f3249c9-9141-488d-8ccb-4c46f4eff3a2">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="26"/>
+	<property name="ireport.y" value="0"/>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="apellido" class="java.lang.String"/>
 	<field name="telefono" class="java.lang.Long"/>
@@ -19,7 +19,7 @@
 			</staticText>
 			<image>
 				<reportElement x="13" y="15" width="361" height="51" uuid="80f71aa1-b53a-4e69-b7c4-ca9373afbb7d"/>
-				<imageExpression><![CDATA["C:\\Users\\Stephi\\Desktop\\proyectoOMC\\proyectoomc\\web\\img\\logo_col.png"]]></imageExpression>
+				<imageExpression><![CDATA["i.imgur.com/LU6DAe3.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -27,10 +27,10 @@
 		<band height="8" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="89" splitType="Stretch"/>
+		<band height="18" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="107" splitType="Stretch">
+		<band height="120" splitType="Stretch">
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="71" y="68" width="100" height="20" uuid="30185420-7268-40ed-8021-bee53eae7478"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
@@ -71,7 +71,7 @@ habiles desde]]></text>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="6" splitType="Stretch"/>
+		<band height="16" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="8" splitType="Stretch"/>
