@@ -94,9 +94,16 @@ public class cilindroControlador implements Serializable {
     public String cambiarEstado(Cilindro ci) {
         this.cilindro = ci;
         this.estadoMantenimiento.setIdEstado(2);
-        this.cilindroFacade.edit(getCilindro());
+        cilindroFacade.edit(getCilindro());
         estadoMantenimiento = new EstadoMantenimiento();
         cilindro = new Cilindro();
         return "listaCilindro";
+    }
+
+    public String consultaIndividual(Cilindro cili) {
+        cilindro = cili;
+        //cilindro = cili.getIdCilindro();
+
+        return "listaIDCilindro?faces-redirect=true";
     }
 }

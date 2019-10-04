@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -20,17 +21,17 @@
                     <h1><h:outputText value="Editar mantenimiento cilindro"/></h1>
                     <h:panelGrid columns="2">
                         <h:outputLabel value="No. Mantenimiento Cilindro:" for="idMantenimientoCilindro" />
-                        <h:inputText id="idMantenimientoCilindro" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.idMantenimientoCilindro}" title="IdMantenimientoCilindro" required="true" requiredMessage="The IdMantenimientoCilindro field is required."/>
+                        <h:inputText ps:class="form-control" id="idMantenimientoCilindro" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.idMantenimientoCilindro}" title="IdMantenimientoCilindro" required="true" requiredMessage="The IdMantenimientoCilindro field is required."/>
                         <h:outputLabel value="Tipo de Mantenimiento:" for="tipoMantenimiento" />
-                        <h:inputText id="tipoMantenimiento" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.tipoMantenimiento}" title="TipoMantenimiento" required="true" requiredMessage="The TipoMantenimiento field is required."/>
+                        <h:inputText ps:class="form-control" id="tipoMantenimiento" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.tipoMantenimiento}" title="TipoMantenimiento" required="true" requiredMessage="The TipoMantenimiento field is required."/>
                         <h:outputLabel value="Cilindro:" for="cilindroIdCilindro" />
-                        <h:selectOneMenu id="cilindroIdCilindro" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.cilindroIdCilindro}" title="CilindroIdCilindro" required="true" requiredMessage="The CilindroIdCilindro field is required.">
+                        <h:selectOneMenu ps:class="form-control" id="cilindroIdCilindro" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.cilindroIdCilindro}" title="CilindroIdCilindro" required="true" requiredMessage="The CilindroIdCilindro field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{cilindroControlador.consultarTodos()}" var="cilindro" itemValue="#{cilindro.idCilindro}" itemLabel="#{cilindro.idCilindro}"/>
 
                         </h:selectOneMenu>
                         <h:outputLabel value="No. Mantenimiento:" for="mantenimientoIdMantenimiento" />
-                        <h:selectOneMenu id="mantenimientoIdMantenimiento" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.mantenimientoIdMantenimiento}" title="MantenimientoIdMantenimiento" required="true" requiredMessage="The MantenimientoIdMantenimiento field is required.">
+                        <h:selectOneMenu ps:class="form-control" id="mantenimientoIdMantenimiento" value="#{mantenimientoCilindroControlador.mantenimientoCilindro.mantenimientoIdMantenimiento}" title="MantenimientoIdMantenimiento" required="true" requiredMessage="The MantenimientoIdMantenimiento field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{mantenimientoCilindroControlador.consultarTodos()}" var="mantenimiento" itemValue="#{mantenimiento.idMantenimientoCilindro}" itemLabel="#{mantenimiento.idMantenimientoCilindro}"/>
                         </h:selectOneMenu>

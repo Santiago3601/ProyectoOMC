@@ -59,7 +59,6 @@
                         </f:facet>
                         <h:commandLink  action="#{cilindroControlador.eliminarCilindro(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                         <h:commandLink  action="#{cilindroControlador.preActualizarCilindro(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
-                        <h:commandLink  action="#{cilindroControlador.cambiarEstado(ci)}" onclick="return confirm('Estas seguro?')"><i class="far fa-truck-loading"></i></h:commandLink>
 
 
                     </p:column>
@@ -74,6 +73,7 @@
                         }
                     </style>
                 </h:commandLink>
+                <h:commandButton  actionListener="#{reporteControlador.PDFC(actionEvent)}" value="Reporte PDF"></h:commandButton>
             </h:form>
         </f:view>
 
