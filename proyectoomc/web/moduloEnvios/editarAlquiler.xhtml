@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
         <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
-
         <title>OMC</title>
     </h:head>
     <h:body>
@@ -21,47 +20,97 @@
         </nav>
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
+                <h:form ps:class="needs-validation" ps:novalidate="true">
 
-
-
-                <h:form>
                     <h1><h:outputText value="#{msjEditarAlq.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarAlq.labelTxtID}" for="idAlquiler" />
-                        <h:inputText id="idAlquiler" value="#{alquilerControlador.alquiler.idAlquiler}" title="IdAlquiler" required="true" requiredMessage="The IdAlquiler field is required."/>
+                        <h:inputText ps:class="form-control" id="idAlquiler" value="#{alquilerControlador.alquiler.idAlquiler}" title="IdAlquiler" ps:readonly="true" ps:required="true" requiredMessage="The IdAlquiler field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarAlq.labelTxtDeliveryDate}" for="fechaDeEntrega" />
-                        <h:inputText id="fechaDeEntrega" ps:placeholder="#{msjEditarAlq.inputTxtPlaceHolderDeliveryDate}" value="#{alquilerControlador.alquiler.fechaDeEntrega}" title="FechaDeEntrega" required="true" requiredMessage="The FechaDeEntrega field is required.">
+                        <h:inputText ps:class="form-control" id="fechaDeEntrega" ps:placeholder="#{msjEditarAlq.inputTxtPlaceHolderDeliveryDate}" value="#{alquilerControlador.alquiler.fechaDeEntrega}" title="FechaDeEntrega" ps:required="true" requiredMessage="The FechaDeEntrega field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarAlq.labelTxtNovelties}" for="novedades" />
-                        <h:inputText id="novedades" value="#{alquilerControlador.alquiler.novedades}" title="Novedades" required="true" requiredMessage="The Novedades field is required."/>
+                        <h:inputText ps:class="form-control" id="novedades" value="#{alquilerControlador.alquiler.novedades}" title="Novedades" ps:required="true" requiredMessage="The Novedades field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjEditarAlq.labelTxtCilynder}" for="cilindroIdCilindro" />
-                        <h:selectOneMenu id="cilindroIdCilindro" value="#{alquilerControlador.cilindro.idCilindro}" title="CilindroIdCilindro" required="true" requiredMessage="The CilindroIdCilindro field is required.">
-                            <!-- TODO: update below reference to list of available items-->
+                        <h:selectOneMenu ps:class="form-control" id="cilindroIdCilindro" value="#{alquilerControlador.cilindro.idCilindro}" title="CilindroIdCilindro" ps:required="true" requiredMessage="The CilindroIdCilindro field is required.">
+                            <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
+
                             <f:selectItems value="#{cilindroControlador.consultarTodos()}" var="cil" itemValue="#{cil.idCilindro}" itemLabel="#{cil.idCilindro} #{cil.tamanio}cm³ #{cil.estado}"/>
                         </h:selectOneMenu>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarAlq.labelTxtRoute}" for="rutaIdRuta" />
-                        <h:selectOneMenu id="rutaIdRuta" value="#{alquilerControlador.ruta.idRuta}" title="RutaIdRuta" required="true" requiredMessage="The RutaIdRuta field is required.">
-                            <!-- TODO: update below reference to list of available items-->
+                        <h:selectOneMenu ps:class="form-control" id="rutaIdRuta" value="#{alquilerControlador.ruta.idRuta}" title="RutaIdRuta" ps:required="true" requiredMessage="The RutaIdRuta field is required.">
+                            <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
+
                             <f:selectItems value="#{rutaControlador.consultarTodos()}"  var="ruta" itemValue="#{ruta.idRuta}" itemLabel="#{ruta.idRuta}"/>
                         </h:selectOneMenu>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarAlq.labelTxtRequest}" for="solicitudIdSolicitud" />
-                        <h:selectOneMenu id="solicitudIdSolicitud" value="#{alquilerControlador.solicitud.idSolicitud}" title="SolicitudIdSolicitud" required="true" requiredMessage="The SolicitudIdSolicitud field is required.">
-                            <!-- TODO: update below reference to list of available items-->
+                        <h:selectOneMenu ps:class="form-control" id="solicitudIdSolicitud" value="#{alquilerControlador.solicitud.idSolicitud}" title="SolicitudIdSolicitud" ps:required="true" requiredMessage="The SolicitudIdSolicitud field is required.">
+                            <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
+
                             <f:selectItems value="#{solicitudControlador.consultarTodos()}" var="sol" itemValue="#{sol.idSolicitud}" itemLabel="#{sol.clienteIdCliente.usuarioId.nombre} #{sol.clienteIdCliente.usuarioId.apellido} #{sol.tamanioCilindro}cm³"/>
                         </h:selectOneMenu>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjEditarAlq.labelTxtState}" for="estadoAlquilerIdEstado" />
-                        <h:selectOneMenu id="estadoAlquilerIdEstado" value="#{alquilerControlador.estadoAlquiler.idEstado}" title="EstadoAlquilerIdEstado" required="true" requiredMessage="The EstadoAlquilerIdEstado field is required.">
-                            <!-- TODO: update below reference to list of available items-->
+                        <h:selectOneMenu ps:class="form-control" id="estadoAlquilerIdEstado" value="#{alquilerControlador.estadoAlquiler.idEstado}" title="EstadoAlquilerIdEstado" ps:required="true" requiredMessage="The EstadoAlquilerIdEstado field is required.">
+                            <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
+
                             <f:selectItems value="#{estadoAlquilerControlador.consultarTodos()}" var="est" itemValue="#{est.idEstado}" itemLabel="#{est.estado}"/>
                         </h:selectOneMenu>
-                    </h:panelGrid>
-                    <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjEditarAlq.btnRegister}" action="#{alquilerControlador.registrarAlquiler()}"> </h:commandButton> 
+                        <div class="invalid-feedback">#{msjError.fields}</div>
 
+                    </div>
+                    <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjEditarAlq.btnRegister}" action="#{alquilerControlador.actualizarAlquiler()}"> </h:commandButton> 
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
                 </h:form>
             </f:view>
-
-
         </div>
     </h:body>
 </html>

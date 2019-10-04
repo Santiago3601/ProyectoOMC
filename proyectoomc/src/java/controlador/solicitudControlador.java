@@ -163,6 +163,34 @@ public class solicitudControlador implements Serializable {
         return "listaSolicitud";
     }
 
+    public String editUpload() {
+
+        String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");
+        path = path.substring(0, path.indexOf("\\build"));
+        path = path + "\\web\\Archivos\\";
+        try {
+            this.nombre = file.getSubmittedFileName();
+            pathReal = "/proyectoomc/archivos/" + nombre;
+            path = path + this.nombre;
+            InputStream in = file.getInputStream();
+
+            byte[] data = new byte[in.available()];
+            in.read(data);
+            FileOutputStream out = new FileOutputStream(new File(path));
+            out.write(data);
+            in.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        solicitud.setClienteIdCliente(getCliente());
+        this.solicitud.setFormula(pathReal);
+        solicitudFacade.edit(solicitud);
+        solicitud = new Solicitud();
+
+        return "listaSolicitud";
+
+    }
     public String upload() {
 
         String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");

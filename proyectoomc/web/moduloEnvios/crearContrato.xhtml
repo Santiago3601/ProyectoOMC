@@ -59,8 +59,7 @@
                             <div class="form-row">
                                 <h:selectOneMenu ps:class="form-control" id="alquilerIdAlquiler" value="#{contratoControlador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" ps:required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
                                     <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
-
-                                    <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.idAlquiler}"/>
+                                    <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.clienteIdCliente.usuarioId.nombre} #{al.solicitudIdSolicitud.clienteIdCliente.usuarioId.apellido}"/>
                                 </h:selectOneMenu>
                                 <div class="invalid-feedback">#{msjError.fields}</div>
                             </div>

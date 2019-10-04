@@ -23,8 +23,6 @@
         </nav>
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
-
-
                 <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjCrearCli.h1TxtTitle}"/></h1>
                     <div class="form-group"> 
@@ -48,8 +46,8 @@
 
                     </div>
                     <h:commandButton ps:id="boton" class="btn btn-primary "  value="#{msjCrearCli.btnRegister}" action="#{clienteControlador.registrarCliente()}"></h:commandButton>
-                              </div>
-          <script>
+                    </div>
+                    <script>
                         // Example starter JavaScript for disabling form submissions if there are invalid fields
                         (function () {
                             'use strict';

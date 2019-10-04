@@ -1,75 +1,192 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
-      >
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
-        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
-
+        <link rel="stylesheet" href="../css/prime-styles.css"></link>   
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>  
         <title>OMC</title>
     </h:head>
     <h:body>
-                <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Editar}</li>
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Usuario}</li>
             </ol>
         </nav>
-        <div id="form"> 
-     <f:view locale="#{sessionController.languageSelected}">
-
-                <h:form>
+        <div id="form" > 
+            <f:view locale="#{sessionController.languageSelected}">
+                <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjEditarUsu.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjEditarUsu.labelTxtID}" for="id" />
-                        <h:inputText id="id" value="#{usuarioControlador.usuario.id}" title="Id" required="true" requiredMessage="The Id field is required."/>
-                        <h:outputLabel value="tipo #{msjEditarUsu.labelTxtID}" for="id" />
-
-                        <h:selectOneMenu id="tpId" value="#{usuarioControlador.tipoId.idTipoID}" title="TpId" required="true" requiredMessage="The TpId field is required.">
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{tipoIdControlador.consultarTodos()}" var="tp" itemValue="#{tp.idTipoID}" itemLabel="#{tp.tipoID}"/>
-                        </h:selectOneMenu>
-
-
+                        <div class="form-row">
+                            <div class="col-7">
+                                <h:selectOneMenu ps:class="form-control" id="tpId" value="#{usuarioControlador.tipoId.idTipoID}" title="TpId" ps:required="true" requiredMessage="The TpId field is required.">
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
+                                    <f:selectItems value="#{tipoIdControlador.consultarTodos()}" var="tp" itemValue="#{tp.idTipoID}" itemLabel="#{tp.tipoID}"/>
+                                </h:selectOneMenu>
+                                <div class="invalid-feedback">#{msjError.tp_id}</div>
+                            </div>
+                            <div class="col-5">
+                                <h:inputText ps:readonly="true" ps:class="form-control" ps:id="uintTextBox"  id="id" value="#{usuarioControlador.usuario.id}" title="Id" ps:required="true" requiredMessage="The Id field is required."/>
+                                <div class="invalid-feedback">#{msjError.id}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjEditarUsu.labelTxtName}" for="nombre" />
-                        <h:inputText id="nombre" value="#{usuarioControlador.usuario.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
-                        <h:outputLabel value="#{msjEditarUsu.labelTxtLastName}" for="apellido" />
-                        <h:inputText id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" required="true" requiredMessage="The Apellido field is required."/>
+                        <div class="form-row">
+                            <div class="col-6">
+                                <h:inputText ps:class="form-control"   id="nombre" value="#{usuarioControlador.usuario.nombre}" title="Nombre" ps:required="true" requiredMessage="The Nombre field is required."/>
+                                <div class="invalid-feedback">#{msjError.fields}</div>
+                            </div>
+                            <div class="col-6">
+                                <h:inputText ps:class="form-control"   id="apellido" value="#{usuarioControlador.usuario.apellido}" title="Apellido" ps:required="true" requiredMessage="The Apellido field is required."/>
+                                <div class="invalid-feedback">#{msjError.fields}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjEditarUsu.labelTxtAddress}" for="direccion" />
-                        <h:inputText id="direccion" value="#{usuarioControlador.usuario.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
+                        <h:inputText ps:class="form-control"   id="direccion" value="#{usuarioControlador.usuario.direccion}" title="Direccion" ps:required="true" requiredMessage="The Direccion field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+                    </div>
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjEditarUsu.labelTxtMail}" for="correo" />
-                        <h:inputText id="correo" value="#{usuarioControlador.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                        <h:inputText ps:class="form-control"   id="correo" value="#{usuarioControlador.usuario.correo}" title="Correo" ps:required="true" requiredMessage="The Correo field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarUsu.labelTxtPassword}" for="contrasenia" />
-                        <h:inputSecret id="contrasenia" value="#{usuarioControlador.usuario.contrasenia}" title="Contrasenia" required="true" requiredMessage="The Contrasenia field is required."/>
+                        <h:inputSecret ps:class="form-control" id="contrasenia" value="#{usuarioControlador.usuario.contrasenia}" title="Contrasenia" ps:required="true" requiredMessage="The Contrasenia field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarUsu.labelTxtCellPhone}" for="telefono" />
-                        <h:inputText id="telefono" value="#{usuarioControlador.usuario.telefono}" title="Telefono" required="true" requiredMessage="The Telefono field is required."/>
+                        <h:inputText ps:id="uintTextBox1" ps:class="form-control"   id="telefono" value="#{usuarioControlador.usuario.telefono}" title="Telefono" ps:required="true" requiredMessage="The Telefono field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarUsu.labelTxtEPS}" for="eps" />
-                        <h:inputText id="eps" value="#{usuarioControlador.usuario.eps}" title="Eps" required="true" requiredMessage="The Eps field is required."/>
+                        <h:selectOneMenu  class="form-control" id="eps"  value="#{usuarioControlador.usuario.eps}" title="Eps" ps:required="true" >
+                            <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
+                            <f:selectItem itemLabel="Aliansalud EPS" itemValue="Aliansalud EPS" />
+                            <f:selectItem itemLabel="Asociación Indígena del Cauca - A.I.C." itemValue="Asociación Indígena del Cauca - A.I.C." />
+                            <f:selectItem itemLabel="Asociación Mutual Barrios Unidos de Quibdó AMBUQ" itemValue="Asociación Mutual Barrios Unidos de Quibdó AMBUQ" />
+                            <f:selectItem itemLabel="Asociación Mutual La Esperanza Asmet Salud" itemValue="Asociación Mutual La Esperanza Asmet Salud" />
+                            <f:selectItem itemLabel="Asociación Mutual Ser Empresa Solidaría de Salud" itemValue="Asociación Mutual La Esperanza Asmet Salud" />
+                            <f:selectItem itemLabel="Cafesalud Entidad  Promotora de Salud S.A" itemValue="Cafesalud" />
+                            <f:selectItem itemLabel="Cafesalud EPS" itemValue="Cafesalud EPS" />
+                            <f:selectItem itemLabel="Caja de Compensación Familiar de La Guajira" itemValue="Caja de Compensación Familiar de La Guajira" />
+                            <f:selectItem itemLabel="Cajacopi Atlántico - CCF" itemValue="Cajacopi Atlántico - CCF" />
+                            <f:selectItem itemLabel="Capital Salud EPSS S.A.S." itemValue="Capital Salud EPSS S.A.S." />
+                            <f:selectItem itemLabel="Capresoca EPS" itemValue="Capresoca EPS" />
+                            <f:selectItem itemLabel="Comfaboy EPS-CCF de Boyacá" itemValue="Comfaboy EPS-CCF de Boyacá" />
+                            <f:selectItem itemLabel="Comfachoco – CCF del Chocó" itemValue="Comfachoco – CCF del Chocó" />
+                            <f:selectItem itemLabel="Comfacor EPS – CCF de Córdoba" itemValue="Comfacor EPS – CCF de Córdoba" />
+                            <f:selectItem itemLabel="Comfacundi - CCF de Cundinamarca" itemValue="Comfacundi - CCF de Cundinamarca" />
+                            <f:selectItem itemLabel="Comfama - Hoy Savia Salud EPS" itemValue="Comfama - Hoy Savia Salud EPS" />
+                            <f:selectItem itemLabel="Comfamiliar de Nariño EPS – CCF" itemValue="Comfamiliar de Nariño EPS – CCF" />
+                            <f:selectItem itemLabel="Comfamiliar Huila EPS – CCF" itemValue="Comfamiliar Huila EPS – CCF" />
+                            <f:selectItem itemLabel="Comfasucre EPS-CCF de Sucre" itemValue="Comfasucre EPS-CCF de Sucre" />
+                            <f:selectItem itemLabel="Comfenalco Valle EPS" itemValue="Comfenalco Valle EPS" />
+                            <f:selectItem itemLabel="Compensar Entidad Promotora de Salud" itemValue="Compensar" />
+                            <f:selectItem itemLabel="Convida" itemValue="Convida" />
+                            <f:selectItem itemLabel="Coomeva EPS" itemValue="Coomeva EPS" />
+                            <f:selectItem itemLabel="Cooperativa de Salud Comunitaria Comparta" itemValue="Comparta" />
+                            <f:selectItem itemLabel="Coosalud E.S.S." itemValue="Coosalud E.S.S." />
+                            <f:selectItem itemLabel="Cruz Blanca S.A" itemValue="Cruz Blanca S.A" />
+                            <f:selectItem itemLabel="Dusakawi" itemValue="Dusakawi" />
+                            <f:selectItem itemLabel="E.P.S Sanitas" itemValue="E.P.S Sanitas" />
+                            <f:selectItem itemLabel="Emdisalud ESS" itemValue="Emdisalud ESS" />
+                            <f:selectItem itemLabel="E.P.M Departamento Médico" itemValue="E.P.M Departamento Médico" />
+                            <f:selectItem itemLabel="Emssanar E.S.S." itemValue="Emssanar E.S.S." />
+                            <f:selectItem itemLabel="Entidad Cooperativa Solidaria de Salud Ecoopsos" itemValue="Ecoopsos" />
+                            <f:selectItem itemLabel="Entidad Promotora de Salud Anas Wayuu EPSI" itemValue="EPSI" />
+                            <f:selectItem itemLabel="EPS Sura" itemValue="EPS Sura" />
+                            <f:selectItem itemLabel="Famisanar" itemValue="Famisanar" />
+                            <f:selectItem itemLabel="Fondo de Pasivo Social de Ferrocarriles" itemValue="Fondo de Pasivo Social de Ferrocarriles" />
+                            <f:selectItem itemLabel="Fondo de Solidaridad y Garantía Fosyga" itemValue="Fosyga" />
+                            <f:selectItem itemLabel="Manexka" itemValue="Manexka" />
+                            <f:selectItem itemLabel="Nueva EPS" itemValue="Nueva EPS" />
+                            <f:selectItem itemLabel="Salud Total S.A." itemValue="Salud Total S.A." />
+                            <f:selectItem itemLabel="Saludvida S.A EPS" itemValue="Saludvida S.A EPS" />
+                            <f:selectItem itemLabel="Servicio Occidental de Salud S.O.S. S.A." itemValue="Servicio Occidental de Salud S.O.S. S.A" />
+                            <f:selectItem itemLabel="Universidad de Antioquia" itemValue="Universidad de Antioquia" />
+                            <f:selectItem itemLabel="Universidad de Córdoba" itemValue="Universidad de Córdoba" />
+                            <f:selectItem itemLabel="Universidad del Atlántico" itemValue="Universidad del Atlántico" />
+                            <f:selectItem itemLabel="Universidad del Cauca" itemValue="Universidad del Cauca" />
+                            <f:selectItem itemLabel="Universidad del Valle" itemValue="Universidad del Valle" />
+                            <f:selectItem itemLabel="Universidad Industrial de Santander" itemValue="Universidad Industrial de Santander" />
+                            <f:selectItem itemLabel="Universidad Nacional de Colombia" itemValue="Universidad Nacional de Colombia" />
+                            <f:selectItem itemLabel="Universidad Pedagógica y Tecnológica de Colombia" itemValue="UPTC" />
+                            <f:selectItem itemLabel="OTRO" itemValue="OTRO" />
+                        </h:selectOneMenu>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarUsu.labelTxtBirthDate}" for="fechaDeNacimiento" />
-                        <h:inputText id="fechaDeNacimiento" ps:placeholder="#{msjEditarUsu.inputDate}" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <h:inputText ps:type="date" ps:class="form-control"   ps:id="fecha" ps:placeholder="#{msjEditarUsu.inputDate}" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" ps:required="true" requiredMessage="The FechaDeNacimiento field is required.">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:inputText>
-                        <!--   <h:outputLabel value="Edad:" for="edad" />
-                           <h:inputText id="edad" value="#{usuarioControlador.usuario.edad}" title="Edad" required="true" requiredMessage="The Edad field is required."/>
-                    
-                         <h:outputLabel value="#{msjEditarUsu.labelTxtRol}" for="rolidRol" />
-                        -->
-                        <h:selectOneMenu id="rolidRol" value="#{usuarioControlador.rol.idRol}" title="RolidRol" required="true" requiredMessage="The RolidRol field is required.">
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjEditarUsu.labelTxtRol}" for="rolidRol" />
+                        <h:selectOneMenu ps:class="form-control" id="rolidRol" value="#{usuarioControlador.rol.idRol}" title="RolidRol" ps:required="true" requiredMessage="The RolidRol field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{rolControlador.consultarTodos()}" var="rol" itemValue="#{rol.idRol}" itemLabel="#{rol.rol}"/>
                         </h:selectOneMenu>
-                    </h:panelGrid>
-                    <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjEditarUsu.btnRegister}" action="#{usuarioControlador.actualizarUsuario()}"> </h:commandButton>  
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+
+                    <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjEditarAlq.btnUpdate}"  action="#{usuarioControlador.actualizarUsuario()}"> </h:commandButton>  
+
+                    <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
+                    <script>fecha.max = new Date().toISOString().split("T")[0];</script>
+                    <script src="../js/inputValidation.js" type="text/javascript"></script>
                 </h:form>
             </f:view>
-
         </div>
     </h:body>
 </html>
-
 

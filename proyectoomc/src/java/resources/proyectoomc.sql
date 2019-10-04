@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 01-10-2019 a las 19:03:11
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Host: 127.0.0.1
+-- Generation Time: Oct 04, 2019 at 07:23 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,12 +19,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `proyectoomc`
+-- Database: `proyectoomc`
 --
 
 DELIMITER $$
 --
--- Procedimientos
+-- Procedures
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_fecha_salida` (IN `_hora_salida` VARCHAR(20), IN `_fecha_salida` DATE, IN `_id_empleado` INT)  begin
 declare id_horario_actualizar int;
@@ -34,7 +34,7 @@ UPDATE horario SET hora_salida =_hora_salida, fecha_de_salida =_fecha_salida  WH
 END$$
 
 --
--- Funciones
+-- Functions
 --
 CREATE DEFINER=`root`@`localhost` FUNCTION `sf_edad` (`_fechaNac` DATE) RETURNS INT(11) begin
 declare edad int;
@@ -49,7 +49,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `agenda`
+-- Table structure for table `agenda`
 --
 
 CREATE TABLE `agenda` (
@@ -60,7 +60,7 @@ CREATE TABLE `agenda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `agenda`
+-- Dumping data for table `agenda`
 --
 
 INSERT INTO `agenda` (`id_agenda`, `fecha_programada`, `novedades`, `empleado_id_empleado`) VALUES
@@ -79,7 +79,7 @@ INSERT INTO `agenda` (`id_agenda`, `fecha_programada`, `novedades`, `empleado_id
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alquiler`
+-- Table structure for table `alquiler`
 --
 
 CREATE TABLE `alquiler` (
@@ -93,21 +93,20 @@ CREATE TABLE `alquiler` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `alquiler`
+-- Dumping data for table `alquiler`
 --
 
 INSERT INTO `alquiler` (`id_alquiler`, `fecha_de_entrega`, `novedades`, `cilindro_id_cilindro`, `ruta_id_ruta`, `solicitud_id_solicitud`, `estado_alquiler_id_estado`) VALUES
 (3, '2001-01-27', 'No', 1060296, 6, 1, 2),
-(4, '2002-01-27', 'No', 1060296, 6, 1, 1),
+(4, '2002-01-26', 'No', 1060294, 5, 11, 3),
 (5, '2019-01-08', 'Ninguna', 1060293, 1, 1, 1),
-(6, '2019-01-08', 'Ninguna', 1060293, 1, 6, 1),
 (7, '2019-01-08', 'Ninguna', 1060293, 1, 6, 2),
 (8, '2019-01-08', 'No', 1060294, 1, 7, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cilindro`
+-- Table structure for table `cilindro`
 --
 
 CREATE TABLE `cilindro` (
@@ -119,7 +118,7 @@ CREATE TABLE `cilindro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `cilindro`
+-- Dumping data for table `cilindro`
 --
 
 INSERT INTO `cilindro` (`id_cilindro`, `estado`, `tamanio`, `lote`, `fecha_de_creacion`) VALUES
@@ -135,7 +134,7 @@ INSERT INTO `cilindro` (`id_cilindro`, `estado`, `tamanio`, `lote`, `fecha_de_cr
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cliente`
+-- Table structure for table `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -145,31 +144,30 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `cliente`
+-- Dumping data for table `cliente`
 --
 
 INSERT INTO `cliente` (`id_cliente`, `usuario_id`, `estado_id_estado`) VALUES
-(1, 10002010212, 1),
-(3, 23874610, 3),
+(1, 10201021, 1),
+(3, 23874610, 1),
 (6, 23879120, 1),
-(7, 1015410897, 1),
-(8, 1111222, 3),
-(9, 1000624311, 1),
-(10, 23, 1),
-(11, 100020251, 3),
-(12, 32131, 3),
+(7, 10154108, 1),
+(9, 10006243, 1),
+(11, 10002025, 1),
 (13, 10211425, 1),
-(14, 11111, 1),
-(15, 41521452, 1),
-(16, 645452, 1),
 (17, 15321541, 1),
-(18, 1000205411, 3),
-(19, 102154151515, 1);
+(18, 10002054, 3),
+(20, 10002102, 1),
+(21, 10002012, 1),
+(22, 23456789, 1),
+(23, 43243213, 1),
+(24, 213213, 1),
+(26, 10003012, 4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `contrato`
+-- Table structure for table `contrato`
 --
 
 CREATE TABLE `contrato` (
@@ -181,23 +179,20 @@ CREATE TABLE `contrato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `contrato`
+-- Dumping data for table `contrato`
 --
 
 INSERT INTO `contrato` (`id_contrato`, `tipo_contrato`, `fecha_inicio_contrato`, `fecha_final_contrato`, `alquiler_id_alquiler`) VALUES
-(10, 'persona natural', '2010-08-12', '2019-09-22', 5),
-(11, 'persona natural', '2019-08-01', '2019-09-30', 6),
-(12, 'persona natural', '2009-08-01', '2019-08-01', 7),
-(13, 'persona natural', '2009-01-01', '2019-01-01', 7),
-(14, 'Hospital', '2009-01-01', '2019-01-01', 4),
-(15, 'persona natural', '2012-01-01', '2012-09-09', 7),
-(16, 'persona natural', '2013-09-09', '2014-09-09', 6),
-(17, 'persona natural', '2012-09-01', '2002-09-30', 3);
+(10, 'Persona natural', '2019-11-10', '2019-12-10', 5),
+(14, 'Hospital', '2019-10-06', '2019-10-30', 8),
+(17, 'persona natural', '2012-09-01', '2002-09-30', 3),
+(20, 'Persona natural', '2019-10-30', '2019-10-24', 3),
+(21, 'Hospital', '2019-10-06', '2019-10-30', 8);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empleado`
+-- Table structure for table `empleado`
 --
 
 CREATE TABLE `empleado` (
@@ -207,13 +202,13 @@ CREATE TABLE `empleado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `empleado`
+-- Dumping data for table `empleado`
 --
 
 INSERT INTO `empleado` (`id_empleado`, `usuario_id`, `fk_estado`) VALUES
 (1, 23874610, 1),
-(2, 10002010212, 1),
-(3, 100030122, 1),
+(2, 10201021, 1),
+(3, 10003012, 1),
 (4, 1111222, 1),
 (5, 24981099, 1),
 (21, 24981099, 1);
@@ -221,7 +216,7 @@ INSERT INTO `empleado` (`id_empleado`, `usuario_id`, `fk_estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estado_alquiler`
+-- Table structure for table `estado_alquiler`
 --
 
 CREATE TABLE `estado_alquiler` (
@@ -230,7 +225,7 @@ CREATE TABLE `estado_alquiler` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `estado_alquiler`
+-- Dumping data for table `estado_alquiler`
 --
 
 INSERT INTO `estado_alquiler` (`id_estado`, `estado`) VALUES
@@ -242,7 +237,7 @@ INSERT INTO `estado_alquiler` (`id_estado`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estado_cliente`
+-- Table structure for table `estado_cliente`
 --
 
 CREATE TABLE `estado_cliente` (
@@ -251,7 +246,7 @@ CREATE TABLE `estado_cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `estado_cliente`
+-- Dumping data for table `estado_cliente`
 --
 
 INSERT INTO `estado_cliente` (`id_estado`, `estado`) VALUES
@@ -263,7 +258,7 @@ INSERT INTO `estado_cliente` (`id_estado`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estado_empleado`
+-- Table structure for table `estado_empleado`
 --
 
 CREATE TABLE `estado_empleado` (
@@ -272,7 +267,7 @@ CREATE TABLE `estado_empleado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `estado_empleado`
+-- Dumping data for table `estado_empleado`
 --
 
 INSERT INTO `estado_empleado` (`id_estado_empleado`, `estado`) VALUES
@@ -281,7 +276,7 @@ INSERT INTO `estado_empleado` (`id_estado_empleado`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estado_mantenimiento`
+-- Table structure for table `estado_mantenimiento`
 --
 
 CREATE TABLE `estado_mantenimiento` (
@@ -290,7 +285,7 @@ CREATE TABLE `estado_mantenimiento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `estado_mantenimiento`
+-- Dumping data for table `estado_mantenimiento`
 --
 
 INSERT INTO `estado_mantenimiento` (`id_estado`, `estado`) VALUES
@@ -300,7 +295,7 @@ INSERT INTO `estado_mantenimiento` (`id_estado`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estado_permiso_laboral`
+-- Table structure for table `estado_permiso_laboral`
 --
 
 CREATE TABLE `estado_permiso_laboral` (
@@ -309,7 +304,7 @@ CREATE TABLE `estado_permiso_laboral` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `estado_permiso_laboral`
+-- Dumping data for table `estado_permiso_laboral`
 --
 
 INSERT INTO `estado_permiso_laboral` (`id_estado`, `estado_permiso`) VALUES
@@ -320,7 +315,7 @@ INSERT INTO `estado_permiso_laboral` (`id_estado`, `estado_permiso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `horario`
+-- Table structure for table `horario`
 --
 
 CREATE TABLE `horario` (
@@ -333,7 +328,7 @@ CREATE TABLE `horario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `horario`
+-- Dumping data for table `horario`
 --
 
 INSERT INTO `horario` (`id_horario`, `hora_ingreso`, `hora_salida`, `empleado_id_empleado`, `fecha_de_ingreso`, `fecha_de_salida`) VALUES
@@ -368,7 +363,7 @@ INSERT INTO `horario` (`id_horario`, `hora_ingreso`, `hora_salida`, `empleado_id
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mantenimiento`
+-- Table structure for table `mantenimiento`
 --
 
 CREATE TABLE `mantenimiento` (
@@ -380,7 +375,7 @@ CREATE TABLE `mantenimiento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `mantenimiento`
+-- Dumping data for table `mantenimiento`
 --
 
 INSERT INTO `mantenimiento` (`id_mantenimiento`, `fecha_inicio_mantenimiento`, `fecha_final_mantenimiento`, `agenda_id_agenda`, `estado_mantenimiento`) VALUES
@@ -392,7 +387,7 @@ INSERT INTO `mantenimiento` (`id_mantenimiento`, `fecha_inicio_mantenimiento`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mantenimiento_cilindro`
+-- Table structure for table `mantenimiento_cilindro`
 --
 
 CREATE TABLE `mantenimiento_cilindro` (
@@ -405,7 +400,7 @@ CREATE TABLE `mantenimiento_cilindro` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permiso`
+-- Table structure for table `permiso`
 --
 
 CREATE TABLE `permiso` (
@@ -418,7 +413,7 @@ CREATE TABLE `permiso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `permiso`
+-- Dumping data for table `permiso`
 --
 
 INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `permiso_padre`) VALUES
@@ -549,7 +544,7 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permiso_laboral`
+-- Table structure for table `permiso_laboral`
 --
 
 CREATE TABLE `permiso_laboral` (
@@ -562,7 +557,7 @@ CREATE TABLE `permiso_laboral` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `permiso_laboral`
+-- Dumping data for table `permiso_laboral`
 --
 
 INSERT INTO `permiso_laboral` (`id_permiso_laboral`, `hora_permiso`, `fecha_permiso`, `obvservaciones`, `estado`, `empleado_id_empleado`) VALUES
@@ -584,7 +579,7 @@ INSERT INTO `permiso_laboral` (`id_permiso_laboral`, `hora_permiso`, `fecha_perm
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `punto`
+-- Table structure for table `punto`
 --
 
 CREATE TABLE `punto` (
@@ -594,7 +589,7 @@ CREATE TABLE `punto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `punto`
+-- Dumping data for table `punto`
 --
 
 INSERT INTO `punto` (`id_punto`, `cantidad`, `descripcion`) VALUES
@@ -613,7 +608,7 @@ INSERT INTO `punto` (`id_punto`, `cantidad`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rol`
+-- Table structure for table `rol`
 --
 
 CREATE TABLE `rol` (
@@ -622,7 +617,7 @@ CREATE TABLE `rol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `rol`
+-- Dumping data for table `rol`
 --
 
 INSERT INTO `rol` (`idRol`, `rol`) VALUES
@@ -634,7 +629,7 @@ INSERT INTO `rol` (`idRol`, `rol`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rol_tiene_permiso`
+-- Table structure for table `rol_tiene_permiso`
 --
 
 CREATE TABLE `rol_tiene_permiso` (
@@ -643,7 +638,7 @@ CREATE TABLE `rol_tiene_permiso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `rol_tiene_permiso`
+-- Dumping data for table `rol_tiene_permiso`
 --
 
 INSERT INTO `rol_tiene_permiso` (`rol_idRol`, `permiso_id_permiso`) VALUES
@@ -761,7 +756,7 @@ INSERT INTO `rol_tiene_permiso` (`rol_idRol`, `permiso_id_permiso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ruta`
+-- Table structure for table `ruta`
 --
 
 CREATE TABLE `ruta` (
@@ -773,7 +768,7 @@ CREATE TABLE `ruta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `ruta`
+-- Dumping data for table `ruta`
 --
 
 INSERT INTO `ruta` (`id_ruta`, `direccion`, `planilla`, `vehiculo_id_vehiculo`, `empleado_id_empleado`) VALUES
@@ -792,7 +787,7 @@ INSERT INTO `ruta` (`id_ruta`, `direccion`, `planilla`, `vehiculo_id_vehiculo`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `solicitud`
+-- Table structure for table `solicitud`
 --
 
 CREATE TABLE `solicitud` (
@@ -803,35 +798,24 @@ CREATE TABLE `solicitud` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `solicitud`
+-- Dumping data for table `solicitud`
 --
 
 INSERT INTO `solicitud` (`id_solicitud`, `formula`, `tamanio_cilindro`, `cliente_id_cliente`) VALUES
-(1, '2', 250, 3),
-(2, '/proyectoOMC/archivos/Tarea 2. Fundamentos_php.pdf', 32, 7),
-(3, '/proyectoOMC/archivos/Tarea 2. Fundamentos_php.pdf', 32, 7),
-(5, '/proyectoomc/archivos/tabla (3).xls', 12332, 6),
-(6, '/proyectoomc/archivos/Grupo 1.txt', 250, 8),
-(7, '/proyectoomc/archivos/4.txt', 250, 9),
-(8, '/proyectoomc/archivos/1.csv', NULL, 1),
-(9, '/proyectoomc/archivos/1.csv', NULL, 9),
-(10, '/proyectoomc/archivos/GC-F-004_Formato_Plantilla_sustentacionF1 (1).pptx', NULL, 9),
-(11, '/proyectoomc/archivos/1.csv', NULL, 9),
-(12, '/proyectoomc/archivos/1.csv', NULL, 9),
-(13, '/proyectoomc/archivos/CASO DE USO MODULO 3 CLASIFICACION.docx', NULL, 9),
-(14, '/proyectoomc/archivos/', NULL, 9),
-(15, '/proyectoomc/archivos/1.csv', NULL, 9),
-(16, '/proyectoomc/archivos/GUIA_APRENDIZAJE 2.doc.docx', NULL, 9),
-(17, '/proyectoomc/archivos/ev1_plantillastakeholders (1) (1).xlsx', NULL, 9),
-(18, 'x2', NULL, 8),
-(19, 'sa', NULL, 7),
-(45, '/proyectoomc/archivos/UNIDAD 3.pdf', NULL, 1),
-(46, '/proyectoomc/archivos/UNIDAD 3.pdf', NULL, 1),
-(47, '/proyectoomc/archivos/Material_Formacion_3.pdf', 250, 1),
-(48, '/proyectoomc/archivos/UNIDAD 3.pdf', 300, 11);
+(1, '/proyectoomc/archivos/cert_02.pdf', 250, 3),
+(3, '/proyectoOMC/archivos/cert_01.pdf', 300, 7),
+(5, '/proyectoomc/archivos/cert_02.pdf', 200, 6),
+(6, '/proyectoomc/archivos/cert_03.pdf', 250, 8),
+(7, '/proyectoOMC/archivos/cert_01.pdf', 250, 9),
+(11, '/proyectoOMC/archivos/cert_01.pdf', 400, 9),
+(48, '/proyectoomc/archivos/cert_03.pdf', 300, 11),
+(55, '/proyectoOMC/archivos/cert_01.pdf', 300, 21),
+(56, '/proyectoOMC/archivos/cert_01.pdf', 300, 22),
+(57, '/proyectoomc/archivos/cert_03.pdf', 450, 23),
+(58, '/proyectoomc/archivos/cert_03.pdf', 400, 24);
 
 --
--- Disparadores `solicitud`
+-- Triggers `solicitud`
 --
 DELIMITER $$
 CREATE TRIGGER `eliminarSolicitud` AFTER UPDATE ON `solicitud` FOR EACH ROW BEGIN
@@ -855,7 +839,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipoid`
+-- Table structure for table `tipoid`
 --
 
 CREATE TABLE `tipoid` (
@@ -864,7 +848,7 @@ CREATE TABLE `tipoid` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tipoid`
+-- Dumping data for table `tipoid`
 --
 
 INSERT INTO `tipoid` (`idTipoID`, `tipoID`) VALUES
@@ -876,7 +860,7 @@ INSERT INTO `tipoid` (`idTipoID`, `tipoID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `turno`
+-- Table structure for table `turno`
 --
 
 CREATE TABLE `turno` (
@@ -892,7 +876,7 @@ CREATE TABLE `turno` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `turno`
+-- Dumping data for table `turno`
 --
 
 INSERT INTO `turno` (`id_turno`, `programacion`, `hora_ingreso`, `horas_salida`, `fecha_inicial`, `fecha_final`, `observaciones`, `punto_id_puntos`, `id_empleado`) VALUES
@@ -914,7 +898,7 @@ INSERT INTO `turno` (`id_turno`, `programacion`, `hora_ingreso`, `horas_salida`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -933,34 +917,38 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo`, `contrasenia`, `telefono`, `eps`, `fecha_de_nacimiento`, `edad`, `rol_idRol`) VALUES
-(23, 1, 'Salome', 'Diaz', 'cr 14 n 14 113', 'sbustos@misena.edu.co', '12345', 121212, 'Salud total', '1993-02-03', 26, 2),
-(11111, 1, 'fxk84307@bcaoo.com', 'fxk84307@bcaoo.com', 'ffxk84307@bcaoo.com', 'ffxk84307@bcaoo.com', 'ffxk84307@bcaoo.com', 32125145, 'ffxk84307@bcaoo.com', '2019-09-07', 0, 2),
-(32131, 1, 'c2991589@urhen.com', 'c2991589@urhen.com', 'c2991589@urhen.com', 'c2991589@urhen.com', 'c2991589@urhen.com', 320323, 'c2991589@urhen.com', '2019-09-18', 0, 2),
-(54123, 1, 'Samuel', 'Villanueva', 'Cr 101- 70 26', 'patriciamongui397@gmail.com', 'VXPwnIpaCc', 12121234, 'Salud total', '2009-03-02', 7, 4),
-(645452, 1, 'imhs947ds79@bcaoo.com', 'imhs947ds79@bcaoo.com', 'imhs947ds79@bcaoo.com', 'imhs947ds79@bcaoo.com', 'imhs947ds79@bcaoo.com', 51545, 'imhs947ds79@bcaoo.com', '2019-10-15', 0, 2),
-(1111222, 1, 'assa', 'sasas', 'sasas', 'santyago3601@gmail.com', 'RiVGImysla', 123123, 'sa', '2001-02-02', 18, 2),
-(10211425, 1, 'cwf44416@bcaoo.com', 'cwf44416@bcaoo.com', 'fcwf44416@bcaoo.com', 'fcwf44416@bcaoo.com', 'fcwf44416@bcaoo.com', 533514654, 'fcwf44416@bcaoo.com', '2007-01-16', 12, 2),
-(15321541, 1, 'sdimhs947ds79@bcaoo.com', 'sdimhs947ds79@bcaoo.com', 'sdimhs947ds79@bcaoo.com', 'sdimhs947ds79@bcaoo.com', 'sdimhs947ds79@bcaoo.com', 534564, 'sdimhs947ds79@bcaoo.com', '2019-09-08', 0, 2),
-(23874610, 2, 'Julie', 'Pott Friedman', 'Cll 32 sur No. 32 - 77', 'shirleybernal70@gmail.com', 'URgbaHRhdl', 4169210, 'Famisanar', '1990-03-29', 29, 3),
-(23879120, 2, 'Mark David ', 'Stewart King', 'Cra. 44 No. 21 - 55', 'saquintero074@misena.edu.co', '1234', 3108971923, 'Sanitas', '1979-07-15', 39, 2),
+(213213, 1, 'Juan Marco', 'Arevalo Martinez', 'Cll 21 No. 53-54', 'kif69875@eveav.com', '1203451', 3112465132, 'Nueva EPS', '1979-09-05', 40, 2),
+(1111222, 1, 'Jonh Michael', 'Lopez Jimenez', 'Cll 99 No. 31-24', 'jersonchitan00@gmail.com', 'RiVGImysla', 3119775486, 'Nueva EPS', '2001-02-02', 18, 2),
+(10002012, 1, 'Jonh Michael', 'Mendoza Castiblanco', 'chl60957@bcaoo.com', 'chl60957@bcaoo.com', 'chl60957@bcaoo.com', 1212121212, 'Compensar', '1953-11-29', 65, 2),
+(10002014, 1, 'Monica Bibiana', 'Mendoza Castellanos', 'Cll x No 14-55', 'mbmendoza6@misena.edu.co', 'claveM123456789', 4123521, 'Aliansalud EPS', '1999-01-12', 20, 1),
+(10002025, 1, 'Carol', 'Perez Martinez', 'Cr 101- 70 26', 'juanx@gmail.com', '123454', 3115479652, 'Cafam EPS.', '2012-03-02', 7, 2),
+(10002054, 1, 'Juan Camilo', 'Stewart King', 'Cr 101- 70 26', 'c3081485@urhen.com', 'c3081485@urhen.com', 415415615, 'Aliansalud EPS', '1997-06-16', 22, 2),
+(10002102, 1, 'Liliana Andrea', 'Bedoya Solanilla', 'Cll 24 No. 31 -  34', 'liandreab2sol@gmail.com', 'claveL123456789', 3112446524, 'Aliansalud EPS', '1999-01-12', 20, 2),
+(10003012, 1, 'Juan Camilo', 'Perez Martinez', 'Cr 101- 70 26', 'liandreab2sol@gmail.com', '1234', 122, 'Cafam EPS.', '2001-06-01', 18, 2),
+(10003251, 1, 'Nelson Hernan', 'Rodriguez Ayala', 'Cra 13 No. 123 - 23', 'nhrodrigueza@misena.edu.co', 'claveN123456789', 4135331, 'Aliansalud EPS', '1999-01-12', 20, 1),
+(10005015, 1, 'Felix Eduardo', 'Barahona Romero', 'Cr 101- 70 26', 'felixbarahona@misena.edu.co', 'claveF123456789', 3112997465, 'Aliansalud EPS', '1999-01-12', 20, 3),
+(10006046, 2, 'Santiago', 'Ruiz RincÃ³n', 'cLL X', 'santyago3601@gmail.com', '12345', 4153134, 'Aliansalud EPS', '2001-03-05', 18, 1),
+(10006243, 2, 'Carol', 'Martinez', 'Cra 13 No. 123 - 23', 'carolbustos1@gmail.com ', '1234', 4139385, 'Colmedica', '1980-06-03', 39, 2),
+(10154108, 1, 'Emili', 'Smith ', 'Cll 24 No. 31 -  34', 'jprodriguez744@misena.edu.co', '454545', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
+(10201021, 1, 'Camila', 'Perez', 'Cll x 24 -  23', 'stbernal0@misena.edu.co', '12345', 12345, 'Salud total', '2011-04-02', 8, 2),
+(10211425, 1, 'Marina Yolanda', 'Pedraza Gonzalez', 'Cra 21 No. 45-65', 'fcwf44416@bcaoo.com', '5415fd', 3224119851, 'Comfacundi - CCF de Cundinamarca', '2007-01-16', 12, 2),
+(15321541, 1, 'Thomas ', 'Quintana Duarte', 'Dg 23 No. 12-23 Sur', 'sdimhs947ds79@bcaoo.com', '15151fdd', 3112447512, 'Comfacundi - CCF de Cundinamarca', '2019-09-08', 0, 2),
+(23294719, 2, 'Salome', 'Diaz duarte', 'cr 14 n 14 113', 'sbustos@misena.edu.co', '546789', 3115447952, 'Comfacundi - CCF de Cundinamarca', '1993-02-02', 26, 2),
+(23456789, 3, 'Pablo ', 'Moneros Renteria', 'Cra 21 No. 45-65', 'lvu68354@eveav.com', '324356jhj3', 4153265, 'Comfenalco Valle EPS', '2012-05-09', 7, 2),
+(23874610, 2, 'Julie', 'Pott Friedman', 'Cll 32 sur No. 32 - 77', 'shirleybernal70@gmail.com', 'URgbaHRhdl', 4781236, 'Famisanar', '1990-03-29', 29, 3),
+(23879120, 2, 'Mark David ', 'Stewart King', 'Cra. 44 No. 21 - 55', 'saquintero074@misena.edu.co', '1234', 4157989, 'Sanitas', '1979-07-15', 39, 2),
 (24981099, 2, 'Mark Christopher', 'Green Adams', 'Kra 19 No. 210 - 23', 'stephannybustos@gmail.com', 'KwIkhXyOkb', 4774147, 'Cafam EPS.', '1997-05-05', 22, 4),
-(27871927, 1, 'Thomas', 'Miller King', 'av 68 n 14- 32', 'dybautista2@misena.edu.co', '3232', 12121230, 'Cafe salud', '1989-12-19', 30, 4),
-(41521452, 1, 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 'imh94779@bcaoo.com', 56546, 'imh94779@bcaoo.com', '2019-09-10', 0, 2),
-(100020251, 1, 'aaaaa', 'aaaaaa', 'algo', 'juanx@gmail.com', '123454', 456135, 'No tiene', '2012-03-02', 7, 2),
-(100030122, 1, 'Juan Camilo', 'Perez Martinez', 'Correo@mail.com', 'santyago3601@gmail.com', '1234', 122, 'No tiene', '2001-06-01', 18, 2),
-(1000205411, 1, 'c3081485@urhen.com', 'c3081485@urhen.com', 'c3081485@urhen.com', 'c3081485@urhen.com', 'c3081485@urhen.com', 415415615, 'Aliansalud EPS', '1997-06-16', 22, 2),
-(1000604688, 2, 'Santiago', 'Ruiz RincÃ³n', 'cLL X', 'santyago3601@gmail.com', '12345', 4153134, 'NO', '2001-03-05', 18, 1),
-(1000624311, 2, 'Carol', 'Martinez', 'Cra 13 No. 123 - 23', 'carolbustos1@gmail.com ', '1234', 4139385, 'Colmedica', '1980-06-03', 39, 2),
-(1015410897, 1, 'Emili', 'Smith ', 'Cll 24 No. 31 -  34', 'jprodriguez744@misena.edu.co', '454545', 4135331, 'Nueva Eps', '1989-07-12', 29, 2),
-(10002010212, 1, 'Camila', 'Perez', 'Cll x 24 -  23', 'stbernal0@misena.edu.co', '12345', 12345, 'Salud total', '2011-04-02', 8, 2),
-(102154151515, 1, 'wim33398@bcaoo.com', 'wim33398@bcaoo.com', 'wim33398@bcaoo.com', 'wim33398@bcaoo.com', 'wim33398@bcaoo.com', 15154152415, 'Universidad Industrial de Santander', '2011-01-16', 8, 2);
+(27451749, 1, 'Samuel', 'Villanueva', 'Cr 101- 70 26', 'patriciamongui397@gmail.com', 'VXPwnIpaCc', 4235154, 'Salud total', '2009-03-02', 7, 4),
+(27871927, 1, 'Thomas', 'Miller King', 'av 68 n 14- 32', '4n1ma98@gmail.com', '3232', 4151815, 'Cafe salud', '1989-12-19', 30, 4),
+(43243213, 1, 'Miguel Alonso', 'Escobar Martinez', 'Cll 21 no. 12-32', 'tli22651@bcaoo.com', 'tli22651@bcaoo.com', 131243245, 'Comfacundi - CCF de Cundinamarca', '1962-06-11', 57, 2),
+(1000201266, 1, 'Maria Linda', 'Ortiz Baez', 'Cll 22 C No. 24-21', 'mlyndaortiz@gmail.com', 'claveM123456789', 3152249852, 'Aliansalud EPS', '1999-01-12', 20, 3);
 
 --
--- Disparadores `usuario`
+-- Triggers `usuario`
 --
 DELIMITER $$
 CREATE TRIGGER `insertarEdad` BEFORE INSERT ON `usuario` FOR EACH ROW BEGIN
@@ -980,7 +968,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `vehiculo`
+-- Table structure for table `vehiculo`
 --
 
 CREATE TABLE `vehiculo` (
@@ -989,11 +977,11 @@ CREATE TABLE `vehiculo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `vehiculo`
+-- Dumping data for table `vehiculo`
 --
 
 INSERT INTO `vehiculo` (`id_vehiculo`, `matricula`) VALUES
-(1, 'BOG-154'),
+(1, 'BOG-155'),
 (2, 'BOG-264'),
 (3, 'BOG-219'),
 (4, 'SOR-419'),
@@ -1006,21 +994,22 @@ INSERT INTO `vehiculo` (`id_vehiculo`, `matricula`) VALUES
 (11, 'ASD-330'),
 (12, 'AMD-350'),
 (13, 'AGR-391'),
-(14, 'AZD-290');
+(14, 'AZD-290'),
+(16, 'JHD-241');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `agenda`
+-- Indexes for table `agenda`
 --
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`id_agenda`),
   ADD KEY `empleado_id_empleado` (`empleado_id_empleado`);
 
 --
--- Indices de la tabla `alquiler`
+-- Indexes for table `alquiler`
 --
 ALTER TABLE `alquiler`
   ADD PRIMARY KEY (`id_alquiler`),
@@ -1030,13 +1019,13 @@ ALTER TABLE `alquiler`
   ADD KEY `estado_alquiler_id_estado` (`estado_alquiler_id_estado`);
 
 --
--- Indices de la tabla `cilindro`
+-- Indexes for table `cilindro`
 --
 ALTER TABLE `cilindro`
   ADD PRIMARY KEY (`id_cilindro`);
 
 --
--- Indices de la tabla `cliente`
+-- Indexes for table `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_cliente`),
@@ -1044,14 +1033,14 @@ ALTER TABLE `cliente`
   ADD KEY `estado_id_estado` (`estado_id_estado`);
 
 --
--- Indices de la tabla `contrato`
+-- Indexes for table `contrato`
 --
 ALTER TABLE `contrato`
   ADD PRIMARY KEY (`id_contrato`),
   ADD KEY `alquiler_id_alquiler` (`alquiler_id_alquiler`);
 
 --
--- Indices de la tabla `empleado`
+-- Indexes for table `empleado`
 --
 ALTER TABLE `empleado`
   ADD PRIMARY KEY (`id_empleado`),
@@ -1059,44 +1048,44 @@ ALTER TABLE `empleado`
   ADD KEY `fk_estado` (`fk_estado`);
 
 --
--- Indices de la tabla `estado_alquiler`
+-- Indexes for table `estado_alquiler`
 --
 ALTER TABLE `estado_alquiler`
   ADD PRIMARY KEY (`id_estado`);
 
 --
--- Indices de la tabla `estado_cliente`
+-- Indexes for table `estado_cliente`
 --
 ALTER TABLE `estado_cliente`
   ADD PRIMARY KEY (`id_estado`);
 
 --
--- Indices de la tabla `estado_empleado`
+-- Indexes for table `estado_empleado`
 --
 ALTER TABLE `estado_empleado`
   ADD PRIMARY KEY (`id_estado_empleado`);
 
 --
--- Indices de la tabla `estado_mantenimiento`
+-- Indexes for table `estado_mantenimiento`
 --
 ALTER TABLE `estado_mantenimiento`
   ADD PRIMARY KEY (`id_estado`);
 
 --
--- Indices de la tabla `estado_permiso_laboral`
+-- Indexes for table `estado_permiso_laboral`
 --
 ALTER TABLE `estado_permiso_laboral`
   ADD PRIMARY KEY (`id_estado`);
 
 --
--- Indices de la tabla `horario`
+-- Indexes for table `horario`
 --
 ALTER TABLE `horario`
   ADD PRIMARY KEY (`id_horario`),
   ADD KEY `empleado_id_empleado` (`empleado_id_empleado`);
 
 --
--- Indices de la tabla `mantenimiento`
+-- Indexes for table `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
   ADD PRIMARY KEY (`id_mantenimiento`),
@@ -1104,7 +1093,7 @@ ALTER TABLE `mantenimiento`
   ADD KEY `estado_mantenimiento` (`estado_mantenimiento`);
 
 --
--- Indices de la tabla `mantenimiento_cilindro`
+-- Indexes for table `mantenimiento_cilindro`
 --
 ALTER TABLE `mantenimiento_cilindro`
   ADD PRIMARY KEY (`id_mantenimiento_cilindro`),
@@ -1112,14 +1101,14 @@ ALTER TABLE `mantenimiento_cilindro`
   ADD KEY `cilindro_id_cilindro` (`cilindro_id_cilindro`);
 
 --
--- Indices de la tabla `permiso`
+-- Indexes for table `permiso`
 --
 ALTER TABLE `permiso`
   ADD PRIMARY KEY (`id_permiso`),
   ADD KEY `permiso_id_permiso` (`permiso_padre`);
 
 --
--- Indices de la tabla `permiso_laboral`
+-- Indexes for table `permiso_laboral`
 --
 ALTER TABLE `permiso_laboral`
   ADD PRIMARY KEY (`id_permiso_laboral`),
@@ -1127,19 +1116,19 @@ ALTER TABLE `permiso_laboral`
   ADD KEY `estado` (`estado`);
 
 --
--- Indices de la tabla `punto`
+-- Indexes for table `punto`
 --
 ALTER TABLE `punto`
   ADD PRIMARY KEY (`id_punto`);
 
 --
--- Indices de la tabla `rol`
+-- Indexes for table `rol`
 --
 ALTER TABLE `rol`
   ADD PRIMARY KEY (`idRol`);
 
 --
--- Indices de la tabla `rol_tiene_permiso`
+-- Indexes for table `rol_tiene_permiso`
 --
 ALTER TABLE `rol_tiene_permiso`
   ADD PRIMARY KEY (`rol_idRol`,`permiso_id_permiso`),
@@ -1147,7 +1136,7 @@ ALTER TABLE `rol_tiene_permiso`
   ADD KEY `permiso_id_permiso` (`permiso_id_permiso`);
 
 --
--- Indices de la tabla `ruta`
+-- Indexes for table `ruta`
 --
 ALTER TABLE `ruta`
   ADD PRIMARY KEY (`id_ruta`),
@@ -1155,20 +1144,20 @@ ALTER TABLE `ruta`
   ADD KEY `fk_ruta_vehiculo` (`vehiculo_id_vehiculo`);
 
 --
--- Indices de la tabla `solicitud`
+-- Indexes for table `solicitud`
 --
 ALTER TABLE `solicitud`
   ADD PRIMARY KEY (`id_solicitud`),
   ADD KEY `cliente_id_cliente` (`cliente_id_cliente`);
 
 --
--- Indices de la tabla `tipoid`
+-- Indexes for table `tipoid`
 --
 ALTER TABLE `tipoid`
   ADD PRIMARY KEY (`idTipoID`);
 
 --
--- Indices de la tabla `turno`
+-- Indexes for table `turno`
 --
 ALTER TABLE `turno`
   ADD PRIMARY KEY (`id_turno`),
@@ -1176,7 +1165,7 @@ ALTER TABLE `turno`
   ADD KEY `id_empleado` (`id_empleado`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
@@ -1184,99 +1173,99 @@ ALTER TABLE `usuario`
   ADD KEY `tp_id` (`tp_id`);
 
 --
--- Indices de la tabla `vehiculo`
+-- Indexes for table `vehiculo`
 --
 ALTER TABLE `vehiculo`
   ADD PRIMARY KEY (`id_vehiculo`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `agenda`
+-- AUTO_INCREMENT for table `agenda`
 --
 ALTER TABLE `agenda`
   MODIFY `id_agenda` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `alquiler`
+-- AUTO_INCREMENT for table `alquiler`
 --
 ALTER TABLE `alquiler`
-  MODIFY `id_alquiler` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_alquiler` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `cliente`
+-- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_cliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT de la tabla `contrato`
+-- AUTO_INCREMENT for table `contrato`
 --
 ALTER TABLE `contrato`
-  MODIFY `id_contrato` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_contrato` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT de la tabla `estado_alquiler`
+-- AUTO_INCREMENT for table `estado_alquiler`
 --
 ALTER TABLE `estado_alquiler`
   MODIFY `id_estado` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `horario`
+-- AUTO_INCREMENT for table `horario`
 --
 ALTER TABLE `horario`
   MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT de la tabla `mantenimiento`
+-- AUTO_INCREMENT for table `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
   MODIFY `id_mantenimiento` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `permiso_laboral`
+-- AUTO_INCREMENT for table `permiso_laboral`
 --
 ALTER TABLE `permiso_laboral`
   MODIFY `id_permiso_laboral` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT de la tabla `ruta`
+-- AUTO_INCREMENT for table `ruta`
 --
 ALTER TABLE `ruta`
   MODIFY `id_ruta` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
--- AUTO_INCREMENT de la tabla `solicitud`
+-- AUTO_INCREMENT for table `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_solicitud` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- AUTO_INCREMENT de la tabla `turno`
+-- AUTO_INCREMENT for table `turno`
 --
 ALTER TABLE `turno`
   MODIFY `id_turno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `vehiculo`
+-- AUTO_INCREMENT for table `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  MODIFY `id_vehiculo` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_vehiculo` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `agenda`
+-- Constraints for table `agenda`
 --
 ALTER TABLE `agenda`
   ADD CONSTRAINT `fk_agenda_empleado` FOREIGN KEY (`empleado_id_empleado`) REFERENCES `empleado` (`id_empleado`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `alquiler`
+-- Constraints for table `alquiler`
 --
 ALTER TABLE `alquiler`
   ADD CONSTRAINT `fk_alquiler_cilindro` FOREIGN KEY (`cilindro_id_cilindro`) REFERENCES `cilindro` (`id_cilindro`) ON UPDATE CASCADE,
@@ -1285,87 +1274,87 @@ ALTER TABLE `alquiler`
   ADD CONSTRAINT `fk_estado_alquiler` FOREIGN KEY (`estado_alquiler_id_estado`) REFERENCES `estado_alquiler` (`id_estado`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `cliente`
+-- Constraints for table `cliente`
 --
 ALTER TABLE `cliente`
   ADD CONSTRAINT `fk_cliente_estado` FOREIGN KEY (`estado_id_estado`) REFERENCES `estado_cliente` (`id_estado`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_cliente_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `contrato`
+-- Constraints for table `contrato`
 --
 ALTER TABLE `contrato`
   ADD CONSTRAINT `fk_contrato_alquiler` FOREIGN KEY (`alquiler_id_alquiler`) REFERENCES `alquiler` (`id_alquiler`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `empleado`
+-- Constraints for table `empleado`
 --
 ALTER TABLE `empleado`
   ADD CONSTRAINT `fk_empleado_usuario1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_estado_id_estado` FOREIGN KEY (`fk_estado`) REFERENCES `estado_empleado` (`id_estado_empleado`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `horario`
+-- Constraints for table `horario`
 --
 ALTER TABLE `horario`
   ADD CONSTRAINT `fk_horario_empleado` FOREIGN KEY (`empleado_id_empleado`) REFERENCES `empleado` (`id_empleado`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `mantenimiento`
+-- Constraints for table `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
   ADD CONSTRAINT `fk_estado_mantenimiento` FOREIGN KEY (`estado_mantenimiento`) REFERENCES `estado_mantenimiento` (`id_estado`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_mantenimiento_agenda` FOREIGN KEY (`agenda_id_agenda`) REFERENCES `agenda` (`id_agenda`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `mantenimiento_cilindro`
+-- Constraints for table `mantenimiento_cilindro`
 --
 ALTER TABLE `mantenimiento_cilindro`
   ADD CONSTRAINT `fk_mantenimiento_tiene_cilindro_idCilindro` FOREIGN KEY (`cilindro_id_cilindro`) REFERENCES `cilindro` (`id_cilindro`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_mantenimiento_tiene_cilindro_idMantenimiento` FOREIGN KEY (`mantenimiento_id_mantenimiento`) REFERENCES `mantenimiento` (`id_mantenimiento`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `permiso`
+-- Constraints for table `permiso`
 --
 ALTER TABLE `permiso`
   ADD CONSTRAINT `fk_permiso_permiso1` FOREIGN KEY (`permiso_padre`) REFERENCES `permiso` (`id_permiso`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `permiso_laboral`
+-- Constraints for table `permiso_laboral`
 --
 ALTER TABLE `permiso_laboral`
   ADD CONSTRAINT `fk_permiso_estado_permiso` FOREIGN KEY (`estado`) REFERENCES `estado_permiso_laboral` (`id_estado`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_permiso_laboral_empleado` FOREIGN KEY (`empleado_id_empleado`) REFERENCES `empleado` (`id_empleado`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `rol_tiene_permiso`
+-- Constraints for table `rol_tiene_permiso`
 --
 ALTER TABLE `rol_tiene_permiso`
   ADD CONSTRAINT `fk_ROL_TIENE_PERMISOS_PERMISOS` FOREIGN KEY (`permiso_id_permiso`) REFERENCES `permiso` (`id_permiso`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_ROL_TIENE_PERMISOS_ROL` FOREIGN KEY (`rol_idRol`) REFERENCES `rol` (`idRol`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `ruta`
+-- Constraints for table `ruta`
 --
 ALTER TABLE `ruta`
   ADD CONSTRAINT `fk_ruta_empleado` FOREIGN KEY (`empleado_id_empleado`) REFERENCES `empleado` (`id_empleado`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_ruta_vehiculo` FOREIGN KEY (`vehiculo_id_vehiculo`) REFERENCES `vehiculo` (`id_vehiculo`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `solicitud`
+-- Constraints for table `solicitud`
 --
 ALTER TABLE `solicitud`
   ADD CONSTRAINT `fk_solicitud_cliente` FOREIGN KEY (`cliente_id_cliente`) REFERENCES `cliente` (`id_cliente`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `turno`
+-- Constraints for table `turno`
 --
 ALTER TABLE `turno`
   ADD CONSTRAINT `fk_turno_punto` FOREIGN KEY (`punto_id_puntos`) REFERENCES `punto` (`id_punto`) ON UPDATE CASCADE,
   ADD CONSTRAINT `turno_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`);
 
 --
--- Filtros para la tabla `usuario`
+-- Constraints for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `fk_tp_id` FOREIGN KEY (`tp_id`) REFERENCES `tipoid` (`idTipoID`) ON UPDATE CASCADE,

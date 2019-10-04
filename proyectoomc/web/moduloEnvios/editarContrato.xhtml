@@ -20,35 +20,84 @@
             </ol>
         </nav>
         <div id="form"> 
-     <f:view locale="#{sessionController.languageSelected}">
-
-
-                <h:form>
+            <f:view locale="#{sessionController.languageSelected}">
+                <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjEditarCon.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="#{msjEditarCon.labelTxtID}" for="idContrato" />
-                        <h:inputText id="idContrato" value="#{contratoContolador.contrato.idContrato}" title="IdContrato" required="true" requiredMessage="The IdContrato field is required."/>
-                        <h:outputLabel value="#{msjEditarCon.labelTxtContractType}" for="tipoContrato" />
 
-                        <h:inputText id="tipoContrato" value="#{contratoContolador.contrato.tipoContrato}" title="TipoContrato" required="true" requiredMessage="The TipoContrato field is required."/>
-                        <h:outputLabel value="#{msjEditarCon.labelTxtRentID}" for="alquilerIdAlquiler" />
-                        <h:selectOneMenu id="alquilerIdAlquiler" value="#{contratoContolador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="alq" itemValue="#{alq.idAlquiler}" itemLabel="#{alq.idAlquiler}"/>
-                        </h:selectOneMenu>
+                    <div class="form-group"> 
+
+                        <h:outputLabel value="#{msjEditarCon.labelTxtID}" for="tipoContrato" />
+                        <h:inputText ps:readonly="true" ps:class="form-control"  id="idContrato" value="#{contratoControlador.contrato.idContrato}" title="IDContrato" ps:required="true" requiredMessage="The TipoContrato field is required."/>
+
+                    </div>
+                    <div class="form-group"> 
+
+                        <h:outputLabel value="#{msjEditarCon.labelTxtContractType}" for="tipoContrato" />
+                        <h:inputText ps:class="form-control"  id="tipoContrato" value="#{contratoControlador.contrato.tipoContrato}" title="TipoContrato" ps:required="true" requiredMessage="The TipoContrato field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarCon.labelTxtStartDate}" for="fechaInicioContrato" />
-                        <h:inputText id="fechaInicioContrato" ps:placeholder="#{msjEditarCon.inputTxtPlaceHolderDate}" value="#{contratoContolador.contrato.fechaInicioContrato}" title="FechaInicioContrato" required="true" requiredMessage="The FechaInicioContrato field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <h:inputText ps:id="fecha1" ps:type="date" ps:class="form-control"  id="fechaInicioContrato" value="#{contratoControlador.contrato.fechaInicioContrato}" title="FechaInicioContrato" ps:required="true" requiredMessage="The FechaInicioContrato field is required.">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:inputText>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarCon.labelTxtFinishDate}" for="fechaFinalContrato" />
-                        <h:inputText id="fechaFinalContrato" ps:placeholder="#{msjEditarCon.inputTxtPlaceHolderDate}" value="#{contratoContolador.contrato.fechaFinalContrato}" title="FechaFinalContrato" required="true" requiredMessage="The FechaFinalContrato field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <h:inputText ps:id="fecha2" ps:type="date" ps:class="form-control"  id="fechaFinalContrato" value="#{contratoControlador.contrato.fechaFinalContrato}" title="FechaFinalContrato" ps:required="true" requiredMessage="The FechaFinalContrato field is required.">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:inputText>
-                    </h:panelGrid>
-                    <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjEditarCon.btnRegister}" action="#{contratoControlador.actualizarContrato()}"> </h:commandButton>  
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+
+                    <div class="form-group"> 
+
+                        <h:outputLabel value="#{msjEditarCon.labelTxtRentID}" for="alquilerIdAlquiler" />
+                        <div class="form-group">
+                            <div class="form-row">
+                                <h:selectOneMenu ps:class="form-control" id="alquilerIdAlquiler" value="#{contratoControlador.alquiler.idAlquiler}" title="AlquilerIdAlquiler" ps:required="true" requiredMessage="The AlquilerIdAlquiler field is required.">
+                                    <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
+
+                                    <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.clienteIdCliente.usuarioId.nombre} #{al.solicitudIdSolicitud.clienteIdCliente.usuarioId.apellido}"/>
+                                </h:selectOneMenu>
+                                <div class="invalid-feedback">#{msjError.fields}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h:commandButton ps:id="boton" class="btn btn-primary "  value="#{msjEditarCon.btnRegister}" action="#{contratoControlador.actualizarContrato()}"> </h:commandButton>  
+
+                    <script>fecha1.min = new Date().toISOString().split("T")[0];</script>
+                    <script>fecha2.min = new Date().toISOString().split("T")[0];</script>
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
                 </h:form>
             </f:view>
-
         </div>
     </h:body>
 </html>

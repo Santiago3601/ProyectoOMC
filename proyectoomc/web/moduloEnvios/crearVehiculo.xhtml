@@ -23,9 +23,30 @@
             <f:view locale="#{sessionController.languageSelected}">
                 <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjCrearVeh.h1TxtTitle}"/></h1>
-                        <h:outputLabel ps:class="form-control" value="#{msjCrearVeh.labelTxtPlate}" for="matricula" />
-                        <h:inputText ps:class="form-control" id="matricula" value="#{vehiculoControlador.vehiculo.matricula}" title="Matricula" required="true" requiredMessage="The Matricula field is required."/>
+                    <h:outputLabel  value="#{msjCrearVeh.labelTxtPlate}" for="matricula" />
+                    <h:inputText ps:class="form-control" id="matricula" value="#{vehiculoControlador.vehiculo.matricula}" title="Matricula" ps:required="true" requiredMessage="The Matricula field is required."/>
+                    <div class="invalid-feedback">#{msjError.fields}</div>
                     <h:commandButton value="#{msjCrearVeh.btnRegister}" action="#{vehiculoControlador.registrarVehiculo()}"> </h:commandButton>
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
                 </h:form>
                 <a href="subidadDeDatosVehiculos.xhtml">Subida de datos</a>
             </f:view>

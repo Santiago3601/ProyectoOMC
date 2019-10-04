@@ -12,28 +12,45 @@
         <title>OMC</title>
     </h:head>
     <h:body>
-                <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Editar}</li>
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Vehiculo}</li>
             </ol>
         </nav>
-           <div id="form"> 
-     <f:view locale="#{sessionController.languageSelected}">
-
-            <h:form>
-                <h1><h:outputText value="#{msjEditarVeh.h1TxtTitle}"/></h1>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{msjEditarVeh.labelTxtID}" for="idVehiculo" />
-                    <h:inputText id="idVehiculo" value="#{vehiculoControlador.vehiculo.idVehiculo}" title="IdVehiculo" required="true" requiredMessage="The IdVehiculo field is required."/>
-                    <h:outputLabel value="#{msjEditarVeh.labelTxtPlate}" for="matricula" />
-                    <h:inputText id="matricula" value="#{vehiculoControlador.vehiculo.matricula}" title="Matricula" required="true" requiredMessage="The Matricula field is required."/>
-                </h:panelGrid>
-                <h:commandButton ps:id="boton" class="btn btn-primary" value="#{msjEditarVeh.btnRegister}" action="#{vehiculoControlador.actualizarVehiculo()}"> </h:commandButton>
-            </h:form>
-        </f:view>
-           </div>
-</h:body>
+        <div id="form"> 
+            <f:view locale="#{sessionController.languageSelected}">
+                <h:form ps:class="needs-validation" ps:novalidate="true">
+                    <h1><h:outputText value="#{msjEditarVeh.h1TxtTitle}"/></h1>
+                    <h:outputLabel  value="#{msjEditarVeh.labelTxtID}" for="id" />
+                    <h:inputText ps:readonly="true" ps:class="form-control" id="id" value="#{vehiculoControlador.vehiculo.idVehiculo}" title="Matricula" ps:required="true" requiredMessage="The Matricula field is required."/>
+                    <h:outputLabel  value="#{msjEditarVeh.labelTxtPlate}" for="matricula" />
+                    <h:inputText ps:class="form-control" id="matricula" value="#{vehiculoControlador.vehiculo.matricula}" title="Matricula" ps:required="true" requiredMessage="The Matricula field is required."/>
+                    <div class="invalid-feedback">#{msjError.fields}</div>
+                    <h:commandButton value="#{msjEditarVeh.btnRegister}" action="#{vehiculoControlador.actualizarVehiculo()}"> </h:commandButton>
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
+                </h:form>
+            </f:view>
+        </div>
+    </h:body>
 </html>
-

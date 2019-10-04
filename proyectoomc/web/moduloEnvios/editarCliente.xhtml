@@ -21,29 +21,53 @@
         </nav>
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
-
-
-
-                <h:form>
+                <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjEditarCli.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjEditarCli.labelTxtID}" for="idCliente" />
-                        <h:inputText id="idCliente" value="#{clienteControlador.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The IdCliente field is required."/>
+                        <h:inputText ps:class="form-control" id="idCliente" value="#{clienteControlador.cliente.idCliente}" ps:readonly="true" title="IdCliente" ps:required="true" requiredMessage="The IdCliente field is required."/>
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarCli.labelTxtState}" for="estadoIdEstado" />
-                        <h:selectOneMenu id="estadoIdEstado" value="#{clienteControlador.estadoCliente.idEstado}" title="EstadoIdEstado" required="true" requiredMessage="The EstadoIdEstado field is required.">
-                            <!-- TODO: update below reference to list of available items-->
+                        <h:selectOneMenu ps:class="form-control" id="estadoIdEstado" value="#{clienteControlador.estadoCliente.idEstado}" title="EstadoIdEstado" ps:required="true" requiredMessage="The EstadoIdEstado field is required.">
+                            <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
+
                             <f:selectItems value="#{estadoClienteControlador.consultarTodos()}" var="es" itemValue="#{es.idEstado}" itemLabel="#{es.estado}"/>
                         </h:selectOneMenu>
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjEditarCli.labelTxtUserName}" for="usuarioId" />
-                        <h:selectOneMenu id="usuarioId" value="#{clienteControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
-                            <!-- TODO: update below reference to list of available items-->
+                        <h:selectOneMenu ps:class="form-control" id="usuarioId" value="#{clienteControlador.usuario.id}" title="UsuarioId" ps:required="true" requiredMessage="The UsuarioId field is required.">
+                            <f:selectItem  itemLabel="#{msjError.select}" itemValue="" />
+
                             <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="us" itemValue="#{us.id}" itemLabel="#{us.nombre} #{us.apellido} : #{us.rolidRol.rol}"/>
                         </h:selectOneMenu>
-                    </h:panelGrid>
+                    </div>
                     <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjEditarCli.btnRegister}" action="#{clienteControlador.registrarCliente()}"></h:commandButton>
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
                 </h:form>
             </f:view>
-
         </div>
     </h:body>
 </html>

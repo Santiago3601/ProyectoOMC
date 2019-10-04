@@ -227,19 +227,19 @@
         </resource-bundle>         
         
         <resource-bundle>
-            <base-name>language.EditarAlquiler_es</base-name>
+            <base-name>language.EditarAlquiler</base-name>
             <var>msjEditarAlq</var>
         </resource-bundle>        
         <resource-bundle>
-            <base-name>language.EditarCliente_es</base-name>
+            <base-name>language.EditarCliente</base-name>
             <var>msjEditarCli</var>
         </resource-bundle>  
         <resource-bundle>
-            <base-name>language.EditarContrato_es</base-name>
+            <base-name>language.EditarContrato</base-name>
             <var>msjEditarCon</var>
         </resource-bundle>   
         <resource-bundle>
-            <base-name>language.EditarRuta_es</base-name>
+            <base-name>language.EditarRuta</base-name>
             <var>msjEditarRut</var>
         </resource-bundle> 
         <resource-bundle>
