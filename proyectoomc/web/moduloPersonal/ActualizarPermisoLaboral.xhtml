@@ -58,7 +58,7 @@
                             <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.nombre} #{emp.usuarioId.apellido}" />
                         </h:selectOneMenu>
 
-                        <h:commandButton action ="#{permisoLaboralControlador.actualizar()}" value="actualizar"/>
+                        <h:commandButton ps:id="boton" class="btn btn-primary " action ="#{permisoLaboralControlador.actualizar()}" value="actualizar"/>
                    
                      <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields

@@ -39,7 +39,7 @@
                     <h:outputLabel value="#{msjRegistrarPunto.labelTxtDescripcion}" for="descripcion" />
                     <h:inputText pt:class="form-control" id="descripcion" pt:placeholder="#{msjRegistrarPunto.placeholderTxtDescripcion}" value="#{puntoControlador.punto.descripcion}" title="Descripcion" pt:required="true" requiredMessage="The Descripcion field is required." />
                <div class="invalid-feedback">Este campo es importante </div>
-                <h:commandButton action="#{puntoControlador.registrar()}" value="registrar"/>
+                <h:commandButton  ps:id="boton" class="btn btn-primary " action="#{puntoControlador.registrar()}" value="registrar"/>
             
                 
                 <script>

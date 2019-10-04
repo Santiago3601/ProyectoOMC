@@ -47,7 +47,7 @@
                             <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="u" itemValue="#{u.id}" itemLabel="#{u.nombre}#{u.apellido}#{u.rolidRol.rol}"/>
                         </h:selectOneMenu>
                         <br/>
-                        <h:commandButton action ="#{empleadoControlador.registrar()}" value="registrar"/>
+                        <h:commandButton ps:id="boton" class="btn btn-primary" action ="#{empleadoControlador.registrar()}" value="registrar"/>
                       <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
                         (function () {

@@ -59,7 +59,7 @@
                         <!-- TODO: update below reference to list of available items-->
                         <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.apellido}" />
                     </h:selectOneMenu>
-                    <h:commandButton action ="#{horarioControlador.actualizarHorario()}" value="Actualizar"/>
+                    <h:commandButton ps:id="boton" class="btn btn-primary " action ="#{horarioControlador.actualizarHorario()}" value="Actualizar"/>
                 </h:panelGrid>
             </h:form>
         </f:view>

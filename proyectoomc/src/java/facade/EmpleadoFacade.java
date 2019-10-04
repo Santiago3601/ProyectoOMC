@@ -6,6 +6,7 @@
 package facade;
 
 import entidades.Empleado;
+import entidades.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -46,4 +47,21 @@ public class EmpleadoFacade extends AbstractFacade<Empleado> {
         return empleadoEncotrado;
 
     }
+        
+        
+        public List<Object[]> traerEmpleado(Usuario us){
+           Query query;
+           List<Object[]> listaConsulta=null;
+            try {
+                query=em.createNativeQuery("SELECT usuario.`nombre` AS usuario_nombre, usuario.`apellido` AS usuario_apellido, usuario.`telefono` AS usuario_telefono, usuario.`id` AS usuario_id, tipoid.`tipoID` AS tipoid_tipoID FROM `tipoid` tipoid INNER JOIN `usuario` usuario ON tipoid.`idTipoID` = usuario.`tp_id` WHERE id = ?1");
+                query.setParameter(1, us.getId());
+                listaConsulta=query.getResultList();
+                if (!listaConsulta.isEmpty()) {
+                    return listaConsulta;
+                }
+            } catch (Exception e) {
+            }
+            return null;
+        }
+        
 }
