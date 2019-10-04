@@ -21,10 +21,8 @@
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.SolicitudCilindro}</li>
             </ol>
         </nav>
-
         <c:if test="#{solicitudControlador.validarPedidoAgendado() eq false}">
             <div id="form"> 
-
                 <f:view locale="#{sessionController.languageSelected}">
                     <h:form enctype="multipart/form-data">
                         <h1><h:outputText value="#{msjCrearSoli.h1TxtTitle}"/></h1>
@@ -39,7 +37,6 @@
                                 </h:selectOneMenu>
                             </div>
                         </div>
-
                         <h:outputLabel value="#{msjCrearSoli.labelTxtFormula}" for="formula" />
                         <div class="input-group">
                             <div class="custom-file">
@@ -54,11 +51,9 @@
         <c:if test="#{(solicitudControlador.validarPedidoAgendado() eq true)}">
             <h1>Usted ya tiene un pedido agendado</h1>
             <div id="form"> 
-
                 <h4> Por favor este atento a su correo para conocer cuando sera agendado</h4>
             </div>
         </c:if>
-
     </h:body>
 </html>
 

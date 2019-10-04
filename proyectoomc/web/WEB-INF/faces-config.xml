@@ -202,7 +202,7 @@
             <var>msjCrearCon</var>
         </resource-bundle>   
         <resource-bundle>
-            <base-name>language.CrearRuta_es</base-name>
+            <base-name>language.CrearRuta</base-name>
             <var>msjCrearRut</var>
         </resource-bundle> 
         <resource-bundle>
@@ -253,6 +253,10 @@
         <resource-bundle>
             <base-name>language.EditarVehiculo</base-name>
             <var>msjEditarVeh</var>
+        </resource-bundle> 
+        <resource-bundle>
+            <base-name>language.MensajeError</base-name>
+            <var>msjError</var>
         </resource-bundle> 
                   
         <resource-bundle>

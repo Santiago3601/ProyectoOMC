@@ -5,24 +5,21 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
         <link rel="stylesheet" href="../css/prime-styles.css"></link>   
         <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>  
     </h:head>
     <h:body>
-                        <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Consultar}</li>
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Solicitud}</li>
             </ol>
         </nav>
-      <f:view locale="#{sessionController.languageSelected}">
-
-
-
+        <f:view locale="#{sessionController.languageSelected}">
             <h:form>
                 <h1><h:outputText value="#{msjListaSolicitud.title}"/></h1>
                 <p:dataTable id="tablaSolicitudes" value="#{solicitudControlador.consultarTodos()}" var="solicitud">
@@ -50,26 +47,26 @@
                         </f:facet>
                         <a href="#{solicitud.formula}" ><i class="far fa-file-download"></i></a>
                     </p:column>
-                       <p:column exportable="false">
-                                <f:facet name="header">
-                                    <h:outputText value="#{msjListaSolicitud.Accion}"/>
-                                </f:facet>
-                           <h:commandLink  action="#{solicitudControlador.eliminarSolicitud(solicitud)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
-                           <h:commandLink  action="#{solicitudControlador.preActualizarSolicitud(solicitud)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
-                            </p:column>
-                        </p:dataTable>
-                        <h:commandLink id="excel">
-                            <i class="far fa-file-excel"></i>
-                            <p:dataExporter type="xls" target="tablaSolicitudes" fileName="tablaSolicitudes" />
-                            <style>
-                                .far{
-                                    padding: 2px;
-                                    font-size: x-large;
-                                }
-                            </style>
-                        </h:commandLink>
-                    </h:form>
-                </f:view>
+                    <p:column exportable="false">
+                        <f:facet name="header">
+                            <h:outputText value="#{msjListaSolicitud.Accion}"/>
+                        </f:facet>
+                        <h:commandLink  action="#{solicitudControlador.eliminarSolicitud(solicitud)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                        <h:commandLink  action="#{solicitudControlador.preActualizarSolicitud(solicitud)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                    </p:column>
+                </p:dataTable>
+                <h:commandLink id="excel">
+                    <i class="far fa-file-excel"></i>
+                    <p:dataExporter type="xls" target="tablaSolicitudes" fileName="tablaSolicitudes" />
+                    <style>
+                        .far{
+                            padding: 2px;
+                            font-size: x-large;
+                        }
+                    </style>
+                </h:commandLink>
+            </h:form>
+        </f:view>
 
 
     </h:body>

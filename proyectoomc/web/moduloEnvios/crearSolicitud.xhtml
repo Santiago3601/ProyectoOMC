@@ -41,7 +41,7 @@
                         </h:selectOneMenu>
                         <h:outputLabel value="#{msjCrearSoli.labelTxtFormula}" for="formula" />
                         <h:inputFile ps:class="form-control"  value="#{solicitudControlador.file}"/>
-                        <h:commandButton value="Subir Archivo" action="#{solicitudControlador.upload()}"/>
+                        <h:commandButton ps:id="boton" class="btn btn-primary " value="Subir Archivo" action="#{solicitudControlador.upload()}"/>
 
                     </h:panelGrid>
                 </h:form>

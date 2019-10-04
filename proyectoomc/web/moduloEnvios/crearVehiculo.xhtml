@@ -21,18 +21,14 @@
         </nav>
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
-                <h:form>
+                <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjCrearVeh.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
-                       
-                        <h:outputLabel value="#{msjCrearVeh.labelTxtPlate}" for="matricula" />
+                        <h:outputLabel ps:class="form-control" value="#{msjCrearVeh.labelTxtPlate}" for="matricula" />
                         <h:inputText ps:class="form-control" id="matricula" value="#{vehiculoControlador.vehiculo.matricula}" title="Matricula" required="true" requiredMessage="The Matricula field is required."/>
-                    </h:panelGrid>
                     <h:commandButton value="#{msjCrearVeh.btnRegister}" action="#{vehiculoControlador.registrarVehiculo()}"> </h:commandButton>
                 </h:form>
-                <a href="subidadDeDatosVehiculos.xhtml">click</a>
+                <a href="subidadDeDatosVehiculos.xhtml">Subida de datos</a>
             </f:view>
         </div>
     </h:body>
 </html>
-

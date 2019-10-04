@@ -56,7 +56,7 @@
                             <f:selectItems value="#{estadoAlquilerControlador.consultarTodos()}" var="est" itemValue="#{est.idEstado}" itemLabel="#{est.estado}"/>
                         </h:selectOneMenu>
                     </h:panelGrid>
-                    <h:commandButton value="#{msjEditarAlq.btnRegister}" action="#{alquilerControlador.registrarAlquiler()}"> </h:commandButton> 
+                    <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjEditarAlq.btnRegister}" action="#{alquilerControlador.registrarAlquiler()}"> </h:commandButton> 
 
                 </h:form>
             </f:view>

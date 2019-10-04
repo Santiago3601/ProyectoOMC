@@ -4,14 +4,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
+  <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
-        <link rel="stylesheet" href="../../../css/CSS ENVIOS/MODULO-ENVIOS.css"></link>   
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>   
         <link rel="stylesheet" href="../css/prime-styles.css"></link>   
-
-
-        <title>OMC</title>
+        <link href="../primeicons-master/primeicons.css" rel="stylesheet" type="text/css"/>
+        <title>Facelets Template</title>
     </h:head>
     <h:body>
         <nav aria-label="breadcrumb">
@@ -24,7 +24,7 @@
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
                 <h:form>
-                    <h1><h:outputText value="#{msjCrearCon.h1TxtTitle}"/></h1>
+                    <h1><h:outputText value="#{msjListaContratos.lista}"/></h1>
                     <p:dataTable value="#{contratoControlador.consultarTodos()}" var="item" >
                         <p:column filterBy="#{item.idContrato}">
                             <f:facet name="header">
@@ -66,8 +66,8 @@
                             <f:facet name="header">
                                 <h:outputText value="#{msjListaContratos.Accion}"/>
                             </f:facet>
-                            <h:commandLink  action="#{contratoContolador.eliminarContrato(con)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
-                            <h:commandLink  action="#{contratoContolador.preActualizarContrato(con)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                            <h:commandLink  action="#{contratoControlador.eliminarContrato(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                            <h:commandLink  action="#{contratoControlador.preActualizarContrato(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
                         </p:column>
                     </p:dataTable>
                     <h:commandLink id="excel">

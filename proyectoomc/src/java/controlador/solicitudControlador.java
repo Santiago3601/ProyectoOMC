@@ -193,13 +193,14 @@ public class solicitudControlador implements Serializable {
     }
 
     public String uploadUsuario() {
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
         String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");
         path = path.substring(0, path.indexOf("\\build"));
         path = path + "\\web\\Archivos\\";
         try {
             this.nombre = file.getSubmittedFileName();
-            pathReal = "/proyectoomc/archivos/" + nombre;
-            path = path + this.nombre;
+            pathReal = "/proyectoomc/archivos/" + usuario.getId() +  nombre;
+            path = path + usuario.getId() + this.nombre;
             InputStream in = file.getInputStream();
 
             byte[] data = new byte[in.available()];
@@ -211,7 +212,6 @@ public class solicitudControlador implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
         this.cliente = solicitudFacade.obtenerIdUsuario(usuario);
         solicitud.setIdSolicitud(1);
         solicitud.setClienteIdCliente(cliente);
@@ -237,7 +237,7 @@ public class solicitudControlador implements Serializable {
         return "confirmacionClienteCilindroCancelado";
     }
 
-    public String redireccionar(){
+    public String redireccionar() {
         return "paginaDeBienvenidaCliente";
     }
 }

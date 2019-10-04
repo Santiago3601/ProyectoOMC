@@ -64,7 +64,7 @@
                             <f:selectItems value="#{rolControlador.consultarTodos()}" var="rol" itemValue="#{rol.idRol}" itemLabel="#{rol.rol}"/>
                         </h:selectOneMenu>
                     </h:panelGrid>
-                    <h:commandButton value="#{msjEditarUsu.btnRegister}" action="#{usuarioControlador.actualizarUsuario()}"> </h:commandButton>  
+                    <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjEditarUsu.btnRegister}" action="#{usuarioControlador.actualizarUsuario()}"> </h:commandButton>  
                 </h:form>
             </f:view>
 

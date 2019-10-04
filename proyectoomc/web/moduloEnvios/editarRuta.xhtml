@@ -41,7 +41,7 @@
                         <f:selectItems value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" itemValue="#{vehiculo.idVehiculo}" itemLabel="#{vehiculo.matricula}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandButton value="#{msjEditarRut.btnRegister}" action="#{rutaControlador.actualizarRuta()}"> </h:commandButton>  
+                <h:commandButton ps:id="boton" class="btn btn-primary" value="#{msjEditarRut.btnRegister}" action="#{rutaControlador.actualizarRuta()}"> </h:commandButton>  
             </h:form>
         </f:view>
            </div>

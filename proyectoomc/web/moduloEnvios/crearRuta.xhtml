@@ -22,27 +22,52 @@
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
 
+                <h:form ps:class="needs-validation" ps:novalidate="true">
 
-                <h:form>
                     <h1><h:outputText value="#{msjCrearRut.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
-                      
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjCrearRut.labelTxtRouteAddress}" for="direccion" />
-                        <h:inputText ps:class="form-control"  id="direccion" value="#{rutaControlador.ruta.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
+                        <h:inputText ps:class="form-control"  id="direccion" value="#{rutaControlador.ruta.direccion}" title="Direccion" ps:required="true" requiredMessage="The Direccion field is required."/>
+                    </div>
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjCrearRut.labelTxtDeliveryAddresses}" for="planilla" />
-                        <h:inputText ps:class="form-control"  id="planilla" value="#{rutaControlador.ruta.planilla}" title="Planilla" required="true" requiredMessage="The Planilla field is required."/>
+                        <h:inputText ps:class="form-control"  id="planilla" value="#{rutaControlador.ruta.planilla}" title="Planilla" ps:required="true" requiredMessage="The Planilla field is required."/>
+                    </div>
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjCrearRut.labelTxtEmployee}" for="empleadoIdEmpleado" />
-                        <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{rutaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
-                            <!-- TODO: update below reference to list of available items-->
+                        <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{rutaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                            <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
                             <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="empleado" itemValue="#{empleado.idEmpleado}" itemLabel="#{empleado.usuarioId.nombre} #{empleado.usuarioId.apellido}"/>
                         </h:selectOneMenu>
+                    </div>
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjCrearRut.labelTxtVehicle}" for="vehiculoIdVehiculo" />
-                        <h:selectOneMenu ps:class="form-control" id="vehiculoIdVehiculo" value="#{rutaControlador.vehiculo.idVehiculo}" title="VehiculoIdVehiculo" required="true" requiredMessage="The VehiculoIdVehiculo field is required.">
-                            <!-- TODO: update below reference to list of available items-->
+                        <h:selectOneMenu ps:class="form-control" id="vehiculoIdVehiculo" value="#{rutaControlador.vehiculo.idVehiculo}" title="VehiculoIdVehiculo" ps:required="true" requiredMessage="The VehiculoIdVehiculo field is required.">
+                            <f:selectItem itemLabel="#{msjError.select}" itemValue="" />
                             <f:selectItems value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" itemValue="#{vehiculo.idVehiculo}" itemLabel="#{vehiculo.matricula}"/>
                         </h:selectOneMenu>
-                    </h:panelGrid>
-                    <h:commandButton value="#{msjCrearRut.btnRegister}" action="#{rutaControlador.registrarRuta()}"> </h:commandButton>  
+                    </div>
+                    <h:commandButton ps:id="boton" class="btn btn-primary "  value="#{msjCrearRut.btnRegister}" action="#{rutaControlador.registrarRuta()}"> </h:commandButton>  
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function () {
+                            'use strict';
+                            window.addEventListener('load', function () {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function (form) {
+                                    form.addEventListener('submit', function (event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
                 </h:form>
             </f:view>
         </div>
