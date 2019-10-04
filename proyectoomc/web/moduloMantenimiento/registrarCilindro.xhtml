@@ -25,17 +25,17 @@
             <f:view locale="#{sessionController.languageSelected}">
 
 
-                <h:form>
+                <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjscilindro.h1TxtTitle}"/></h1>
                     <h:panelGrid columns="2">
                         <h:outputLabel value="#{msjscilindro.labelTxtIdCylinder}" for="idCilindro" />
-                        <h:inputText ps:class="form-control" id="idCilindro" value="#{cilindroControlador.cilindro.idCilindro}" title="IdCilindro" required="true" requiredMessage="The IdCilindro field is required."/>
+                        <h:inputText ps:class="form-control" id="idCilindro" value="#{cilindroControlador.cilindro.idCilindro}" title="IdCilindro" ps:required="true" requiredMessage="The IdCilindro field is required."/>
                         <h:outputLabel value="#{msjscilindro.labelTxtState}" for="estado" />
-                        <h:inputText ps:class="form-control" id="estado" value="#{cilindroControlador.cilindro.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
+                        <h:inputText ps:class="form-control" id="estado" value="#{cilindroControlador.cilindro.estado}" title="Estado" ps:required="true" requiredMessage="The Estado field is required."/>
                         <h:outputLabel value="#{msjscilindro.labelTxtSize}" for="tamanio" />
-                        <h:inputText ps:class="form-control" id="tamanio" value="#{cilindroControlador.cilindro.tamanio}" title="Tamanio" required="true" requiredMessage="The Tamanio field is required."/>
+                        <h:inputText ps:class="form-control" id="tamanio" value="#{cilindroControlador.cilindro.tamanio}" title="Tamanio" ps:required="true" requiredMessage="The Tamanio field is required."/>
                         <h:outputLabel value="#{msjscilindro.labelTxtICreationDate}" for="fechaDeCreacion" />
-                        <h:inputText ps:class="form-control" pt:id="fecha1" pt:type="date" id="fechaDeCreacion" value="#{cilindroControlador.cilindro.fechaDeCreacion}" title="FechaDeCreacion" required="true" requiredMessage="The FechaDeCreacion field is required.">
+                        <h:inputText ps:class="form-control" pt:id="fecha1" pt:type="date" id="fechaDeCreacion" value="#{cilindroControlador.cilindro.fechaDeCreacion}" title="FechaDeCreacion" ps:required="true" requiredMessage="The FechaDeCreacion field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
                     </h:panelGrid>

@@ -28,46 +28,48 @@
             <f:view locale="#{sessionController.languageSelected}">
 
 
-                <h:form>
+                <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjsagedaD.h1TxtTitle}"/></h1>
 
                     <h:panelGrid columns="2">
                         <h:outputLabel value="#{msjsagedaD.labelTxtId}" for="idAgenda" />
-                        <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" required="true" requiredMessage="The IdAgenda field is required."/>
+                        <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" ps:required="true" requiredMessage="The IdAgenda field is required."/>
                         <h:outputLabel value="#{msjsagedaD.labelTxtScheduledDate}" for="fechaProgramada" />
-                        <h:inputText ps:class="form-control" pt:id="fecha1" pt:type="date" id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" required="true" requiredMessage="The FechaProgramada field is required.">
+                        <h:inputText ps:class="form-control" pt:id="fecha1" pt:type="date" id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" ps:required="true" requiredMessage="The FechaProgramada field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
                         <h:outputLabel value="#{msjsagedaD.labelTxtSize}" for="novedades" />
                         <h:inputText ps:class="form-control" id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" />
                         <h:outputLabel value="#{msjsagedaD.labelTxtIdemployee}" for="empleadoIdEmpleado" />
-                        <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                        <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.nombre}"/>
                         </h:selectOneMenu>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
                     </h:panelGrid>
                     <h:commandButton ps:id="boton" class="btn btn-primary" value="#{msjsagedaD.btnRegister}" action="#{agendaControlador.registrarAgenda()}"> </h:commandButton>
                 </h:form>
                 <script>
-                        // Example starter JavaScript for disabling form submissions if there are invalid fields
-                        (function () {
-                            'use strict';
-                            window.addEventListener('load', function () {
-                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                var forms = document.getElementsByClassName('needs-validation');
-                                // Loop over them and prevent submission
-                                var validation = Array.prototype.filter.call(forms, function (form) {
-                                    form.addEventListener('submit', function (event) {
-                                        if (form.checkValidity() === false) {
-                                            event.preventDefault();
-                                            event.stopPropagation();
-                                        }
-                                        form.classList.add('was-validated');
-                                    }, false);
-                                });
-                            }, false);
-                        })();
-                    </script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function () {
+                        'use strict';
+                        window.addEventListener('load', function () {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function (form) {
+                                form.addEventListener('submit', function (event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
             </f:view>
         </div>
 
