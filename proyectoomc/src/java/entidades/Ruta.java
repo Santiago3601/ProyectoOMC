@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,10 +25,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "ruta")
@@ -56,12 +58,12 @@ public class Ruta implements Serializable {
     @Column(name = "planilla")
     private String planilla;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Empleado empleadoIdEmpleado;
     @JoinColumn(name = "vehiculo_id_vehiculo", referencedColumnName = "id_vehiculo")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Vehiculo vehiculoIdVehiculo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutaIdRuta")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rutaIdRuta", fetch = FetchType.LAZY)
     private List<Alquiler> alquilerList;
 
     public Ruta() {
@@ -118,6 +120,7 @@ public class Ruta implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Alquiler> getAlquilerList() {
         return alquilerList;
     }

@@ -26,6 +26,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -98,15 +99,15 @@ public class Usuario implements Serializable {
     @Column(name = "edad")
     private int edad;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId", fetch = FetchType.LAZY)
-    private List<Cliente> clienteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId", fetch = FetchType.LAZY)
     private List<Empleado> empleadoList;
-    @JoinColumn(name = "tp_id", referencedColumnName = "idTipoID")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Tipoid tpId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId", fetch = FetchType.LAZY)
+    private List<Cliente> clienteList;
     @JoinColumn(name = "rol_idRol", referencedColumnName = "idRol")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Rol rolidRol;
+    @JoinColumn(name = "tp_id", referencedColumnName = "idTipoID")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Tipoid tpId;
 
     public Usuario() {
     }
@@ -209,15 +210,7 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public List<Cliente> getClienteList() {
-        return clienteList;
-    }
-
-    public void setClienteList(List<Cliente> clienteList) {
-        this.clienteList = clienteList;
-    }
-
-    @XmlTransient
+    @JsonIgnore
     public List<Empleado> getEmpleadoList() {
         return empleadoList;
     }
@@ -226,12 +219,14 @@ public class Usuario implements Serializable {
         this.empleadoList = empleadoList;
     }
 
-    public Tipoid getTpId() {
-        return tpId;
+    @XmlTransient
+    @JsonIgnore
+    public List<Cliente> getClienteList() {
+        return clienteList;
     }
 
-    public void setTpId(Tipoid tpId) {
-        this.tpId = tpId;
+    public void setClienteList(List<Cliente> clienteList) {
+        this.clienteList = clienteList;
     }
 
     public Rol getRolidRol() {
@@ -240,6 +235,14 @@ public class Usuario implements Serializable {
 
     public void setRolidRol(Rol rolidRol) {
         this.rolidRol = rolidRol;
+    }
+
+    public Tipoid getTpId() {
+        return tpId;
+    }
+
+    public void setTpId(Tipoid tpId) {
+        this.tpId = tpId;
     }
 
     @Override

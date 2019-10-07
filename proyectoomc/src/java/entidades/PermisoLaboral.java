@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "permiso_laboral")
@@ -39,10 +39,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PermisoLaboral.findByFechaPermiso", query = "SELECT p FROM PermisoLaboral p WHERE p.fechaPermiso = :fechaPermiso")
     , @NamedQuery(name = "PermisoLaboral.findByObvservaciones", query = "SELECT p FROM PermisoLaboral p WHERE p.obvservaciones = :obvservaciones")})
 public class PermisoLaboral implements Serializable {
-
-    @JoinColumn(name = "estado", referencedColumnName = "id_estado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private EstadoPermisoLaboral estado;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,8 +59,11 @@ public class PermisoLaboral implements Serializable {
     @Size(max = 200)
     @Column(name = "obvservaciones")
     private String obvservaciones;
+    @JoinColumn(name = "estado", referencedColumnName = "id_estado")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private EstadoPermisoLaboral estado;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Empleado empleadoIdEmpleado;
 
     public PermisoLaboral() {
@@ -112,6 +111,14 @@ public class PermisoLaboral implements Serializable {
         this.obvservaciones = obvservaciones;
     }
 
+    public EstadoPermisoLaboral getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoPermisoLaboral estado) {
+        this.estado = estado;
+    }
+
     public Empleado getEmpleadoIdEmpleado() {
         return empleadoIdEmpleado;
     }
@@ -143,14 +150,6 @@ public class PermisoLaboral implements Serializable {
     @Override
     public String toString() {
         return "entidades.PermisoLaboral[ idPermisoLaboral=" + idPermisoLaboral + " ]";
-    }
-
-    public EstadoPermisoLaboral getEstado() {
-        return estado;
-    }
-
-    public void setEstado(EstadoPermisoLaboral estado) {
-        this.estado = estado;
     }
     
 }

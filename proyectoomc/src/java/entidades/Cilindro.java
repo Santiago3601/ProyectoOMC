@@ -12,7 +12,10 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -20,13 +23,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "cilindro")
@@ -34,7 +37,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Cilindro.findAll", query = "SELECT c FROM Cilindro c")
     , @NamedQuery(name = "Cilindro.findByIdCilindro", query = "SELECT c FROM Cilindro c WHERE c.idCilindro = :idCilindro")
-    , @NamedQuery(name = "Cilindro.findByEstado", query = "SELECT c FROM Cilindro c WHERE c.estado = :estado")
     , @NamedQuery(name = "Cilindro.findByTamanio", query = "SELECT c FROM Cilindro c WHERE c.tamanio = :tamanio")
     , @NamedQuery(name = "Cilindro.findByLote", query = "SELECT c FROM Cilindro c WHERE c.lote = :lote")
     , @NamedQuery(name = "Cilindro.findByFechaDeCreacion", query = "SELECT c FROM Cilindro c WHERE c.fechaDeCreacion = :fechaDeCreacion")})
@@ -48,11 +50,6 @@ public class Cilindro implements Serializable {
     private Integer idCilindro;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "estado")
-    private String estado;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "tamanio")
     private int tamanio;
     @Basic(optional = false)
@@ -64,10 +61,13 @@ public class Cilindro implements Serializable {
     @Column(name = "fecha_de_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaDeCreacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.LAZY)
+    private List<Mantenimiento> mantenimientoList;
+    @JoinColumn(name = "estado_id_estado", referencedColumnName = "id_estado")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private EstadoCilindro estadoIdEstado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.LAZY)
     private List<Alquiler> alquilerList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro")
-    private List<MantenimientoCilindro> mantenimientoCilindroList;
 
     public Cilindro() {
     }
@@ -76,9 +76,8 @@ public class Cilindro implements Serializable {
         this.idCilindro = idCilindro;
     }
 
-    public Cilindro(Integer idCilindro, String estado, int tamanio, int lote, Date fechaDeCreacion) {
+    public Cilindro(Integer idCilindro, int tamanio, int lote, Date fechaDeCreacion) {
         this.idCilindro = idCilindro;
-        this.estado = estado;
         this.tamanio = tamanio;
         this.lote = lote;
         this.fechaDeCreacion = fechaDeCreacion;
@@ -90,14 +89,6 @@ public class Cilindro implements Serializable {
 
     public void setIdCilindro(Integer idCilindro) {
         this.idCilindro = idCilindro;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public int getTamanio() {
@@ -125,21 +116,31 @@ public class Cilindro implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
+    public List<Mantenimiento> getMantenimientoList() {
+        return mantenimientoList;
+    }
+
+    public void setMantenimientoList(List<Mantenimiento> mantenimientoList) {
+        this.mantenimientoList = mantenimientoList;
+    }
+
+    public EstadoCilindro getEstadoIdEstado() {
+        return estadoIdEstado;
+    }
+
+    public void setEstadoIdEstado(EstadoCilindro estadoIdEstado) {
+        this.estadoIdEstado = estadoIdEstado;
+    }
+
+    @XmlTransient
+    @JsonIgnore
     public List<Alquiler> getAlquilerList() {
         return alquilerList;
     }
 
     public void setAlquilerList(List<Alquiler> alquilerList) {
         this.alquilerList = alquilerList;
-    }
-
-    @XmlTransient
-    public List<MantenimientoCilindro> getMantenimientoCilindroList() {
-        return mantenimientoCilindroList;
-    }
-
-    public void setMantenimientoCilindroList(List<MantenimientoCilindro> mantenimientoCilindroList) {
-        this.mantenimientoCilindroList = mantenimientoCilindroList;
     }
 
     @Override

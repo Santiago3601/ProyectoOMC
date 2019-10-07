@@ -5,17 +5,17 @@
  */
 package facade;
 
-import entidades.MantenimientoCilindro;
+import entidades.Auditoria;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Stateless
-public class MantenimientoCilindroFacade extends AbstractFacade<MantenimientoCilindro> {
+public class AuditoriaFacade extends AbstractFacade<Auditoria> {
 
     @PersistenceContext(unitName = "proyectoOMCPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class MantenimientoCilindroFacade extends AbstractFacade<MantenimientoCil
         return em;
     }
 
-    public MantenimientoCilindroFacade() {
-        super(MantenimientoCilindro.class);
+    public AuditoriaFacade() {
+        super(Auditoria.class);
     }
     
 }

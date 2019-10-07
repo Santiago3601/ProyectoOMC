@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,10 +21,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "punto")
@@ -50,7 +52,7 @@ public class Punto implements Serializable {
     @Size(min = 1, max = 70)
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "puntoIdPuntos")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "puntoIdPuntos", fetch = FetchType.LAZY)
     private List<Turno> turnoList;
 
     public Punto() {
@@ -91,6 +93,7 @@ public class Punto implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Turno> getTurnoList() {
         return turnoList;
     }

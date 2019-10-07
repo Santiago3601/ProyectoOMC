@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "horario")
@@ -58,7 +59,7 @@ public class Horario implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaDeSalida;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Empleado empleadoIdEmpleado;
 
     public Horario() {

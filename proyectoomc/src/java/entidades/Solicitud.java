@@ -26,6 +26,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -52,10 +53,8 @@ public class Solicitud implements Serializable {
     @Size(min = 1, max = 16383)
     @Column(name = "formula")
     private String formula;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "tamanio_cilindro")
-    private int tamanioCilindro;
+    private Integer tamanioCilindro;
     @JoinColumn(name = "cliente_id_cliente", referencedColumnName = "id_cliente")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cliente clienteIdCliente;
@@ -69,10 +68,9 @@ public class Solicitud implements Serializable {
         this.idSolicitud = idSolicitud;
     }
 
-    public Solicitud(Integer idSolicitud, String formula, int tamanioCilindro) {
+    public Solicitud(Integer idSolicitud, String formula) {
         this.idSolicitud = idSolicitud;
         this.formula = formula;
-        this.tamanioCilindro = tamanioCilindro;
     }
 
     public Integer getIdSolicitud() {
@@ -91,11 +89,11 @@ public class Solicitud implements Serializable {
         this.formula = formula;
     }
 
-    public int getTamanioCilindro() {
+    public Integer getTamanioCilindro() {
         return tamanioCilindro;
     }
 
-    public void setTamanioCilindro(int tamanioCilindro) {
+    public void setTamanioCilindro(Integer tamanioCilindro) {
         this.tamanioCilindro = tamanioCilindro;
     }
 
@@ -108,6 +106,7 @@ public class Solicitud implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Alquiler> getAlquilerList() {
         return alquilerList;
     }

@@ -7,9 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,13 +18,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -39,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Mantenimiento.findAll", query = "SELECT m FROM Mantenimiento m")
     , @NamedQuery(name = "Mantenimiento.findByIdMantenimiento", query = "SELECT m FROM Mantenimiento m WHERE m.idMantenimiento = :idMantenimiento")
     , @NamedQuery(name = "Mantenimiento.findByFechaInicioMantenimiento", query = "SELECT m FROM Mantenimiento m WHERE m.fechaInicioMantenimiento = :fechaInicioMantenimiento")
-    , @NamedQuery(name = "Mantenimiento.findByFechaFinalMantenimiento", query = "SELECT m FROM Mantenimiento m WHERE m.fechaFinalMantenimiento = :fechaFinalMantenimiento")})
+    , @NamedQuery(name = "Mantenimiento.findByFechaFinalMantenimiento", query = "SELECT m FROM Mantenimiento m WHERE m.fechaFinalMantenimiento = :fechaFinalMantenimiento")
+    , @NamedQuery(name = "Mantenimiento.findByTipoMantenimiento", query = "SELECT m FROM Mantenimiento m WHERE m.tipoMantenimiento = :tipoMantenimiento")})
 public class Mantenimiento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,14 +56,20 @@ public class Mantenimiento implements Serializable {
     @Column(name = "fecha_final_mantenimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaFinalMantenimiento;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "tipo_mantenimiento")
+    private String tipoMantenimiento;
+    @JoinColumn(name = "cilindro_id_cilindro", referencedColumnName = "id_cilindro")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Cilindro cilindroIdCilindro;
     @JoinColumn(name = "estado_mantenimiento", referencedColumnName = "id_estado")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private EstadoMantenimiento estadoMantenimiento;
     @JoinColumn(name = "agenda_id_agenda", referencedColumnName = "id_agenda")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Agenda agendaIdAgenda;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mantenimientoIdMantenimiento", fetch = FetchType.LAZY)
-    private List<MantenimientoCilindro> mantenimientoCilindroList;
 
     public Mantenimiento() {
     }
@@ -74,10 +78,11 @@ public class Mantenimiento implements Serializable {
         this.idMantenimiento = idMantenimiento;
     }
 
-    public Mantenimiento(Integer idMantenimiento, Date fechaInicioMantenimiento, Date fechaFinalMantenimiento) {
+    public Mantenimiento(Integer idMantenimiento, Date fechaInicioMantenimiento, Date fechaFinalMantenimiento, String tipoMantenimiento) {
         this.idMantenimiento = idMantenimiento;
         this.fechaInicioMantenimiento = fechaInicioMantenimiento;
         this.fechaFinalMantenimiento = fechaFinalMantenimiento;
+        this.tipoMantenimiento = tipoMantenimiento;
     }
 
     public Integer getIdMantenimiento() {
@@ -104,6 +109,22 @@ public class Mantenimiento implements Serializable {
         this.fechaFinalMantenimiento = fechaFinalMantenimiento;
     }
 
+    public String getTipoMantenimiento() {
+        return tipoMantenimiento;
+    }
+
+    public void setTipoMantenimiento(String tipoMantenimiento) {
+        this.tipoMantenimiento = tipoMantenimiento;
+    }
+
+    public Cilindro getCilindroIdCilindro() {
+        return cilindroIdCilindro;
+    }
+
+    public void setCilindroIdCilindro(Cilindro cilindroIdCilindro) {
+        this.cilindroIdCilindro = cilindroIdCilindro;
+    }
+
     public EstadoMantenimiento getEstadoMantenimiento() {
         return estadoMantenimiento;
     }
@@ -118,15 +139,6 @@ public class Mantenimiento implements Serializable {
 
     public void setAgendaIdAgenda(Agenda agendaIdAgenda) {
         this.agendaIdAgenda = agendaIdAgenda;
-    }
-
-    @XmlTransient
-    public List<MantenimientoCilindro> getMantenimientoCilindroList() {
-        return mantenimientoCilindroList;
-    }
-
-    public void setMantenimientoCilindroList(List<MantenimientoCilindro> mantenimientoCilindroList) {
-        this.mantenimientoCilindroList = mantenimientoCilindroList;
     }
 
     @Override

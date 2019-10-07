@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "turno")
@@ -79,10 +80,10 @@ public class Turno implements Serializable {
     @Column(name = "observaciones")
     private String observaciones;
     @JoinColumn(name = "punto_id_puntos", referencedColumnName = "id_punto")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Punto puntoIdPuntos;
     @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Empleado idEmpleado;
 
     public Turno() {

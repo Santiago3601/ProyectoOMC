@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,10 +23,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "estado_alquiler")
@@ -47,7 +49,7 @@ public class EstadoAlquiler implements Serializable {
     @Size(min = 1, max = 70)
     @Column(name = "estado")
     private String estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoAlquilerIdEstado")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoAlquilerIdEstado", fetch = FetchType.LAZY)
     private List<Alquiler> alquilerList;
 
     public EstadoAlquiler() {
@@ -66,7 +68,6 @@ public class EstadoAlquiler implements Serializable {
         return idEstado;
     }
 
-
     public void setIdEstado(Integer idEstado) {
         this.idEstado = idEstado;
     }
@@ -80,6 +81,7 @@ public class EstadoAlquiler implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Alquiler> getAlquilerList() {
         return alquilerList;
     }

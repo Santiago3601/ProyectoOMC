@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,10 +22,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "empleado")
@@ -40,22 +42,22 @@ public class Empleado implements Serializable {
     @NotNull
     @Column(name = "id_empleado")
     private Integer idEmpleado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
     private List<Horario> horarioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
     private List<Ruta> rutaList;
-    @OneToMany(mappedBy = "idEmpleado")
+    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
     private List<Turno> turnoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado")
-    private List<Agenda> agendaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado")
-    private List<PermisoLaboral> permisoLaboralList;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioId;
     @JoinColumn(name = "fk_estado", referencedColumnName = "id_estado_empleado")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private EstadoEmpleado fkEstado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
+    private List<Agenda> agendaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
+    private List<PermisoLaboral> permisoLaboralList;
 
     public Empleado() {
     }
@@ -73,6 +75,7 @@ public class Empleado implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Horario> getHorarioList() {
         return horarioList;
     }
@@ -82,6 +85,7 @@ public class Empleado implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Ruta> getRutaList() {
         return rutaList;
     }
@@ -91,30 +95,13 @@ public class Empleado implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Turno> getTurnoList() {
         return turnoList;
     }
 
     public void setTurnoList(List<Turno> turnoList) {
         this.turnoList = turnoList;
-    }
-
-    @XmlTransient
-    public List<Agenda> getAgendaList() {
-        return agendaList;
-    }
-
-    public void setAgendaList(List<Agenda> agendaList) {
-        this.agendaList = agendaList;
-    }
-
-    @XmlTransient
-    public List<PermisoLaboral> getPermisoLaboralList() {
-        return permisoLaboralList;
-    }
-
-    public void setPermisoLaboralList(List<PermisoLaboral> permisoLaboralList) {
-        this.permisoLaboralList = permisoLaboralList;
     }
 
     public Usuario getUsuarioId() {
@@ -131,6 +118,26 @@ public class Empleado implements Serializable {
 
     public void setFkEstado(EstadoEmpleado fkEstado) {
         this.fkEstado = fkEstado;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public List<Agenda> getAgendaList() {
+        return agendaList;
+    }
+
+    public void setAgendaList(List<Agenda> agendaList) {
+        this.agendaList = agendaList;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public List<PermisoLaboral> getPermisoLaboralList() {
+        return permisoLaboralList;
+    }
+
+    public void setPermisoLaboralList(List<PermisoLaboral> permisoLaboralList) {
+        this.permisoLaboralList = permisoLaboralList;
     }
 
     @Override

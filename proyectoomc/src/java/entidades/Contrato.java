@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "contrato")
@@ -61,7 +62,7 @@ public class Contrato implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaFinalContrato;
     @JoinColumn(name = "alquiler_id_alquiler", referencedColumnName = "id_alquiler")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Alquiler alquilerIdAlquiler;
 
     public Contrato() {

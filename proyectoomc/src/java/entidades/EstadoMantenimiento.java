@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,10 +21,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "estado_mantenimiento")
@@ -45,7 +47,7 @@ public class EstadoMantenimiento implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "estado")
     private String estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoMantenimiento")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoMantenimiento", fetch = FetchType.LAZY)
     private List<Mantenimiento> mantenimientoList;
 
     public EstadoMantenimiento() {
@@ -77,6 +79,7 @@ public class EstadoMantenimiento implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Mantenimiento> getMantenimientoList() {
         return mantenimientoList;
     }

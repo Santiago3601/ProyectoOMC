@@ -17,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,6 +29,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -57,11 +59,20 @@ public class Agenda implements Serializable {
     @Size(max = 300)
     @Column(name = "novedades")
     private String novedades;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Size(min = 1, max = 16383)
+    @Column(name = "foto")
+    private String foto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "agendaIdAgenda", fetch = FetchType.LAZY)
     private List<Mantenimiento> mantenimientoList;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Empleado empleadoIdEmpleado;
+    @JoinColumn(name = "alquiler_id_alqu", referencedColumnName = "id_alquiler")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Alquiler alquilerIdAlqu;
 
     public Agenda() {
     }
@@ -70,9 +81,10 @@ public class Agenda implements Serializable {
         this.idAgenda = idAgenda;
     }
 
-    public Agenda(Integer idAgenda, Date fechaProgramada) {
+    public Agenda(Integer idAgenda, Date fechaProgramada, String foto) {
         this.idAgenda = idAgenda;
         this.fechaProgramada = fechaProgramada;
+        this.foto = foto;
     }
 
     public Integer getIdAgenda() {
@@ -99,7 +111,16 @@ public class Agenda implements Serializable {
         this.novedades = novedades;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
     @XmlTransient
+    @JsonIgnore
     public List<Mantenimiento> getMantenimientoList() {
         return mantenimientoList;
     }
@@ -114,6 +135,14 @@ public class Agenda implements Serializable {
 
     public void setEmpleadoIdEmpleado(Empleado empleadoIdEmpleado) {
         this.empleadoIdEmpleado = empleadoIdEmpleado;
+    }
+
+    public Alquiler getAlquilerIdAlqu() {
+        return alquilerIdAlqu;
+    }
+
+    public void setAlquilerIdAlqu(Alquiler alquilerIdAlqu) {
+        this.alquilerIdAlqu = alquilerIdAlqu;
     }
 
     @Override

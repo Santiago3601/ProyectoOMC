@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,10 +28,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Stephi
+ * @author Aprendiz
  */
 @Entity
 @Table(name = "alquiler")
@@ -58,19 +60,21 @@ public class Alquiler implements Serializable {
     @Size(min = 1, max = 300)
     @Column(name = "novedades")
     private String novedades;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alquilerIdAlquiler")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alquilerIdAlquiler", fetch = FetchType.LAZY)
     private List<Contrato> contratoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alquilerIdAlqu", fetch = FetchType.LAZY)
+    private List<Agenda> agendaList;
     @JoinColumn(name = "cilindro_id_cilindro", referencedColumnName = "id_cilindro")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Cilindro cilindroIdCilindro;
     @JoinColumn(name = "ruta_id_ruta", referencedColumnName = "id_ruta")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Ruta rutaIdRuta;
     @JoinColumn(name = "solicitud_id_solicitud", referencedColumnName = "id_solicitud")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Solicitud solicitudIdSolicitud;
     @JoinColumn(name = "estado_alquiler_id_estado", referencedColumnName = "id_estado")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private EstadoAlquiler estadoAlquilerIdEstado;
 
     public Alquiler() {
@@ -111,12 +115,23 @@ public class Alquiler implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Contrato> getContratoList() {
         return contratoList;
     }
 
     public void setContratoList(List<Contrato> contratoList) {
         this.contratoList = contratoList;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public List<Agenda> getAgendaList() {
+        return agendaList;
+    }
+
+    public void setAgendaList(List<Agenda> agendaList) {
+        this.agendaList = agendaList;
     }
 
     public Cilindro getCilindroIdCilindro() {

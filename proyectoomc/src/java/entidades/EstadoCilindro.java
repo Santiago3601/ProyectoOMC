@@ -28,13 +28,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author Aprendiz
  */
 @Entity
-@Table(name = "estado_cliente")
+@Table(name = "estado_cilindro")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EstadoCliente.findAll", query = "SELECT e FROM EstadoCliente e")
-    , @NamedQuery(name = "EstadoCliente.findByIdEstado", query = "SELECT e FROM EstadoCliente e WHERE e.idEstado = :idEstado")
-    , @NamedQuery(name = "EstadoCliente.findByEstado", query = "SELECT e FROM EstadoCliente e WHERE e.estado = :estado")})
-public class EstadoCliente implements Serializable {
+    @NamedQuery(name = "EstadoCilindro.findAll", query = "SELECT e FROM EstadoCilindro e")
+    , @NamedQuery(name = "EstadoCilindro.findByIdEstado", query = "SELECT e FROM EstadoCilindro e WHERE e.idEstado = :idEstado")
+    , @NamedQuery(name = "EstadoCilindro.findByEstadoCol", query = "SELECT e FROM EstadoCilindro e WHERE e.estadoCol = :estadoCol")})
+public class EstadoCilindro implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,22 +44,22 @@ public class EstadoCliente implements Serializable {
     private Integer idEstado;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "estado")
-    private String estado;
+    @Size(min = 1, max = 50)
+    @Column(name = "estado_col")
+    private String estadoCol;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoIdEstado", fetch = FetchType.LAZY)
-    private List<Cliente> clienteList;
+    private List<Cilindro> cilindroList;
 
-    public EstadoCliente() {
+    public EstadoCilindro() {
     }
 
-    public EstadoCliente(Integer idEstado) {
+    public EstadoCilindro(Integer idEstado) {
         this.idEstado = idEstado;
     }
 
-    public EstadoCliente(Integer idEstado, String estado) {
+    public EstadoCilindro(Integer idEstado, String estadoCol) {
         this.idEstado = idEstado;
-        this.estado = estado;
+        this.estadoCol = estadoCol;
     }
 
     public Integer getIdEstado() {
@@ -70,22 +70,22 @@ public class EstadoCliente implements Serializable {
         this.idEstado = idEstado;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getEstadoCol() {
+        return estadoCol;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstadoCol(String estadoCol) {
+        this.estadoCol = estadoCol;
     }
 
     @XmlTransient
     @JsonIgnore
-    public List<Cliente> getClienteList() {
-        return clienteList;
+    public List<Cilindro> getCilindroList() {
+        return cilindroList;
     }
 
-    public void setClienteList(List<Cliente> clienteList) {
-        this.clienteList = clienteList;
+    public void setCilindroList(List<Cilindro> cilindroList) {
+        this.cilindroList = cilindroList;
     }
 
     @Override
@@ -98,10 +98,10 @@ public class EstadoCliente implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EstadoCliente)) {
+        if (!(object instanceof EstadoCilindro)) {
             return false;
         }
-        EstadoCliente other = (EstadoCliente) object;
+        EstadoCilindro other = (EstadoCilindro) object;
         if ((this.idEstado == null && other.idEstado != null) || (this.idEstado != null && !this.idEstado.equals(other.idEstado))) {
             return false;
         }
@@ -110,7 +110,7 @@ public class EstadoCliente implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.EstadoCliente[ idEstado=" + idEstado + " ]";
+        return "entidades.EstadoCilindro[ idEstado=" + idEstado + " ]";
     }
     
 }
