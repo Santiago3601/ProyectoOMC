@@ -26,7 +26,7 @@
                 <f:view locale="#{sessionController.languageSelected}">
                     <h:form>
                         <h1><h:outputText value="#{msjListaAlquiler.lista}"/></h1>
-                        <p:dataTable id="tablaAlq" value="#{alquilerControlador.historial()}" var="alq">
+                        <p:dataTable id="tablaAlq" value="#{alquilerControlador.historial()}" var="alq" >
                             <p:column filterBy="#{alq.idAlquiler}">
                                 <f:facet name="header">
                                     <h:outputText value="No."/>
@@ -64,15 +64,7 @@
                                 </f:facet>
                                 <h:outputText value="#{alq.novedades}"/>
                             </p:column>
-                            <p:column exportable="false">
-                                <f:facet name="header">
-                                    <h:outputText value="#{msjListaAlquiler.Novedades}"/>
-                                </f:facet>
-                                <h:commandLink  action="#{alquilerControlador.eliminarAlquiler(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
-                                <h:commandLink  action="#{alquilerControlador.cambiarEstado(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-truck-loading"></i></h:commandLink>
-                                <h:commandLink  action="#{alquilerControlador.preActualizarAlquiler(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
-                                <h:commandLink  action="#{alquilerControlador.consultaIndividual(alq)}" target="_blank" ><i class="far fa-sign-out"></i></h:commandLink>
-                            </p:column>
+
                         </p:dataTable>
                         <h:commandLink id="excel">
                             <i class="far fa-file-excel"></i>

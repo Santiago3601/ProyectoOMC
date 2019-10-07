@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-10-2019 a las 18:13:55
+-- Tiempo de generación: 07-10-2019 a las 18:55:00
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -530,7 +530,13 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (132, 'Solicitud', 'Request', '../../../moduloEnvios/crearSolicitudCliente.xhtml', 'x', 131),
 (133, 'Envio masivo', 'Mass sending', '', 'x', 125),
 (134, 'Mantenimiento del sistema', 'System maintenance', '../../../moduloPersonal/CorreoMantenimiento.xhtml', 'x', 133),
-(135, 'Historial', 'Hystory', '../../../moduloEnvios/historialCliente.xhtml', 'x', 121);
+(135, 'Historial', 'Hystory', '../../../moduloEnvios/historialCliente.xhtml', 'x', 121),
+(136, '- - - - - - - - - - - - - - - - - - -', '- - - - - - - - - - - - - - - - - - -', '- - - - - - - - - - - - - - - - - - -', 'x', NULL),
+(137, 'Solicitud', 'Request', '', 'x', NULL),
+(138, 'Consultar', 'Consult', '../../../moduloEnvios/consultarSolicitudCliente.xhtml', 'x', 137),
+(139, 'Registrar', 'Register', '../../../moduloEnvios/crearSolicitudCliente.xhtml', 'x', 137),
+(140, 'Envios', 'Shipping', NULL, 'x', NULL),
+(141, 'Historial', 'Hystory', '../../../moduloEnvios/historialCliente.xhtml', 'x', 140);
 
 -- --------------------------------------------------------
 
@@ -675,7 +681,8 @@ INSERT INTO `rol_tiene_permiso` (`rol_idRol`, `permiso_id_permiso`) VALUES
 (1, 46),
 (1, 47),
 (1, 125),
-(2, 118),
+(2, 137),
+(2, 140),
 (3, 49),
 (3, 53),
 (3, 54),

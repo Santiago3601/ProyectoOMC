@@ -91,7 +91,7 @@
                                     <li class="nav-item">
                                         <div id="accessibility-buttons">
                                             <h:form>
-                                                <h:commandLink value="#{sessionController.languagueToChange}" action="#{sessionController.cambiarIdioma(sessionController.languagueToChange)}">
+                                                <h:commandLink action="#{sessionController.cambiarIdioma(sessionController.languagueToChange)}">
                                                     <i class="fas fa-globe-americas"></i>
                                                 </h:commandLink>
                                             </h:form>
@@ -125,12 +125,12 @@
                                         <c:forEach items="#{p.subPermisos}" var="sp">
                                             <li>
                                                 <c:if test="#{sessionController.spanishLanguague == sessionController.languageSelected}">
-                                                    <a>
+                                                    <a href="#{sp.url}" target="area-de-trabajo">
                                                         #{sp.nombre}
                                                     </a>
                                                 </c:if>
                                                 <c:if test="#{!(sessionController.spanishLanguague == sessionController.languageSelected)}">
-                                                    <a>
+                                                    <a href="#{sp.url}" target="area-de-trabajo">
                                                         #{sp.nombreEn}
                                                     </a>
                                                 </c:if>
