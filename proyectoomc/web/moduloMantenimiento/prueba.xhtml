@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdAgenda:" for="idAgenda" />
+                    <h:inputText id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" required="true" requiredMessage="The IdAgenda field is required."/>
+                    <h:outputLabel value="FechaProgramada:" for="fechaProgramada" />
+                    <h:inputText id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" required="true" requiredMessage="The FechaProgramada field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Novedades:" for="novedades" />
+                    <h:inputText id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" />
+                    <h:outputLabel value="Foto:" for="foto" />
+                    <h:inputTextarea rows="4" cols="30" id="foto" value="#{agendaControlador.agenda.foto}" title="Foto" required="true" requiredMessage="The Foto field is required."/>
+                    <h:outputLabel value="EmpleadoIdEmpleado:" for="empleadoIdEmpleado" />
+                    <h:selectOneMenu id="empleadoIdEmpleado" value="#{agendaControlador.agenda.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.nombre}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="AlquilerIdAlqu:" for="alquilerIdAlqu" />
+                    <h:selectOneMenu id="alquilerIdAlqu" value="#{agendaControlador.agenda.alquilerIdAlqu}" title="AlquilerIdAlqu" required="true" requiredMessage="The AlquilerIdAlqu field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.idSolicitud}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton  value="#{msjsagedaD.btnRegister}" action="#{agendaControlador.registrarAgenda()}"> </h:commandButton>
+
+                
+                
+                        <h:outputLabel value="Foto:" for="foto" />
+                        <h:inputTextarea rows="4" cols="30" id="foto" value="#{agendaControlador.agenda.foto}" title="Foto" required="true" requiredMessage="The Foto field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
+            </h:form>
+        </f:view>
+
+
+    </h:body>
+</html>
+

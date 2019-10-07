@@ -29,9 +29,9 @@
                             <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:inputText>
                         <div class="invalid-feedback">#{msjError.fields}</div>
-                    </div>
                     <div class="form-group"> 
-                        <h:outputLabel value="#{msjCrearAlq.labelTxtCilynder}" for="cilindroIdCilindro" />
+                            </div>
+                <h:outputLabel value="#{msjCrearAlq.labelTxtCilynder}" for="cilindroIdCilindro" />
                         <h:selectOneMenu ps:class="form-control" id="cilindroIdCilindro" value="#{alquilerControlador.cilindro.idCilindro}" title="CilindroIdCilindro" ps:required="true" requiredMessage="The CilindroIdCilindro field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{cilindroControlador.consultarTodos()}" var="cil" itemValue="#{cil.idCilindro}" itemLabel="#{cil.idCilindro} #{cil.tamanio}cm³ #{cil.estadoIdEstado.estadoCol}"/>

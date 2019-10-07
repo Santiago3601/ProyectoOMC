@@ -6,8 +6,10 @@
 package controlador;
 
 import entidades.Agenda;
+import entidades.Alquiler;
 import entidades.Empleado;
 import facade.AgendaFacade;
+import facade.AlquilerFacade;
 import facade.EmpleadoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -15,6 +17,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -31,6 +34,10 @@ public class agendaControlador implements Serializable {
     public agendaControlador() {
         
     }
+    private Part file;
+    private String nombre;
+    private String pathReal;
+
     @EJB
     private AgendaFacade agendaFacade;
     Agenda agenda;
@@ -38,6 +45,10 @@ public class agendaControlador implements Serializable {
     @EJB
     private EmpleadoFacade empleadoFacade;
     Empleado empleado;
+    
+    @EJB 
+    private AlquilerFacade alquilerFacade;
+    private Alquiler alquiler;
     
     @PostConstruct
     public void init(){
@@ -60,9 +71,42 @@ public class agendaControlador implements Serializable {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
+     public Alquiler getAlquiler() {
+        return alquiler;
+    }
+
+    public Part getFile() {
+        return file;
+    }
+
+    public void setFile(Part file) {
+        this.file = file;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPathReal() {
+        return pathReal;
+    }
+
+    public void setPathReal(String pathReal) {
+        this.pathReal = pathReal;
+    }
+     
+
+    public void setAlquiler(Alquiler alquiler) {
+        this.alquiler = alquiler;
+    }
     
     public String registrarAgenda(){
         agenda.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
+        agenda.setAlquilerIdAlqu(alquilerFacade.find(alquiler.getIdAlquiler()));
         agendaFacade.create(agenda);
         agenda = new Agenda();
         return "listaAgenda";
@@ -89,13 +133,12 @@ public class agendaControlador implements Serializable {
 
    public String actualizarAgenda() {
        agenda.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
+       agenda.setAlquilerIdAlqu(alquilerFacade.find(alquiler.getIdAlquiler()));
        agendaFacade.edit(agenda);
        agenda = new Agenda();
        return "listaAgenda";
    }
 
-
-
-
+   
 }
 
