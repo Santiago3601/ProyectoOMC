@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard//css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+        <link rel="stylesheet" href="../css/prime-styles.css"></link>     
+        <link rel="stylesheet" href="../css/icons.js"></link>     
+        <link rel="stylesheet" href="../css/primeicons.css"></link>     
+        <title>OMC</title>
+    </h:head>
+    <h:body>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumb.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Consultar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Alquiler}</li>
+            </ol>
+        </nav>
+        <div>
+            <div id="content" class="center_content">
+                <f:view locale="#{sessionController.languageSelected}">
+                    <h:form>
+                        <h1><h:outputText value="#{msjListaAlquiler.lista}"/></h1>
+                        <p:dataTable id="tablaAlq" value="#{alquilerControlador.historial()}" var="alq">
+                            <p:column filterBy="#{alq.idAlquiler}">
+                                <f:facet name="header">
+                                    <h:outputText value="No."/>
+                                </f:facet>
+                                <h:outputText value="#{alq.idAlquiler}"/>
+                            </p:column>
+                            <p:column filterBy="#{alq.fechaDeEntrega}">
+                                <f:facet name="header">
+                                    <h:outputText value="#{msjListaAlquiler.fechaE}"/>
+                                </f:facet>
+                                <h:outputText value="#{alq.fechaDeEntrega}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column filterBy="#{alq.cilindroIdCilindro.idCilindro}">
+                                <f:facet name="header">
+                                    <h:outputText value="#{msjListaAlquiler.NumCil}"/>
+                                </f:facet>
+                                <h:outputText value="#{alq.cilindroIdCilindro.idCilindro}"/>
+                            </p:column>
+
+                            <p:column filterBy="#{alq.estadoAlquilerIdEstado.estado}">
+                                <f:facet name="header">
+
+                                    <h:outputText value="#{msjListaAlquiler.State}"/>
+                                </f:facet>
+
+                                <h:outputText value="#{alq.estadoAlquilerIdEstado.estado}"/>
+
+                            </p:column>
+
+                            <p:column filterBy="#{alq.novedades}">
+                                <f:facet name="header">
+                                    <h:outputText value="#{msjListaAlquiler.Novedades}"/>
+                                </f:facet>
+                                <h:outputText value="#{alq.novedades}"/>
+                            </p:column>
+                            <p:column exportable="false">
+                                <f:facet name="header">
+                                    <h:outputText value="#{msjListaAlquiler.Novedades}"/>
+                                </f:facet>
+                                <h:commandLink  action="#{alquilerControlador.eliminarAlquiler(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                                <h:commandLink  action="#{alquilerControlador.cambiarEstado(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-truck-loading"></i></h:commandLink>
+                                <h:commandLink  action="#{alquilerControlador.preActualizarAlquiler(alq)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                                <h:commandLink  action="#{alquilerControlador.consultaIndividual(alq)}" target="_blank" ><i class="far fa-sign-out"></i></h:commandLink>
+                            </p:column>
+                        </p:dataTable>
+                        <h:commandLink id="excel">
+                            <i class="far fa-file-excel"></i>
+                            <p:dataExporter type="xls" target="tablaAlq" fileName="tablaDeAlquiler" />
+                            <style>
+                                .far{
+                                    padding: 2px;
+                                    font-size: x-large;
+                                }
+                            </style>
+                        </h:commandLink>
+                    </h:form>
+                </f:view>
+            </div>
+        </div>
+    </h:body>
+</html>

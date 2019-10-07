@@ -11,10 +11,12 @@ import java.io.Serializable;
 import facade.*;
 import entidades.*;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
+import org.exolab.castor.types.Date;
 
 /**
  *
@@ -203,5 +205,43 @@ public class alquilerControlador implements Serializable {
         solicitud = al.getSolicitudIdSolicitud();
 
         return "listaIDAlquiler?faces-redirect=true";
+    }
+
+    public List<Alquiler> historial() {
+        List<Object[]> histor = null;
+        List<Alquiler> listaAlquiler = new ArrayList<>();
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        cliente = alquilerFacade.obtenerIdUsuario(usuario);
+        histor = alquilerFacade.historial(cliente);
+        for (Object[] obj : histor) {
+            Alquiler aL = new Alquiler();
+            Ruta rT = new Ruta();
+            Cilindro cil = new Cilindro();
+            Solicitud sol = new Solicitud();
+            Usuario us = new Usuario();
+            EstadoAlquiler eT = new EstadoAlquiler();
+
+            sol.setTamanioCilindro(Integer.parseInt(obj[0].toString()));
+            us.setNombre(obj[1].toString());
+            us.setApellido(obj[2].toString());
+            aL.setIdAlquiler(Integer.parseInt(obj[3].toString()));
+            aL.setFechaDeEntrega((java.util.Date) obj[4]);
+            aL.setNovedades(obj[5].toString());
+
+            sol.setIdSolicitud(Integer.parseInt(obj[6].toString()));
+            aL.setSolicitudIdSolicitud(sol);
+
+            eT.setIdEstado(Integer.parseInt(obj[7].toString()));
+            aL.setEstadoAlquilerIdEstado(eT);
+
+            eT.setEstado((obj[8].toString()));
+
+
+            cil.setIdCilindro(Integer.parseInt(obj[9].toString()));
+            aL.setCilindroIdCilindro(cil);
+
+            listaAlquiler.add(aL);
+        }
+        return listaAlquiler;
     }
 }
