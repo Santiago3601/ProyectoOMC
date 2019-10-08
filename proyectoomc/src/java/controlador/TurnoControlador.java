@@ -24,9 +24,6 @@ import javax.ejb.EJB;
 public class TurnoControlador implements Serializable {
 
 
-@EJB
-   PuntoFacade puntoFacade;
-    private Punto punto;
 
     @EJB
   EmpleadoFacade empleadoFacade;
@@ -38,20 +35,11 @@ public class TurnoControlador implements Serializable {
 
     @PostConstruct
     public void init() {
-        punto = new Punto();
         empleado = new Empleado();
         turno = new Turno();
 
     }
 
-
-    public Punto getPunto() {
-        return punto;
-    }
-
-    public void setPunto(Punto punto) {
-        this.punto = punto;
-    }
 
     public Empleado getEmpleado() {
         return empleado;
@@ -84,7 +72,6 @@ public class TurnoControlador implements Serializable {
     }
 
     public String registrar() {
-      turno.setPuntoIdPuntos(getPunto());
        turno.setIdEmpleado(getEmpleado());
          
         turnoFacade.create(turno);

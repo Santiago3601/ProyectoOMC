@@ -99,9 +99,9 @@ public class Usuario implements Serializable {
     @Column(name = "edad")
     private int edad;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId", fetch = FetchType.LAZY)
-    private List<Empleado> empleadoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId", fetch = FetchType.LAZY)
     private List<Cliente> clienteList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId", fetch = FetchType.LAZY)
+    private List<Empleado> empleadoList;
     @JoinColumn(name = "rol_idRol", referencedColumnName = "idRol")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Rol rolidRol;
@@ -211,22 +211,22 @@ public class Usuario implements Serializable {
 
     @XmlTransient
     @JsonIgnore
-    public List<Empleado> getEmpleadoList() {
-        return empleadoList;
-    }
-
-    public void setEmpleadoList(List<Empleado> empleadoList) {
-        this.empleadoList = empleadoList;
-    }
-
-    @XmlTransient
-    @JsonIgnore
     public List<Cliente> getClienteList() {
         return clienteList;
     }
 
     public void setClienteList(List<Cliente> clienteList) {
         this.clienteList = clienteList;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public List<Empleado> getEmpleadoList() {
+        return empleadoList;
+    }
+
+    public void setEmpleadoList(List<Empleado> empleadoList) {
+        this.empleadoList = empleadoList;
     }
 
     public Rol getRolidRol() {

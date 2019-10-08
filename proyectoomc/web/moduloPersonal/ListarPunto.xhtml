@@ -48,7 +48,7 @@
                         <f:facet name="header" class="thead">
                             <h:outputText value="#{msjListarPunto.labelTxtOpciones}"/>
                         </f:facet>
-                        <h:commandLink action="#{puntoControlador.preActualizar(puntoAct)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                        <h:commandLink action="#{puntoControlador.preActualizar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
                         <h:commandLink action="#{puntoControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                     </p:column>
                 </p:dataTable>

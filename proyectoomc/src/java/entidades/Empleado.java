@@ -48,16 +48,16 @@ public class Empleado implements Serializable {
     private List<Ruta> rutaList;
     @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
     private List<Turno> turnoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
+    private List<Agenda> agendaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
+    private List<PermisoLaboral> permisoLaboralList;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioId;
     @JoinColumn(name = "fk_estado", referencedColumnName = "id_estado_empleado")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private EstadoEmpleado fkEstado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
-    private List<Agenda> agendaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleadoIdEmpleado", fetch = FetchType.LAZY)
-    private List<PermisoLaboral> permisoLaboralList;
 
     public Empleado() {
     }
@@ -104,22 +104,6 @@ public class Empleado implements Serializable {
         this.turnoList = turnoList;
     }
 
-    public Usuario getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Usuario usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-
-    public EstadoEmpleado getFkEstado() {
-        return fkEstado;
-    }
-
-    public void setFkEstado(EstadoEmpleado fkEstado) {
-        this.fkEstado = fkEstado;
-    }
-
     @XmlTransient
     @JsonIgnore
     public List<Agenda> getAgendaList() {
@@ -138,6 +122,22 @@ public class Empleado implements Serializable {
 
     public void setPermisoLaboralList(List<PermisoLaboral> permisoLaboralList) {
         this.permisoLaboralList = permisoLaboralList;
+    }
+
+    public Usuario getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Usuario usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    public EstadoEmpleado getFkEstado() {
+        return fkEstado;
+    }
+
+    public void setFkEstado(EstadoEmpleado fkEstado) {
+        this.fkEstado = fkEstado;
     }
 
     @Override

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-10-2019 a las 18:55:00
+-- Tiempo de generación: 08-10-2019 a las 16:43:06
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -456,12 +456,10 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (38, 'Empleado', 'Employees', '../../../moduloPersonal/RegistrarEmpleado.xhtml', 'x', 36),
 (39, 'Horario', 'Schedule', '../../../moduloPersonal/RegistrarHorario.xhtml', 'x', 36),
 (40, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 36),
-(41, 'Punto', 'Point', '../../../moduloPersonal/RegistrarPunto.xhtml', 'x', 36),
 (42, 'Turno', 'Turn', '../../../moduloPersonal/RegistrarTurno.xhtml', 'x', 36),
 (43, 'Empleado', 'Employees', '../../../moduloPersonal/ListarEmpleado.xhtml', 'x', 37),
 (44, 'Horario', 'Schedule', '../../../moduloPersonal/ListarHorario.xhtml', 'x', 37),
 (45, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 37),
-(46, 'Punto', 'Point', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 37),
 (47, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 37),
 (48, '---- Jefe de planta -----', '', ' ', 'x', NULL),
 (49, 'Envios', 'Shipping', NULL, 'x', NULL),
@@ -494,10 +492,8 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (83, 'Registra', 'Register', NULL, 'x', 82),
 (84, 'Consulta', 'Consult', NULL, 'x', 82),
 (85, 'Turno', 'Turn', '../../../moduloPersonal/RegistrarTurno.xhtml', 'x', 83),
-(86, 'Punto', 'Point', '../../../moduloPersonal/RegistrarPunto.xhtml', 'x', 83),
 (87, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 83),
 (88, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 84),
-(89, 'Punto', 'Point', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 84),
 (90, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 84),
 (91, 'Tecnico', 'Technical', NULL, 'x', NULL),
 (92, 'Envios', 'Shipping', NULL, 'x', NULL),
@@ -517,8 +513,7 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (109, 'Personal', 'Employees', NULL, 'x', NULL),
 (110, 'Registrar', 'Register', NULL, 'x', 109),
 (111, 'Consultar', 'Consult', NULL, 'x', 109),
-(112, 'Turno', 'Turn', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 111),
-(113, 'Punto', 'Point', '../../../moduloPersonal/ListarPunto.xhtml', 'x', 111),
+(112, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 111),
 (114, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 111),
 (115, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 110),
 (118, 'Envios', 'Shipping', NULL, 'x', NULL),
@@ -572,35 +567,6 @@ INSERT INTO `permiso_laboral` (`id_permiso_laboral`, `hora_permiso`, `fecha_perm
 (12, '02:15:00', '2016-12-11', 'incapacidad', 1, 1),
 (13, '05:00:30', '2016-01-11', 'Cita Medica', 1, 1),
 (14, '05:00:30', '2016-12-11', 'Cita Medica', 1, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `punto`
---
-
-CREATE TABLE `punto` (
-  `id_punto` int(3) NOT NULL,
-  `cantidad` int(3) NOT NULL,
-  `descripcion` varchar(70) COLLATE utf32_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
-
---
--- Volcado de datos para la tabla `punto`
---
-
-INSERT INTO `punto` (`id_punto`, `cantidad`, `descripcion`) VALUES
-(1, 2, 'quince minutos'),
-(2, 5, 'una hora'),
-(3, 10, 'tres horas de permiso'),
-(4, 15, 'cuatro horas de permiso'),
-(5, 17, 'cinco horas de permiso'),
-(6, 19, 'seis horas de permiso'),
-(7, 21, 'un dia de permiso'),
-(8, 0, 'tes horas de permiso en fin de semana'),
-(9, 24, 'seis horas de permiso en fin de semana'),
-(10, 27, 'un dia de permiso en fin de semana'),
-(11, 29, 'un dia de permiso cuando lo solicite ');
 
 -- --------------------------------------------------------
 
@@ -673,12 +639,10 @@ INSERT INTO `rol_tiene_permiso` (`rol_idRol`, `permiso_id_permiso`) VALUES
 (1, 38),
 (1, 39),
 (1, 40),
-(1, 41),
 (1, 42),
 (1, 43),
 (1, 44),
 (1, 45),
-(1, 46),
 (1, 47),
 (1, 125),
 (2, 137),
@@ -712,10 +676,8 @@ INSERT INTO `rol_tiene_permiso` (`rol_idRol`, `permiso_id_permiso`) VALUES
 (3, 83),
 (3, 84),
 (3, 85),
-(3, 86),
 (3, 87),
 (3, 88),
-(3, 89),
 (3, 90),
 (4, 92),
 (4, 95),
@@ -735,7 +697,6 @@ INSERT INTO `rol_tiene_permiso` (`rol_idRol`, `permiso_id_permiso`) VALUES
 (4, 110),
 (4, 111),
 (4, 112),
-(4, 113),
 (4, 114),
 (4, 115);
 
@@ -858,7 +819,6 @@ CREATE TABLE `turno` (
   `fecha_inicial` date NOT NULL,
   `fecha_final` date NOT NULL,
   `observaciones` varchar(70) COLLATE utf32_spanish_ci NOT NULL,
-  `punto_id_puntos` int(3) NOT NULL,
   `id_empleado` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
@@ -866,21 +826,21 @@ CREATE TABLE `turno` (
 -- Volcado de datos para la tabla `turno`
 --
 
-INSERT INTO `turno` (`id_turno`, `programacion`, `hora_ingreso`, `horas_salida`, `fecha_inicial`, `fecha_final`, `observaciones`, `punto_id_puntos`, `id_empleado`) VALUES
-(2, 'Entregas', '00:06:06', '00:01:15', '2001-03-20', '2003-06-13', 'Entregas', 2, 4),
-(3, 'Mantenimiento', '06:00:00', '12:00:00', '2019-09-25', '2019-09-25', 'Mantenimiento', 1, 5),
-(4, 'Entregas', '10:00:00', '17:00:00', '2019-09-16', '2019-09-16', 'Entregas', 1, 5),
-(5, 'Mantenimiento', '13:00:00', '21:00:00', '2019-09-09', '2019-09-09', 'Mantenimientos', 2, 4),
-(6, 'Mantenimiento', '08:00:00', '18:00:00', '2019-09-25', '2019-09-25', 'Mantenimiento', 2, 2),
-(7, 'Capacitacion', '13:00:00', '21:00:00', '2019-09-03', '2019-09-03', 'Capacitacion', 2, 3),
-(8, 'Mantenimiento', '09:30:00', '19:30:00', '2019-09-26', '2019-09-26', 'Mantenimiento', 3, 4),
-(9, 'Mantenimiento', '12:00:00', '20:00:00', '2019-09-02', '2019-09-02', 'Mantenimiento', 4, 3),
-(10, 'Mantenimiento', '14:00:00', '22:00:00', '2019-07-03', '2019-07-03', 'Mantenimiento', 8, 2),
-(11, 'Mantenimiento', '12:30:00', '17:30:00', '2019-09-01', '2019-09-01', 'Mantenimiento', 7, 3),
-(12, 'Envios', '07:00:00', '17:00:00', '2019-07-03', '2019-07-05', 'Envíos', 5, 2),
-(13, 'Envios', '12:00:00', '22:00:00', '2019-05-01', '2019-05-01', 'Envíos', 4, 2),
-(14, 'Envíos', '14:00:00', '22:00:00', '2019-09-02', '2019-09-02', 'Envíos', 8, 21),
-(15, 'mantenimiento', '05:10:10', '15:00:00', '2019-12-11', '2019-12-31', 'mantenimiento', 1, 1);
+INSERT INTO `turno` (`id_turno`, `programacion`, `hora_ingreso`, `horas_salida`, `fecha_inicial`, `fecha_final`, `observaciones`, `id_empleado`) VALUES
+(2, 'Entregas', '00:06:06', '00:01:15', '2001-03-20', '2003-06-13', 'Entregas', 4),
+(3, 'Mantenimiento', '06:00:00', '12:00:00', '2019-09-25', '2019-09-25', 'Mantenimiento', 5),
+(4, 'Entregas', '10:00:00', '17:00:00', '2019-09-16', '2019-09-16', 'Entregas', 5),
+(5, 'Mantenimiento', '13:00:00', '21:00:00', '2019-09-09', '2019-09-09', 'Mantenimientos', 4),
+(6, 'Mantenimiento', '08:00:00', '18:00:00', '2019-09-25', '2019-09-25', 'Mantenimiento', 2),
+(7, 'Capacitacion', '13:00:00', '21:00:00', '2019-09-03', '2019-09-03', 'Capacitacion', 3),
+(8, 'Mantenimiento', '09:30:00', '19:30:00', '2019-09-26', '2019-09-26', 'Mantenimiento', 4),
+(9, 'Mantenimiento', '12:00:00', '20:00:00', '2019-09-02', '2019-09-02', 'Mantenimiento', 3),
+(10, 'Mantenimiento', '14:00:00', '22:00:00', '2019-07-03', '2019-07-03', 'Mantenimiento', 2),
+(11, 'Mantenimiento', '12:30:00', '17:30:00', '2019-09-01', '2019-09-01', 'Mantenimiento', 3),
+(12, 'Envios', '07:00:00', '17:00:00', '2019-07-03', '2019-07-05', 'Envíos', 2),
+(13, 'Envios', '12:00:00', '22:00:00', '2019-05-01', '2019-05-01', 'Envíos', 2),
+(14, 'Envíos', '14:00:00', '22:00:00', '2019-09-02', '2019-09-02', 'Envíos', 21),
+(15, 'mantenimiento', '05:10:10', '15:00:00', '2019-12-11', '2019-12-31', 'mantenimiento', 1);
 
 -- --------------------------------------------------------
 
@@ -1114,12 +1074,6 @@ ALTER TABLE `permiso_laboral`
   ADD KEY `estado` (`estado`);
 
 --
--- Indices de la tabla `punto`
---
-ALTER TABLE `punto`
-  ADD PRIMARY KEY (`id_punto`);
-
---
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
@@ -1159,7 +1113,6 @@ ALTER TABLE `tipoid`
 --
 ALTER TABLE `turno`
   ADD PRIMARY KEY (`id_turno`),
-  ADD KEY `punto_id_puntos` (`punto_id_puntos`),
   ADD KEY `id_empleado` (`id_empleado`);
 
 --
@@ -1349,7 +1302,6 @@ ALTER TABLE `solicitud`
 -- Filtros para la tabla `turno`
 --
 ALTER TABLE `turno`
-  ADD CONSTRAINT `fk_turno_punto` FOREIGN KEY (`punto_id_puntos`) REFERENCES `punto` (`id_punto`) ON UPDATE CASCADE,
   ADD CONSTRAINT `turno_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`);
 
 --

@@ -79,9 +79,6 @@ public class Turno implements Serializable {
     @Size(min = 1, max = 70)
     @Column(name = "observaciones")
     private String observaciones;
-    @JoinColumn(name = "punto_id_puntos", referencedColumnName = "id_punto")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Punto puntoIdPuntos;
     @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
     @ManyToOne(fetch = FetchType.LAZY)
     private Empleado idEmpleado;
@@ -157,14 +154,6 @@ public class Turno implements Serializable {
 
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
-    }
-
-    public Punto getPuntoIdPuntos() {
-        return puntoIdPuntos;
-    }
-
-    public void setPuntoIdPuntos(Punto puntoIdPuntos) {
-        this.puntoIdPuntos = puntoIdPuntos;
     }
 
     public Empleado getIdEmpleado() {

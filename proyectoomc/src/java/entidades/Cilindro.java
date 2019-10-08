@@ -63,11 +63,11 @@ public class Cilindro implements Serializable {
     private Date fechaDeCreacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.LAZY)
     private List<Mantenimiento> mantenimientoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.LAZY)
+    private List<Alquiler> alquilerList;
     @JoinColumn(name = "estado_id_estado", referencedColumnName = "id_estado")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private EstadoCilindro estadoIdEstado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.LAZY)
-    private List<Alquiler> alquilerList;
 
     public Cilindro() {
     }
@@ -125,14 +125,6 @@ public class Cilindro implements Serializable {
         this.mantenimientoList = mantenimientoList;
     }
 
-    public EstadoCilindro getEstadoIdEstado() {
-        return estadoIdEstado;
-    }
-
-    public void setEstadoIdEstado(EstadoCilindro estadoIdEstado) {
-        this.estadoIdEstado = estadoIdEstado;
-    }
-
     @XmlTransient
     @JsonIgnore
     public List<Alquiler> getAlquilerList() {
@@ -141,6 +133,14 @@ public class Cilindro implements Serializable {
 
     public void setAlquilerList(List<Alquiler> alquilerList) {
         this.alquilerList = alquilerList;
+    }
+
+    public EstadoCilindro getEstadoIdEstado() {
+        return estadoIdEstado;
+    }
+
+    public void setEstadoIdEstado(EstadoCilindro estadoIdEstado) {
+        this.estadoIdEstado = estadoIdEstado;
     }
 
     @Override
