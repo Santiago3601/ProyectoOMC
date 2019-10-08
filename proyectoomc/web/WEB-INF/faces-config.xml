@@ -258,6 +258,10 @@
             <base-name>language.MensajeError</base-name>
             <var>msjError</var>
         </resource-bundle> 
+        <resource-bundle>
+            <base-name>language.boton</base-name>
+            <var>msjBoton</var>
+        </resource-bundle> 
                   
         <resource-bundle>
             <base-name>language.BreadCrumbPersonal</base-name>
