@@ -26,57 +26,90 @@
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
 
-
-
                 <h:form ps:class="needs-validation" ps:novalidate="true">
                     <h1><h:outputText value="#{msjsmantenimiento.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
+                    <div class="form-group"> 
                         <h:outputLabel value="#{msjsmantenimiento.labelTxtmaidmaintenance}" for="IdMantenimiento" />
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+
+                        <div class="form-group"> 
+                        </div>
                         <h:inputText ps:class="form-control" id="idMantenimiento" value="#{mantenimientoControlador.mantenimiento.idMantenimiento}" title="IdMantenimiento" ps:required="true" requiredMessage="The IdMantenimiento field is required."/>
                         <h:outputLabel  value="#{msjsmantenimiento.labelTxtmaintenancestartdate}" for="FechaInicioMantenimiento" />
                         <h:inputText ps:class="form-control" pt:id="fecha2" pt:type="date" id="fechaInicioMantenimiento" value="#{mantenimientoControlador.mantenimiento.fechaInicioMantenimiento}" title="FechaInicioMantenimiento" ps:required="true" requiredMessage="The FechaInicioMantenimiento field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+                    </div>
+
+                    <div class="form-group"> 
                         <h:outputLabel  value="#{msjsmantenimiento.labelTxtenddatemaintenance}" for="FechaFinalMantenimiento" />
                         <h:inputText ps:class="form-control" pt:id="fecha1" pt:type="date" id="fechaFinalMantenimiento" value="#{mantenimientoControlador.mantenimiento.fechaFinalMantenimiento}" title="FechaFinalMantenimiento" ps:required="true" requiredMessage="The FechaFinalMantenimiento field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+                    </div>
+
+
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjsmantenimiento.labelTxttypeofmaintenance}" for="TipoMantenimiento"/>
+                        <h:inputText ps:class="form-control" id="tipoMantenimiento" value="#{mantenimientoControlador.mantenimiento.tipoMantenimiento}" title="TipoMantenimiento" ps:required="true" requiredMessage="The TipoMantenimiento field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+                    </div>
+                    <div class="form-group"> 
+
                         <h:outputLabel value="#{msjsmantenimiento.labelTxtagendaidagenda}" for="AgendaIdAgenda" />
                         <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{mantenimientoControlador.agenda.idAgenda}" title="AgendaIdAgenda" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                             <!-- TODO: update below reference to list of available items-->
                             <f:selectItems value="#{agendaControlador.consultarTodos()}" var="agen" itemValue="#{agen.idAgenda}" itemLabel="#{agen.idAgenda}"/>
                         </h:selectOneMenu>
                         <div class="invalid-feedback">#{msjError.fields}</div>
-                    </h:panelGrid>
-                    <h:commandButton ps:id="boton" class="btn btn-primary" value="#{msjsmantenimiento.labelbtnregister}" action="#{mantenimientoControlador.registrarMantenimiento()}"> </h:commandButton>
-                </h:form>
-            </f:view>
-            <script>
-                fecha1.min = new Date().toISOString().split("T")[0];
-                fecha2.min = new Date().toISOString().split("T")[0];
-            </script>
-            <script>
-                // Example starter JavaScript for disabling form submissions if there are invalid fields
-                (function () {
-                    'use strict';
-                    window.addEventListener('load', function () {
-                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                        var forms = document.getElementsByClassName('needs-validation');
-                        // Loop over them and prevent submission
-                        var validation = Array.prototype.filter.call(forms, function (form) {
-                            form.addEventListener('submit', function (event) {
-                                if (form.checkValidity() === false) {
-                                    event.preventDefault();
-                                    event.stopPropagation();
-                                }
-                                form.classList.add('was-validated');
-                            }, false);
-                        });
-                    }, false);
-                })();
-            </script>
-        </div>
-    </h:body>
+                        
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="#{msjsmantenimiento.labelTxtmaintenancestatus}" for="EstadoMantenimiento"/>
+                        <h:selectOneMenu ps:class="form-control" id="estadoMantenimiento" value="#{mantenimientoControlador.estadoMantenimiento.idEstado}" title="EstadoMantenimiento" ps:required="true" requiredMessage="The EstadoMantenimiento field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{e}"
+                    </h:selectOneMenu>  
+                    <div class="invalid-feedback">#{msjError.fields}</div>
+                </div>
+
+
+
+
+
+                <h:commandButton ps:id="boton" class="btn btn-primary" value="#{msjsmantenimiento.labelbtnregister}" action="#{mantenimientoControlador.registrarMantenimiento()}"> </h:commandButton>
+            </h:form>
+        </f:view>
+        <script>
+            fecha1.min = new Date().toISOString().split("T")[0];
+            fecha2.min = new Date().toISOString().split("T")[0];
+        </script>
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </div>
+</h:body>
 </html>
 
 

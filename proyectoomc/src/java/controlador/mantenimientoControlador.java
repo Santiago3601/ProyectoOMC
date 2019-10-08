@@ -6,8 +6,12 @@
 package controlador;
 
 import entidades.Agenda;
+import entidades.Cilindro;
+import entidades.EstadoMantenimiento;
 import entidades.Mantenimiento;
 import facade.AgendaFacade;
+import facade.CilindroFacade;
+import facade.EstadoMantenimientoFacade;
 import facade.MantenimientoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -37,10 +41,18 @@ public class mantenimientoControlador implements Serializable {
     private AgendaFacade agendaFacade;
     Agenda agenda;
 
+    @EJB
+    private CilindroFacade cilindroFacade;
+    Cilindro cilindro;
+    @EJB
+    private EstadoMantenimientoFacade estadoMantenimientoFacade;
+    private EstadoMantenimiento estadoMantenimiento;
+
     @PostConstruct
     public void init() {
         mantenimiento = new Mantenimiento();
         agenda = new Agenda();
+        cilindro = new Cilindro();
     }
 
     public Mantenimiento getMantenimiento() {
@@ -59,9 +71,28 @@ public class mantenimientoControlador implements Serializable {
         this.agenda = agenda;
     }
 
-    public String registrarMantenimiento() {
+    public Cilindro getCilindro() {
+        return cilindro;
+    }
+
+    public void setCilindro(Cilindro cilindro) {
+        this.cilindro = cilindro;
+    }
+
+    public EstadoMantenimiento getEstadoMantenimiento() {
+        return estadoMantenimiento;
+    }
+
+    public void setEstadoMantenimiento(EstadoMantenimiento estadoMantenimiento) {
+        this.estadoMantenimiento = estadoMantenimiento;
+    }
+
+//Metodos
+public String registrarMantenimiento() {
 
         mantenimiento.setAgendaIdAgenda(agendaFacade.find(agenda.getIdAgenda()));
+        mantenimiento.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
+        mantenimiento.setEstadoMantenimiento(estadoMantenimientoFacade.find(estadoMantenimiento.getIdEstado()));
         mantenimientoFacade.create(mantenimiento);
         mantenimiento = new Mantenimiento();
         return "listaMantenimiento";
@@ -75,6 +106,8 @@ public class mantenimientoControlador implements Serializable {
 
     public String actualizar() {
         mantenimiento.setAgendaIdAgenda(agendaFacade.find(agenda.getIdAgenda()));
+         mantenimiento.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
+        mantenimiento.setEstadoMantenimiento(estadoMantenimientoFacade.find(estadoMantenimiento.getIdEstado()));
         mantenimientoFacade.edit(mantenimiento);
         mantenimiento = new Mantenimiento();
         return "listaMantenimiento";
