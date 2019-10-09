@@ -25,22 +25,29 @@
             <f:view locale="#{sessionController.languageSelected}">
 
 
-                <h:form ps:class="needs-validation" ps:novalidate="true">
-                    <h1><h:outputText value="#{msjscilindro.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="#{msjscilindro.labelTxtIdCylinder}" for="IdCilindro" />
-                        <h:inputText ps:class="form-control" id="idCilindro" value="#{cilindroControlador.cilindro.idCilindro}" title="IdCilindro" ps:required="true" requiredMessage="The IdCilindro field is required."/>
-                        <h:outputLabel value="#{msjscilindro.labelTxtState}" for="Estado" />
-                        <h:inputText ps:class="form-control" id="estado" value="#{cilindroControlador.cilindro.estadoIdEstado.estadoCol}" title="Estado" ps:required="true" requiredMessage="The Estado field is required."/>
-                        <h:outputLabel value="#{msjscilindro.labelTxtSize}" for="Tamanio" />
-                        <h:inputText ps:class="form-control" id="tamanio" value="#{cilindroControlador.cilindro.tamanio}" title="Tamanio" ps:required="true" requiredMessage="The Tamanio field is required."/>
-                        <h:outputLabel value="#{msjscilindro.labelTxtICreationDate}" for="FechaDeCreacion" />
-                        <h:inputText ps:class="form-control" pt:id="fecha1" pt:type="date" id="fechaDeCreacion" value="#{cilindroControlador.cilindro.fechaDeCreacion}" title="FechaDeCreacion" ps:required="true" requiredMessage="The FechaDeCreacion field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:inputText>
-                    </h:panelGrid>
-                    <h:commandButton ps:id="boton" class="btn btn-primary" value="#{msjscilindro.labebtnRegister}" action="#{cilindroControlador.registrarCilindro()}"> </h:commandButton> 
-                </h:form>
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="IdCilindro:" for="idCilindro" />
+                            <h:inputText id="idCilindro" value="#{cilindroControlador.cilindro.idCilindro}" title="IdCilindro" required="true" requiredMessage="The IdCilindro field is required."/>
+                            <h:outputLabel value="Tamanio:" for="tamanio" />
+                            <h:inputText id="tamanio" value="#{cilindroControlador.cilindro.tamanio}" title="Tamanio" required="true" requiredMessage="The Tamanio field is required."/>
+                            <h:outputLabel value="Lote:" for="lote" />
+                            <h:inputText id="lote" value="#{cilindroControlador.cilindro.lote}" title="Lote" required="true" requiredMessage="The Lote field is required."/>
+                            <h:outputLabel value="FechaDeCreacion:" for="fechaDeCreacion" />
+                            <h:inputText id="fechaDeCreacion" value="#{cilindroControlador.cilindro.fechaDeCreacion}" title="FechaDeCreacion" required="true" requiredMessage="The FechaDeCreacion field is required.">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="EstadoIdEstado:" for="estadoIdEstado" />
+                            <h:selectOneMenu id="estadoIdEstado" value="#{cilindroControlador.estadocilindro.idEstado}" title="EstadoIdEstado" required="true" requiredMessage="The EstadoIdEstado field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{estadoCilindro.consultarTdos()}" var="es" itemValue="#{es.idEstado}" itemLabel="#{es.estadoCol}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                           <h:commandButton ps:id="boton" class="btn btn-primary" value="#{msjscilindro.labebtnRegister}" action="#{cilindroControlador.registrarCilindro()}"> </h:commandButton> 
+                    </h:form>
+
                 <script>
                     // Example starter JavaScript for disabling form submissions if there are invalid fields
                     (function () {
@@ -65,4 +72,3 @@
         </div>
     </h:body>
 </html>
-

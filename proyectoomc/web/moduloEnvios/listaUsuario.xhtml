@@ -28,6 +28,7 @@
                 <h:form>
                     <h1><h:outputText value="#{msjListaVehicluos.title}"/></h1>
                     <p:dataTable id="tabla" value="#{usuarioControlador.consultarTodos()}" var="usuario" resizableColumns="true" liveResize="true"> >
+                        
                         <p:column filterBy="#{usuario.id}"     style="width: 74.004px;">
                             <f:facet name="header">
                                 <h:outputText value="Id"/>

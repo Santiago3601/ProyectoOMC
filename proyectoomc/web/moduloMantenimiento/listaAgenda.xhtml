@@ -55,6 +55,20 @@
                         </f:facet>
                         <h:outputText value="#{item.empleadoIdEmpleado.idEmpleado}"/>
                     </p:column>
+                    
+                    <p:column filterBy="#{item.foto}">
+                        <f:facet name="header">
+                            <h:outputText value="#{msjsagedaD.labelTxtFoto}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.foto}"/>
+                    </p:column>
+                    
+                    <p:column filterBy="#{item.alquilerIdAlqu}">
+                        <f:facet name="header">
+                            <h:outputText value="#{msjsagedaD.labelTxtIdAlqu}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.alquilerIdAlqu.idAlquiler}"/>
+                    </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Opción"/>

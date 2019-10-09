@@ -11,12 +11,16 @@ import entidades.Empleado;
 import facade.AgendaFacade;
 import facade.AlquilerFacade;
 import facade.EmpleadoFacade;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
 /**
@@ -27,12 +31,11 @@ import javax.servlet.http.Part;
 @SessionScoped
 public class agendaControlador implements Serializable {
 
-
     /**
      * Creates a new instance of agendaControlador
      */
     public agendaControlador() {
-        
+
     }
     private Part file;
     private String nombre;
@@ -41,21 +44,21 @@ public class agendaControlador implements Serializable {
     @EJB
     private AgendaFacade agendaFacade;
     Agenda agenda;
-    
+
     @EJB
     private EmpleadoFacade empleadoFacade;
     Empleado empleado;
-    
-    @EJB 
+
+    @EJB
     private AlquilerFacade alquilerFacade;
     private Alquiler alquiler;
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         agenda = new Agenda();
         empleado = new Empleado();
     }
-    
+
     public Agenda getAgenda() {
         return agenda;
     }
@@ -71,7 +74,8 @@ public class agendaControlador implements Serializable {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
-     public Alquiler getAlquiler() {
+
+    public Alquiler getAlquiler() {
         return alquiler;
     }
 
@@ -98,47 +102,102 @@ public class agendaControlador implements Serializable {
     public void setPathReal(String pathReal) {
         this.pathReal = pathReal;
     }
-     
 
     public void setAlquiler(Alquiler alquiler) {
         this.alquiler = alquiler;
     }
-    
-    public String registrarAgenda(){
+
+    public String registrarAgenda() {
         agenda.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
         agenda.setAlquilerIdAlqu(alquilerFacade.find(alquiler.getIdAlquiler()));
         agendaFacade.create(agenda);
         agenda = new Agenda();
         return "listaAgenda";
-        
+
     }
-    
-        public void consultarID() {
+
+    public void consultarID() {
         agenda = agendaFacade.find(agenda);
     }
-    public List<Agenda> consultarTodos(){
+
+    public List<Agenda> consultarTodos() {
         return agendaFacade.findAll();
     }
 
- public String eliminarAgenda(Agenda a){
+    public String eliminarAgenda(Agenda a) {
         this.agendaFacade.remove(a);
         return "listaAgenda";
     }
 
-    
     public String preActualizarAgenda(Agenda agendaAct) {
-       agenda = agendaAct;
-       return "editarAgenda";
-   }
+        agenda = agendaAct;
+        return "editarAgenda";
+    }
 
-   public String actualizarAgenda() {
-       agenda.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
-       agenda.setAlquilerIdAlqu(alquilerFacade.find(alquiler.getIdAlquiler()));
-       agendaFacade.edit(agenda);
-       agenda = new Agenda();
-       return "listaAgenda";
-   }
+    public String actualizarAgenda() {
+        agenda.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
+        agenda.setAlquilerIdAlqu(alquilerFacade.find(alquiler.getIdAlquiler()));
+        agendaFacade.edit(agenda);
+        agenda = new Agenda();
+        return "listaAgenda";
+    }
 
-   
+    public String editUpload() {
+
+        String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");
+        path = path.substring(0, path.indexOf("\\build"));
+        path = path + "\\web\\Archivos\\";
+        try {
+            this.nombre = file.getSubmittedFileName();
+            pathReal = "/proyectoomc/archivos/" + nombre;
+            path = path + this.nombre;
+            InputStream in = file.getInputStream();
+
+            byte[] data = new byte[in.available()];
+            in.read(data);
+            FileOutputStream out = new FileOutputStream(new File(path));
+            out.write(data);
+            in.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        agenda.setAlquilerIdAlqu(getAlquiler());
+        this.agenda.setFoto(pathReal);
+        agendaFacade.edit(agenda);
+        agenda = new Agenda();
+
+        return "listaAgenda";
+
+    }
+    public String upload() {
+
+        String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");
+        path = path.substring(0, path.indexOf("\\build"));
+        path = path + "\\web\\Archivos\\";
+        try {
+            this.nombre = file.getSubmittedFileName();
+            pathReal = "/proyectoomc/archivos/" + nombre;
+            path = path + this.nombre;
+            InputStream in = file.getInputStream();
+
+            byte[] data = new byte[in.available()];
+            in.read(data);
+            FileOutputStream out = new FileOutputStream(new File(path));
+            out.write(data);
+            in.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        agenda.setAlquilerIdAlqu(getAlquiler());
+        this.agenda.setFoto(pathReal);
+        agendaFacade.create(agenda);
+        agenda = new Agenda();
+
+        return "listaAgenda";
+
+    }
+
+
 }
-

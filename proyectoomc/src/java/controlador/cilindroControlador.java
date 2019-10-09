@@ -6,8 +6,10 @@
 package controlador;
 
 import entidades.Cilindro;
+import entidades.EstadoCilindro;
 import entidades.EstadoMantenimiento;
 import facade.CilindroFacade;
+import facade.EstadoCilindroFacade;
 import facade.EstadoMantenimientoFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -31,12 +33,14 @@ public class cilindroControlador implements Serializable {
     private CilindroFacade cilindroFacade;
     Cilindro cilindro;
     @EJB
-    private EstadoMantenimientoFacade estadoMantenimientoFacade;
-    EstadoMantenimiento estadoMantenimiento;
+    private EstadoCilindroFacade estadocCilindroFacade;
+    EstadoCilindro estadocilindro;
 
     @PostConstruct
     public void init() {
         cilindro = new Cilindro();
+        estadocilindro = new EstadoCilindro();
+
     }
 
     public Cilindro getCilindro() {
@@ -48,17 +52,18 @@ public class cilindroControlador implements Serializable {
 
     }
 
-    public EstadoMantenimiento getEstadoMantenimiento() {
-        return estadoMantenimiento;
+    public EstadoCilindro getEstadocilindro() {
+        return estadocilindro;
     }
 
-    public void setEstadoMantenimiento(EstadoMantenimiento estadoMantenimiento) {
-        this.estadoMantenimiento = estadoMantenimiento;
+    public void setEstadocilindro(EstadoCilindro estadocilindro) {
+        this.estadocilindro = estadocilindro;
     }
+
 
     //METODOS
     public String registrarCilindro() {
-
+        cilindro.setEstadoIdEstado(estadocCilindroFacade.find(estadocilindro.getIdEstado()));
         cilindroFacade.create(cilindro);
         cilindro = new Cilindro();
         return "listaCilindro";
@@ -86,6 +91,7 @@ public class cilindroControlador implements Serializable {
     }
 
     public String actualizarCilindro() {
+        cilindro.setEstadoIdEstado(estadocCilindroFacade.find(estadocilindro.getIdEstado()));
         cilindroFacade.edit(cilindro);
         cilindro = new Cilindro();
         return "listaCilindro";
@@ -93,9 +99,8 @@ public class cilindroControlador implements Serializable {
 
     public String cambiarEstado(Cilindro ci) {
         this.cilindro = ci;
-        this.estadoMantenimiento.setIdEstado(2);
+        // this.estadocilindro.setEstadoCilindro();
         cilindroFacade.edit(getCilindro());
-        estadoMantenimiento = new EstadoMantenimiento();
         cilindro = new Cilindro();
         return "listaCilindro";
     }

@@ -24,36 +24,63 @@
         <f:view locale="#{sessionController.languageSelected}">
 
             <h:form>
-                <h1><h:outputText value="#{msjListaMantenimientoA.listaMantenimiento}"/></h1>
-                <p:dataTable id="tablaMantenimiento" value="#{mantenimientoControlador.consultarTodos()}" var="item">
+                <h1><h:outputText value="#{msjListaMantenimientoA.h1TxtTitle}"/></h1>
+                <p:dataTable id="tablaMantenimiento" value="#{mantenimientoControlador.consultarTodos()}" var="item" resizableColumns="true" liveResize="true"> 
+                    
                     <p:column filterBy="#{item.idMantenimiento}">
                         <f:facet name="header">
-                            <h:outputText value="#{msjListaMantenimientoA.IdMantenimiento}"/>
+                            <h:outputText value="#{msjListaMantenimientoA.labelTxtmaidmaintenance}"/>
                         </f:facet>
                         <h:outputText value="#{item.idMantenimiento}"/>
                     </p:column>
+                    
                     <p:column filterBy="#{item.fechaInicioMantenimiento}">
                         <f:facet name="header">
-                            <h:outputText value="#{msjListaMantenimientoA.fechaInicio}"/>
+                            <h:outputText value="#{msjListaMantenimientoA.labelTxtmaintenancestartdate}"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaInicioMantenimiento}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
                     </p:column>
+                    
                     <p:column filterBy="#{item.fechaFinalMantenimiento}">
                         <f:facet name="header">
-                            <h:outputText value="#{msjListaMantenimientoA.fechaFinal}"/>
+                            <h:outputText value="#{msjListaMantenimientoA.labelTxtenddatemaintenance}"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaFinalMantenimiento}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
                     </p:column>
-                    <p:column filterBy="#{item.agendaIdAgenda}" >
+                    
+                    <p:column filterBy="#{item.tipoMantenimiento}">
                         <f:facet name="header">
-                            <h:outputText value="agenda"/>
+                            <h:outputText value="#{msjListaMantenimientoA.labelTxttypeofmaintenance}"/>
                         </f:facet>
-                        <h:outputText value="#{item.agendaIdAgenda}"/>
+                        <h:outputText value="#{item.tipoMantenimiento}"/>
                     </p:column>
+                    
+                    <p:column filterBy="#{item.agendaIdAgenda.idAgenda}" >
+                        <f:facet name="header">
+                            <h:outputText value="#{msjListaMantenimientoA.labelTxtagendaidagenda}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.agendaIdAgenda.idAgenda}"/>
+                    </p:column>
+                    
+                    <p:column filterBy="#{item.estadoMantenimiento.idEstado}" >
+                        <f:facet name="header">
+                            <h:outputText value="#{msjListaMantenimientoA.labelTxtmaintenancestatus}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.estadoMantenimiento.idEstado}"/>
+                    </p:column>
+                    
+                    <p:column filterBy="#{item.cilindroIdCilindro.idCilindro}" >
+                        <f:facet name="header">
+                            <h:outputText value="cilindro"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cilindroIdCilindro.idCilindro}"/>
+                    </p:column>
+                    
+                    
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="#{msjListaMantenimientoA.acciones}"/>

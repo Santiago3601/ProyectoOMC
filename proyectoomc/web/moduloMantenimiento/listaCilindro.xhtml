@@ -30,12 +30,12 @@
             <h:form>
                 <h1><h:outputText value="#{msjListaCilindro.listaCil}"/></h1>
                 <p:dataTable id="tablaCilindro" value="#{cilindroControlador.consultarTodos()}" var="item">
-
-                    <p:column filterBy="#{item.estadoIdEstado.estadoCol}">
+                    
+                    <p:column filterBy="#{item.idCilindro}">
                         <f:facet name="header">
-                            <h:outputText value="#{msjListaCilindro.estado}"/>
+                            <h:outputText value="#{msjListaCilindro.NoCilindro}"/>
                         </f:facet>
-                        <h:outputText value="#{item.estadoIdEstado.estadoCol}"/>
+                        <h:outputText value="#{item.idCilindro}"/>
                     </p:column>
                     <p:column filterBy="#{item.tamanio}">
                         <f:facet name="header">
@@ -43,6 +43,21 @@
                         </f:facet>
                         <h:outputText value="#{item.tamanio}"/>
                     </p:column>
+                    
+                    <p:column filterBy="#{item.lote}">
+                        <f:facet name="header">
+                            <h:outputText value="Lote"/>
+                        </f:facet>
+                        <h:outputText value="#{item.lote}"/>
+                    </p:column>
+
+                    <p:column filterBy="#{item.estadoIdEstado.estadoCol}">
+                        <f:facet name="header">
+                            <h:outputText value="#{msjListaCilindro.estado}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.estadoIdEstado.estadoCol}"/>
+                    </p:column>
+                    
                     <p:column filterBy="#{item.fechaDeCreacion}">
                         <f:facet name="header">
                             <h:outputText value="#{msjListaCilindro.fechaCreacion}"/>
