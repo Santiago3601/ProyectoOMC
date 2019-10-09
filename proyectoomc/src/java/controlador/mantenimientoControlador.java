@@ -46,13 +46,14 @@ public class mantenimientoControlador implements Serializable {
     Cilindro cilindro;
     @EJB
     private EstadoMantenimientoFacade estadoMantenimientoFacade;
-    private EstadoMantenimiento estadoMantenimiento;
+    EstadoMantenimiento estadoMantenimiento;
 
     @PostConstruct
     public void init() {
         mantenimiento = new Mantenimiento();
         agenda = new Agenda();
         cilindro = new Cilindro();
+        estadoMantenimiento = new EstadoMantenimiento();
     }
 
     public Mantenimiento getMantenimiento() {
@@ -88,7 +89,7 @@ public class mantenimientoControlador implements Serializable {
     }
 
 //Metodos
-public String registrarMantenimiento() {
+    public String registrarMantenimiento() {
 
         mantenimiento.setAgendaIdAgenda(agendaFacade.find(agenda.getIdAgenda()));
         mantenimiento.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
@@ -106,7 +107,7 @@ public String registrarMantenimiento() {
 
     public String actualizar() {
         mantenimiento.setAgendaIdAgenda(agendaFacade.find(agenda.getIdAgenda()));
-         mantenimiento.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
+        mantenimiento.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
         mantenimiento.setEstadoMantenimiento(estadoMantenimientoFacade.find(estadoMantenimiento.getIdEstado()));
         mantenimientoFacade.edit(mantenimiento);
         mantenimiento = new Mantenimiento();
