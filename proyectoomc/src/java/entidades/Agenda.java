@@ -33,7 +33,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Aprendiz
+ * @author Santiago
  */
 @Entity
 @Table(name = "agenda")
@@ -65,6 +65,8 @@ public class Agenda implements Serializable {
     @Size(min = 1, max = 16383)
     @Column(name = "foto")
     private String foto;
+    @OneToMany(mappedBy = "idAgenda", fetch = FetchType.LAZY)
+    private List<AuditoriaMantenimiento> auditoriaMantenimientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "agendaIdAgenda", fetch = FetchType.LAZY)
     private List<Mantenimiento> mantenimientoList;
     @JoinColumn(name = "empleado_id_empleado", referencedColumnName = "id_empleado")
@@ -117,6 +119,16 @@ public class Agenda implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public List<AuditoriaMantenimiento> getAuditoriaMantenimientoList() {
+        return auditoriaMantenimientoList;
+    }
+
+    public void setAuditoriaMantenimientoList(List<AuditoriaMantenimiento> auditoriaMantenimientoList) {
+        this.auditoriaMantenimientoList = auditoriaMantenimientoList;
     }
 
     @XmlTransient

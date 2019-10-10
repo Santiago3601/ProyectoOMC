@@ -8,7 +8,6 @@ package entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,10 +25,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Aprendiz
+ * @author Santiago
  */
 @Entity
 @Table(name = "permiso")
@@ -38,16 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Permiso.findAll", query = "SELECT p FROM Permiso p")
     , @NamedQuery(name = "Permiso.findByIdPermiso", query = "SELECT p FROM Permiso p WHERE p.idPermiso = :idPermiso")
     , @NamedQuery(name = "Permiso.findByNombre", query = "SELECT p FROM Permiso p WHERE p.nombre = :nombre")
+    , @NamedQuery(name = "Permiso.findByNombreEn", query = "SELECT p FROM Permiso p WHERE p.nombreEn = :nombreEn")
     , @NamedQuery(name = "Permiso.findByIcon", query = "SELECT p FROM Permiso p WHERE p.icon = :icon")})
 public class Permiso implements Serializable {
-
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "nombre_en")
-    private String nombreEn;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "permisoIdPermiso", fetch = FetchType.LAZY)
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,6 +53,11 @@ public class Permiso implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nombre")
     private String nombre;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "nombre_en")
+    private String nombreEn;
     @Lob
     @Size(max = 16383)
     @Column(name = "url")
@@ -74,15 +72,12 @@ public class Permiso implements Serializable {
         @JoinColumn(name = "rol_idRol", referencedColumnName = "idRol")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Rol> rolList;
-    
     @OneToMany(mappedBy = "permisoPadre", fetch = FetchType.LAZY)
     private List<Permiso> subPermisos;
     
     @JoinColumn(name = "permiso_padre", referencedColumnName = "id_permiso")
     @ManyToOne(fetch = FetchType.LAZY)
     private Permiso permisoPadre;
-
-
 
     public Permiso() {
     }
@@ -91,9 +86,10 @@ public class Permiso implements Serializable {
         this.idPermiso = idPermiso;
     }
 
-    public Permiso(Integer idPermiso, String nombre, String icon) {
+    public Permiso(Integer idPermiso, String nombre, String nombreEn, String icon) {
         this.idPermiso = idPermiso;
         this.nombre = nombre;
+        this.nombreEn = nombreEn;
         this.icon = icon;
     }
 
@@ -113,6 +109,14 @@ public class Permiso implements Serializable {
         this.nombre = nombre;
     }
 
+    public String getNombreEn() {
+        return nombreEn;
+    }
+
+    public void setNombreEn(String nombreEn) {
+        this.nombreEn = nombreEn;
+    }
+
     public String getUrl() {
         return url;
     }
@@ -130,6 +134,7 @@ public class Permiso implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Rol> getRolList() {
         return rolList;
     }
@@ -179,14 +184,5 @@ public class Permiso implements Serializable {
     public String toString() {
         return "entidades.Permiso[ idPermiso=" + idPermiso + " ]";
     }
-
-    public String getNombreEn() {
-        return nombreEn;
-    }
-
-    public void setNombreEn(String nombreEn) {
-        this.nombreEn = nombreEn;
-    }
-
-
+    
 }

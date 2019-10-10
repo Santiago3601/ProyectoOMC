@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -121,7 +122,7 @@ public class usuarioControlador implements Serializable {
     }
 
     public String registrarUsuarioIndex() throws UnsupportedEncodingException {
-        boolean flag; 
+        boolean flag;
         flag = usuarioFacade.validar(usuario);
         if (flag == false) {
             usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));

@@ -25,7 +25,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Aprendiz
+ * @author Santiago
  */
 @Entity
 @Table(name = "estado_mantenimiento")
@@ -47,6 +47,8 @@ public class EstadoMantenimiento implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "estado")
     private String estado;
+    @OneToMany(mappedBy = "idEstado", fetch = FetchType.LAZY)
+    private List<AuditoriaMantenimiento> auditoriaMantenimientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoMantenimiento", fetch = FetchType.LAZY)
     private List<Mantenimiento> mantenimientoList;
 
@@ -76,6 +78,16 @@ public class EstadoMantenimiento implements Serializable {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public List<AuditoriaMantenimiento> getAuditoriaMantenimientoList() {
+        return auditoriaMantenimientoList;
+    }
+
+    public void setAuditoriaMantenimientoList(List<AuditoriaMantenimiento> auditoriaMantenimientoList) {
+        this.auditoriaMantenimientoList = auditoriaMantenimientoList;
     }
 
     @XmlTransient

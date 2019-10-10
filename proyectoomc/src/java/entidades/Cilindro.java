@@ -29,7 +29,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Aprendiz
+ * @author Santiago
  */
 @Entity
 @Table(name = "cilindro")
@@ -61,6 +61,8 @@ public class Cilindro implements Serializable {
     @Column(name = "fecha_de_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaDeCreacion;
+    @OneToMany(mappedBy = "idCilindro", fetch = FetchType.LAZY)
+    private List<AuditoriaMantenimiento> auditoriaMantenimientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.LAZY)
     private List<Mantenimiento> mantenimientoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cilindroIdCilindro", fetch = FetchType.LAZY)
@@ -113,6 +115,16 @@ public class Cilindro implements Serializable {
 
     public void setFechaDeCreacion(Date fechaDeCreacion) {
         this.fechaDeCreacion = fechaDeCreacion;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public List<AuditoriaMantenimiento> getAuditoriaMantenimientoList() {
+        return auditoriaMantenimientoList;
+    }
+
+    public void setAuditoriaMantenimientoList(List<AuditoriaMantenimiento> auditoriaMantenimientoList) {
+        this.auditoriaMantenimientoList = auditoriaMantenimientoList;
     }
 
     @XmlTransient
