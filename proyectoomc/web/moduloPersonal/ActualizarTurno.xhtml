@@ -60,12 +60,7 @@
 
                     <h:inputText  pt:class="form-control"  id="observaciones" pt:placeholder="#{msjRegistrarTurno.placeholderTxtObservaciones}" value="#{turnoControlador.turno.observaciones}" title="Observaciones" pt:required="true" requiredMessage="Este campo es obigatorio" maxlength="70" />
 
-                    <h:outputLabel value="Puntos:" for="puntoIdPuntos" />
-
-                    <h:selectOneMenu pt:class="form-control"  id="puntoIdPuntos" value="#{turnoControlador.punto.idPunto}" title="PuntoIdPuntos" required="true" requiredMessage="Este campo es obigatorio">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{puntoControlador.consultarTodos()}" var="pu" itemValue="#{pu.idPunto}" itemLabel="#{pu.cantidad}"/>
-                    </h:selectOneMenu>
+                    
                     <h:outputLabel value="Empleado:" for="idEmpleado" />
 
                     <h:selectOneMenu pt:class="form-control" id="idEmpleado" value="#{turnoControlador.empleado.idEmpleado}" title="IdEmpleado" >

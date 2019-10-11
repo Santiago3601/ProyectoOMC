@@ -6,6 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       >
 
     <h:head>
@@ -42,7 +43,7 @@
                         </h:inputText>  
                                                 <hr/>
 
-                        <h:commandButton action="#{horarioControlador.registrarIngreso()}" value="Ingresar" onclick="return window.alert('Bienvenido')" />
+                        <h:commandButton ps:id="boton" class="btn btn-primary" action="#{horarioControlador.registrarIngreso()}" value="Ingresar" onclick="return window.alert('Bienvenido')" />
                     </h:form>
                 </div>  
                 
@@ -61,7 +62,7 @@
                             
                         </h:inputText>
                         <hr/>
-                        <h:commandButton action="#{horarioControlador.registrarSalida()}" value="Salir" onclick="return window.alert('Gracias')" />
+                        <h:commandButton ps:id="boton" class="btn btn-primary" action="#{horarioControlador.registrarSalida()}" value="Salir" onclick="return window.alert('Gracias')" />
                     </h:form>
                 </div>
             </div>

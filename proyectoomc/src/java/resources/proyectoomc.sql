@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2019 a las 16:43:06
+-- Tiempo de generación: 10-10-2019 a las 15:06:31
 -- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Versión de PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -114,6 +114,32 @@ CREATE TABLE `auditoria` (
   `id` int(7) NOT NULL,
   `registro` text COLLATE utf32_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `auditoria_mantenimiento`
+--
+
+CREATE TABLE `auditoria_mantenimiento` (
+  `Id_AudMant` int(11) NOT NULL,
+  `id_mantenimiento` int(11) DEFAULT NULL,
+  `Antigua_fechaInicioMantenimiento` date DEFAULT NULL,
+  `Antigua_fechaFinalMantenimiento` date DEFAULT NULL,
+  `Antigua_TipoMantenimiento` varchar(50) COLLATE utf32_spanish_ci DEFAULT NULL,
+  `id_agenda` int(11) DEFAULT NULL,
+  `id_estado` int(11) DEFAULT NULL,
+  `id_cilindro` int(11) DEFAULT NULL,
+  `UsuarioAuditor` varchar(45) COLLATE utf32_spanish_ci DEFAULT NULL,
+  `FechaAuditoria` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `auditoria_mantenimiento`
+--
+
+INSERT INTO `auditoria_mantenimiento` (`Id_AudMant`, `id_mantenimiento`, `Antigua_fechaInicioMantenimiento`, `Antigua_fechaFinalMantenimiento`, `Antigua_TipoMantenimiento`, `id_agenda`, `id_estado`, `id_cilindro`, `UsuarioAuditor`, `FechaAuditoria`) VALUES
+(1, 114, '2019-10-09', '2019-10-30', 'preventivo', 2, 2, 1060298, 'root@localhost', '2019-10-10');
 
 -- --------------------------------------------------------
 
@@ -400,7 +426,20 @@ INSERT INTO `mantenimiento` (`id_mantenimiento`, `fecha_inicio_mantenimiento`, `
 (2, '2019-09-16', '2019-09-16', '', 6, 2, 1060293),
 (3, '2019-09-25', '2019-09-25', '', 3, 2, 1060293),
 (4, '2019-10-01', '2019-10-01', '', 4, 2, 1060293),
-(5, '2019-09-28', '2019-09-28', '', 1, 2, 1060293);
+(5, '2019-09-28', '2019-09-28', '', 1, 2, 1060293),
+(112, '2019-10-09', '2019-10-30', 'preventivo', 2, 2, 1060298),
+(114, '2019-10-09', '2019-10-30', 'preventivo', 2, 2, 1060298);
+
+--
+-- Disparadores `mantenimiento`
+--
+DELIMITER $$
+CREATE TRIGGER `tg_AuditoriaMantenimiento` AFTER INSERT ON `mantenimiento` FOR EACH ROW BEGIN
+INSERT INTO Auditoria_Mantenimiento(id_mantenimiento, Antigua_fechaInicioMantenimiento, Antigua_fechaFinalMantenimiento, Antigua_TipoMantenimiento, id_agenda, id_estado, id_cilindro, UsuarioAuditor, FechaAuditoria)
+VALUES (NEW.id_mantenimiento, NEW.fecha_inicio_mantenimiento, NEW.fecha_final_mantenimiento, NEW.tipo_mantenimiento, NEW.agenda_id_agenda, NEW.estado_mantenimiento,NEW.cilindro_id_cilindro, CURRENT_USER(), NOW());
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -977,6 +1016,16 @@ ALTER TABLE `auditoria`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `auditoria_mantenimiento`
+--
+ALTER TABLE `auditoria_mantenimiento`
+  ADD PRIMARY KEY (`Id_AudMant`),
+  ADD KEY `id_mantenimiento` (`id_mantenimiento`),
+  ADD KEY `id_agenda` (`id_agenda`),
+  ADD KEY `id_estado` (`id_estado`),
+  ADD KEY `id_cilindro` (`id_cilindro`);
+
+--
 -- Indices de la tabla `cilindro`
 --
 ALTER TABLE `cilindro`
@@ -1146,6 +1195,12 @@ ALTER TABLE `alquiler`
   MODIFY `id_alquiler` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT de la tabla `auditoria_mantenimiento`
+--
+ALTER TABLE `auditoria_mantenimiento`
+  MODIFY `Id_AudMant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
@@ -1173,7 +1228,7 @@ ALTER TABLE `horario`
 -- AUTO_INCREMENT de la tabla `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
-  MODIFY `id_mantenimiento` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_mantenimiento` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=876;
 
 --
 -- AUTO_INCREMENT de la tabla `permiso_laboral`
@@ -1224,6 +1279,15 @@ ALTER TABLE `alquiler`
   ADD CONSTRAINT `fk_alquiler_ruta` FOREIGN KEY (`ruta_id_ruta`) REFERENCES `ruta` (`id_ruta`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_alquiler_solicitud` FOREIGN KEY (`solicitud_id_solicitud`) REFERENCES `solicitud` (`id_solicitud`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_estado_alquiler` FOREIGN KEY (`estado_alquiler_id_estado`) REFERENCES `estado_alquiler` (`id_estado`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `auditoria_mantenimiento`
+--
+ALTER TABLE `auditoria_mantenimiento`
+  ADD CONSTRAINT `auditoria_mantenimiento_ibfk_1` FOREIGN KEY (`id_mantenimiento`) REFERENCES `mantenimiento` (`id_mantenimiento`),
+  ADD CONSTRAINT `auditoria_mantenimiento_ibfk_2` FOREIGN KEY (`id_agenda`) REFERENCES `agenda` (`id_agenda`),
+  ADD CONSTRAINT `auditoria_mantenimiento_ibfk_3` FOREIGN KEY (`id_estado`) REFERENCES `estado_mantenimiento` (`id_estado`),
+  ADD CONSTRAINT `auditoria_mantenimiento_ibfk_4` FOREIGN KEY (`id_cilindro`) REFERENCES `cilindro` (`id_cilindro`);
 
 --
 -- Filtros para la tabla `cilindro`

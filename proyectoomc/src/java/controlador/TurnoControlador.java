@@ -79,11 +79,7 @@ public class TurnoControlador implements Serializable {
         return "RegistrarTurno";
     }
     
-    
-    
-    
-    
-    
+ 
     
     public List<Turno> consultarTodos() {
         return turnoFacade.findAll();
