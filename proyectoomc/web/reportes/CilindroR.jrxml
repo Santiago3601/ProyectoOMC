@@ -3,27 +3,35 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<field name="estado" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     cilindro.`id_cilindro` AS cilindro_id_cilindro,
+     cilindro.`tamanio` AS cilindro_tamanio,
+     cilindro.`lote` AS cilindro_lote,
+     cilindro.`fecha_de_creacion` AS cilindro_fecha_de_creacion
+FROM
+     `cilindro` cilindro]]>
+	</queryString>
+	<field name="idCilindro" class="java.lang.Integer"/>
 	<field name="tamanio" class="java.lang.Integer"/>
 	<field name="lote" class="java.lang.Integer"/>
-	<field name="idCilindro" class="java.lang.Integer"/>
-	<field name="fechaDeCreacion" class="java.util.Date"/>
+	<field name="fechaDeCreacion" class="java.sql.Date"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="4" width="200" height="75" uuid="02f2223d-6a5f-4231-b5ce-1f55e2dfcd58"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Desktop\\proyectoomc\\proyectoomc\\web\\img\\OMC.png"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="239" y="19" width="292" height="56" uuid="dab09a12-246f-4e5d-998c-e34f7d91c17b"/>
+				<reportElement x="236" y="4" width="319" height="75" uuid="901c4cde-1a15-41e7-9adc-b05889bc141e"/>
 				<textElement>
 					<font size="36"/>
 				</textElement>
-				<text><![CDATA[Reportes cilindros]]></text>
+				<text><![CDATA[Reporte cilindro]]></text>
 			</staticText>
-			<image>
-				<reportElement x="14" y="18" width="150" height="57" uuid="58250f97-6e1c-4616-ba09-0db3dea09a79"/>
-				<imageExpression><![CDATA["C:\\Users\\Stephi\\Desktop\\proyectoOMC\\proyectoomc\\web\\img\\logo_col.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -32,48 +40,32 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="100" y="0" width="100" height="20" uuid="3492bd6a-eb4c-4906-9f97-e43f6053f106"/>
-				<text><![CDATA[estado]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="200" y="0" width="100" height="20" uuid="285fdd15-5ef0-4ac8-9d5d-40165929b5e8"/>
-				<text><![CDATA[tamanio]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="300" y="0" width="100" height="20" uuid="11d3cbb4-97b3-46cd-95a3-c5a79b4ed900"/>
-				<text><![CDATA[lote]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="2" width="100" height="20" uuid="a4c332ad-5c01-497d-9439-57ae44a7a9ba"/>
+				<reportElement x="21" y="2" width="100" height="20" uuid="09461d54-5de3-432b-a577-384d198d03b9"/>
 				<text><![CDATA[idCilindro]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="431" y="2" width="100" height="20" uuid="fc3156cc-64d3-4f8c-bd30-5f68e8fa7a10"/>
-				<text><![CDATA[fechaDeCreacion]]></text>
+				<reportElement x="136" y="2" width="100" height="20" uuid="a1106679-2acc-4844-9ab1-c2ccde0770b0"/>
+				<text><![CDATA[lote]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="0" width="100" height="20" uuid="6e8c67f3-6dbc-4178-92e1-18d5a2ba2946"/>
+				<text><![CDATA[tamanio]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<textField>
-				<reportElement x="100" y="33" width="100" height="20" uuid="c9402b32-ce8b-46db-b12e-2f4e167fd7d5"/>
-				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="200" y="33" width="100" height="20" uuid="387420c1-e0db-41ff-ad94-88bc7f6d3300"/>
-				<textFieldExpression><![CDATA[$F{tamanio}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="300" y="33" width="100" height="20" uuid="9328688d-8fc5-47f5-84e4-64273c8dbfe0"/>
-				<textFieldExpression><![CDATA[$F{lote}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="4" y="33" width="100" height="20" uuid="0e58b10d-0964-45a8-a250-6e6a8847b5dd"/>
+				<reportElement x="21" y="8" width="100" height="20" uuid="25f7b4eb-56ca-4b21-8e9a-8ae5069b67b6"/>
 				<textFieldExpression><![CDATA[$F{idCilindro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="413" y="33" width="142" height="20" uuid="7993f2e5-1679-4015-9431-d569f620a2e1"/>
-				<textFieldExpression><![CDATA[$F{fechaDeCreacion}]]></textFieldExpression>
+				<reportElement x="136" y="14" width="100" height="20" uuid="7f1d0b49-0a1c-45f9-be8c-faf4244b1c7a"/>
+				<textFieldExpression><![CDATA[$F{lote}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="14" width="100" height="20" uuid="9d54e3a3-f035-4341-8dc2-bac87f02933a"/>
+				<textFieldExpression><![CDATA[$F{tamanio}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -30,16 +30,16 @@
                 <h:form enctype="multipart/form-data">
 
                     <h:form ps:class="needs-validation" ps:novalidate="true">
-                        <h1><h:outputText value="Registrar Agenda"/></h1>
+                        <h1><h:outputText value="#{msjsagedaD.labelTxtlista}"/></h1>
 
                         <div class="form-group">
-                            <h:outputLabel value="No° agenda:" for="idAgenda" />
+                            <h:outputLabel value="#{msjsagedaD.labelTxtnoAgenda}" for="idAgenda" />
                             <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" ps:required="true" requiredMessage="The IdAgenda field is required."/>
                             <div class="invalid-feedback">#{msjError.fields}</div> 
                         </div>
 
                         <div class="form-group"> 
-                            <h:outputLabel value="Fecha Programada:" for="fechaProgramada" />
+                            <h:outputLabel value="#{msjsagedaD.labelTxtfechaProgramada}" for="fechaProgramada" />
                             <h:inputText ps:id="fecha" ps:type="date" ps:class="form-control"  id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" ps:required="true" requiredMessage="The FechaProgramada field is required.">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
                             </h:inputText>
@@ -47,13 +47,13 @@
                         </div>
 
                         <div class="form-group"> 
-                            <h:outputLabel value="Novedades:" for="novedades" />
+                            <h:outputLabel value="#{msjsagedaD.labelTxtnovedades}" for="novedades" />
                             <h:inputText ps:class="form-control" id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" ps:required="true" requiredMessage="The novedades field is required."/>
                             <div class="invalid-feedback">#{msjError.fields}</div> 
                         </div>
 
                         <div class="form-group"> 
-                            <h:outputLabel value="No° empleado:" for="empleadoIdEmpleado" />
+                            <h:outputLabel value="#{msjsagedaD.labelTxtnoEmpleado}" for="empleadoIdEmpleado" />
                             <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.agenda.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                                 <!-- TODO: update below reference to list of available items-->
                                 <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.nombre}"/>
@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="form-group"> 
-                            <h:outputLabel value="No° alquiler:" for="alquilerIdAlqu" />
+                            <h:outputLabel value="#{msjsagedaD.labelTxtAlqui}" for="alquilerIdAlqu" />
                             <h:selectOneMenu ps:class="form-control" id="alquilerIdAlqu" value="#{agendaControlador.agenda.alquilerIdAlqu}" title="AlquilerIdAlqu" ps:required="true" requiredMessage="The AlquilerIdAlqu field is required.">
                                 <!-- TODO: update below reference to list of available items-->
                                 <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.idSolicitud}"/>

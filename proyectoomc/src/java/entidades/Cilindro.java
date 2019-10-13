@@ -46,7 +46,7 @@ public class Cilindro implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_cilindro")
+    @Column(name = "id_Cilindro")
     private Integer idCilindro;
     @Basic(optional = false)
     @NotNull

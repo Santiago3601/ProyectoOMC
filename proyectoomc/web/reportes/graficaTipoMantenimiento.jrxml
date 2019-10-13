@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[SELECT tipo_mantenimiento, COUNT(*) FROM mantenimiento_cilindro GROUP BY tipo_mantenimiento]]>
+		<![CDATA[SELECT tipo_mantenimiento, COUNT(*) FROM mantenimiento GROUP BY tipo_mantenimiento]]>
 	</queryString>
 	<field name="tipo_mantenimiento" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>

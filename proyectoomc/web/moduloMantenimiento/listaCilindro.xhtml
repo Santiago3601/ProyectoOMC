@@ -30,7 +30,7 @@
             <h:form>
                 <h1><h:outputText value="#{msjListaCilindro.listaCil}"/></h1>
                 <p:dataTable id="tablaCilindro" value="#{cilindroControlador.consultarTodos()}" var="item">
-                    
+
                     <p:column filterBy="#{item.idCilindro}">
                         <f:facet name="header">
                             <h:outputText value="#{msjListaCilindro.NoCilindro}"/>
@@ -43,7 +43,7 @@
                         </f:facet>
                         <h:outputText value="#{item.tamanio}"/>
                     </p:column>
-                    
+
                     <p:column filterBy="#{item.lote}">
                         <f:facet name="header">
                             <h:outputText value="Lote"/>
@@ -57,7 +57,7 @@
                         </f:facet>
                         <h:outputText value="#{item.estadoIdEstado.estadoCol}"/>
                     </p:column>
-                    
+
                     <p:column filterBy="#{item.fechaDeCreacion}">
                         <f:facet name="header">
                             <h:outputText value="#{msjListaCilindro.fechaCreacion}"/>
@@ -75,7 +75,10 @@
 
 
                     </p:column>
+
                 </p:dataTable>
+                <h:commandButton ps:id="boton" class="btn btn-primary " actionListener="#{reporteControlador.PDFC(actionEvent)}" value="Reporte PDF"></h:commandButton>
+
                 <h:commandLink id="excel">
                     <i class="far fa-file-excel"></i>
                     <p:dataExporter type="xls" target="tablaCilindro" fileName="tablaDeCilindros" />
@@ -86,7 +89,6 @@
                         }
                     </style>
                 </h:commandLink>
-                <h:commandButton ps:id="boton" class="btn btn-primary" actionListener="#{reporteControlador.PDFC(actionEvent)}" value="Reporte PDF"></h:commandButton>
             </h:form>
         </f:view>
 

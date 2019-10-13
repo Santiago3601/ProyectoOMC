@@ -12,13 +12,11 @@ import java.util.Date;
  * @author SENA
  */
 public class CilindroR {
-    
+
     private int idCilindro;
-    private String estado;
     private int tamanio;
     private int lote;
     private Date fechaDeCreacion;
-    
 
     public int getIdCilindro() {
         return idCilindro;
@@ -26,16 +24,7 @@ public class CilindroR {
 
     public void setIdCilindro(int idCilindro) {
         this.idCilindro = idCilindro;
-    }
-
-    
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
+ 
     }
 
     public int getTamanio() {
@@ -62,5 +51,5 @@ public class CilindroR {
         this.fechaDeCreacion = fechaDeCreacion;
     }
     
-    
 }
+ 
