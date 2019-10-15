@@ -2,9 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
@@ -25,28 +24,46 @@
             <f:view locale="#{sessionController.languageSelected}">
 
 
+                <h:form ps:class="needs-validation" ps:novalidate="true">
+                    <h1><h:outputText value="#{msjscilindro.h1TxtTitle}"/></h1>
+                    <div class="form-group">
+                        <h:outputLabel value="#{msjscilindro.labelTxtIdCylinder}" for="idCilindro" />
+                        <h:inputText ps:class="form-control"  id="idCilindro" value="#{cilindroControlador.cilindro.idCilindro}" title="IdCilindro" required="true" requiredMessage="The IdCilindro field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
 
-                    <h:form>
-                        <h1><h:outputText value="Registro cilindro"/></h1>
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="IdCilindro:" for="idCilindro" />
-                            <h:inputText id="idCilindro" value="#{cilindroControlador.cilindro.idCilindro}" title="IdCilindro" required="true" requiredMessage="The IdCilindro field is required."/>
-                            <h:outputLabel value="Tamanio:" for="tamanio" />
-                            <h:inputText id="tamanio" value="#{cilindroControlador.cilindro.tamanio}" title="Tamanio" required="true" requiredMessage="The Tamanio field is required."/>
-                            <h:outputLabel value="Lote:" for="lote" />
-                            <h:inputText id="lote" value="#{cilindroControlador.cilindro.lote}" title="Lote" required="true" requiredMessage="The Lote field is required."/>
-                            <h:outputLabel value="FechaDeCreacion:" for="fechaDeCreacion" />
-                            <h:inputText id="fechaDeCreacion" value="#{cilindroControlador.cilindro.fechaDeCreacion}" title="FechaDeCreacion" required="true" requiredMessage="The FechaDeCreacion field is required.">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:inputText>
-                            <h:outputLabel value="EstadoIdEstado:" for="estadoIdEstado" />
-                            <h:selectOneMenu id="estadoIdEstado" value="#{cilindroControlador.estadocilindro.idEstado}" title="EstadoIdEstado" required="true" requiredMessage="The EstadoIdEstado field is required.">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{estadoCilindro.consultarTdos()}" var="es" itemValue="#{es.idEstado}" itemLabel="#{es.estadoCol}"/>
-                            </h:selectOneMenu>
-                        </h:panelGrid>
-                           <h:commandButton ps:id="boton" class="btn btn-primary" value="#{msjscilindro.labebtnRegister}" action="#{cilindroControlador.registrarCilindro()}"> </h:commandButton> 
-                    </h:form>
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjscilindro.labelTxtSize}" for="tamanio" />
+                        <h:inputText ps:class="form-control"  id="tamanio" value="#{cilindroControlador.cilindro.tamanio}" title="Tamanio" required="true" requiredMessage="The Tamanio field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
+
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjscilindro.labeTxtLote}" for="lote" />
+                        <h:inputText ps:class="form-control"  id="lote" value="#{cilindroControlador.cilindro.lote}" title="Lote" required="true" requiredMessage="The Lote field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+                    </div>
+
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjscilindro.labelTxtICreationDate}" for="fechaDeCreacion" />
+                        <h:inputText ps:class="form-control"  id="fechaDeCreacion" value="#{cilindroControlador.cilindro.fechaDeCreacion}" title="FechaDeCreacion" required="true" requiredMessage="The FechaDeCreacion field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+                    </div>
+
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjscilindro.labelTxtState}" for="estadoIdEstado" />
+                        <h:selectOneMenu ps:class="form-control"  id="estadoIdEstado" value="#{cilindroControlador.estadocilindro.idEstado}" title="EstadoIdEstado" required="true" requiredMessage="The EstadoIdEstado field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{estadoCilindro.consultarTdos()}" var="es" itemValue="#{es.idEstado}" itemLabel="#{es.estadoCol}"/>
+                        </h:selectOneMenu>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+
+                    </div>
+                    <h:commandButton ps:id="boton" class="btn btn-primary" value="#{msjscilindro.labebtnRegister}" action="#{cilindroControlador.registrarCilindro()}"> </h:commandButton> 
+
+                </h:form>
 
                 <script>
                     // Example starter JavaScript for disabling form submissions if there are invalid fields
