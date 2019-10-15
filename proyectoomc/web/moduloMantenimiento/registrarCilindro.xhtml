@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
@@ -32,15 +33,20 @@
                         <div class="invalid-feedback">#{msjError.fields}</div> 
                     </div>
 
-                    <div class="form-group"> 
+                    <div class="form-row">
                         <h:outputLabel value="#{msjscilindro.labelTxtSize}" for="tamanio" />
-                        <h:inputText ps:class="form-control"  id="tamanio" value="#{cilindroControlador.cilindro.tamanio}" title="Tamanio" required="true" requiredMessage="The Tamanio field is required."/>
+                        <h:selectOneMenu  class="form-control" id="tamanio"  value="#{cilindroControlador.cilindro.tamanio}" title="tamanio" ps:required="true">
+                            <f:selectItem itemLabel="300" itemValue="300" />
+                            <f:selectItem itemLabel="400" itemValue="400" />
+                            <f:selectItem itemLabel="500" itemValue="500" />
+                        </h:selectOneMenu>
                         <div class="invalid-feedback">#{msjError.fields}</div> 
+
                     </div>
 
                     <div class="form-group"> 
                         <h:outputLabel value="#{msjscilindro.labeTxtLote}" for="lote" />
-                        <h:inputText ps:class="form-control"  id="lote" value="#{cilindroControlador.cilindro.lote}" title="Lote" required="true" requiredMessage="The Lote field is required."/>
+                        <h:inputText ps:class="form-control" pt:id="uintTextBox"  id="lote" value="#{cilindroControlador.cilindro.lote}" title="Lote" required="true" requiredMessage="The Lote field is required."/>
                         <div class="invalid-feedback">#{msjError.fields}</div>
                     </div>
 
@@ -87,5 +93,6 @@
                 </script>
             </f:view>
         </div>
+        <script src="../js/inputValidation.js"></script>
     </h:body>
 </html>

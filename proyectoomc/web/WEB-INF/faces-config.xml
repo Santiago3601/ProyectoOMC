@@ -116,9 +116,21 @@
         </resource-bundle>  
         
         <resource-bundle>
-            <base-name>language.actagend</base-name>
-            <var>msjsacta</var>
+            <base-name>language.actualizarAgenda</base-name>
+            <var>msjsactualizarAgenda</var>
         </resource-bundle>
+        
+         <resource-bundle>
+            <base-name>language.actualizarcilindro</base-name>
+            <var>msjsactualizarCilindro</var>
+        </resource-bundle>
+        
+        
+         <resource-bundle>
+            <base-name>language.actualizarmantenimiento</base-name>
+            <var>msjsactualizarMantenimiento</var>
+        </resource-bundle>
+        
         <resource-bundle>
             <base-name>language.BreadCrumbMant</base-name>
             <var>msjBreadCrumbMant</var>

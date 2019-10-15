@@ -2,41 +2,102 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
+     <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
+
+        <title>OMC</title>
     </h:head>
     <h:body>
-        <div id="form"> 
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumbMant.Inicio}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.actualizar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.agenda}</li>
+            </ol>
+        </nav>
+        <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
 
 
+                <h:form ps:class="needs-validation" ps:novalidate="true">
+                    <h1><h:outputText value="#{msjsactualizarAgenda.labelTxtlista}"/></h1>
 
-                <h:form>
-                    <h1><h:outputText value="#{msjsacta.h1TxtTitle}"/></h1>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="" for="idAgenda" />
-                        <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" required="true" requiredMessage="The IdAgenda field is required."/>
-                        <h:outputLabel value="Fecha Programada:" for="fechaProgramada" />
-                        <h:inputText ps:class="form-control" id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" required="true" requiredMessage="The FechaProgramada field is required.">
+                    <div class="form-group">
+                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtlista}" for="idAgenda" />
+                        <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" ps:required="true" requiredMessage="The IdAgenda field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
+
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtfechaProgramada}" for="fechaProgramada" />
+                        <h:inputText ps:id="fecha" ps:type="date" ps:class="form-control"  id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" ps:required="true" requiredMessage="The FechaProgramada field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
-                        <h:outputLabel value="Novedades:" for="novedades" />
-                        <h:inputText ps:class="form-control" id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" />
-                        <h:outputLabel value="Id Empleado:" for="empleadoIdEmpleado" />
-                        <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
+
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtnovedades}" for="novedades" />
+                        <h:inputText ps:class="form-control" id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" ps:required="true" requiredMessage="The novedades field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
+
+                    <div class="form-group"> 
+                        <h:outputLabel value="" for="#{msjsactualizarAgenda.labelTxtnoEmpleado}" />
+                        <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.agenda.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
                             <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.nombre}"/>
+                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.nombre}"/>
                         </h:selectOneMenu>
-                    </h:panelGrid>
-                    <h:commandButton value="Registrar" action="#{agendaControlador.actualizarAgenda()}"> </h:commandButton>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+                    </div>
+
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtAlqui}" for="alquilerIdAlqu" />
+                        <h:selectOneMenu ps:class="form-control" id="alquilerIdAlqu" value="#{agendaControlador.agenda.alquilerIdAlqu}" title="AlquilerIdAlqu" ps:required="true" requiredMessage="The AlquilerIdAlqu field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.idSolicitud}"/>
+                        </h:selectOneMenu>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+
+
+
+                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtFoto}" for="foto" />
+                        <h:inputFile ps:class="form-control"  value="#{agendaControlador.file}"/>
+                        <h:commandButton ps:id="boton" class="btn btn-primary " value="Subir Archivo" action="#{agendaControlador.upload()}"/>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+
+                    </div>
                 </h:form>
+                <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function () {
+                        'use strict';
+                        window.addEventListener('load', function () {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function (form) {
+                                form.addEventListener('submit', function (event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
+               
             </f:view>
-
-
         </div>
+
     </h:body>
 </html>
 
