@@ -93,7 +93,7 @@ public class mantenimientoControlador implements Serializable {
 
         mantenimiento.setAgendaIdAgenda(agendaFacade.find(agenda.getIdAgenda()));
         mantenimiento.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
-        mantenimiento.setEstadoMantenimiento(estadoMantenimientoFacade.find(estadoMantenimiento.getIdEstado()));
+        mantenimiento.setEstadoMantenimientoIdEstado(estadoMantenimientoFacade.find(estadoMantenimiento.getIdEstado()));
         mantenimientoFacade.create(mantenimiento);
         mantenimiento = new Mantenimiento();
         return "listaMantenimiento";
@@ -108,7 +108,7 @@ public class mantenimientoControlador implements Serializable {
     public String actualizar() {
         mantenimiento.setAgendaIdAgenda(agendaFacade.find(agenda.getIdAgenda()));
         mantenimiento.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
-        mantenimiento.setEstadoMantenimiento(estadoMantenimientoFacade.find(estadoMantenimiento.getIdEstado()));
+        mantenimiento.setEstadoMantenimientoIdEstado(estadoMantenimientoFacade.find(estadoMantenimiento.getIdEstado()));
         mantenimientoFacade.edit(mantenimiento);
         mantenimiento = new Mantenimiento();
         return "listaMantenimiento";
@@ -121,5 +121,15 @@ public class mantenimientoControlador implements Serializable {
 
     public List<Mantenimiento> consultarTodos() {
         return mantenimientoFacade.findAll();
+    }
+    public String cambiarEstado(Mantenimiento mantenimiento){
+        this.mantenimiento = mantenimiento;
+        this.estadoMantenimiento.setIdEstado(2);
+        this.mantenimiento.setEstadoMantenimientoIdEstado(getEstadoMantenimiento());
+        this.mantenimientoFacade.edit(getMantenimiento());
+        cilindro = new Cilindro();
+        agenda = new Agenda();
+        estadoMantenimiento = new EstadoMantenimiento();
+        return "listaMantenimiento";
     }
 }

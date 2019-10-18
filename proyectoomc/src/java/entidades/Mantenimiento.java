@@ -141,11 +141,11 @@ public class Mantenimiento implements Serializable {
         this.cilindroIdCilindro = cilindroIdCilindro;
     }
 
-    public EstadoMantenimiento getEstadoMantenimiento() {
+    public EstadoMantenimiento getEstadoMantenimientoIdEstado() {
         return estadoMantenimiento;
     }
 
-    public void setEstadoMantenimiento(EstadoMantenimiento estadoMantenimiento) {
+    public void setEstadoMantenimientoIdEstado(EstadoMantenimiento estadoMantenimiento) {
         this.estadoMantenimiento = estadoMantenimiento;
     }
 

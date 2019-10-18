@@ -68,11 +68,11 @@
                         <h:outputText value="#{item.agendaIdAgenda.idAgenda}"/>
                     </p:column>
 
-                    <p:column filterBy="#{item.estadoMantenimiento.idEstado}" >
+                    <p:column filterBy="#{item.estadoMantenimientoIdEstado.estado}" >
                         <f:facet name="header">
                             <h:outputText value="#{msjListaMantenimientoA.labelTxtmaintenancestatus}"/>
                         </f:facet>
-                        <h:outputText value="#{item.estadoMantenimiento.idEstado}"/>
+                        <h:outputText value="#{item.estadoMantenimientoIdEstado.estado}"/>
                     </p:column>
 
                     <p:column filterBy="#{item.cilindroIdCilindro.idCilindro}" >
@@ -89,6 +89,7 @@
                         </f:facet>
                         <h:commandLink  action="#{mantenimientoControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
                         <h:commandLink  action="#{mantenimientoControlador.pre_actualizar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
+                        <h:commandLink  action="#{mantenimientoControlador.cambiarEstado(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-truck-loading"></i></h:commandLink>
 
                     </p:column>
 
