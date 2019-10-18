@@ -33,7 +33,7 @@
 
                     <h:form>
                         <h1><h:outputText value="#{msjListaRuta.title}"/></h1>
-                        <p:dataTable id="tablaRuta" value="#{rutaControlador.consultarTodos()}" var="ruta" >
+                        <p:dataTable id="tablaRuta" value="#{rutaControlador.consultarTodos()}" var="ruta" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15"  resizableColumns="true" liveResize="true" >
                             <p:column filterBy="#{ruta.idRuta}">
                                 <f:facet name="header">
                                     <h:outputText value="No."/>

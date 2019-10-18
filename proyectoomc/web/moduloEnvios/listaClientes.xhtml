@@ -26,7 +26,7 @@
 
                 <h:form>
                     <h1><h:outputText value="#{msjListaClientes.lista}"/></h1>
-                    <p:dataTable id="tablaCli" value="#{clienteControlador.consultarTodos()}" var="cli" >
+                    <p:dataTable id="tablaCli" value="#{clienteControlador.consultarTodos()}" var="cli" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15"  resizableColumns="true" liveResize="true" >
                         <p:column filterBy="#{cli.usuarioId.id}">
                             <f:facet name="header">
                                 <h:outputText value="#{msjListaClientes.cedul}"/>

@@ -30,7 +30,7 @@
 
                     <h:form>
                         <h1><h:outputText value="#{msjListaUsuario.title}"/></h1>
-                        <p:dataTable id="tablaVeh" value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" >
+                        <p:dataTable id="tablaVeh" value="#{vehiculoControlador.consultarTodos()}" var="vehiculo" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15"  resizableColumns="true" liveResize="true">
                             <p:column filterBy="#{vehiculo.idVehiculo}">
                                 <f:facet name="header">
                                     <h:outputText value="No."/>

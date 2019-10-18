@@ -19,7 +19,7 @@
 
             <h:form>
                 <h1><h:outputText value="Lista de empleado"/></h1>
-                <p:dataTable id="tablaEmpleado" value="#{empleadoControlador.consultarTodos()}" var="empleado">
+                <p:dataTable id="tablaEmpleado" value="#{empleadoControlador.consultarTodos()}" var="empleado" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15"  resizableColumns="true" liveResize="true">
                     <p:column filterBy="#{empleado.idEmpleado}">
                         <f:facet name="header">
                             <h:outputText value="IdEmpleado"/>

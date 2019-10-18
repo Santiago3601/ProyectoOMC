@@ -25,7 +25,7 @@
             <f:view locale="#{sessionController.languageSelected}">
                 <h:form>
                     <h1><h:outputText value="#{msjListaContratos.lista}"/></h1>
-                    <p:dataTable value="#{contratoControlador.consultarTodos()}" var="item" >
+                    <p:dataTable value="#{contratoControlador.consultarTodos()}" var="item" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15"  resizableColumns="true" liveResize="true">
                         <p:column filterBy="#{item.idContrato}">
                             <f:facet name="header">
                                 <h:outputText value="Id"/>

@@ -14,7 +14,10 @@
         <link rel="stylesheet" href="../css/prime-styles.css"></link>     
         <link rel="stylesheet" href="../css/icons.js"></link>     
         <link rel="stylesheet" href="../css/primeicons.css"></link>     
-        <title>OMC</title>
+        <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles."></meta>
+        <meta name="author" content="Vincent Garreau" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
+        <link rel="stylesheet" media="screen" href="css/style.css"></link>
     </h:head>
     <h:body>
         <nav aria-label="breadcrumb">
@@ -22,58 +25,53 @@
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Inicio}</li>
             </ol>
         </nav>
-        <div id="form"> 
-            <h:form>
+        <h:form>
 
-                <div id="content" class="center_content">
-                    <f:view locale="#{sessionController.languageSelected}">
+            <div id="content" class="center_content">
+                <f:view locale="#{sessionController.languageSelected}">
 
-                        <div class="contenedor">
-                            <div class="centrado">
-                                <h:outputLabel ps:class="texto-centrado" value="Bienvenido #{usuarioControlador.usuarioLogueado.nombre}"/>
-                            </div>
-                            <img src="../img/background.gif" alt="" style="width: 100%; height: inherit;"/>
-
+                    <div class="contenedor">
+                        <div class="centrado">
+                            <h:outputLabel style="font-size: xx-large;" ps:class="texto-centrado" value="#{msjb.h1titulo} #{usuarioControlador.usuarioLogueado.nombre}"/>
+                            <br>    </br>
+                            <br>    </br>
+                            <br>    </br>
+                            <h:outputLabel style="font-size: large;" ps:class="texto-centrado" value="#{msjb.txt}"/>
                         </div>
+                        <div id="particles-js">
+                        </div>
+                    </div>
+                    <style>
+                        form{
+                            width: 100%;  
+                        }
+                        .contenedor{
+                            position: relative;
+                            display: inline-block;
+                            text-align: center;
+                            height: 35pc;
+                            width: 100%;
+                        }
 
-                        <style>
-                            form{
-                                width: 100%;  
-                            }
-                            .contenedor{
-                                position: relative;
-                                display: inline-block;
-                                text-align: center;
-                                height: 35pc;
-                                width: 100%;
-                            }
-
-                            .texto-encima{
-                                position: absolute;
-                                top: 10px;
-                                left: 10px;
-                            }
-                            .centrado{
-                                position: absolute;
-                                top: 20%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
-                            }
-                        </style>
-                    </f:view>
-
-
-
-                </div>
-            </h:form>
-
-        </div>
-
-
-
-
+                        .texto-encima{
+                            position: absolute;
+                            top: 10px;
+                            left: 10px;
+                        }
+                        .centrado{
+                            position: absolute;
+                            top: 20%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    </style>
+                </f:view>
+            </div>
+        </h:form>
+        <script src="particles.js"></script>
+        <script src="demo/js/app.js"></script>
+        <script src="demo/js/lib/stats.js"></script>
     </h:body>
-
 </html>
 
 

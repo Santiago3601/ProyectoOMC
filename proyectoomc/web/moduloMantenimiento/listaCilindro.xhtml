@@ -29,7 +29,7 @@
 
             <h:form>
                 <h1><h:outputText value="#{msjListaCilindro.listaCil}"/></h1>
-                <p:dataTable id="tablaCilindro" value="#{cilindroControlador.consultarTodos()}" var="item">
+                <p:dataTable id="tablaCilindro" value="#{cilindroControlador.consultarTodos()}" var="item" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15"  resizableColumns="true" liveResize="true">
 
                     <p:column filterBy="#{item.idCilindro}">
                         <f:facet name="header">

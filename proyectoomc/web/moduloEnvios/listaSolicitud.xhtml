@@ -22,7 +22,7 @@
         <f:view locale="#{sessionController.languageSelected}">
             <h:form>
                 <h1><h:outputText value="#{msjListaSolicitud.title}"/></h1>
-                <p:dataTable id="tablaSolicitudes" value="#{solicitudControlador.consultarTodos()}" var="solicitud">
+                <p:dataTable id="tablaSolicitudes" value="#{solicitudControlador.consultarTodos()}" var="solicitud" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15"  resizableColumns="true" liveResize="true">
                     <p:column filterBy="#{solicitud.idSolicitud}">
                         <f:facet name="header">
                             <h:outputText value="No."/>
