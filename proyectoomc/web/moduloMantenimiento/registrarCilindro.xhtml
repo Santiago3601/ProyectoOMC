@@ -52,8 +52,8 @@
 
                     <div class="form-group"> 
                         <h:outputLabel value="#{msjscilindro.labelTxtICreationDate}" for="fechaDeCreacion" />
-                        <h:inputText ps:class="form-control"  id="fechaDeCreacion" value="#{cilindroControlador.cilindro.fechaDeCreacion}" title="FechaDeCreacion" required="true" requiredMessage="The FechaDeCreacion field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <h:inputText ps:class="form-control"  pt:id="fecha1" pt:type="date"  id="fechaDeCreacion" value="#{cilindroControlador.cilindro.fechaDeCreacion}" title="FechaDeCreacion" required="true" requiredMessage="The FechaDeCreacion field is required.">
+                                            <f:convertDateTime pattern="yyyy-MM-dd" />
                         </h:inputText>
                         <div class="invalid-feedback">#{msjError.fields}</div>
                     </div>

@@ -5,9 +5,11 @@
  */
 package controlador;
 
+import entidades.AuditoriaMantenimiento;
 import entidades.Cilindro;
 import entidades.EstadoCilindro;
 import entidades.EstadoMantenimiento;
+import facade.AuditoriaMantenimientoFacade;
 import facade.CilindroFacade;
 import facade.EstadoCilindroFacade;
 import facade.EstadoMantenimientoFacade;
@@ -35,7 +37,8 @@ public class cilindroControlador implements Serializable {
     @EJB
     private EstadoCilindroFacade estadocCilindroFacade;
     EstadoCilindro estadocilindro;
-
+    @EJB
+    AuditoriaMantenimientoFacade auditoriaMantenimientoFacade;
     @PostConstruct
     public void init() {
         cilindro = new Cilindro();
@@ -111,4 +114,8 @@ public class cilindroControlador implements Serializable {
 
         return "listaIDCilindro?faces-redirect=true";
     }
+    
+    public List<AuditoriaMantenimiento> consultarTabla(){
+    return this.auditoriaMantenimientoFacade.findAll(); 
+}
 }

@@ -21,10 +21,6 @@ FROM
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="4" width="200" height="75" uuid="02f2223d-6a5f-4231-b5ce-1f55e2dfcd58"/>
-				<imageExpression><![CDATA["C:\\Users\\ASUS\\Desktop\\proyectoomc\\proyectoomc\\web\\img\\OMC.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="236" y="4" width="319" height="75" uuid="901c4cde-1a15-41e7-9adc-b05889bc141e"/>
 				<textElement>
@@ -32,6 +28,14 @@ FROM
 				</textElement>
 				<text><![CDATA[Reporte cilindro]]></text>
 			</staticText>
+			<image>
+				<reportElement x="442" y="79" width="2393" height="0" uuid="14f2049d-9832-4d93-bd34-f3d2437eb93b"/>
+				<imageExpression><![CDATA["C:\\Users\\SENA\\Desktop\\proyectoomc\\proyectoomc\\web\\img\\positivo-1.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="21" y="15" width="146" height="54" uuid="5be3afa0-42e8-485f-8f78-8cbaacee4055"/>
+				<imageExpression><![CDATA["C:\\Users\\SENA\\Desktop\\proyectoomc\\proyectoomc\\web\\img\\positivo-1.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -54,7 +58,7 @@ FROM
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="34" splitType="Stretch">
 			<textField>
 				<reportElement x="21" y="8" width="100" height="20" uuid="25f7b4eb-56ca-4b21-8e9a-8ae5069b67b6"/>
 				<textFieldExpression><![CDATA[$F{idCilindro}]]></textFieldExpression>
@@ -70,12 +74,12 @@ FROM
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>

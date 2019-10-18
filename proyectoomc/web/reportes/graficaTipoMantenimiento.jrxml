@@ -28,14 +28,14 @@
 		<band height="182" splitType="Stretch">
 			<barChart>
 				<chart>
-					<reportElement x="10" y="0" width="545" height="182" uuid="1de2c45e-af3f-4ee9-b01f-9e27bd39b71f"/>
+					<reportElement x="0" y="0" width="555" height="182" uuid="5911d90c-d158-450f-9b19-3f2715f1b598"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<categoryDataset>
 					<categorySeries>
-						<seriesExpression><![CDATA[$F{COUNT(*)}]]></seriesExpression>
+						<seriesExpression><![CDATA[$F{tipo_mantenimiento}]]></seriesExpression>
 						<categoryExpression><![CDATA[$F{tipo_mantenimiento}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{COUNT(*)}]]></valueExpression>
 					</categorySeries>
