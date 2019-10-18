@@ -74,28 +74,75 @@
                     <div class="form-group">
                         <div class="form-row">
                             <h:outputLabel value="Eps:" for="eps" />
-                            <h:inputText class="form-control" id="eps" value="#{usuarioControlador.usuario.eps}" title="Eps" required="true" requiredMessage="The Eps field is required."/>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <h:outputLabel value="Fecha de nacimiento:" for="fechaDeNacimiento" />
-                            <h:inputText id="fechaDeNacimiento" ps:placeholder="#{msjCrearUsu.inputDate}" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" required="true" requiredMessage="The FechaDeNacimiento field is required.">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:inputText>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <h:outputLabel value="Rol:" for="rol" />
 
-                            <h:selectOneMenu  class="form-control" id="rol" value="#{usuarioControlador.rol.idRol}" title="Rol" required="true" requiredMessage="The TpId field is required.">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{rolControlador.consultarTodos()}" var="rl" itemValue="#{rl.idRol}" itemLabel="#{rl.rol}"/>
+                        <div class="form-row">
+                            <h:selectOneMenu  class="form-control" id="eps"  value="#{usuarioControlador.usuario.eps}" title="Eps" ps:required="true" >
+                                <f:selectItem itemLabel="Please select one option" itemValue="" />
+                                <f:selectItem itemLabel="Aliansalud EPS" itemValue="Aliansalud EPS" />
+                                <f:selectItem itemLabel="Asociación Indígena del Cauca - A.I.C." itemValue="Asociación Indígena del Cauca - A.I.C." />
+                                <f:selectItem itemLabel="Asociación Mutual Barrios Unidos de Quibdó AMBUQ" itemValue="Asociación Mutual Barrios Unidos de Quibdó AMBUQ" />
+                                <f:selectItem itemLabel="Asociación Mutual La Esperanza Asmet Salud" itemValue="Asociación Mutual La Esperanza Asmet Salud" />
+                                <f:selectItem itemLabel="Asociación Mutual Ser Empresa Solidaría de Salud" itemValue="Asociación Mutual La Esperanza Asmet Salud" />
+                                <f:selectItem itemLabel="Cafesalud Entidad  Promotora de Salud S.A" itemValue="Cafesalud" />
+                                <f:selectItem itemLabel="Cafesalud EPS" itemValue="Cafesalud EPS" />
+                                <f:selectItem itemLabel="Caja de Compensación Familiar de La Guajira" itemValue="Caja de Compensación Familiar de La Guajira" />
+                                <f:selectItem itemLabel="Cajacopi Atlántico - CCF" itemValue="Cajacopi Atlántico - CCF" />
+                                <f:selectItem itemLabel="Capital Salud EPSS S.A.S." itemValue="Capital Salud EPSS S.A.S." />
+                                <f:selectItem itemLabel="Capresoca EPS" itemValue="Capresoca EPS" />
+                                <f:selectItem itemLabel="Comfaboy EPS-CCF de Boyacá" itemValue="Comfaboy EPS-CCF de Boyacá" />
+                                <f:selectItem itemLabel="Comfachoco – CCF del Chocó" itemValue="Comfachoco – CCF del Chocó" />
+                                <f:selectItem itemLabel="Comfacor EPS – CCF de Córdoba" itemValue="Comfacor EPS – CCF de Córdoba" />
+                                <f:selectItem itemLabel="Comfacundi - CCF de Cundinamarca" itemValue="Comfacundi - CCF de Cundinamarca" />
+                                <f:selectItem itemLabel="Comfama - Hoy Savia Salud EPS" itemValue="Comfama - Hoy Savia Salud EPS" />
+                                <f:selectItem itemLabel="Comfamiliar de Nariño EPS – CCF" itemValue="Comfamiliar de Nariño EPS – CCF" />
+                                <f:selectItem itemLabel="Comfamiliar Huila EPS – CCF" itemValue="Comfamiliar Huila EPS – CCF" />
+                                <f:selectItem itemLabel="Comfasucre EPS-CCF de Sucre" itemValue="Comfasucre EPS-CCF de Sucre" />
+                                <f:selectItem itemLabel="Comfenalco Valle EPS" itemValue="Comfenalco Valle EPS" />
+                                <f:selectItem itemLabel="Compensar Entidad Promotora de Salud" itemValue="Compensar" />
+                                <f:selectItem itemLabel="Convida" itemValue="Convida" />
+                                <f:selectItem itemLabel="Coomeva EPS" itemValue="Coomeva EPS" />
+                                <f:selectItem itemLabel="Cooperativa de Salud Comunitaria Comparta" itemValue="Comparta" />
+                                <f:selectItem itemLabel="Coosalud E.S.S." itemValue="Coosalud E.S.S." />
+                                <f:selectItem itemLabel="Cruz Blanca S.A" itemValue="Cruz Blanca S.A" />
+                                <f:selectItem itemLabel="Dusakawi" itemValue="Dusakawi" />
+                                <f:selectItem itemLabel="E.P.S Sanitas" itemValue="E.P.S Sanitas" />
+                                <f:selectItem itemLabel="Emdisalud ESS" itemValue="Emdisalud ESS" />
+                                <f:selectItem itemLabel="E.P.M Departamento Médico" itemValue="E.P.M Departamento Médico" />
+                                <f:selectItem itemLabel="Emssanar E.S.S." itemValue="Emssanar E.S.S." />
+                                <f:selectItem itemLabel="Entidad Cooperativa Solidaria de Salud Ecoopsos" itemValue="Ecoopsos" />
+                                <f:selectItem itemLabel="Entidad Promotora de Salud Anas Wayuu EPSI" itemValue="EPSI" />
+                                <f:selectItem itemLabel="EPS Sura" itemValue="EPS Sura" />
+                                <f:selectItem itemLabel="Famisanar" itemValue="Famisanar" />
+                                <f:selectItem itemLabel="Fondo de Pasivo Social de Ferrocarriles" itemValue="Fondo de Pasivo Social de Ferrocarriles" />
+                                <f:selectItem itemLabel="Fondo de Solidaridad y Garantía Fosyga" itemValue="Fosyga" />
+                                <f:selectItem itemLabel="Manexka" itemValue="Manexka" />
+                                <f:selectItem itemLabel="Nueva EPS" itemValue="Nueva EPS" />
+                                <f:selectItem itemLabel="Salud Total S.A." itemValue="Salud Total S.A." />
+                                <f:selectItem itemLabel="Saludvida S.A EPS" itemValue="Saludvida S.A EPS" />
+                                <f:selectItem itemLabel="Servicio Occidental de Salud S.O.S. S.A." itemValue="Servicio Occidental de Salud S.O.S. S.A" />
+                                <f:selectItem itemLabel="Universidad de Antioquia" itemValue="Universidad de Antioquia" />
+                                <f:selectItem itemLabel="Universidad de Córdoba" itemValue="Universidad de Córdoba" />
+                                <f:selectItem itemLabel="Universidad del Atlántico" itemValue="Universidad del Atlántico" />
+                                <f:selectItem itemLabel="Universidad del Cauca" itemValue="Universidad del Cauca" />
+                                <f:selectItem itemLabel="Universidad del Valle" itemValue="Universidad del Valle" />
+                                <f:selectItem itemLabel="Universidad Industrial de Santander" itemValue="Universidad Industrial de Santander" />
+                                <f:selectItem itemLabel="Universidad Nacional de Colombia" itemValue="Universidad Nacional de Colombia" />
+                                <f:selectItem itemLabel="Universidad Pedagógica y Tecnológica de Colombia" itemValue="UPTC" />
+                                <f:selectItem itemLabel="OTRO" itemValue="OTRO" />
                             </h:selectOneMenu>
-
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <h:outputLabel value="Bith date" for="fechaDeNacimiento" />
+                            <h:inputText class="form-control" ps:id="fecha" ps:type="date" value="#{usuarioControlador.usuario.fechaDeNacimiento}" title="FechaDeNacimiento" ps:required="true" requiredMessage="The FechaDeNacimiento field is required.">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:inputText>
+                            <script>fecha.max = new Date().toISOString().split("T")[0];</script>
+                        </div>
+                    </div>
+
 
                     <h:commandButton ps:id="boton" class="btn btn-primary " value="Actualizar datos" action="#{usuarioControlador.actualizarUsuarioCliente()}"> </h:commandButton>  
                 </h:form>

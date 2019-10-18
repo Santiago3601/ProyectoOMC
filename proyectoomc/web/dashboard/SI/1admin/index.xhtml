@@ -89,12 +89,10 @@
                             </div>
                         </div>
                     </div>
-
-
                 </nav>
 
                 <!-- Navegador -->
-                <nav id="options" class="barra-navega" style="position:  fixed;">
+                <nav id="options" class="barra-navega">
                     <ul>
                         <c:forEach items="#{usuarioControlador.rol.permisoList}" var="p">
                             <c:if test="#{empty p.permisoPadre}">
@@ -148,11 +146,6 @@
 
                         </c:forEach>
                     </ul>
-
-
-
-
-
                 </nav>
             </div>
 
@@ -171,13 +164,9 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <section>
-                    <iframe name="area-de-trabajo" src="../../../moduloEnvios/paginaDeBienvenidaCliente.xhtml" style="
-                            MARGIN-TOP: 42PX;
-                            "></iframe>
-                </section>
-            </div>
+            <section>
+                <iframe name="area-de-trabajo" src="../../../moduloEnvios/paginaDeBienvenidaCliente.xhtml" ></iframe>
+            </section>
 
             <div class="modal fade" id="Login-in" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">

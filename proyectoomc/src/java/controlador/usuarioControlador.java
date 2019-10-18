@@ -158,7 +158,7 @@ public class usuarioControlador implements Serializable {
         us = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
         this.usuario.setId(us.getId());
         usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
-        usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
+        usuario.setRolidRol(rolFacade.find(2));
         usuarioFacade.edit(usuario);
         usuario = new Usuario();
 
@@ -278,7 +278,8 @@ public class usuarioControlador implements Serializable {
             Mailer.mantenimiento2(usuario1);
         }
     }
-    public String redireccionar(){
+
+    public String redireccionar() {
         return "../recuperar_contraseña";
     }
 }

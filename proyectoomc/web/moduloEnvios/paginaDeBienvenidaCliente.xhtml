@@ -31,18 +31,21 @@
                         <div class="contenedor">
                             <div class="centrado">
                                 <h:outputLabel ps:class="texto-centrado" value="Bienvenido #{usuarioControlador.usuarioLogueado.nombre}"/>
-
                             </div>
-                            <img src="../img/imagenDeBienvenida.png" alt="" style="height: 50pc; "/>
+                            <img src="../img/background.gif" alt="" style="width: 100%; height: inherit;"/>
 
                         </div>
 
                         <style>
-
+                            form{
+                                width: 100%;  
+                            }
                             .contenedor{
                                 position: relative;
                                 display: inline-block;
                                 text-align: center;
+                                height: 35pc;
+                                width: 100%;
                             }
 
                             .texto-encima{

@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Questrial|Quicksand');
 
 *{
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 #Date-Picker{
-width: 200px;
+    width: 200px;
 }
 #form{
-         display: flex;
-  justify-content: center;
-  margin-top: 10px; 
+    display: flex;
+    justify-content: center;
+    margin-top: -16px;
 }
 
 #all{
-      display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 #Title{
-margin-top: 20px;
+    margin-top: 20px;
     margin-bottom: 84px;
     font-family: 'Noto Sans JP', sans-serif;
 
@@ -31,7 +31,7 @@ margin-top: 20px;
 }
 #group{
 
-margin-bottom: 3px;
+    margin-bottom: 3px;
 }
 #boton:hover{
     background-color: #307c66;
@@ -39,8 +39,8 @@ margin-bottom: 3px;
 }
 #subtitulos{
     font-size: 28px;
-color: #4ec9a5!important;
-    
+    color: #4ec9a5!important;
+
 }p{
 
     color: #333333;
@@ -55,31 +55,31 @@ color: #4ec9a5!important;
     margin-bottom: 0;
 }
 a{
-    
+
     text-decoration: none;
 }
 label{
     font-family: 'Questrial', sans-serif;
-font-size: 21px;
-margin-bottom: 0;
-color: rgb(44, 62, 80)!important;
+    font-size: 16px;
+    margin-bottom: 0;
+    color: rgb(44, 62, 80)!important;
 }
 label:hover{
-color: #2E7B66;
+    color: #2E7B66;
 
 }
 input{
     font-family: 'Questrial', sans-serif;
-    
+
 }
 h1{
-	width: 100%;
-	color: gray;
-	margin: -31px 0 30px 0;
-	font-size: 39px;
-	text-align: center;
-	color: #43425D;
-	font-family: 'Noto Sans JP', sans-serif;
+    width: 100%;
+    color: gray;
+    margin: -31px 0 30px 0;
+    font-size: 39px;
+    text-align: center;
+    color: #43425D;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 
@@ -134,7 +134,7 @@ p{
     font-family: 'Questrial', sans-serif;
     font-family: 'Noto Sans JP', sans-serif;
 
-    */
+*/
 
 
 ul {list-style-type: none;}
@@ -143,4 +143,4 @@ ul {list-style-type: none;}
 /*
     font-family: 'Noto Sans JP', sans-serif;
 
-    */
+*/
