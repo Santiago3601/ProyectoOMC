@@ -165,6 +165,14 @@
             <base-name>language.ListaMantenimientocilindroc</base-name>
             <var>msjListaMantenimientoc</var>
         </resource-bundle>
+        
+         <resource-bundle>
+            <base-name>language.HistoMantenimiento</base-name>
+            <var>msjHistorialMante</var>
+        </resource-bundle>   
+        
+         
+        
         <resource-bundle>
             <base-name>language.CrearAlquiler</base-name>
             <var>msjCrearAlq</var>

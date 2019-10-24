@@ -28,81 +28,74 @@
             <f:view locale="#{sessionController.languageSelected}">
 
                 <h:form enctype="multipart/form-data">
+                    <h1><h:outputText value="#{msjsagedaD.labelTxtlista}"/></h1>
 
-                    <h:form ps:class="needs-validation" ps:novalidate="true">
-                        <h1><h:outputText value="#{msjsagedaD.labelTxtlista}"/></h1>
+                    <div class="form-group">
+                        <h:outputLabel value="#{msjsagedaD.labelTxtnoAgenda}" for="idAgenda" />
+                        <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" ps:required="true" requiredMessage="The IdAgenda field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
 
-                        <div class="form-group">
-                            <h:outputLabel value="#{msjsagedaD.labelTxtnoAgenda}" for="idAgenda" />
-                            <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" ps:required="true" requiredMessage="The IdAgenda field is required."/>
-                            <div class="invalid-feedback">#{msjError.fields}</div> 
-                        </div>
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjsagedaD.labelTxtfechaProgramada}" for="fechaProgramada" />
+                        <h:inputText ps:id="fecha" ps:type="date" ps:class="form-control"  id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" ps:required="true" requiredMessage="The FechaProgramada field is required.">
+                           <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:inputText>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
 
-                        <div class="form-group"> 
-                            <h:outputLabel value="#{msjsagedaD.labelTxtfechaProgramada}" for="fechaProgramada" />
-                            <h:inputText ps:id="fecha" ps:type="date" ps:class="form-control"  id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" ps:required="true" requiredMessage="The FechaProgramada field is required.">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:inputText>
-                            <div class="invalid-feedback">#{msjError.fields}</div> 
-                        </div>
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjsagedaD.labelTxtnovedades}" for="novedades" />
+                        <h:inputText ps:class="form-control" id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" ps:required="true" requiredMessage="The novedades field is required."/>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
 
-                        <div class="form-group"> 
-                            <h:outputLabel value="#{msjsagedaD.labelTxtnovedades}" for="novedades" />
-                            <h:inputText ps:class="form-control" id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" ps:required="true" requiredMessage="The novedades field is required."/>
-                            <div class="invalid-feedback">#{msjError.fields}</div> 
-                        </div>
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjsagedaD.labelTxtnoEmpleado}" for="empleadoIdEmpleado" />
+                        <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.empleado.idEmpleado}" title="EmpleadoIdEmpleado" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.nombre}"/>
+                        </h:selectOneMenu>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
+                    </div>
 
-                        <div class="form-group"> 
-                            <h:outputLabel value="#{msjsagedaD.labelTxtnoEmpleado}" for="empleadoIdEmpleado" />
-                            <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.agenda.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.nombre}"/>
-                            </h:selectOneMenu>
-                            <div class="invalid-feedback">#{msjError.fields}</div>
-                        </div>
+                    <div class="form-group"> 
+                        <h:outputLabel value="#{msjsagedaD.labelTxtAlqui}" for="alquilerIdAlqu" />
+                        <h:selectOneMenu ps:class="form-control" id="alquilerIdAlqu" value="#{agendaControlador.alquiler.idAlquiler}" title="AlquilerIdAlqu" ps:required="true" requiredMessage="The AlquilerIdAlqu field is required.">
+                            <!-- TODO: update below reference to list of available items-->
+                            <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.idSolicitud}"/>
+                        </h:selectOneMenu>
+                        <div class="invalid-feedback">#{msjError.fields}</div>
 
-                        <div class="form-group"> 
-                            <h:outputLabel value="#{msjsagedaD.labelTxtAlqui}" for="alquilerIdAlqu" />
-                            <h:selectOneMenu ps:class="form-control" id="alquilerIdAlqu" value="#{agendaControlador.agenda.alquilerIdAlqu}" title="AlquilerIdAlqu" ps:required="true" requiredMessage="The AlquilerIdAlqu field is required.">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.idSolicitud}"/>
-                            </h:selectOneMenu>
-                            <div class="invalid-feedback">#{msjError.fields}</div>
-
-
-
-                            <h:outputLabel value="#{msjsagedaD.labelTxtFoto}" for="foto" />
-                            <h:inputFile ps:class="form-control"  value="#{agendaControlador.file}"/>
-                            <h:commandButton ps:id="boton" class="btn btn-primary " value="Subir Archivo" action="#{agendaControlador.upload()}"/>
-                            <div class="invalid-feedback">#{msjError.fields}</div> 
-
-                        </div>
-                    </h:form>
-                    <script>
-                        // Example starter JavaScript for disabling form submissions if there are invalid fields
-                        (function () {
-                            'use strict';
-                            window.addEventListener('load', function () {
-                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                var forms = document.getElementsByClassName('needs-validation');
-                                // Loop over them and prevent submission
-                                var validation = Array.prototype.filter.call(forms, function (form) {
-                                    form.addEventListener('submit', function (event) {
-                                        if (form.checkValidity() === false) {
-                                            event.preventDefault();
-                                            event.stopPropagation();
-                                        }
-                                        form.classList.add('was-validated');
-                                    }, false);
-                                });
-                            }, false);
-                        })();
-                    </script>
+                        <h:outputLabel value="#{msjsagedaD.labelTxtFoto}" for="foto" />
+                        <h:inputFile ps:class="form-control"  value="#{agendaControlador.file}"/>
+                        <h:commandButton ps:id="boton" class="btn btn-primary " value="Subir Archivo" action="#{agendaControlador.upload()}"/>
+                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                    </div>
                 </h:form>
 
+                <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (function () {
+                        'use strict';
+                        window.addEventListener('load', function () {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function (form) {
+                                form.addEventListener('submit', function (event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
             </f:view>
         </div>
-
     </h:body>
 </html>
 

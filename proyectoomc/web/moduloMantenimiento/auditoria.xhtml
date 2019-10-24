@@ -15,26 +15,36 @@
         <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>   
         <link rel="stylesheet" href="../css/prime-styles.css"></link>   
         <link href="../primeicons-master/primeicons.css" rel="stylesheet" type="text/css"/>  
-   
+
         <title>OMC</title>
     </h:head>
     <h:body>
-        <f:view>
             <h:form>
-                <h1><h:outputText value="Hisotrial"/></h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjBreadCrumbMant.Inicio}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.consultar}</li>
+                        <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.mantenimiento}</li>
+                        <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumbMant.historial}</li>
+
+                    </ol>
+                </nav>
+                 <f:view locale="#{sessionController.languageSelected}">
+                     
+                     <h1><h:outputText value="#{msjHistorialMante.labelTxt}"/></h1>
                 <p:dataTable id="tabla" value="#{cilindroControlador.consultarTabla()}" var="item"   rows="10"
-                 paginator="true"
-                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 rowsPerPageTemplate="5,10,15" resizableColumns="true" liveResize="true">
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15" resizableColumns="true" liveResize="true">
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Id Auditoria Mantenimiento"/>
                         </f:facet>
-                        <h:outputText value="#{item.idAudMant}"/>
+                        <h:outputText value="#{msjHistorialMante.labelTxtIdAuditoriaMantenimiento}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Antigua fecha inicio mantenimiento"/>
+                            <h:outputText value="#{msjHistorialMante.labelTxtOldmaintenancestartdate}"/>
                         </f:facet>
                         <h:outputText value="#{item.antiguafechaInicioMantenimiento}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -42,7 +52,7 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Antigua fecha final mantenimiento"/>
+                            <h:outputText value="#{msjHistorialMante.labelTxtOldmaintenanceenddate}"/>
                         </f:facet>
                         <h:outputText value="#{item.antiguafechaFinalMantenimiento}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -50,19 +60,19 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Antigua tipo mantenimiento"/>
+                            <h:outputText value="#{msjHistorialMante.labelTxtOldmaintenancetype}"/>
                         </f:facet>
                         <h:outputText value="#{item.antiguaTipoMantenimiento}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Usuario Auditorio"/>
+                            <h:outputText value="#{msjHistorialMante.labelTxtUserAuditorium}"/>
                         </f:facet>
                         <h:outputText value="#{item.usuarioAuditor}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Fecha Auditoria"/>
+                            <h:outputText value="#{msjHistorialMante.labelTxtAuditDate}"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaAuditoria}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -70,32 +80,32 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Id Mantenimiento"/>
+                            <h:outputText value="#{msjHistorialMante.labelTxtMaintenanceId}"/>
                         </f:facet>
                         <h:outputText value="#{item.idMantenimiento.idMantenimiento}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Id Agenda"/>
+                            <h:outputText value="#{msjHistorialMante.labelTxtIdAgenda}"/>
                         </f:facet>
                         <h:outputText value="#{item.idAgenda.idAgenda}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Estado"/>
+                            <h:outputText value="#{msjHistorialMante.labelTxtState}"/>
                         </f:facet>
                         <h:outputText value="#{item.idEstado.estado}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Cilindro"/>
+                            <h:outputText value="#{msjHistorialMante.labelTxtCylinder}"/>
                         </f:facet>
                         <h:outputText value="#{item.idCilindro.idCilindro}"/>
                     </p:column>
                 </p:dataTable>
+                      </f:view>
             </h:form>
-
-        </f:view>
+       
     </h:body>
 </html>
 
