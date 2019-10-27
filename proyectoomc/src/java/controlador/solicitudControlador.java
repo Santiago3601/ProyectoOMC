@@ -246,7 +246,7 @@ public class solicitudControlador implements Serializable {
         this.solicitud.setFormula(pathReal);
         solicitudFacade.create(solicitud);
         solicitud = new Solicitud();
-        return "../mensajes/confirmacionCliente";
+        return "confirmacionCliente";
 
     }
 
@@ -262,7 +262,7 @@ public class solicitudControlador implements Serializable {
         usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
         this.cliente = solicitudFacade.obtenerIdUsuario(usuario);
         solicitudFacade.cancelarSol(cliente);
-        return "../mensajes/confirmacionClienteCilindroCancelado";
+        return "confirmacionClienteCilindroCancelado";
     }
 
     public String redireccionar() {

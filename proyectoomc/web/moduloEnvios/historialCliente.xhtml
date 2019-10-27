@@ -25,17 +25,17 @@
             <div id="content" class="center_content">
                 <f:view locale="#{sessionController.languageSelected}">
                     <h:form>
-                        <h1><h:outputText value="#{msjListaAlquiler.lista}"/></h1>
+                        <h1><h:outputText value="#{msjHistorial.lista}"/></h1>
                         <p:dataTable id="tablaAlq" value="#{alquilerControlador.historial()}" var="alq" >
                             <p:column filterBy="#{alq.idAlquiler}">
                                 <f:facet name="header">
-                                    <h:outputText value="No."/>
+                                    <h:outputText value="Cod."/>
                                 </f:facet>
                                 <h:outputText value="#{alq.idAlquiler}"/>
                             </p:column>
                             <p:column filterBy="#{alq.fechaDeEntrega}">
                                 <f:facet name="header">
-                                    <h:outputText value="#{msjListaAlquiler.fechaE}"/>
+                                    <h:outputText value="#{msjHistorial.fechaE}"/>
                                 </f:facet>
                                 <h:outputText value="#{alq.fechaDeEntrega}">
                                     <f:convertDateTime pattern="dd/MM/yyyy" />

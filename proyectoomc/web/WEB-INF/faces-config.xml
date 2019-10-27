@@ -296,6 +296,10 @@
             <var>msjROL</var>
         </resource-bundle>           
         <resource-bundle>
+            <base-name>language.Historial</base-name>
+            <var>msjHistorial</var>
+        </resource-bundle>           
+        <resource-bundle>
             <base-name>language.mensaje_de_bienvenida</base-name>
             <var>msjb</var>
         </resource-bundle>           

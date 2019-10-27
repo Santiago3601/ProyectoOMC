@@ -20,13 +20,13 @@
                 <li class="breadcrumb-item active" aria-current="page">#{msjBreadCrumb.Solicitud}</li>
             </ol>
         </nav>
-        <c:if test="#{clienteControlador.consultarEstado() eq false}">
+        <c:if test="#{solicitudControlador.validarPedidoAgendado() eq false}">
             <f:view locale="#{sessionController.languageSelected}" >
                 <div id="form"> 
 
                     <f:view locale="#{sessionController.languageSelected}">
                         <a href="../index.xhtml"><i class="fad fa-home-lg"  data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Regresar a la pagina de inicio"></i></a>
-                        <h:outputLabel value="Estimado usuario usted no tiene ningun cilindro agendado"/>
+                        <h1>    <h:outputText value="#{msjConfirm.noAgendado}"/></h1>
 
                     </f:view>
 
@@ -37,15 +37,19 @@
             </f:view>
 
         </c:if>
-        <c:if test="#{clienteControlador.consultarEstado() eq true}">
+        <c:if test="#{solicitudControlador.validarPedidoAgendado() eq true}">
 
             <div id="form"> 
 
                 <f:view locale="#{sessionController.languageSelected}">
                     <h:form>
-                        <h:outputLabel value="Usuario, usted tiene un cilindro agendado, en los proximos dias se le informara por correo la fecha de entrega"/>
-                        <h:outputLabel value="¿Que desea hacer?"/>
-                        <h:commandLink action="#{solicitudControlador.cancelarSolicitud()}" value="Cancelar solicitud"/>
+                        <h1>      <h:outputText value="#{msjConfirm.cilindroConsultadoAgendado}"/></h1>
+                        <div style="text-align: center">
+                            <h4>         <h:outputText style="text-align: center" value="#{msjConfirm.queDeseaHacer}"/></h4>
+                            <label>       <h:commandLink action="#{solicitudControlador.cancelarSolicitud()}" value="${msjConfirm.cancel}"/></label>
+                            <br></br>
+                            <label>    <h:commandLink action="#{solicitudControlador.redireccionar()}" value="${msjConfirm.regresar}"/></label>
+                        </div>
                     </h:form>
                 </f:view>
 

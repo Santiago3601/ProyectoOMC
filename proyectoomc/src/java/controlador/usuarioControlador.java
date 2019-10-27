@@ -131,9 +131,9 @@ public class usuarioControlador implements Serializable {
 
             usuarioFacade.create(usuario);
             usuario = new Usuario();
-            return "moduloEnvios/confirmacionClienteRegistro";
+            return "mensajes/confirmacionClienteRegistro";
         }
-        return "moduloEnvios/confirmacionClienteRegistrado";
+        return "mensajes/confirmacionClienteRegistrado";
     }
 
     public void eliminarUsuario(Usuario u) {
