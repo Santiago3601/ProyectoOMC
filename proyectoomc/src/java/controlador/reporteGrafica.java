@@ -11,19 +11,17 @@ import net.sf.jasperreports.engine.util.JRFontNotFoundException;
 import net.sf.jasperreports.engine.util.JRStyledTextParser;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 
-
 public class reporteGrafica {
 
-    public void getReporte(String ruta,String titular) throws  ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
-        
+    public void getReporte(String ruta) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+
         Connection conexion;
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectoomc", "adminomc", "omcclave");
 
         //Se definen los parametros si es que el reporte necesita
         Map parameter = new HashMap();
-        
-        
+
         try {
             File file = new File(ruta);
 
@@ -36,7 +34,7 @@ public class reporteGrafica {
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, conexion);
 
-            JRExporter jrExporter = null;                      
+            JRExporter jrExporter = null;
             jrExporter = new JRPdfExporter();
             jrExporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
             jrExporter.setParameter(JRExporterParameter.OUTPUT_STREAM, httpServletResponse.getOutputStream());
@@ -60,11 +58,6 @@ public class reporteGrafica {
                 }
             }
         }
-    }   
-
-    void getReporte(String ruta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
-
-

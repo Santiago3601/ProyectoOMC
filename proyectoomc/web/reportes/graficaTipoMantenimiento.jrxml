@@ -14,21 +14,25 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="39" splitType="Stretch">
+		<band height="106" splitType="Stretch">
 			<staticText>
-				<reportElement x="142" y="0" width="317" height="34" uuid="e5b44b98-e784-496d-aecb-a999ed0f2016"/>
+				<reportElement x="222" y="39" width="317" height="34" uuid="e5b44b98-e784-496d-aecb-a999ed0f2016"/>
 				<textElement>
 					<font size="24"/>
 				</textElement>
 				<text><![CDATA[Grafica tipo mantenimiento]]></text>
 			</staticText>
+			<image>
+				<reportElement x="18" y="12" width="189" height="80" uuid="ec38d51d-1cd9-413c-ab0d-0171706bcd55"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Desktop\\proyectoomc\\proyectoomc\\web\\img\\positivo-1.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<summary>
-		<band height="182" splitType="Stretch">
+		<band height="548" splitType="Stretch">
 			<barChart>
 				<chart>
-					<reportElement x="0" y="0" width="555" height="182" uuid="5911d90c-d158-450f-9b19-3f2715f1b598"/>
+					<reportElement x="0" y="177" width="555" height="182" uuid="5911d90c-d158-450f-9b19-3f2715f1b598"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>

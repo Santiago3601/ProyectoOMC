@@ -55,14 +55,15 @@
                         </f:facet>
                         <h:outputText value="#{item.empleadoIdEmpleado.idEmpleado}"/>
                     </p:column>
-                    
+
                     <p:column filterBy="#{item.foto}">
                         <f:facet name="header">
                             <h:outputText value="#{msjsagedaD.labelTxtFoto}"/>
                         </f:facet>
-                        <h:outputText value="#{item.foto}"/>
+
+                        <a href="#{item.foto}" target="_blank"><i class="far fa-file-download"></i></a>
                     </p:column>
-                    
+
                     <p:column filterBy="#{item.alquilerIdAlqu}">
                         <f:facet name="header">
                             <h:outputText value="#{msjsagedaD.labelTxtAlqui}"/>
