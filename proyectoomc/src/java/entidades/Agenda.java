@@ -109,6 +109,7 @@ public class Agenda implements Serializable {
         return novedades;
     }
 
+    
     public void setNovedades(String novedades) {
         this.novedades = novedades;
     }

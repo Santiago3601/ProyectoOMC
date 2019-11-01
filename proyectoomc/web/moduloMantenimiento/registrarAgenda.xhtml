@@ -63,7 +63,7 @@
                         <h:outputLabel value="#{msjsagedaD.labelTxtAlqui}" for="alquilerIdAlqu" />
                         <h:selectOneMenu ps:class="form-control" id="alquilerIdAlqu" value="#{agendaControlador.alquiler.idAlquiler}" title="AlquilerIdAlqu" ps:required="true" requiredMessage="The AlquilerIdAlqu field is required.">
                             <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.idSolicitud}"/>
+                            <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.idAlquiler}"/>
                         </h:selectOneMenu>
                         <div class="invalid-feedback">#{msjError.fields}</div>
 

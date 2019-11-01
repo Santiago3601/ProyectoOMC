@@ -51,11 +51,12 @@ public class agendaControlador implements Serializable {
 
     @EJB
     private AlquilerFacade alquilerFacade;
-    private Alquiler alquiler;
+  Alquiler alquiler;
 
     @PostConstruct
     public void init() {
         agenda = new Agenda();
+        alquiler = new Alquiler();
         empleado = new Empleado();
     }
 
@@ -190,7 +191,9 @@ public class agendaControlador implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        agenda.setAlquilerIdAlqu(getAlquiler());
+        agenda.setAlquilerIdAlqu(alquilerFacade.find(alquiler.getIdAlquiler()));
+        agenda.setEmpleadoIdEmpleado(empleadoFacade.find(empleado.getIdEmpleado()));
+
         this.agenda.setFoto(pathReal);
         agendaFacade.create(agenda);
         agenda = new Agenda();
