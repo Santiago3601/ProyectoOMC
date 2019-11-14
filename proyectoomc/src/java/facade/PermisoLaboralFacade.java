@@ -6,9 +6,11 @@
 package facade;
 
 import entidades.PermisoLaboral;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,11 @@ public class PermisoLaboralFacade extends AbstractFacade<PermisoLaboral> {
     public PermisoLaboralFacade() {
         super(PermisoLaboral.class);
     }
-    
+//    public List<PermisoLaboral> mostrarPermisos(){
+//    Query query;
+//    query = em.createQuery("SELECT u FROM PermisoLaboral u WHERE u.empleadoIdEmpleado = ?1");
+//    
+//    
+//    
+//    }
 }

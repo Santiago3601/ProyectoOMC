@@ -8,6 +8,7 @@ package controlador;
 import entidades.Empleado;
 import entidades.EstadoPermisoLaboral;
 import entidades.PermisoLaboral;
+import entidades.Usuario;
 
 import facade.EmpleadoFacade;
 import facade.EstadoPermisoLaboralFacade;
@@ -16,9 +17,11 @@ import facade.PermisoLaboralFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -133,5 +136,22 @@ public class PermisoLaboralControlador implements Serializable {
         empleado = new Empleado();
         estadoPermisoLaboral = new EstadoPermisoLaboral();
         return "ListarPermisoLaboral";
+    }
+    public List<PermisoLaboral> permisos(){
+        Usuario usu = new Usuario();
+        Empleado empleado1 = new Empleado();
+        PermisoLaboral permisoLaboral1 = new PermisoLaboral();
+        usu=(Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        empleado1=usu.getEmpleadoList().get(0);
+       return empleado1.getPermisoLaboralList(); 
+    }
+    
+    public boolean comprobar(){
+        Usuario usuario = new Usuario();
+        usuario=(Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        if (usuario.getRolidRol().getRol()=="Administrador" || usuario.getRolidRol().getRol()=="Jefe de planta" ) {
+            return true;
+        }
+        return false;
     }
 }
