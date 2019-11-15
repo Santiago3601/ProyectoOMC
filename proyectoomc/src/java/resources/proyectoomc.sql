@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2019 a las 15:06:31
+-- Tiempo de generación: 15-11-2019 a las 15:54:02
 -- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -498,7 +498,7 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (42, 'Turno', 'Turn', '../../../moduloPersonal/RegistrarTurno.xhtml', 'x', 36),
 (43, 'Empleado', 'Employees', '../../../moduloPersonal/ListarEmpleado.xhtml', 'x', 37),
 (44, 'Horario', 'Schedule', '../../../moduloPersonal/ListarHorario.xhtml', 'x', 37),
-(45, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 37),
+(45, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral1.xhtml', 'x', 37),
 (47, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 37),
 (48, '---- Jefe de planta -----', '', ' ', 'x', NULL),
 (49, 'Envios', 'Shipping', NULL, 'x', NULL),
@@ -533,7 +533,7 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (85, 'Turno', 'Turn', '../../../moduloPersonal/RegistrarTurno.xhtml', 'x', 83),
 (87, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 83),
 (88, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 84),
-(90, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral.xhtml', 'x', 84),
+(90, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral1.xhtml', 'x', 84),
 (91, 'Tecnico', 'Technical', NULL, 'x', NULL),
 (92, 'Envios', 'Shipping', NULL, 'x', NULL),
 (95, 'Consultar', 'Consult', NULL, 'x', 92),
@@ -570,7 +570,8 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (138, 'Consultar', 'Consult', '../../../moduloEnvios/consultarSolicitudCliente.xhtml', 'x', 137),
 (139, 'Registrar', 'Register', '../../../moduloEnvios/crearSolicitudCliente.xhtml', 'x', 137),
 (140, 'Envios', 'Shipping', NULL, 'x', NULL),
-(141, 'Historial', 'Hystory', '../../../moduloEnvios/historialCliente.xhtml', 'x', 140);
+(141, 'Historial', 'Hystory', '../../../moduloEnvios/historialCliente.xhtml', 'x', 140),
+(142, '', '', NULL, '', NULL);
 
 -- --------------------------------------------------------
 
