@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77603b11-6ca7-492e-8cbf-3c914b95d59d">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29d26fbb-9407-40b7-8b00-6369e0090a20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -22,19 +22,19 @@ FROM
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="236" y="4" width="319" height="75" uuid="901c4cde-1a15-41e7-9adc-b05889bc141e"/>
+				<reportElement x="236" y="4" width="319" height="75" uuid="f7853184-3fce-48ea-9f08-d52468d90e80"/>
 				<textElement>
 					<font size="36"/>
 				</textElement>
 				<text><![CDATA[Reporte cilindro]]></text>
 			</staticText>
 			<image>
-				<reportElement x="442" y="79" width="2393" height="0" uuid="14f2049d-9832-4d93-bd34-f3d2437eb93b"/>
-				<imageExpression><![CDATA["C:\\Users\\SENA\\Desktop\\proyectoomc\\proyectoomc\\web\\img\\positivo-1.jpg"]]></imageExpression>
+				<reportElement x="442" y="79" width="2393" height="0" uuid="e0a1f06c-9498-4269-9249-9f719ebd32ce"/>
+				<imageExpression><![CDATA["..\\img\\positivo-1.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="21" y="15" width="146" height="54" uuid="5be3afa0-42e8-485f-8f78-8cbaacee4055"/>
-				<imageExpression><![CDATA["C:\\Users\\SENA\\Desktop\\proyectoomc\\proyectoomc\\web\\img\\positivo-1.jpg"]]></imageExpression>
+				<reportElement x="21" y="15" width="146" height="54" uuid="3fdc047a-d8a2-4a2d-907a-a468ee545059"/>
+				<imageExpression><![CDATA["..\\img\\positivo-1.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -42,17 +42,17 @@ FROM
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="21" y="2" width="100" height="20" uuid="09461d54-5de3-432b-a577-384d198d03b9"/>
+				<reportElement x="21" y="2" width="100" height="20" uuid="31b339b2-65fc-44fe-9734-9c26907004f3"/>
 				<text><![CDATA[idCilindro]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="136" y="2" width="100" height="20" uuid="a1106679-2acc-4844-9ab1-c2ccde0770b0"/>
+				<reportElement x="136" y="2" width="100" height="20" uuid="f8c0cf02-75f9-48b6-8cc7-e276c68a7f62"/>
 				<text><![CDATA[lote]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="299" y="0" width="100" height="20" uuid="6e8c67f3-6dbc-4178-92e1-18d5a2ba2946"/>
+				<reportElement x="299" y="0" width="100" height="20" uuid="b2d4fca0-23ab-4f71-be19-ea8f8fa4483e"/>
 				<text><![CDATA[tamanio]]></text>
 			</staticText>
 		</band>
@@ -60,15 +60,15 @@ FROM
 	<detail>
 		<band height="34" splitType="Stretch">
 			<textField>
-				<reportElement x="21" y="8" width="100" height="20" uuid="25f7b4eb-56ca-4b21-8e9a-8ae5069b67b6"/>
+				<reportElement x="21" y="8" width="100" height="20" uuid="125502cf-904c-4a25-98f3-c422327ef26a"/>
 				<textFieldExpression><![CDATA[$F{idCilindro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="136" y="14" width="100" height="20" uuid="7f1d0b49-0a1c-45f9-be8c-faf4244b1c7a"/>
+				<reportElement x="136" y="14" width="100" height="20" uuid="104fd005-d3f0-44d0-92c0-7f8a2e2f16cc"/>
 				<textFieldExpression><![CDATA[$F{lote}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="288" y="14" width="100" height="20" uuid="9d54e3a3-f035-4341-8dc2-bac87f02933a"/>
+				<reportElement x="288" y="14" width="100" height="20" uuid="b1e4edb8-572d-4304-9a2c-de1fd391c0e2"/>
 				<textFieldExpression><![CDATA[$F{tamanio}]]></textFieldExpression>
 			</textField>
 		</band>
