@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
-     <h:head>
+    <h:head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
         <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
@@ -24,55 +24,56 @@
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
 
+                <h:form enctype="multipart/form-data">
+                    <h:form ps:class="needs-validation" ps:novalidate="true">
+                        <h1><h:outputText value="#{msjsactualizarAgenda.labelTxtlista}"/></h1>
 
-                <h:form ps:class="needs-validation" ps:novalidate="true">
-                    <h1><h:outputText value="#{msjsactualizarAgenda.labelTxtlista}"/></h1>
+                        <div class="form-group">
+                            <h:outputLabel value="#{msjsactualizarAgenda.labelTxtlista}" for="idAgenda" />
+                            <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" ps:required="true" requiredMessage="The IdAgenda field is required."/>
+                            <div class="invalid-feedback">#{msjError.fields}</div> 
+                        </div>
 
-                    <div class="form-group">
-                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtlista}" for="idAgenda" />
-                        <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" ps:required="true" requiredMessage="The IdAgenda field is required."/>
-                        <div class="invalid-feedback">#{msjError.fields}</div> 
-                    </div>
+                        <div class="form-group"> 
+                            <h:outputLabel value="#{msjsactualizarAgenda.labelTxtfechaProgramada}" for="fechaProgramada" />
+                            <h:inputText ps:id="fecha" ps:type="date" ps:class="form-control"  id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" ps:required="true" requiredMessage="The FechaProgramada field is required.">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:inputText>
+                            <div class="invalid-feedback">#{msjError.fields}</div> 
+                        </div>
 
-                    <div class="form-group"> 
-                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtfechaProgramada}" for="fechaProgramada" />
-                        <h:inputText ps:id="fecha" ps:type="date" ps:class="form-control"  id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" ps:required="true" requiredMessage="The FechaProgramada field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:inputText>
-                        <div class="invalid-feedback">#{msjError.fields}</div> 
-                    </div>
+                        <div class="form-group"> 
+                            <h:outputLabel value="#{msjsactualizarAgenda.labelTxtnovedades}" for="novedades" />
+                            <h:inputText ps:class="form-control" id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" ps:required="true" requiredMessage="The novedades field is required."/>
+                            <div class="invalid-feedback">#{msjError.fields}</div> 
+                        </div>
 
-                    <div class="form-group"> 
-                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtnovedades}" for="novedades" />
-                        <h:inputText ps:class="form-control" id="novedades" value="#{agendaControlador.agenda.novedades}" title="Novedades" ps:required="true" requiredMessage="The novedades field is required."/>
-                        <div class="invalid-feedback">#{msjError.fields}</div> 
-                    </div>
+                        <div class="form-group"> 
+                            <h:outputLabel value="" for="#{msjsactualizarAgenda.labelTxtnoEmpleado}" />
+                            <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.agenda.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.nombre}"/>
+                            </h:selectOneMenu>
+                            <div class="invalid-feedback">#{msjError.fields}</div>
+                        </div>
 
-                    <div class="form-group"> 
-                        <h:outputLabel value="" for="#{msjsactualizarAgenda.labelTxtnoEmpleado}" />
-                        <h:selectOneMenu ps:class="form-control" id="empleadoIdEmpleado" value="#{agendaControlador.agenda.empleadoIdEmpleado}" title="EmpleadoIdEmpleado" ps:required="true" requiredMessage="The EmpleadoIdEmpleado field is required.">
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="em" itemValue="#{em.idEmpleado}" itemLabel="#{em.usuarioId.nombre}"/>
-                        </h:selectOneMenu>
-                        <div class="invalid-feedback">#{msjError.fields}</div>
-                    </div>
-
-                    <div class="form-group"> 
-                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtAlqui}" for="alquilerIdAlqu" />
-                        <h:selectOneMenu ps:class="form-control" id="alquilerIdAlqu" value="#{agendaControlador.agenda.alquilerIdAlqu}" title="AlquilerIdAlqu" ps:required="true" requiredMessage="The AlquilerIdAlqu field is required.">
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.idSolicitud}"/>
-                        </h:selectOneMenu>
-                        <div class="invalid-feedback">#{msjError.fields}</div>
+                        <div class="form-group"> 
+                            <h:outputLabel value="#{msjsactualizarAgenda.labelTxtAlqui}" for="alquilerIdAlqu" />
+                            <h:selectOneMenu ps:class="form-control" id="alquilerIdAlqu" value="#{agendaControlador.agenda.alquilerIdAlqu}" title="AlquilerIdAlqu" ps:required="true" requiredMessage="The AlquilerIdAlqu field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{alquilerControlador.consultarTodos()}" var="al" itemValue="#{al.idAlquiler}" itemLabel="#{al.solicitudIdSolicitud.idSolicitud}"/>
+                            </h:selectOneMenu>
+                            <div class="invalid-feedback">#{msjError.fields}</div>
 
 
 
-                        <h:outputLabel value="#{msjsactualizarAgenda.labelTxtFoto}" for="foto" />
-                        <h:inputFile ps:class="form-control"  value="#{agendaControlador.file}"/>
-                        <h:commandButton ps:id="boton" class="btn btn-primary " value="Subir Archivo" action="#{agendaControlador.upload()}"/>
-                        <div class="invalid-feedback">#{msjError.fields}</div> 
+                            <h:outputLabel value="#{msjsactualizarAgenda.labelTxtFoto}" for="foto" />
+                            <h:inputFile ps:class="form-control"  value="#{agendaControlador.file}"/>
+                            <h:commandButton ps:id="boton" class="btn btn-primary " value="Subir Archivo" action="#{agendaControlador.upload()}"/>
+                            <div class="invalid-feedback">#{msjError.fields}</div> 
 
-                    </div>
+                        </div>
+                    </h:form>
                 </h:form>
                 <script>
                     // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -94,7 +95,7 @@
                         }, false);
                     })();
                 </script>
-               
+
             </f:view>
         </div>
 
