@@ -26,21 +26,16 @@
         <div id="form"> 
             <f:view locale="#{sessionController.languageSelected}">
 
-                <h:form ps:class="needs-validation" ps:novalidate="true">
-                    <h1><h:outputText value="#{msjsmantenimiento.h1TxtTitle}"/></h1>
-                    <div class="form-group"> 
-                        <h:outputLabel value="#{msjsmantenimiento.h1TxtTitle}" for="IdMantenimiento" />
-                        <div class="invalid-feedback">#{msjError.fields}</div>
-
-
-                        <div class="form-group"> 
-                        </div>
-                        <h:inputText ps:class="form-control" id="idMantenimiento" value="#{mantenimientoControlador.mantenimiento.idMantenimiento}" title="IdMantenimiento" ps:required="true" requiredMessage="The IdMantenimiento field is required."/>
-                        <h:outputLabel  value="#{msjsmantenimiento.labelTxtmaintenancestartdate}" for="FechaInicioMantenimiento" />
-                        <h:inputText ps:class="form-control" pt:id="fecha2" pt:type="date" id="fechaInicioMantenimiento" value="#{mantenimientoControlador.mantenimiento.fechaInicioMantenimiento}" title="FechaInicioMantenimiento" ps:required="true" requiredMessage="The FechaInicioMantenimiento field is required.">
-                            <f:convertDateTime pattern="yyyy-MM-dd" />
-                        </h:inputText>
-                        <div class="invalid-feedback">#{msjError.fields}</div>
+                  <h:form ps:class="needs-validation" ps:novalidate="true">
+                    <h1><h:outputText value="#{msjscilindro.h1TxtTitle}"/></h1>
+                    
+                    <div class="form-row">
+                   
+                    <h:outputLabel  value="#{msjsmantenimiento.labelTxtmaintenancestartdate}" for="FechaInicioMantenimiento" />
+                    <h:inputText ps:class="form-control" pt:id="fecha2" pt:type="date" id="fechaInicioMantenimiento" value="#{mantenimientoControlador.mantenimiento.fechaInicioMantenimiento}" title="FechaInicioMantenimiento" ps:required="true" requiredMessage="The FechaInicioMantenimiento field is required.">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:inputText>
+                    <div class="invalid-feedback">#{msjError.fields}</div>
                     </div>
 
                     <div class="form-group"> 

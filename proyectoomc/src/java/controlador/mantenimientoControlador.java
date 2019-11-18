@@ -90,7 +90,7 @@ public class mantenimientoControlador implements Serializable {
 
 //Metodos
     public String registrarMantenimiento() {
-
+        
         mantenimiento.setAgendaIdAgenda(agendaFacade.find(agenda.getIdAgenda()));
         mantenimiento.setCilindroIdCilindro(cilindroFacade.find(cilindro.getIdCilindro()));
         mantenimiento.setEstadoMantenimientoIdEstado(estadoMantenimientoFacade.find(estadoMantenimiento.getIdEstado()));

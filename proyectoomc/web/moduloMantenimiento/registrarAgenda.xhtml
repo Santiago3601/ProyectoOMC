@@ -30,12 +30,7 @@
                 <h:form enctype="multipart/form-data">
                     <h1><h:outputText value="#{msjsagedaD.labelTxtlista}"/></h1>
 
-                    <div class="form-group">
-                        <h:outputLabel value="#{msjsagedaD.labelTxtnoAgenda}" for="idAgenda" />
-                        <h:inputText ps:class="form-control" id="idAgenda" value="#{agendaControlador.agenda.idAgenda}" title="IdAgenda" ps:required="true" requiredMessage="The IdAgenda field is required."/>
-                        <div class="invalid-feedback">#{msjError.fields}</div> 
-                    </div>
-
+                
                     <div class="form-group"> 
                         <h:outputLabel value="#{msjsagedaD.labelTxtfechaProgramada}" for="fechaProgramada" />
                         <h:inputText ps:id="fecha" ps:type="date" ps:class="form-control"  id="fechaProgramada" value="#{agendaControlador.agenda.fechaProgramada}" title="FechaProgramada" ps:required="true" requiredMessage="The FechaProgramada field is required.">
