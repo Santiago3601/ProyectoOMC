@@ -35,7 +35,8 @@ public class PermisoLaboralControlador implements Serializable {
     private PermisoLaboralFacade permisoLaboralFacade;
     PermisoLaboral permisoLaboral;
     Empleado empleado;
-
+    private EmpleadoFacade empleadoFacade;
+    
     @EJB
     private EstadoPermisoLaboralFacade estadoPermisoLaboralFacade;
     EstadoPermisoLaboral estadoPermisoLaboral;
@@ -110,9 +111,10 @@ public class PermisoLaboralControlador implements Serializable {
     }
 
     public String actualizar() {
-        permisoLaboral.setEmpleadoIdEmpleado(getEmpleado());
+        permisoLaboral.setEmpleadoIdEmpleado(empleadoFacade.find(getEmpleado()));
+        permisoLaboral.setEstado(estadoPermisoLaboralFacade.find(getPermisoLaboral()));
         permisoLaboralFacade.edit(permisoLaboral);
-        permisoLaboral = new PermisoLaboral();
+
         return "ListarPermisoLaboral";
     }
 
@@ -120,7 +122,7 @@ public class PermisoLaboralControlador implements Serializable {
         this.permisoLaboral = pl;
         this.estadoPermisoLaboral.setIdEstado(2);
         this.permisoLaboral.setEstado(getEstadoPermisoLaboral());
-        permisoLaboralFacade.edit(getPermisoLaboral());
+        this.permisoLaboralFacade.edit(getPermisoLaboral());
         permisoLaboral = new PermisoLaboral();
         empleado = new Empleado();
         estadoPermisoLaboral = new EstadoPermisoLaboral();
