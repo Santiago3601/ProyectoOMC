@@ -107,7 +107,7 @@ public class horarioControlador implements Serializable {
        
         horario = new Horario();
         this.empleado = new Empleado();
-        return "registrarHorario";
+        return "RegistrarHorario";
     }
 
     public String registrarSalida() {
@@ -118,7 +118,7 @@ public class horarioControlador implements Serializable {
         horarioFacade.registrarSalida(horario,empleado);
         horario = new Horario();
         this.empleado = new Empleado();
-        return "registrarHorario";
+        return "RegistrarHorario";
     }
 
     public void eliminarHorario(Horario item) {

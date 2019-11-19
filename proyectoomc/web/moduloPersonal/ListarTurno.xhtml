@@ -10,11 +10,15 @@
         <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
-                <link rel="stylesheet" href="../css/prime-styles.css"></link>     
+        <link rel="stylesheet" href="../css/prime-styles.css"></link>     
 
         <h:outputStylesheet name="./css/cssLayout.css"/>    
- 
 
+         </h:head>
+
+    <h:body>
+
+        <f:view locale="#{sessionController.languageSelected}">
             <h:form>
 
                 <h1><h:outputText value="#{msjListarTurno.labelTxtIdTurno}"/></h1>
@@ -69,7 +73,7 @@
                         </f:facet>
                         <h:outputText value="#{item.observaciones}"/>
                     </p:column>
-                   
+
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="#{msjListarTurno.labelTxtIdEmpleado}"/>
@@ -94,10 +98,8 @@
                         }
                     </style>
                 </h:commandLink>
-            </h:form>
+             </h:form>
         </f:view>
-
-
-    </h:body>
-</html>
+</h:body>
+            </html>
 
