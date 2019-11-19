@@ -15,7 +15,7 @@
 		<band height="108" splitType="Stretch">
 			<image>
 				<reportElement x="183" y="16" width="202" height="87" uuid="11c646ae-bd83-420e-99ce-0f0fa2d1cd66"/>
-				<imageExpression><![CDATA["..\\img\\positivo-1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["/opt/glassfish/glassfish/domains/domain1/applications/ROOT/img/positivo-1.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>

@@ -30,11 +30,11 @@ FROM
 			</staticText>
 			<image>
 				<reportElement x="442" y="79" width="2393" height="0" uuid="e0a1f06c-9498-4269-9249-9f719ebd32ce"/>
-				<imageExpression><![CDATA["..\\img\\positivo-1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["/opt/glassfish/glassfish/domains/domain1/applications/ROOT/img/positivo-1.jpg"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="21" y="15" width="146" height="54" uuid="3fdc047a-d8a2-4a2d-907a-a468ee545059"/>
-				<imageExpression><![CDATA["..\\img\\positivo-1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["/opt/glassfish/glassfish/domains/domain1/applications/ROOT/img/positivo-1.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
