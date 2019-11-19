@@ -68,8 +68,7 @@
                         <f:facet name="header" class="thead">
                             <h:outputText value="Opciones"/>
                         </f:facet>
-                        <h:commandLink action="#{permisoLaboralControlador.preActualizar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-edit"></i></h:commandLink>
-                        <h:commandLink action="#{permisoLaboralControlador.eliminar(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-trash-alt"></i></h:commandLink>
+                        
                        
                         <h:commandLink action="#{permisoLaboralControlador.CambiarEstado(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-check-circle"></i></h:commandLink>
                        <h:commandLink action="#{permisoLaboralControlador.CambiarEstado1(item)}" onclick="return confirm('Estas seguro?')"><i class="fas fa-ban"></i></h:commandLink>
