@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
 
@@ -11,10 +12,11 @@
         <meta name="description" content=""></meta>
         <meta name="author" content=""></meta>
         <title>OMC</title>
-
-        <!-- MY STYLE -->
-
-
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+        <meta name="description" content=""></meta>
+        <meta name="author" content=""></meta>
+        <title>OMC</title>
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" type="text/css" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>
@@ -26,91 +28,62 @@
 
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>
         <link rel="stylesheet" href="../../css/estilos.css"></link>
-                <script src="../../../css/icons.js" type="text/javascript"></script>
+        <link href="../../css/prime-styles.css" rel="stylesheet" type="text/css"/>
+
     </h:head>
     <h:body>
         <f:view locale="#{sessionController.languageSelected}">
-            <!-- Navigation -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-                <div class="container">
-                    <div class="col">
-                        <a class="navbar-brand js-scaccessibility-buttonsl-trigger" href="#page-top"><img src="../../img/OMC.png" alt=""></img></a>
-                    </div>
-                    <div class="col">
-                        <div id="rol">
-                            <label>
-                                #{msjROL.titulo4}
-                            </label>
+            <div id="contenedor">
+                <!-- Navigation -->
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+                    <div class="container">
+                        <div class="col">
+                            <a class="navbar-brand js-scaccessibility-buttonsl-trigger" href="#page-top"><img src="../../img/OMC.png" alt=""></img></a>
                         </div>
-                    </div>
-                    <div class="col">
-
-
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-contaccessibility-buttonss="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                            <div id="row-down">
-                                <i class="far fa-angle-double-down"></i>
+                        <div class="col">
+                            <div id="rol">
+                                <label>
+                                    #{msjROL.titulo4}
+                                </label>
                             </div>
+                        </div>
+                        <div class="col">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-contaccessibility-buttonss="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                                <div id="row-down">
+                                    <i class="far fa-angle-double-down"></i>
+                                </div>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <div id="accessibility-buttons">
+                                            <h:form>
+                                                <h:commandLink title="#{msjBoton.cert}" ps:data-toggle="tooltip" ps:data-placement="bottom" action="#{empleadoControlador.certificadoLaboral()}" ><i class="far fa-file-export"></i></h:commandLink>
+                                            </h:form>
+                                        </div>
+                                    </li>
 
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarResponsive">
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item">
-                                    <div id="accessibility-buttons">
-                                        <h:form>
-                                            <h:commandLink action="#{empleadoControlador.certificadoLaboral()}" ><i class="far fa-file-export"></i></h:commandLink>
-                                        </h:form>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div id="accessibility-buttons">
-                                        <a href="">
-                                            <i class="far fa-cog"></i>
-                                        </a>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item">
-                                    <div id="accessibility-buttons">
-
-                                        <a href="#" title="Notificación" data-toggle="popover" data-placement="bottom" data-content="No hay notificaciones pendientes"> <i class="fal fa-bell"></i></a>
-
-
-                                        <script>
-                                            $(document).ready(function () {
-                                                $('[data-toggle="popover"]').popover();
-                                            });
-                                        </script>
-
-
-
-                                    </div>
-                                </li>
-
-                                <li class="nav-item">
-                                    <div id="accessibility-buttons">
-                                        <a href="../../../index_1.xhtml">
-                                            <i class="far fa-sign-out"></i>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div id="accessibility-buttons">
-                                        <h:form>
-                                            <h:commandLink  action="#{sessionController.cambiarIdioma(sessionController.languagueToChange)}">
-                                                <i class="fas fa-globe-americas"></i>
-                                            </h:commandLink>
-                                        </h:form>
-                                    </div>
-                                </li>
-
-                            </ul>
+                                    <li class="nav-item">
+                                        <div id="accessibility-buttons">
+                                            <h:form>
+                                                <h:commandLink  ps:title="#{msjBoton.idioma}" ps:data-toggle="tooltip" ps:data-placement="bottom" action="#{sessionController.cambiarIdioma(sessionController.languagueToChange)}">
+                                                    <i class="fas fa-globe-americas"></i>
+                                                </h:commandLink>
+                                            </h:form>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div id="accessibility-buttons">
+                                            <a href="../../../index_1.xhtml" title="#{msjBoton.salir}" data-toggle="tooltip" data-placement="bottom">
+                                                <i class="far fa-sign-out"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-
-            </nav>
-            <div id="contenedor" >
+                </nav>
                 <!-- Navegador -->
                 <nav id="options" class="barra-navega">
                     <ul>
@@ -172,53 +145,57 @@
 
 
                 </nav>
-                <section>
-                    <iframe name="area-de-trabajo" src=""></iframe>
-                </section>
+            </div>
+            <section>
+                <iframe name="area-de-trabajo" src="../../../moduloEnvios/paginaDeBienvenidaCliente.xhtml"></iframe>
+            </section>
 
 
-                <div class="modal fade" id="Login-in" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="Login-inLabel">Log in</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <h:form class="needs-validation" >
-                                    <div class="form-group">
-                                        <label for="validationDefault01">Email address</label>
-                                        <input type="email" class="form-control" id="validationCustom01" aria-describedby="emailHelp" placeholder="Enter email" required="true"></input>
-                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="Password" class="form-control" id="validationCustom01"  placeholder="Password" required="true"></input>
-                                    </div>
-                                    <div class="borde form-check">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1"></input>
-                                            <label class="custom-control-label" for="customCheck1">Check me out</label>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-
-                                        <a href="DISEÑO WEB ANTERIOR/SI/1.admin/index.html"><button class="btn btn-primary" type="submit" href="DISEÑO WEB ANTERIOR/SI/1.admin/index.html" >Submit </button>
-                                        </a>
-                                        <a href="DISEÑO WEB ANTERIOR/SI/1.admin/index.html">.</a>
-                                    </div>
-                                </h:form>
-                            </div>
-
-                            <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                            <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
+            <div class="modal fade" id="Login-in" tabindex="-1" role="dialog" aria-labelledby="Login-inLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="Login-inLabel">Log in</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
+                        <div class="modal-body">
+                            <h:form class="needs-validation" >
+                                <div class="form-group">
+                                    <label for="validationDefault01">Email address</label>
+                                    <input type="email" class="form-control" id="validationCustom01" aria-describedby="emailHelp" placeholder="Enter email" required="true"></input>
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="Password" class="form-control" id="validationCustom01"  placeholder="Password" required="true"></input>
+                                </div>
+                                <div class="borde form-check">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1"></input>
+                                        <label class="custom-control-label" for="customCheck1">Check me out</label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <a href="DISEÑO WEB ANTERIOR/SI/1.admin/index.html"><button class="btn btn-primary" type="submit" href="DISEÑO WEB ANTERIOR/SI/1.admin/index.html" >Submit </button>
+                                    </a>
+                                    <a href="DISEÑO WEB ANTERIOR/SI/1.admin/index.html">.</a>
+                                </div>
+                            </h:form>
+                        </div>
+
+                        <!--  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                        <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
                     </div>
                 </div>
-
             </div>
+            <script>
+                $(document).ready(function () {
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            </script>
         </f:view>
 
     </h:body>
