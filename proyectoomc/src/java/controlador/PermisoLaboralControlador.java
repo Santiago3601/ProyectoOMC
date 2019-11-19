@@ -126,7 +126,7 @@ public class PermisoLaboralControlador implements Serializable {
         permisoLaboral = new PermisoLaboral();
         empleado = new Empleado();
         estadoPermisoLaboral = new EstadoPermisoLaboral();
-        return "ListarPermisoLaboral";
+        return "ListarPermisoLaboral1";
     }
     
     public String CambiarEstado1(PermisoLaboral pl) {
@@ -137,7 +137,7 @@ public class PermisoLaboralControlador implements Serializable {
         permisoLaboral = new PermisoLaboral();
         empleado = new Empleado();
         estadoPermisoLaboral = new EstadoPermisoLaboral();
-        return "ListarPermisoLaboral";
+        return "ListarPermisoLaboral1";
     }
     public List<PermisoLaboral> permisos(){
         Usuario usu = new Usuario();
