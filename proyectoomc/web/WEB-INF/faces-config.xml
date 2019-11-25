@@ -302,6 +302,12 @@
         <resource-bundle>
             <base-name>language.mensaje_de_bienvenida</base-name>
             <var>msjb</var>
-        </resource-bundle>           
+        </resource-bundle>   
+        
+          <resource-bundle>
+            <base-name>language.ListarPNIcono-es</base-name>
+            <var>msjb2</var>
+        </resource-bundle>        
+                                
     </application>
 </faces-config>

@@ -43,6 +43,10 @@ public class EmpleadoControlador implements Serializable {
     @EJB
      TurnoFacade turnoFacade;
    private Turno turno;
+   
+   @EJB
+    private EstadoEmpleadoFacade estadoEmpleadoFacade;
+   EstadoEmpleado estadoEmpleado;
 
     private JasperPrint jasperPrint;
     private List<ReporteEmpleado> listareporte;
@@ -59,12 +63,31 @@ public class EmpleadoControlador implements Serializable {
     @PostConstruct
     public void init() {
         empleado = new Empleado();
+        estadoEmpleado = new EstadoEmpleado();
         usuario = new Usuario();
         turno = new Turno();
         listareporte = new ArrayList<>();
         
 
     }
+
+    public EstadoEmpleadoFacade getEstadoEmpleadoFacade() {
+        return estadoEmpleadoFacade;
+    }
+
+    public void setEstadoEmpleadoFacade(EstadoEmpleadoFacade estadoEmpleadoFacade) {
+        this.estadoEmpleadoFacade = estadoEmpleadoFacade;
+    }
+
+    public EstadoEmpleado getEstadoEmpleado() {
+        return estadoEmpleado;
+    }
+
+    public void setEstadoEmpleado(EstadoEmpleado estadoEmpleado) {
+        this.estadoEmpleado = estadoEmpleado;
+    }
+
+   
 
     public List<ReporteEmpleado> getListareporte() {
         return listareporte;
@@ -115,9 +138,10 @@ public class EmpleadoControlador implements Serializable {
     //metodos
     public String registrar() {
        empleado.setUsuarioId(usuarioFacade.find(usuario.getId()));
+       this.empleado.setFkEstado(getEstadoEmpleado());
        empleadoFacade.create(empleado);
        empleado = new Empleado();
-       return "listarEmpleado";
+       return "RegistrarEmpleado";
     }
     
 
