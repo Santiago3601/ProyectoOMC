@@ -33,7 +33,7 @@
 
 
                 <h:form ps:class="needs-validation" ps:novalidate="true" >
-                    <h1><h:outputText value="Registrar Permiso Laboral"/></h1>
+                    <h1><h:outputText value="#{msjRegistrarPermisoLaboral.h1TxtTitle}"/></h1>
                     
 
                         <h:outputLabel value="#{msjRegistrarPermisoLaboral.labelTxtHoraPermiso}" for="horaPermiso" />
@@ -60,7 +60,7 @@
                             <f:selectItems value="#{empleadoControlador.consultarTodos()}" var="emp" itemValue="#{emp.idEmpleado}" itemLabel="#{emp.usuarioId.nombre} #{emp.usuarioId.apellido}" />
                         </h:selectOneMenu>
 
-                        <h:commandButton ps:id="boton" class="btn btn-primary "  action ="#{permisoLaboralControlador.registrarp()}" value="registrar"/>
+                        <h:commandButton ps:id="boton" class="btn btn-primary " value="#{msjRegistrarPermisoLaboral.btnRegistar}" action ="#{permisoLaboralControlador.registrarp()}" value="registrar"/>
                    
                      <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
