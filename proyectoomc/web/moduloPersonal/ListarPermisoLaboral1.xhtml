@@ -4,6 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
@@ -72,8 +73,8 @@
                         </f:facet>
                         
                        
-                        <h:commandLink action="#{permisoLaboralControlador.CambiarEstado(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-check-circle"></i></h:commandLink>
-                       <h:commandLink action="#{permisoLaboralControlador.CambiarEstado1(item)}" onclick="return confirm('Estas seguro?')"><i class="fas fa-ban"></i></h:commandLink>
+                        <h:commandLink action="#{permisoLaboralControlador.CambiarEstado(item)}" onclick="return confirm('Estas seguro?')"><i class="far fa-check-circle" ps:title="#{msjb2.h2titulo}" ps:data-toggle="tooltip" ps:data-placement="bottom" ></i></h:commandLink>
+                       <h:commandLink action="#{permisoLaboralControlador.CambiarEstado1(item)}" onclick="return confirm('Estas seguro?')"><i class="fas fa-ban" ps:title="#{msjb2.h3titulo}" ps:data-toggle="tooltip" ps:data-placement="bottom" ></i></h:commandLink>
                        
                     </p:column>
                 </p:dataTable>

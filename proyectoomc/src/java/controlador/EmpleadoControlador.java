@@ -138,7 +138,8 @@ public class EmpleadoControlador implements Serializable {
     //metodos
     public String registrar() {
        empleado.setUsuarioId(usuarioFacade.find(usuario.getId()));
-       this.empleado.setFkEstado(getEstadoEmpleado());
+       empleado.setFkEstado(estadoEmpleadoFacade.find(estadoEmpleado.getIdEstadoEmpleado()));
+//       this.empleado.setFkEstado(getEstadoEmpleado());
        empleadoFacade.create(empleado);
        empleado = new Empleado();
        return "RegistrarEmpleado";
