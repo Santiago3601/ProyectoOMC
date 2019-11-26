@@ -35,7 +35,7 @@
                     <br/>
                     <h:selectOneMenu pt:class="form-control" id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="u" itemValue="#{u.id}" itemLabel="#{u.nombre}#{u.apellido}"/>
+                        <f:selectItems value="#{empleadoControlador.consultarEmpleadoporid()}" var="u" itemValue="#{u.id}" itemLabel="#{u.nombre} #{u.apellido}"/>
                     </h:selectOneMenu>
                     <br></br>
                     <h:outputLabel value="Estado" for="usuarioId" />
