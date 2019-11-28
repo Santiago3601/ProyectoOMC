@@ -34,19 +34,19 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 public class EmpleadoControlador implements Serializable {
 
     @EJB
-     EmpleadoFacade empleadoFacade;
+    EmpleadoFacade empleadoFacade;
     private Empleado empleado;
     @EJB
-     UsuarioFacade usuarioFacade;
-   private Usuario usuario;
+    UsuarioFacade usuarioFacade;
+    private Usuario usuario;
 
     @EJB
-     TurnoFacade turnoFacade;
-   private Turno turno;
-   
-   @EJB
+    TurnoFacade turnoFacade;
+    private Turno turno;
+
+    @EJB
     private EstadoEmpleadoFacade estadoEmpleadoFacade;
-   EstadoEmpleado estadoEmpleado;
+    EstadoEmpleado estadoEmpleado;
 
     private JasperPrint jasperPrint;
     private List<ReporteEmpleado> listareporte;
@@ -59,7 +59,7 @@ public class EmpleadoControlador implements Serializable {
     public void setJasperPrint(JasperPrint jasperPrint) {
         this.jasperPrint = jasperPrint;
     }
-    
+
     @PostConstruct
     public void init() {
         empleado = new Empleado();
@@ -67,7 +67,6 @@ public class EmpleadoControlador implements Serializable {
         usuario = new Usuario();
         turno = new Turno();
         listareporte = new ArrayList<>();
-        
 
     }
 
@@ -86,8 +85,6 @@ public class EmpleadoControlador implements Serializable {
     public void setEstadoEmpleado(EstadoEmpleado estadoEmpleado) {
         this.estadoEmpleado = estadoEmpleado;
     }
-
-   
 
     public List<ReporteEmpleado> getListareporte() {
         return listareporte;
@@ -137,14 +134,13 @@ public class EmpleadoControlador implements Serializable {
 
     //metodos
     public String registrar() {
-       empleado.setUsuarioId(usuarioFacade.find(usuario.getId()));
-       empleado.setFkEstado(estadoEmpleadoFacade.find(estadoEmpleado.getIdEstadoEmpleado()));
+        empleado.setUsuarioId(usuarioFacade.find(usuario.getId()));
+        empleado.setFkEstado(estadoEmpleadoFacade.find(estadoEmpleado.getIdEstadoEmpleado()));
 //       this.empleado.setFkEstado(getEstadoEmpleado());
-       empleadoFacade.create(empleado);
-       empleado = new Empleado();
-       return "RegistrarEmpleado";
+        empleadoFacade.create(empleado);
+        empleado = new Empleado();
+        return "RegistrarEmpleado";
     }
-    
 
     public List<Empleado> consultarTodos() {
         return empleadoFacade.findAll();
@@ -170,10 +166,11 @@ public class EmpleadoControlador implements Serializable {
         empleado = new Empleado();
         return "listarEmpleado";
     }
-    public void certificadoLaboral() throws IOException, JRException{
-        listaFacade=empleadoFacade.traerEmpleado((Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin")); 
+
+    public void certificadoLaboral() throws IOException, JRException {
+        listaFacade = empleadoFacade.traerEmpleado((Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin"));
         if (!listaFacade.isEmpty()) {
-            
+
             for (Object[] obj : listaFacade) {
                 ReporteEmpleado rE = new ReporteEmpleado();
                 rE.setNombre(obj[0].toString());
@@ -183,17 +180,64 @@ public class EmpleadoControlador implements Serializable {
                 rE.setTipocedula(obj[4].toString());
                 listareporte.add(rE);
             }
-            
-           JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(this.listareporte);
+
+            JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(this.listareporte);
             String ruta = FacesContext.getCurrentInstance().getExternalContext().getRealPath("//reportes//");
             jasperPrint = JasperFillManager.fillReport(ruta + "//CertificadoLaboral.jasper", new HashMap(), beanCollectionDataSource);
             HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
             httpServletResponse.addHeader("Content-disposition", "attachment; filename=CertificadoLaboral.pdf");
             ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
             JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-            FacesContext.getCurrentInstance().responseComplete(); 
+            FacesContext.getCurrentInstance().responseComplete();
         }
-        
+
     }
-    
+
+    public List<Usuario> consultarEmpleadoporid() {
+        List<Usuario> listaTodosUsuarios = new ArrayList<>();
+
+        List<Usuario> listaUsuariosSinRegistrar = new ArrayList<>();
+
+        List<Empleado> listaEmpleado = new ArrayList<>();
+
+        listaTodosUsuarios = this.usuarioFacade.findAll();
+        listaEmpleado = this.empleadoFacade.findAll();
+
+        for (Usuario usu : listaTodosUsuarios) {
+            for (Empleado emple : listaEmpleado) {
+
+                if (usu.getRolidRol().getIdRol() == 1) {
+                    if (emple.getUsuarioId().getId()==usu.getId()) {
+                    }else{
+                        System.out.println(""+emple.getUsuarioId().getId()+usu.getId());
+                        listaUsuariosSinRegistrar.add(usu);
+                        System.out.println("SOY ADMINISTRADOR");
+                        
+                    }
+                }
+                if (usu.getRolidRol().getIdRol() == 3) {
+                    if (emple.getUsuarioId().getId()==usu.getId()) {
+                    }else{
+                        System.out.println(""+emple.getUsuarioId().getId()+usu.getId());
+                        listaUsuariosSinRegistrar.add(usu);
+                        System.out.println("SOY Jefe de planta");
+                        
+                    }
+                }
+                if (usu.getRolidRol().getIdRol() == 4) {
+                    if (emple.getUsuarioId().getId()==usu.getId()) {
+                    }else{
+                        System.out.println(""+emple.getUsuarioId().getId()+usu.getId());
+                        listaUsuariosSinRegistrar.add(usu);
+                        System.out.println("SOY TECNICO");
+                        
+                    }
+                }
+            }
+
+        }
+        return listaUsuariosSinRegistrar;
+
+    }
+
 }

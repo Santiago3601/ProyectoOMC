@@ -3,55 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:s="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
       >
-    
-<h:head>
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+    <h:head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>     
-        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>     
-       <link rel="stylesheet" type="text/css" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>
+        <link rel="stylesheet" href="../dashboard/css/CSS ENVIOS/MODULO-ENVIOS.css"></link>    
+        <link rel="stylesheet" type="text/css" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"></link>
 
         <title>OMC</title>
     </h:head>
     <h:body>
-         <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="paginaDeBienvenidaCliente.xhtml">#{msjMigaDePanPersoal.Inicio}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Actualizar}</li>
+                <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Registrar}</li>
                 <li class="breadcrumb-item active" aria-current="page">#{msjMigaDePanPersoal.Empleado}</li>
             </ol>
         </nav>
         <div id="form"> 
-       <f:view locale="#{sessionController.languageSelected}">
+            <f:view locale="#{sessionController.languageSelected}">
 
 
                 <h:form ps:class="needs-validation" ps:novalidate="true" >
-                    <h1><h:outputText  value="Registrar Empleado"/></h1>
-                    
+                    <h1><h:outputText  value="Actualizar Empleado"/></h1>
+                    <h:outputLabel value="#{msjRegistrarEmpleado.labelTxtIdEmpleado}" for="idEmpleado" /> 
+                    <h:inputText pt:class="form-control" pt:id="uintTextBox" id="horaPermiso" pt:placeholder="#{msjRegistrarEmpleado.placeholderTxtIdHorario}"  value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado"  pt:required="true" requiredMessage="Este campo es obligatorio" maxlength="3" />
+                    <br/>
+                    <h:outputLabel value="Usuario:" for="usuarioId" />
+                    <br/>
+                    <h:selectOneMenu pt:class="form-control" id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{empleadoControlador.consultarEmpleadoporid()}" var="u" itemValue="#{u.id}" itemLabel="#{u.nombre} #{u.apellido}"/>
+                    </h:selectOneMenu>
+                    <br></br>
+                    <h:outputLabel value="Estado" for="usuarioId" />
+                    <h:selectOneMenu pt:class="form-control" id="empleadoIdEmpleado" value="#{empleadoControlador.estadoEmpleado.idEstadoEmpleado}" title="EmpleadoIdEmpleado" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{estadoEmpleado.consultarTodos()}" var="es" itemValue="#{es.idEstadoEmpleado}" itemLabel="#{es.estado}" />
+                    </h:selectOneMenu>
 
-                        <h:outputLabel value="#{msjRegistrarEmpleado.labelTxtIdEmpleado}" for="idEmpleado" /> 
 
-
-                        <h:message id="mensajesalida" for="horaPermiso"/>
-
-
-                        <h:inputText pt:class="form-control" pt:id="uintTextBox" id="horaPermiso" pt:placeholder="#{msjRegistrarEmpleado.placeholderTxtIdHorario}"  value="#{empleadoControlador.empleado.idEmpleado}" title="IdEmpleado"  pt:required="true" requiredMessage="Este campo es obligatorio" maxlength="3" />
-
-                        <br/>
-                        <h:outputLabel value="Usuario:" for="usuarioId" />
-                        <br/>
-                        <h:selectOneMenu pt:class="form-control" id="usuarioId" value="#{empleadoControlador.usuario.id}" title="UsuarioId" required="true" requiredMessage="The UsuarioId field is required.">
-
-
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="u" itemValue="#{u.id}" itemLabel="#{u.nombre}#{u.apellido}#{u.rolidRol.rol}"/>
-                        </h:selectOneMenu>
-                        <br/>
-                        <h:commandButton  ps:id="boton" class="btn btn-primary " action ="#{empleadoControlador.actualizarEmpleado()}" value="actualizar"/>
-                      <script>
+                    <br/>
+                    <h:commandButton ps:id="boton" class="btn btn-primary" action ="#{empleadoControlador.actualizarEmpleado()}" value="Actializar"/>
+                    <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
                         (function () {
                             'use strict';

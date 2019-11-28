@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -110,4 +111,25 @@ public class TurnoControlador implements Serializable {
      {
          System.out.println("Prueba de controlador");
      }
+     
+     
+     public List<Turno> turno(){
+        Usuario usu = new Usuario();
+        Empleado empleado1 = new Empleado();
+        Turno turno1 = new Turno();
+        usu=(Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        empleado1=usu.getEmpleadoList().get(0);
+       return empleado1.getTurnoList(); 
+    }
+    
+    public boolean comprobar(){
+        Usuario usuario = new Usuario();
+        usuario=(Usuario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
+        if (usuario.getRolidRol().getRol()=="Administrador" || usuario.getRolidRol().getRol()=="Jefe de planta" ) {
+            return true;
+        }
+        return false;
+    }
+     
+     
 }

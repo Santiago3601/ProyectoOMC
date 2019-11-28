@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2019 a las 15:54:02
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 28-11-2019 a las 14:00:11
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -76,7 +76,9 @@ INSERT INTO `agenda` (`id_agenda`, `fecha_programada`, `novedades`, `foto`, `emp
 (8, '2019-10-03', 'Capacitación', '', 4, 4),
 (9, '2019-10-01', 'Capacitación', '', 2, 4),
 (10, '2019-09-25', 'Capacitación', '', 21, 4),
-(11, '2019-10-16', 'Capacitación', '', 3, 4);
+(11, '2019-10-16', 'Capacitación', '', 3, 4),
+(12, '2019-10-31', 'Falta de pintura', '/proyectoomc/archivos/', 4, 8),
+(13, '2019-11-13', 'Falta de pintura', '/proyectoomc/archivos/1482-Article Text-3592-2-10-20170131.pdf', 5, 9);
 
 -- --------------------------------------------------------
 
@@ -139,7 +141,8 @@ CREATE TABLE `auditoria_mantenimiento` (
 --
 
 INSERT INTO `auditoria_mantenimiento` (`Id_AudMant`, `id_mantenimiento`, `Antigua_fechaInicioMantenimiento`, `Antigua_fechaFinalMantenimiento`, `Antigua_TipoMantenimiento`, `id_agenda`, `id_estado`, `id_cilindro`, `UsuarioAuditor`, `FechaAuditoria`) VALUES
-(1, 114, '2019-10-09', '2019-10-30', 'preventivo', 2, 2, 1060298, 'root@localhost', '2019-10-10');
+(1, 114, '2019-10-09', '2019-10-30', 'preventivo', 2, 2, 1060298, 'root@localhost', '2019-10-10'),
+(2, 876, '2019-11-28', '2019-11-29', 'Preventivo', 9, 2, 1060300, 'root@localhost', '2019-11-26');
 
 -- --------------------------------------------------------
 
@@ -160,6 +163,7 @@ CREATE TABLE `cilindro` (
 --
 
 INSERT INTO `cilindro` (`id_cilindro`, `tamanio`, `lote`, `fecha_de_creacion`, `estado_id_estado`) VALUES
+(120065, 500, 12345, '2019-11-01', 1),
 (1060293, 250, 3102249, '2019-06-02', 1),
 (1060294, 250, 3102249, '2019-06-02', 1),
 (1060295, 300, 3102249, '2019-06-02', 1),
@@ -247,12 +251,21 @@ CREATE TABLE `empleado` (
 --
 
 INSERT INTO `empleado` (`id_empleado`, `usuario_id`, `fk_estado`) VALUES
-(1, 23874610, 1),
+(1, 1015456456, 1),
 (2, 10201021, 1),
 (3, 10003012, 1),
-(4, 1111222, 1),
+(4, 1000201266, 1),
 (5, 24981099, 1),
-(21, 24981099, 1);
+(8, 213213, 1),
+(9, 10003251, 1),
+(10, 1111222, 1),
+(11, 24981099, 1),
+(12, 24981099, 1),
+(13, 213213, 1),
+(15, 213213, 1),
+(21, 24981099, 1),
+(22, 213213, 1),
+(87, 10005015, 1);
 
 -- --------------------------------------------------------
 
@@ -400,7 +413,13 @@ INSERT INTO `horario` (`id_horario`, `hora_ingreso`, `hora_salida`, `empleado_id
 (46, '9:56', '9:56', 1, '2019-10-04', '2019-10-04'),
 (47, '9:59', '9:59', 1, '2019-10-04', '2019-10-04'),
 (48, '9:59', '9:59', 1, '2019-10-04', '2019-10-04'),
-(50, '9:59', '9:59', 1, '2019-10-04', '2019-10-04');
+(50, '9:59', '9:59', 1, '2019-10-04', '2019-10-04'),
+(51, '19:36', '19:36', 1, '2019-11-18', '2019-11-18'),
+(52, '19:36', '19:36', 1, '2019-11-18', '2019-11-18'),
+(53, '19:45', '19:45', 1, '2019-11-18', '2019-11-18'),
+(54, '11:3', '11:3', 3, '2019-11-25', '2019-11-25'),
+(55, '15:2', '15:2', 2, '2019-11-27', '2019-11-27'),
+(56, '7:8', '7:8', 22, '2019-11-28', '2019-11-28');
 
 -- --------------------------------------------------------
 
@@ -428,7 +447,8 @@ INSERT INTO `mantenimiento` (`id_mantenimiento`, `fecha_inicio_mantenimiento`, `
 (4, '2019-10-01', '2019-10-01', '', 4, 2, 1060293),
 (5, '2019-09-28', '2019-09-28', '', 1, 2, 1060293),
 (112, '2019-10-09', '2019-10-30', 'preventivo', 2, 2, 1060298),
-(114, '2019-10-09', '2019-10-30', 'preventivo', 2, 2, 1060298);
+(114, '2019-10-09', '2019-10-30', 'preventivo', 2, 2, 1060298),
+(876, '2019-11-28', '2019-11-30', 'Preventivo', 9, 2, 1060300);
 
 --
 -- Disparadores `mantenimiento`
@@ -499,7 +519,7 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (43, 'Empleado', 'Employees', '../../../moduloPersonal/ListarEmpleado.xhtml', 'x', 37),
 (44, 'Horario', 'Schedule', '../../../moduloPersonal/ListarHorario.xhtml', 'x', 37),
 (45, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral1.xhtml', 'x', 37),
-(47, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 37),
+(47, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno1.xhtml', 'x', 37),
 (48, '---- Jefe de planta -----', '', ' ', 'x', NULL),
 (49, 'Envios', 'Shipping', NULL, 'x', NULL),
 (52, 'Crear', 'Create', '', 'x', 49),
@@ -532,7 +552,7 @@ INSERT INTO `permiso` (`id_permiso`, `nombre`, `nombre_en`, `url`, `icon`, `perm
 (84, 'Consulta', 'Consult', NULL, 'x', 82),
 (85, 'Turno', 'Turn', '../../../moduloPersonal/RegistrarTurno.xhtml', 'x', 83),
 (87, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/RegistrarPermisoLaboral.xhtml', 'x', 83),
-(88, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno.xhtml', 'x', 84),
+(88, 'Turno', 'Turn', '../../../moduloPersonal/ListarTurno1.xhtml', 'x', 84),
 (90, 'Permiso Laboral', 'Work permit', '../../../moduloPersonal/ListarPermisoLaboral1.xhtml', 'x', 84),
 (91, 'Tecnico', 'Technical', NULL, 'x', NULL),
 (92, 'Envios', 'Shipping', NULL, 'x', NULL),
@@ -593,20 +613,36 @@ CREATE TABLE `permiso_laboral` (
 --
 
 INSERT INTO `permiso_laboral` (`id_permiso_laboral`, `hora_permiso`, `fecha_permiso`, `obvservaciones`, `estado`, `empleado_id_empleado`) VALUES
-(1, '10:00:00', '2019-09-24', 'Cita medica', 1, 21),
-(2, '14:30:00', '2019-09-28', 'Viaje', 1, 5),
-(3, '07:00:00', '2019-09-26', 'Reunión en el colegio ', 1, 4),
-(4, '15:00:00', '2019-09-28', 'Cita medica', 1, 4),
-(5, '16:00:00', '2019-09-28', 'Reunión familiar ', 1, 4),
-(6, '08:00:00', '2019-09-30', 'Cita medica', 1, 4),
-(7, '17:00:00', '2019-10-02', 'Cumpleaños', 1, 21),
+(1, '10:00:00', '2019-09-24', 'Cita medica', 2, 21),
+(2, '14:30:00', '2019-11-21', 'Viajejjjjj', 2, 2),
+(3, '07:00:00', '2019-09-26', 'Reunión en el colegio ', 3, 4),
+(4, '15:00:00', '2019-09-28', 'Cita medica', 2, 4),
+(5, '16:00:00', '2019-09-28', 'Reunión familiar ', 2, 4),
+(6, '08:00:00', '2019-09-30', 'Cita medica', 2, 4),
+(7, '17:00:00', '2019-10-02', 'Cumpleaños', 2, 21),
 (8, '10:00:00', '2019-10-08', 'Reunión en el colegio ', 3, 4),
-(9, '02:15:00', '2016-12-11', 'incapacidad', 1, 3),
-(10, '12:15:00', '2016-12-11', 'incapacidad', 1, 3),
+(9, '02:15:00', '2016-12-11', 'incapacidad', 2, 3),
+(10, '12:15:00', '2016-12-11', 'incapacidad', 3, 3),
 (11, '12:15:00', '2016-01-11', 'Cita Medica', 1, 3),
 (12, '02:15:00', '2016-12-11', 'incapacidad', 1, 1),
 (13, '05:00:30', '2016-01-11', 'Cita Medica', 1, 1),
-(14, '05:00:30', '2016-12-11', 'Cita Medica', 1, 1);
+(14, '05:00:30', '2016-12-11', 'Cita Medica', 1, 1),
+(15, '02:15:00', '2019-11-20', 'Cita Medica', 1, 2),
+(16, '12:15:00', '2019-11-29', 'qweriii', 1, 5),
+(17, '12:15:00', '2019-11-28', 'incapacidad', 1, 5),
+(18, '05:00:30', '2019-11-28', 'qwerpp', 3, 5),
+(19, '02:15:00', '2019-11-25', 'Cita Medica', 1, 9),
+(20, '02:15:00', '2019-11-26', 'Cita Medica', 1, 9),
+(21, '02:15:00', '2019-12-20', 'Viajes', 1, 1),
+(22, '12:15:00', '2019-11-29', 'Cita Medica', 1, 1),
+(23, '02:15:00', '2019-11-29', 'asdfgh', 1, 1),
+(24, '05:00:30', '2019-11-28', 'asdfgh', 1, 1),
+(25, '20:00:00', '2019-12-04', 'Cita Medica', 1, 21),
+(26, '00:13:00', '2019-12-01', 'Cita Medica', 1, 13),
+(27, '12:15:00', '2019-11-28', 'prueba', 1, 13),
+(28, '01:00:00', '2019-11-29', 'Viaje', 2, 21),
+(29, '02:15:00', '2019-11-29', 'Cita Medica', 1, 1),
+(30, '03:30:00', '2019-11-29', 'Cita Medica', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -868,10 +904,10 @@ CREATE TABLE `turno` (
 
 INSERT INTO `turno` (`id_turno`, `programacion`, `hora_ingreso`, `horas_salida`, `fecha_inicial`, `fecha_final`, `observaciones`, `id_empleado`) VALUES
 (2, 'Entregas', '00:06:06', '00:01:15', '2001-03-20', '2003-06-13', 'Entregas', 4),
-(3, 'Mantenimiento', '06:00:00', '12:00:00', '2019-09-25', '2019-09-25', 'Mantenimiento', 5),
+(3, 'Mantenimiento', '06:00:00', '12:00:00', '2019-11-19', '2019-11-21', 'Mantenimientossss', 5),
 (4, 'Entregas', '10:00:00', '17:00:00', '2019-09-16', '2019-09-16', 'Entregas', 5),
 (5, 'Mantenimiento', '13:00:00', '21:00:00', '2019-09-09', '2019-09-09', 'Mantenimientos', 4),
-(6, 'Mantenimiento', '08:00:00', '18:00:00', '2019-09-25', '2019-09-25', 'Mantenimiento', 2),
+(6, 'Mantenimiento', '08:00:00', '07:00:00', '2019-11-29', '2019-11-29', 'Mantenimiento', 2),
 (7, 'Capacitacion', '13:00:00', '21:00:00', '2019-09-03', '2019-09-03', 'Capacitacion', 3),
 (8, 'Mantenimiento', '09:30:00', '19:30:00', '2019-09-26', '2019-09-26', 'Mantenimiento', 4),
 (9, 'Mantenimiento', '12:00:00', '20:00:00', '2019-09-02', '2019-09-02', 'Mantenimiento', 3),
@@ -880,7 +916,11 @@ INSERT INTO `turno` (`id_turno`, `programacion`, `hora_ingreso`, `horas_salida`,
 (12, 'Envios', '07:00:00', '17:00:00', '2019-07-03', '2019-07-05', 'Envíos', 2),
 (13, 'Envios', '12:00:00', '22:00:00', '2019-05-01', '2019-05-01', 'Envíos', 2),
 (14, 'Envíos', '14:00:00', '22:00:00', '2019-09-02', '2019-09-02', 'Envíos', 21),
-(15, 'mantenimiento', '05:10:10', '15:00:00', '2019-12-11', '2019-12-31', 'mantenimiento', 1);
+(15, 'mantenimiento', '05:10:10', '15:00:00', '2019-12-11', '2019-12-31', 'mantenimiento', 1),
+(16, 'mantenimiento', '05:00:01', '15:00:00', '2019-11-28', '2019-12-11', 'mantenimiento', 1),
+(17, 'mantenimiento', '05:10:10', '15:00:00', '2019-11-27', '2019-11-28', 'mantenimiento Cilindro', 9),
+(18, 'mantenimiento', '05:10:10', '15:00:00', '2019-11-29', '2019-11-30', 'mantenimiento Cilindro', 1),
+(19, 'mantenimiento', '05:10:10', '15:00:00', '2019-11-29', '2019-11-29', 'mantenimiento Cilindro', 22);
 
 -- --------------------------------------------------------
 
@@ -908,14 +948,14 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo`, `contrasenia`, `telefono`, `eps`, `fecha_de_nacimiento`, `edad`, `rol_idRol`) VALUES
-(213213, 1, 'Juan Marco', 'Arevalo Martinez', 'Cll 21 No. 53-54', 'kif69875@eveav.com', '1203451', 3112465132, 'Nueva EPS', '1979-09-05', 40, 2),
-(1111222, 1, 'Jonh Michael', 'Lopez Jimenez', 'Cll 99 No. 31-24', 'jersonchitan00@gmail.com', 'RiVGImysla', 3119775486, 'Nueva EPS', '2001-02-02', 18, 2),
+(213213, 1, 'Juan Marco', 'Arevalo Martinez', 'Cll 21 No. 53-54', 'kif69875@eveav.com', '1203451', 3112465132, 'Nueva EPS', '1979-09-05', 40, 4),
+(1111222, 1, 'Jonh Michael', 'Lopez Jimenez', 'Cll 99 No. 31-24', 'jersonchitan00@gmail.com', 'RiVGImysla', 3119775486, 'Nueva EPS', '2001-02-02', 18, 4),
 (10002012, 1, 'Jonh Michael', 'Mendoza Castiblanco', 'chl60957@bcaoo.com', 'chl60957@bcaoo.com', 'chl60957@bcaoo.com', 1212121212, 'Compensar', '1953-11-29', 65, 2),
 (10002014, 1, 'Monica Bibiana', 'Mendoza Castellanos', 'Cll x No 14-55', 'mbmendoza6@misena.edu.co', 'claveM123456789', 4123521, 'Aliansalud EPS', '1999-01-12', 20, 1),
 (10002025, 1, 'Carol', 'Perez Martinez', 'Cr 101- 70 26', 'juanx@gmail.com', '123454', 3115479652, 'Cafam EPS.', '2012-03-02', 7, 2),
 (10002054, 1, 'Juan Camilo', 'Stewart King', 'Cr 101- 70 26', 'c3081485@urhen.com', 'c3081485@urhen.com', 415415615, 'Aliansalud EPS', '1997-06-16', 22, 2),
 (10002102, 1, 'Liliana Andrea', 'Bedoya Solanilla', 'Cll 24 No. 31 -  34', 'liandreab2sol@gmail.com', 'claveL123456789', 3112446524, 'Aliansalud EPS', '1999-01-12', 20, 2),
-(10003012, 1, 'Juan Camilo', 'Perez Martinez', 'Cr 101- 70 26', 'liandreab2sol@gmail.com', '1234', 122, 'Cafam EPS.', '2001-06-01', 18, 2),
+(10003012, 1, 'Juan Camilo', 'Perez Martinez', 'Cr 101- 70 26', 'liandreab2sol@gmail.com', '1234', 122, 'Cafam EPS.', '2001-06-01', 18, 4),
 (10003251, 1, 'Nelson Hernan', 'Rodriguez Ayala', 'Cra 13 No. 123 - 23', 'nhrodrigueza@misena.edu.co', 'claveN123456789', 4135331, 'Aliansalud EPS', '1999-01-12', 20, 1),
 (10005015, 1, 'Felix Eduardo', 'Barahona Romero', 'Cr 101- 70 26', 'felixbarahona@misena.edu.co', 'claveF123456789', 3112997465, 'Aliansalud EPS', '1999-01-12', 20, 3),
 (10006046, 2, 'Santiago', 'Ruiz RincÃ³n', 'cLL X', 'santyago3601@gmail.com', '12345', 4153134, 'Aliansalud EPS', '2001-03-05', 18, 1),
@@ -936,7 +976,8 @@ INSERT INTO `usuario` (`id`, `tp_id`, `nombre`, `apellido`, `direccion`, `correo
 (1000033789, 1, 'Santiago', 'Reyes', 'Calle 145  Autopista Norte', 'Sreyes98@misena.edu.co', '123456789', 3228565504, 'E.P.S Sanitas', '2001-03-11', 18, 2),
 (1000201266, 1, 'Maria Linda', 'Ortiz Baez', 'Cll 22 C No. 24-21', 'mlyndaortiz@gmail.com', 'claveM123456789', 3152249852, 'Aliansalud EPS', '1999-01-12', 20, 3),
 (1000204011, 1, 'Juan pablo', 'Murcia', 'Cll 234 - 24', 'gbm35439@eveav.com', '12345678', 31152246325, 'Capital Salud EPSS S.A.S.', '2019-06-30', 0, 2),
-(1007296769, 1, 'Jonathan', 'patiÃ±o', 'Cl 124-10', 'japatino967@misena.edu.co', 'Jonatan1234', 3135216393, 'Cafesalud EPS', '2019-10-03', 0, 2);
+(1007296769, 1, 'Jonathan', 'patiÃ±o', 'Cl 124-10', 'japatino967@misena.edu.co', 'Jonatan1234', 3135216393, 'Cafesalud EPS', '2019-10-03', 0, 2),
+(1015456456, 1, 'Tomas', 'Tomas', 'av 13', 'correo@correo', '123456', 45454545, 'Nueva EPS', '2001-02-02', 18, 4);
 
 --
 -- Disparadores `usuario`
@@ -1187,7 +1228,7 @@ ALTER TABLE `vehiculo`
 -- AUTO_INCREMENT de la tabla `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_agenda` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `alquiler`
@@ -1199,7 +1240,7 @@ ALTER TABLE `alquiler`
 -- AUTO_INCREMENT de la tabla `auditoria_mantenimiento`
 --
 ALTER TABLE `auditoria_mantenimiento`
-  MODIFY `Id_AudMant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_AudMant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -1223,19 +1264,19 @@ ALTER TABLE `estado_alquiler`
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
-  MODIFY `id_mantenimiento` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=876;
+  MODIFY `id_mantenimiento` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=877;
 
 --
 -- AUTO_INCREMENT de la tabla `permiso_laboral`
 --
 ALTER TABLE `permiso_laboral`
-  MODIFY `id_permiso_laboral` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_permiso_laboral` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `ruta`
@@ -1253,7 +1294,7 @@ ALTER TABLE `solicitud`
 -- AUTO_INCREMENT de la tabla `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `id_turno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_turno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
