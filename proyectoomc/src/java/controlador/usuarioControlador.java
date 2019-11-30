@@ -116,6 +116,7 @@ public class usuarioControlador implements Serializable {
         usuario.setRolidRol(rolFacade.find(rol.getIdRol()));
         usuario.setTpId(tipoIdFacade.find(tipoId.getIdTipoID()));
         usuarioFacade.create(usuario);
+        usuarioFacade.actualizarBaseDeDatos();
         usuario = new Usuario();
         return "listaUsuario";
 

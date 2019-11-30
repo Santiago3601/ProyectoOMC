@@ -69,4 +69,9 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         Query query = em.createNativeQuery();
         return"";
     }*/
+    
+    
+    public void actualizarBaseDeDatos(){
+        em.flush();
+    }
 }

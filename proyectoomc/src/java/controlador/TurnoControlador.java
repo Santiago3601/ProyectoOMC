@@ -89,11 +89,11 @@ public class TurnoControlador implements Serializable {
     public void consultarID() {
         turno = turnoFacade.find(turno.getIdTurno());
     }
-    public String eliminar(Turno turno) {
+    public void eliminar(Turno turno) {
         this.turno = turno;
         turnoFacade.remove(turno);
         this.turno = new Turno();
-        return "ListarTurno";
+       
     }
 
     
@@ -105,7 +105,7 @@ public class TurnoControlador implements Serializable {
      public String actualizar(){
         turnoFacade.edit(turno);
         turno = new Turno();
-        return "ListarTurno";
+        return "ListarTurno1";
     }
      public void prueba()
      {

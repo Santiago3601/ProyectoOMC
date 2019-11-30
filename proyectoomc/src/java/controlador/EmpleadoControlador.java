@@ -207,32 +207,35 @@ public class EmpleadoControlador implements Serializable {
             for (Empleado emple : listaEmpleado) {
 
                 if (usu.getRolidRol().getIdRol() == 1) {
-                    if (emple.getUsuarioId().getId()==usu.getId()) {
-                    }else{
-                        System.out.println(""+emple.getUsuarioId().getId()+usu.getId());
+                    if (emple.getUsuarioId().getId() != usu.getId()) {
+                    } else {
+                        System.out.println("" + emple.getUsuarioId().getId() + usu.getId());
                         listaUsuariosSinRegistrar.add(usu);
                         System.out.println("SOY ADMINISTRADOR");
-                        
+
+                    }
+                } else {
+                    if (usu.getRolidRol().getIdRol() == 3) {
+                        if (emple.getUsuarioId().getId() != usu.getId()) {
+                        } else {
+                            System.out.println("" + emple.getUsuarioId().getId() + usu.getId());
+                            listaUsuariosSinRegistrar.add(usu);
+                            System.out.println("SOY Jefe de planta");
+
+                        }
+                    } else {
+                        if (usu.getRolidRol().getIdRol() == 4) {
+                            if (emple.getUsuarioId().getId() != usu.getId()) {
+                            } else {
+                                System.out.println("" + emple.getUsuarioId().getId() + usu.getId());
+                                listaUsuariosSinRegistrar.add(usu);
+                                System.out.println("SOY TECNICO");
+
+                            }
+                        }
                     }
                 }
-                if (usu.getRolidRol().getIdRol() == 3) {
-                    if (emple.getUsuarioId().getId()==usu.getId()) {
-                    }else{
-                        System.out.println(""+emple.getUsuarioId().getId()+usu.getId());
-                        listaUsuariosSinRegistrar.add(usu);
-                        System.out.println("SOY Jefe de planta");
-                        
-                    }
-                }
-                if (usu.getRolidRol().getIdRol() == 4) {
-                    if (emple.getUsuarioId().getId()==usu.getId()) {
-                    }else{
-                        System.out.println(""+emple.getUsuarioId().getId()+usu.getId());
-                        listaUsuariosSinRegistrar.add(usu);
-                        System.out.println("SOY TECNICO");
-                        
-                    }
-                }
+
             }
 
         }
