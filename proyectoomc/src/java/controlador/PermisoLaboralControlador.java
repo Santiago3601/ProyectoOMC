@@ -86,6 +86,7 @@ public class PermisoLaboralControlador implements Serializable {
         this.estadoPermisoLaboral.setIdEstado(1);
         this.permisoLaboral.setEstado(getEstadoPermisoLaboral());
         permisoLaboralFacade.create(getPermisoLaboral());
+        permisoLaboralFacade.actualizarBaseDeDatos();
         permisoLaboral = new PermisoLaboral();
         return "RegistrarPermisoLaboral";
     }

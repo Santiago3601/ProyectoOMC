@@ -7,6 +7,7 @@ package facade;
 
 import entidades.Empleado;
 import entidades.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -60,6 +61,15 @@ public class EmpleadoFacade extends AbstractFacade<Empleado> {
                     return listaConsulta;
                 }
             } catch (Exception e) {
+            }
+            return null;
+        }
+        public List<Usuario> traerUsuarionSinEmpleado(){
+           Query query;
+           List<Usuario> listaDeUsuario= new ArrayList<>();
+           try{
+           query=em.createQuery("SELECT ");
+           }catch (Exception e) {
             }
             return null;
         }

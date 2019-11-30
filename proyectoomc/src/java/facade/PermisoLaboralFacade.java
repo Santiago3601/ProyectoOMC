@@ -33,8 +33,10 @@ public class PermisoLaboralFacade extends AbstractFacade<PermisoLaboral> {
 //    public List<PermisoLaboral> mostrarPermisos(){
 //    Query query;
 //    query = em.createQuery("SELECT u FROM PermisoLaboral u WHERE u.empleadoIdEmpleado = ?1");
-//    
-//    
-//    
-//    }
+// }
+    
+    public void actualizarBaseDeDatos(){
+        em.flush();
+    }
+    
 }

@@ -203,33 +203,33 @@ public class EmpleadoControlador implements Serializable {
         listaTodosUsuarios = this.usuarioFacade.findAll();
         listaEmpleado = this.empleadoFacade.findAll();
 
-        for (Usuario usu : listaTodosUsuarios) {
-            for (Empleado emple : listaEmpleado) {
+        for (Empleado emple : listaEmpleado) {
+            for (Usuario usu : listaTodosUsuarios) {
 
                 if (usu.getRolidRol().getIdRol() == 1) {
-                    if (emple.getUsuarioId().getId() != usu.getId()) {
-                    } else {
+                    if (usu.getId() != emple.getUsuarioId().getId()) {
                         System.out.println("" + emple.getUsuarioId().getId() + usu.getId());
                         listaUsuariosSinRegistrar.add(usu);
                         System.out.println("SOY ADMINISTRADOR");
+                    } else {
 
                     }
                 } else {
                     if (usu.getRolidRol().getIdRol() == 3) {
-                        if (emple.getUsuarioId().getId() != usu.getId()) {
-                        } else {
+                        if (usu.getId() != emple.getUsuarioId().getId()) {
                             System.out.println("" + emple.getUsuarioId().getId() + usu.getId());
                             listaUsuariosSinRegistrar.add(usu);
                             System.out.println("SOY Jefe de planta");
+                        } else {
 
                         }
                     } else {
                         if (usu.getRolidRol().getIdRol() == 4) {
-                            if (emple.getUsuarioId().getId() != usu.getId()) {
-                            } else {
+                            if (usu.getId() != emple.getUsuarioId().getId()) {
                                 System.out.println("" + emple.getUsuarioId().getId() + usu.getId());
                                 listaUsuariosSinRegistrar.add(usu);
                                 System.out.println("SOY TECNICO");
+                            } else {
 
                             }
                         }
