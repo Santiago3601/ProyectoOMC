@@ -194,8 +194,8 @@ public class solicitudControlador implements Serializable {
     public String upload() {
 
         String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");
-        path = path.substring(0, path.indexOf("\\build"));
-        path = path + "\\web\\Archivos\\";
+        path = path.substring(0, path.indexOf("\\opt"));
+        path = path + "opt\\glassfish\\glassfish\\domains\\domain1\\applications\\ROOT\\Archivos\\";
         try {
             this.nombre = file.getSubmittedFileName();
             pathReal = "/proyectoomc/archivos/" + nombre;
@@ -223,8 +223,8 @@ public class solicitudControlador implements Serializable {
     public String uploadUsuario() {
         usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("sesionLogin");
         String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("Archivos");
-        path = path.substring(0, path.indexOf("\\build"));
-        path = path + "\\web\\Archivos\\";
+        path = path.substring(0, path.indexOf("\\opt"));
+        path = path + "opt\\glassfish\\glassfish\\domains\\domain1\\applications\\ROOT\\Archivos\\";
         try {
             this.nombre = file.getSubmittedFileName();
             pathReal = "/proyectoomc/archivos/" + usuario.getId() +  nombre;
